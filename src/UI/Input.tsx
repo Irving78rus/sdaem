@@ -52,7 +52,7 @@ const Input = ({ children, placeholder, type }: any, props: any) => {
   return (
     <>
       <InputB {...props}>
-        <IMG {...props}> {children ? children : null} </IMG>
+        <IMG {...props}> {children} </IMG>
         <InputStl {...props} placeholder={placeholder} type={type} />
       </InputB>
     </>
