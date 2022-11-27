@@ -95,11 +95,10 @@ export default function Authorization() {
             <FlexContainer flexDirection="column" justifyContent="center">
               <h2> Авторизация</h2>
               <p>Авторизируйтесь, чтобы начать публиковать свои объявления</p>
-
               <Input placeholder="Логин" type="text">
                 <UserImg />
               </Input>
-              <Input placeholder="Пароль" type="text"><MailImg></MailImg> </Input>
+              <Input placeholder="Пароль" type="text"><MailImg/></Input>
               <FlexContainer>
                 <Input type="checkbox"> </Input>
                 <p>запомнить меня</p>
