@@ -10,6 +10,7 @@ const CheckboxStl = styled.div`
     position: relative;
     display:flex;
     cursor:pointer;
+    padding: 20px 0;
      &:hover{
       background: white;
      }

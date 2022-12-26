@@ -23,7 +23,6 @@ const SelectStl = styled.div<Props>`
   display:${props=>props.display||'flex'};
   align-items:${props=>props.alignItems||'center'};
   
-  z-index:2;
   padding: 17px 18px;
   flex-direction:${props=>props.flexDirection||'row'};
   width: ${(props) => props.width || "150px"};
@@ -76,6 +75,7 @@ const List = styled.div<Props>`
   box-shadow: 0px 0px 40px rgba(135, 124, 202, 0.3);
   background: #ffffff;
   
+  z-index:2;
   position: absolute;
   top: 47px;
   left: 0;
@@ -86,6 +86,8 @@ const List = styled.div<Props>`
   border-radius: 10px;
 `;
 const DropTable = styled.div`
+ 
+position: relative;
   padding: 15px;
 `;
 const Select = (props: any) => {

@@ -41,9 +41,9 @@ const List = styled.div<Props>`
   flex-wrap:wrap;
   top: 47px;
   left: 0;
-  div:hover {
-    background: #f8f8f8;
-  }
+  flex-direction:column;
+  align-items:flex-start;
+   
  
 `;
 const SelectTitle = styled.p`
@@ -60,9 +60,9 @@ color: #BDBDBD;
 
 export default function FormSearch(props: any) {
   const params = useAppSelector((state: any) => state.baseFlat.params);
-  const [upPrice, setUpPrice] = useState(params.upPrice||0);
-  const [toPrice, setToPrice] = useState(params.toPrice||0);
-  
+  const [upPrice, setUpPrice] = useState(params.upPrice || 0);
+  const [toPrice, setToPrice] = useState(params.toPrice || 0);
+
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function FormSearch(props: any) {
     dispatch(setToPriceToStore(Number(toPrice)));
   }, [toPrice, dispatch]);
 
- 
+
   const [isActive, setIsActive] = useState(false)
   const open = (e: any) => {
     e.preventDefault();
@@ -85,12 +85,46 @@ export default function FormSearch(props: any) {
     setIsActive(false)
     setActiveSelect(0)
   }
+  const flat = useAppSelector((state: any) => state.baseFlat.flat);
+  const metro = flat.map((item: any) => item.metro);
+  const uniqueMetro = metro.filter((item: any, pos: any) => metro.indexOf(item) === pos);
+  const district = flat.map((item: any) => item.district);
+  const uniqueDistrict = district.filter((item: any, pos: any) => district.indexOf(item) === pos);
+  const sleepingPlaces = flat.map((item: any) => item.sleepingPlaces);
+  const uniqueSleepingPlaces = sleepingPlaces.filter((item: any, pos: any) => sleepingPlaces.indexOf(item) === pos);
+  const moreSelected = [
+    {
+      title: "Спальные места",
+      techTitle: "sleepingPlaces",
+      id: 6,
+      select: "Выберите",
+      active: false,
+      list: uniqueSleepingPlaces,
+    },
 
+    {
+      title: "Район",
+      techTitle: "district",
+      id: 7,
+      select: "Выберите",
+      active: false,
+      list: uniqueDistrict,
+    },
+    {
+      title: "Метро",
+      techTitle: "metro",
+      select: "Выберите",
+      id: 8,
+      active: false,
+      list: uniqueMetro,
+    }
+
+  ];
 
   const [activeSelect, setActiveSelect] = useState(0);
   const allOption = ['Газовая плита', 'Духовка', "Кофеварка", "Микроволновая печь", "Посуда",
-    "Посудомоечная машина" ]
-      
+    "Посудомоечная машина"]
+
   return (
     <>
       <FlexContainer width={'100%'} backgroundColor={props.backgroundColor} onClick={(e: any) => { close(e) }} >
@@ -100,7 +134,7 @@ export default function FormSearch(props: any) {
 
             <FlexContainer height='100px' justifyContent='center' key={item.id} flexDirection={props.el} alignItems='flex-start' padding='20px'>
               {item.title && <SelectTitle>{item.title}</SelectTitle>}
-              {(item.id === 1 || item.id === 4) && < > <Select
+              {(item.id === 1 || item.id === 4) && <Select
                 techTitle={item.techTitle}
                 list={item.list}
                 activeSelect={activeSelect}
@@ -108,14 +142,14 @@ export default function FormSearch(props: any) {
                 id={item.id}
                 item={item}
                 select={item.select}
-                width={'150px'}
-                left={'100px'}
+                width={'230px'}
+                left={'170px'}
               >
 
               </Select>
-                </>
+
               }
-              
+
               {item.id === 2 && <FlexContainer height={"30px"} gap={"30px"}>
                 <Input
                   type={"text"}
@@ -138,23 +172,47 @@ export default function FormSearch(props: any) {
                 />
               </FlexContainer>}
               {item.id === 3 && <MoreOption onClick={(e: any) => open(e)}>Больше опций</MoreOption>}
-               
-            </FlexContainer>
-           
 
-            <VerticalLine> </VerticalLine> 
+            </FlexContainer>
+
+
+            <VerticalLine> </VerticalLine>
 
           </FlexContainer>
         ))}
-        { <MoreOption onClick={(e: any) => open(e)}>На карте</MoreOption>}
-        <NavLink to={"/Result"} style={{marginRight:'34px',textDecoration: "none"}}>  <Button fontSize='15px'  fontWeight='800' background={"#FFD54F"} width={'130px'} height={'40px'} color={"black"}>{'Показать >'}</Button></NavLink>
+        {<MoreOption onClick={(e: any) => open(e)}>На карте</MoreOption>}
+        <NavLink to={"/Result"} style={{ marginRight: '34px', textDecoration: "none" }}>  <Button fontSize='15px' fontWeight='800' background={"#FFD54F"} width={'130px'} height={'40px'} color={"black"}>{'Показать >'}</Button></NavLink>
 
       </FlexContainer>
       {isActive && <List {...props}>
+      <FlexContainer >
+        {moreSelected.map((item: any) => (
+          
 
+            <FlexContainer height='100px' justifyContent='center' key={item.id} flexDirection="column"  alignItems='flex-start' padding='20px'>
+              {item.title && <SelectTitle>{item.title}</SelectTitle>}
+              <Select
+                techTitle={item.techTitle}
+                list={item.list}
+                activeSelect={activeSelect}
+                setActiveSelect={setActiveSelect}
+                id={item.id}
+                item={item}
+                select={item.select}
+                width={'230px'}
+                left={'170px'}
+              >
+              </Select>
+            </FlexContainer>
+            
+         
+        ))}
+        </FlexContainer>
+        <FlexContainer>
         {allOption.map((item: any, index) => (
           <Checkbox label={item} id={item} />
         ))}
+ </FlexContainer>
       </List>}
 
 

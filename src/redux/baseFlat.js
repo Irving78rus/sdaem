@@ -29,8 +29,37 @@ const baseFlat = createSlice({
     setGasStove: (state, GasStove) => {
       state.params = { ...state.params, GasStove: GasStove.payload };
     },
+    setMetroToStore: (state, metro) => {
+      state.params = { ...state.params, metro: metro.payload };
+    },
+    setDistrictToStore: (state, district) => {
+      state.params = { ...state.params, district: district.payload };
+    },
+    setSleepingPlacesToStore: (state, sleepingPlaces) => {
+      state.params = { ...state.params, sleepingPlaces: sleepingPlaces.payload };
+    },
+    setOvenToStore: (state, Oven) => {
+      state.params = { ...state.params, Oven: Oven.payload };
+    },
+    setCoffeeMakerToStore: (state, CoffeeMaker) => {
+      state.params = { ...state.params, CoffeeMaker: CoffeeMaker.payload };
+    },
+    setMicrowaveOvenToStore: (state, MicrowaveOven) => {
+      state.params = { ...state.params, MicrowaveOven: MicrowaveOven.payload };
+    },
+    setDishesToStore: (state, Dishes) => {
+      state.params = { ...state.params, Dishes: Dishes.payload };
+    },
+    setDishwasherToStore: (state, Dishwasher) => {
+      state.params = { ...state.params, Dishwasher: Dishwasher.payload };
+    },
   },
 });
 
-export const { setParams, setUpPriceToStore, setToPriceToStore,setCountRooms,setGasStove } = baseFlat.actions;
+export const { setParams, setUpPriceToStore, setToPriceToStore,setCountRooms,setGasStove,
+  setMetroToStore,setDistrictToStore,setSleepingPlacesToStore,setOvenToStore,setCoffeeMakerToStore,
+  setMicrowaveOvenToStore,setDishesToStore,setDishwasherToStore
+
+
+} = baseFlat.actions;
 export default baseFlat.reducer;

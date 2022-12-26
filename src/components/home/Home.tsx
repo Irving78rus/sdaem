@@ -408,6 +408,7 @@ export default function Home() {
   const uniqueCity = city.filter((item: any, pos: any) => city.indexOf(item) === pos);
   const rooms = flat.map((item: any) => item.rooms);  
   const uniqueRooms = rooms.filter((item: any, pos: any) => rooms.indexOf(item) === pos);
+  
   const nav2 = [
     {
       title: "Город",
@@ -427,7 +428,7 @@ export default function Home() {
     },
     {
       title: "Цена за сутки ",
-      techTitle: "price",
+      techTitle: "sleepingPlaces",
       id: 2,
       select: "Выберите",
       active: false,
