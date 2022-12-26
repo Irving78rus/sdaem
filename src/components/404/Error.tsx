@@ -19,16 +19,15 @@ import Button from "../../UI/Button";
 const Background = styled.div`
  
 
- 
+height: 100vh;
 background: linear-gradient(0deg, #7E6AF3 1.04%, #6540CD 100%);
-height:600px;
+ 
 `
 const BackgroundImg = styled.div`
 background-image: url(${Back});
- 
- 
- 
-height:600px;
+background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
 `
 
 const Dots = styled.div`

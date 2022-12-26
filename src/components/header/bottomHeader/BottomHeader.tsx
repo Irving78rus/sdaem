@@ -16,7 +16,7 @@ display: flex;
 list-style-type: none;
 justify-content: space-between;
 align-items: center;
-height: 40px;
+height: 60px;
 font-family: "Epilogue";
 font-style: normal;
 font-weight: 400;
