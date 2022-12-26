@@ -144,6 +144,8 @@ export default function FormSearch(props: any) {
                 select={item.select}
                 width={'230px'}
                 left={'170px'}
+                dropSelectList={props.dropSelectList}
+                 setDropSelectList={props.setDropSelectList}
               >
 
               </Select>
@@ -187,9 +189,7 @@ export default function FormSearch(props: any) {
       {isActive && <List {...props}>
       <FlexContainer >
         {moreSelected.map((item: any) => (
-          
-
-            <FlexContainer height='100px' justifyContent='center' key={item.id} flexDirection="column"  alignItems='flex-start' padding='20px'>
+      <FlexContainer height='100px' justifyContent='center' key={item.id} flexDirection="column"  alignItems='flex-start' padding='20px'>
               {item.title && <SelectTitle>{item.title}</SelectTitle>}
               <Select
                 techTitle={item.techTitle}
@@ -201,6 +201,8 @@ export default function FormSearch(props: any) {
                 select={item.select}
                 width={'230px'}
                 left={'170px'}
+                dropSelectList={props.dropSelectList}
+                 setDropSelectList={props.setDropSelectList}
               >
               </Select>
             </FlexContainer>

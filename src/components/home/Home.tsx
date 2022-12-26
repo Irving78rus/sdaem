@@ -408,7 +408,7 @@ export default function Home() {
   const uniqueCity = city.filter((item: any, pos: any) => city.indexOf(item) === pos);
   const rooms = flat.map((item: any) => item.rooms);  
   const uniqueRooms = rooms.filter((item: any, pos: any) => rooms.indexOf(item) === pos);
-  
+   
   const nav2 = [
     {
       title: "Город",
@@ -432,7 +432,7 @@ export default function Home() {
       id: 2,
       select: "Выберите",
       active: false,
-      list: uniqueRooms,
+      list: [],
     },
     {
       title: "",
@@ -440,7 +440,7 @@ export default function Home() {
       id: 3,
       select: "Больше опций",
       active: false,
-      list: uniqueRooms,
+      list: [],
     }
 
   ];
@@ -477,11 +477,11 @@ export default function Home() {
   let content = arr.map((item: any,index:any) => <SwiperSlide key={index}> <CardResult key={index} flat={item} ></CardResult></SwiperSlide>)
 
 
-
+  const [dropSelectList, setDropSelectList] = useState (false);
   return (
     <>
-      <Background onClick={() => setActiveSelect(0)}>
-        <BackgroundImg onClick={() => setActiveSelect(0)}>
+      <Background onClick={() => setDropSelectList(false)}>
+        <BackgroundImg onClick={() => setDropSelectList(false)}>
           <ContentContainer justifyContent="center" flexDirection="column" padding='0 120px'>
             <h1>
               Sdaem.by - у нас живут <span>ваши объявления</span>
@@ -500,7 +500,7 @@ export default function Home() {
                   </li>
                 ))}
               </BottomNav>
-             <FormSearch backgroundColor={'white'} nav2={nav2} el='column'></FormSearch>
+             <FormSearch backgroundColor={'white'} nav2={nav2} el='column' dropSelectList={dropSelectList} setDropSelectList={setDropSelectList}></FormSearch>
             </FlexContainer>
           </ContentContainer>
         </BackgroundImg>

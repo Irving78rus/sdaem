@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { isTemplateExpression } from "typescript";
 import Arrov from "../assest/icon/arrov.svg";
-import { setCountRooms, setParams } from "../redux/baseFlat";
+import { setCountRooms, setDistrictToStore, setMetroToStore, setParams, setSleepingPlacesToStore } from "../redux/baseFlat";
 import { useAppDispatch } from "../redux/hooks";
 import { VerticalLine } from "./VerticalLine";
 interface Props {
@@ -91,9 +91,11 @@ position: relative;
   padding: 15px;
 `;
 const Select = (props: any) => {
+   
   const as = (e: any) => {
     e.stopPropagation();
     props.setActiveSelect(props.id);
+    props.setDropSelectList(!props.dropSelectList)
   };
   const [title, setTitle] = useState ('');
   const dispatch = useAppDispatch();
@@ -102,15 +104,23 @@ const Select = (props: any) => {
     if(techTitle==='city'){
       dispatch(setParams(item));
     }
-  else { 
-    dispatch(setCountRooms(item));
-    
-  }
+    if(techTitle==='sleepingPlaces'){
+      dispatch(setSleepingPlacesToStore(item));
+    }
+    if(techTitle==='district'){
+      dispatch(setDistrictToStore(item));
+    }
+    if(techTitle==='metro'){
+      dispatch(setMetroToStore(item));
+    }
+    if(techTitle==='rooms'){
+      dispatch(setCountRooms(item));
+    }
   
     e.stopPropagation();
   props.setActiveSelect(0);
+  props.setDropSelectList(!props.dropSelectList)
   };
- 
   return (
     <Wrapper {...props}>
       <SelectStl
@@ -123,7 +133,7 @@ const Select = (props: any) => {
           <img src={Arrov} alt="arrov"></img>
          
         </Arrow>
-        {props.list && props.id === props.activeSelect && (
+        {props.dropSelectList && props.id === props.activeSelect && (
           <List {...props}>
             {" "}
             {props.list.map((item: any) => (
