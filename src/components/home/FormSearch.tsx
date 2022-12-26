@@ -129,8 +129,8 @@ export default function FormSearch(props: any) {
     <>
       <FlexContainer width={'100%'} backgroundColor={props.backgroundColor} onClick={(e: any) => { close(e) }} >
 
-        {props.nav2.map((item: any) => (
-          <FlexContainer   >
+        {props.nav2.map((item: any,index:any) => (
+          <FlexContainer  key={index} >
 
             <FlexContainer height='100px' justifyContent='center' key={item.id} flexDirection={props.el} alignItems='flex-start' padding='20px'>
               {item.title && <SelectTitle>{item.title}</SelectTitle>}
@@ -210,7 +210,7 @@ export default function FormSearch(props: any) {
         </FlexContainer>
         <FlexContainer>
         {allOption.map((item: any, index) => (
-          <Checkbox label={item} id={item} />
+          <Checkbox label={item} id={item} key={index}/>
         ))}
  </FlexContainer>
       </List>}

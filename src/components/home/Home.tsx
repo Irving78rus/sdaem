@@ -474,7 +474,7 @@ export default function Home() {
   const home = ['Котеджи и усадьбы', 'Квартиры в Могилеве', 'Квартиры в Могилеве', 'Квартиры в Могилеве']
   const popular = ['Популярные направления', 'Коттеджи и усадьбы на о. Брасласких ', 'Коттеджи и усадьбы (жилье) на Нарочи', 'Коттеджи и усадьбы (жилье) у воды']
   const list = [dire, home, popular]
-  let content = arr.map((item: any,index:any) => <SwiperSlide> <CardResult key={index} flat={item} ></CardResult></SwiperSlide>)
+  let content = arr.map((item: any,index:any) => <SwiperSlide key={index}> <CardResult key={index} flat={item} ></CardResult></SwiperSlide>)
 
 
 
