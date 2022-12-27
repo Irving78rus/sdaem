@@ -77,14 +77,12 @@ export default function FormSearch(props: any) {
   const open = (e: any) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsActive(true)
+    setIsActive(!isActive)
+    if(isActive){
+      setActiveSelect(0)
+    }
   }
-  const close = (e: any) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsActive(false)
-    setActiveSelect(0)
-  }
+   
   const flat = useAppSelector((state: any) => state.baseFlat.flat);
   const metro = flat.map((item: any) => item.metro);
   const uniqueMetro = metro.filter((item: any, pos: any) => metro.indexOf(item) === pos);
@@ -127,7 +125,7 @@ export default function FormSearch(props: any) {
 
   return (
     <>
-      <FlexContainer width={'100%'} backgroundColor={props.backgroundColor} onClick={(e: any) => { close(e) }} >
+      <FlexContainer width={'100%'} backgroundColor={props.backgroundColor} >
 
         {props.nav2.map((item: any,index:any) => (
           <FlexContainer  key={index} >
