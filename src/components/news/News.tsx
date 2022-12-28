@@ -4,9 +4,10 @@ import home from "../../assest/img/home.png";
 import cartImage from "../../assest/img/cartImage.png";
 import heart from "../../../assest/img/heart.svg";
 import { NavLink } from "react-router-dom";
-import Pagination from "../share/pagination/Pagination";
+ 
 import styled from "styled-components";
 import ContentContainer from "../../UI/ContentContainer";
+ 
 const MarginT = styled.div`
 
 position: relative;
@@ -196,7 +197,7 @@ export default function News() {
 
 
       </ContentContainerMofic>
-      <Pagination />
+        
     </MarginT>
   );
 }

@@ -15,6 +15,7 @@ import styled from "styled-components";
 import Button from "../../../UI/Button";
 import FlexContainer from "../../../UI/FlexContainer";
 import ContentContainer from "../../../UI/ContentContainer";
+import ShearSocial from "../../share/ShearSocial";
 interface Props {
   height?: any;
 
@@ -157,12 +158,7 @@ export default function New() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
           <Button background='rgba(102,78,249,0.1)' color="#664EF9">14 Января 2008</Button>
           <FlexContainer gap='15px'>
-            <p>Поделиться</p>
-            <img src={vk} alt="map" />
-            <img src={telegram} alt="map" />
-            <img src={Viber} alt="map" />
-            <img src={WhatSub} alt="map" />
-            <img src={facebook} alt="map" />
+          <ShearSocial  ></ShearSocial>
           </FlexContainer>
         </div>
       </Container>

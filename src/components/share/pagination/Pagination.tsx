@@ -1,25 +1,81 @@
-import React, { useState } from "react";
-import styles from "./style.module.scss";
-import logo from "../../assest/img/logo.png";
-import insta from "../../assest/img/insta.svg";
-import vk from "../../assest/img/vk.svg";
-import teleg from "../../assest/img/teleg.svg";
-import visa from "../../assest/img/visa.png";
-import verifyVisa from "../../assest/img/verifyVisa.png";
-import snow from "../../assest/img/snow.png";
-import webpay from "../../assest/img/webpay.png";
-import master from "../../assest/img/master.png";
-import masterSecure from "../../assest/img/masterSecure.png";
-import { NavLink } from "react-router-dom";
-
+import { useEffect, useState } from "react";
  
-export default function Pagination() {
-const number = [1,2,3,4,5,6,7,8]
-  return (
-    <div style={{display:'flex',marginBottom:60}} >
-      {number.map(item=><div style={{marginLeft:5}} key={item}>{item}</div>)}
+import { PaginationStl, PaginationButton,ScrollPagination } from "./style";
 
-    </div>
-
+export const Pagination = ({ pageQuantity, activePage, onClickButtonPagination, itemsPerPage }:any) => {
+  const quantityButtons = Array.from(
+    { length: Math.ceil(pageQuantity.length / itemsPerPage) },
+    (v, i) => i + 1
   );
-}
+  const SizePage = 7;
+  const [portionNumber, setPortionNumber] = useState(1);
+  const portionCount = Math.ceil(pageQuantity.length / (SizePage*itemsPerPage))
+  let leftPortionPageNumber = (portionNumber - 1) * SizePage + 1;
+  let rightPortionPageNumber = portionNumber * SizePage;
+console.log(portionCount,portionNumber);
+  return (
+    <PaginationStl>
+      {portionNumber > 1 && (
+        <>
+          {quantityButtons.length > 7 && (
+            <PaginationButton
+              onClick={() => {
+                onClickButtonPagination(1);
+                setPortionNumber(1);
+              }}
+              className={`${activePage === 1 && "activeButton"}`}
+            >
+              {1}
+            </PaginationButton>
+          )}
+          <ScrollPagination
+            onClick={() => {
+              setPortionNumber(portionNumber - 1);
+            }}
+          >
+            ...
+          </ScrollPagination>
+        </>
+      )}
+      {pageQuantity.length > itemsPerPage &&
+        quantityButtons
+          .filter((p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+          .map((buttonValue, index) => {
+            return (
+              <PaginationButton
+                key={index}
+                onClick={() => {
+                  onClickButtonPagination(buttonValue);
+                }}
+                className={`${activePage === buttonValue && "activeButton"}`}
+              >
+                 
+                {buttonValue}
+              </PaginationButton>
+            );
+          })}
+      {portionCount > portionNumber && (
+        <>
+         <ScrollPagination
+            onClick={() => {
+              setPortionNumber(portionNumber + 1);
+            }}
+          >
+            ...
+          </ScrollPagination>
+          {quantityButtons.length > 7 && (
+            <PaginationButton
+              onClick={() => {
+                onClickButtonPagination(quantityButtons.length);
+                setPortionNumber(portionCount );
+              }}
+              className={`${activePage === quantityButtons.length && "activeButton"}`}
+            >
+              {quantityButtons.length}
+            </PaginationButton>
+          )}
+        </>
+      )}
+    </PaginationStl>
+  );
+};

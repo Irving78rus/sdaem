@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useMemo} from "react";
 
 import home from "../../assest/img/home.png";
 
@@ -11,7 +11,8 @@ import FormSearch from "../home/FormSearch";
 import CardResult from "./CardResult";
 import { useAppSelector } from "../../redux/hooks";
 import Select from "../../UI/Select";
-
+import { Pagination } from "../share/Pagination/Pagination";
+import ShearSocial from "../share/ShearSocial";
 
 // interface Props {
 //   height?: any;
@@ -137,7 +138,7 @@ box-shadow: 0px 20px 40px rgba(39, 95, 158, 0.08);
 
 export default function Result() {
   const flat = useAppSelector((state) => state.baseFlat.flat);
-
+console.log(flat);
   const rooms = [1, 2, 3, 4];
   const nav2 = [
 
@@ -177,7 +178,7 @@ export default function Result() {
       allParams[key] = params[key]
     }
   }
-
+  console.log(allParams);
   const res = flat.filter((item) => {
     let resParams = true
     for (let key in allParams) {
@@ -207,6 +208,18 @@ console.log(res);
     "Фрунзенский р.",
     "Центральный р.",
   ];
+  const itemsPerPage=6
+  const [activePage, setActivePage] = useState(1) 
+  const onClickButtonPagination = (page ) => {
+     
+    setActivePage(page);
+  };
+  const paginatedFlat = useMemo(() => {
+    const indexOfLastNews = activePage * itemsPerPage;
+    const indexOfFirstNews = indexOfLastNews - itemsPerPage;
+
+    return res.slice(indexOfFirstNews, indexOfLastNews);
+  }, [activePage, res]);
   return (
     <>
       <HeaderBackground height="280px">
@@ -238,21 +251,23 @@ console.log(res);
         </ContentContainer>
       </BackgroundColor>
 
-
       <ContentContainer flexDirection="column" width={'100%'}>
         <div>
           <Select select={'По умолчанию'} width={'180px'} left={'130px'}> </Select>
 
         </div>
         <h4>Найдено {res.length} результата</h4>
-        <FlexContainer flexWrap='wrap'>
+        <FlexContainer flexWrap='wrap' gap={'40px'}>
 
           {console.log(res.length !== 0)}
-          {res.length !== 0 && res.map((item, index) => <CardResult key={index} flat={item}></CardResult>)}
+          {paginatedFlat.length !== 0 && paginatedFlat.map((item, index) => <CardResult key={index} flat={item}></CardResult>)}
 
 
         </FlexContainer>
-
+        <FlexContainer width={'100%'} alignItems={'center'} margin={'50px 0'}>
+        <Pagination itemsPerPage={itemsPerPage} onClickButtonPagination={onClickButtonPagination} activePage={activePage} setActivePage={setActivePage} pageQuantity={res}  /> 
+        <ShearSocial fill={'#1E2123'} background={'#F4F5FA'}></ShearSocial>
+        </FlexContainer>
       </ContentContainer>
 
     </>

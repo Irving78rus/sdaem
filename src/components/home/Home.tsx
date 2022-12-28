@@ -507,7 +507,7 @@ export default function Home() {
 
       </Background>
       <ContentContainer margin="0">
-        <FlexContainer width="100%" height='700px' justifyContent='flex-start' gap='20px'>
+        <FlexContainer width="100%"  margin={'90px 0'} gap='20px'>
           <IMGBlock  >
             <IMG backgroundImage={Flat} width={'516px'} height={'270px'}>
               <p>Снять квартиру</p>
