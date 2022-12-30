@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import ContentContainer from "../../../UI/ContentContainer";
 import Button from "../../../UI/Button";
+import IconMap from "../../share/IconMap";
 const BackgroundColor = styled.div`
 background-color: white;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
@@ -62,7 +63,8 @@ export default function BottomHeader() {
     <ContentContainer>
      <img src={logo} alt="logo" />
      <BottomNav>
-        <li><NavLink to="/j" className={({ isActive }) => (isActive ? "active link" : "link")} >Квартиры на сутки <img src={yellowMap} alt="map" /></NavLink> </li>
+  
+        <li><NavLink to="/j" className={({ isActive }) => (isActive ? "active link" : "link")} >Квартиры на сутки {<IconMap fill='#FFD54F'></IconMap>}</NavLink> </li>
         <li><NavLink to="/k" className={({ isActive }) => (isActive ? "active link" : "link")} >Коттеджи и усадьбы</NavLink> </li>
         <li><NavLink to="/l" className={({ isActive }) => (isActive ? "active link" : "link")} >Бани и Сауны</NavLink> </li>
         <li><NavLink to="/m" className={({ isActive }) => (isActive ? "active link" : "link")} >Авто на прокат</NavLink> </li>

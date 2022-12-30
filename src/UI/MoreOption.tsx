@@ -64,7 +64,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
  cursor:pointer;
-
+gap:5px;
 `;
 const List = styled.div<Props>`
   width: ${(props) => props.width || "1440px"};

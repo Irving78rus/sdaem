@@ -8,7 +8,7 @@ import dots from "../../assest/img/dots.svg";
 import verifyVisa from "../../assest/img/verifyVisa.png";
 import snow from "../../assest/img/snow.png";
 import webpay from "../../assest/img/webpay.png";
-import master from "../../assest/img/master.png";
+import MoreOptionIcon from "../../assest/icon/MoreOption.svg";
 import masterSecure from "../../assest/img/masterSecure.png";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
@@ -23,6 +23,7 @@ import { setToPriceToStore } from "../../redux/baseFlat";
 import MoreOption from "../../UI/MoreOption";
 import Checkbox from "../../UI/Checkbox ";
 import { VerticalLine } from "../../UI/VerticalLine";
+import IconMap from "../share/IconMap";
 
 interface Props {
   height: any;
@@ -163,8 +164,8 @@ const clearParams =(e:any)=>{
                 id={item.id}
                 item={item}
                 select={item.select}
-                width={'230px'}
-                left={'170px'}
+                width={'150px'}
+                left={'110px'}
                 dropSelectList={props.dropSelectList}
                  setDropSelectList={props.setDropSelectList}
                  setCity={setCity}
@@ -199,7 +200,7 @@ const clearParams =(e:any)=>{
                   value={toPrice}
                 />
               </FlexContainer>}
-              {item.id === 3 && <MoreOption onClick={(e: any) => open(e)}>Больше опций</MoreOption>}
+              {item.id === 3 && <MoreOption onClick={(e: any) => open(e)}> Больше опций <img src={MoreOptionIcon} alt="MoreOptionIcon" /></MoreOption>}
 
             </FlexContainer>
 
@@ -208,7 +209,7 @@ const clearParams =(e:any)=>{
 
           </FlexContainer>
         ))}
-        {props.map&&<MoreOption onClick={(e: any) => open(e)}>На карте</MoreOption>}
+        {props.map&&<MoreOption onClick={(e: any) => open(e)}>На карте {<IconMap fill='#664EF9 '></IconMap>}</MoreOption>}
         <FlexContainer>
         {props.clearButton&& <Button onClick={(e:any)=>{clearParams(e)}}
          fontSize='15px' fontWeight='800' background={"#FFD54F"} 
@@ -239,8 +240,8 @@ const clearParams =(e:any)=>{
                 id={item.id}
                 item={item}
                 select={item.select}
-                width={'230px'}
-                left={'170px'}
+                width={'150px'}
+                left={'110px'}
                 dropSelectList={props.dropSelectList}
                 setDropSelectList={props.setDropSelectList}
                 setMetro={setMetro}
