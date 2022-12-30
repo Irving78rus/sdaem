@@ -14,6 +14,9 @@ const baseFlat = createSlice({
   name: "baseFlat",
   initialState,
   reducers: {
+    setParams2: (state, param) => {
+      state.params = param.payload  
+    },
     setParams: (state, param) => {
       state.params = { ...state.params, city: param.payload };
     },
@@ -58,7 +61,7 @@ const baseFlat = createSlice({
 
 export const { setParams, setUpPriceToStore, setToPriceToStore,setCountRooms,setGasStove,
   setMetroToStore,setDistrictToStore,setSleepingPlacesToStore,setOvenToStore,setCoffeeMakerToStore,
-  setMicrowaveOvenToStore,setDishesToStore,setDishwasherToStore
+  setMicrowaveOvenToStore,setDishesToStore,setDishwasherToStore,setParams2
 
 
 } = baseFlat.actions;

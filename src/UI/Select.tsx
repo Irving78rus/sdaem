@@ -23,25 +23,26 @@ const SelectStl = styled.div<Props>`
   display:${props=>props.display||'flex'};
   align-items:${props=>props.alignItems||'center'};
   
-  padding: 17px 18px;
+  padding: 19px 18px;
   flex-direction:${props=>props.flexDirection||'row'};
   width: ${(props) => props.width || "150px"};
   font-weight: ${(props) => props.fontWeight || "400"};
   color: ${(props) => props.color || "black"};
   background-color: ${(props) => props.backgroundColor || "#F8F8F8"};
-  border: 2px solid #f8f8f8;
+   
   height: 31px;
   border-radius: 20px;
 
   &:hover {
     background-color: rgba(102, 78, 249, 0.1);
     cursor: pointer;
-    border: 2px solid rgba(102, 78, 249, 0);
+     
   }
 
   &.active {
+    padding: 17px 18px;
     display:${props=>props.display||'flex'};
-  align-items:${props=>props.alignItems||'center'};
+    align-items:${props=>props.alignItems||'center'};
     box-sizing: border-box;
     background-color: white;
     border: 2px solid rgba(102, 78, 249, 0.8);
@@ -91,6 +92,7 @@ position: relative;
   padding: 15px;
 `;
 const Select = (props: any) => {
+  
    
   const as = (e: any) => {
     e.stopPropagation();
@@ -101,26 +103,32 @@ const Select = (props: any) => {
   const dispatch = useAppDispatch();
   const addParams = (e:any, item:any,techTitle:any) => {
     setTitle(item)
+    console.log(item);
+    
     if(techTitle==='city'){
-      dispatch(setParams(item));
+      props.setCity(item)
     }
     if(techTitle==='sleepingPlaces'){
-      dispatch(setSleepingPlacesToStore(item));
+      props.setSleepingPlaces(item)
     }
     if(techTitle==='district'){
-      dispatch(setDistrictToStore(item));
+      console.log(123);
+      
+      props.setDistrict(item)
     }
     if(techTitle==='metro'){
-      dispatch(setMetroToStore(item));
+      props.setMetro(item)
     }
     if(techTitle==='rooms'){
-      dispatch(setCountRooms(item));
-    }
+      props.setRooms(item)
+     }
   
     e.stopPropagation();
   props.setActiveSelect(0);
   props.setDropSelectList(!props.dropSelectList)
   };
+  // console.log(props.dropSelectList,props.id,props.activeSelect,props.list);
+  
   return (
     <Wrapper {...props}>
       <SelectStl

@@ -8,7 +8,8 @@ import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";
 import ContentContainer from "../../UI/ContentContainer";
 import FormSearch from "../home/FormSearch";
-import CardResult from "./CardResult";
+import CardResultTile from "./CardResultTile";
+import CardResultList from "./CardResultList";
 import { useAppSelector } from "../../redux/hooks";
 import Select from "../../UI/Select";
 import { Pagination } from "../share/Pagination/Pagination";
@@ -135,11 +136,38 @@ background-color: white;
 box-shadow: 0px 20px 40px rgba(39, 95, 158, 0.08);
   height:100%;
 `
+const Toggle = styled.div`
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px 15px;
+gap: 10px;
+
+ 
+background: #FFFFFF;
+box-shadow: 0px 5px 20px rgba(0, 96, 206, 0.1);
+border-radius: 18px;
+&:hover{
+  background: #F8F8F8;
+ cursor:pointer;
+}
+`
 
 export default function Result() {
-  const flat = useAppSelector((state) => state.baseFlat.flat);
-console.log(flat);
-  const rooms = [1, 2, 3, 4];
+  const [displayMethod,setDisplayMethod] = useState('tile')
+  const flat = useAppSelector((state ) => state.baseFlat.flat);
+  const filters =['по цене', 'по спальным местам']
+  
+   const filter = {
+      title: "",
+      techTitle: "filter",
+      id: 10,
+      select: "По умолчанию",
+      active: false,
+      list: filters,
+   }
+  const rooms = flat.map((item ) => item.rooms);  
+  const uniqueRooms = rooms.filter((item , pos ) => rooms.indexOf(item) === pos);
   const nav2 = [
 
     {
@@ -148,7 +176,7 @@ console.log(flat);
       id: 1,
       select: "Выберите",
       active: false,
-      list: rooms,
+      list: uniqueRooms,
     },
     {
       title: "Цена за сутки ",
@@ -156,7 +184,7 @@ console.log(flat);
       id: 2,
       select: "Выберите",
       active: false,
-      list: rooms,
+      list: '',
     },
    
     {
@@ -165,7 +193,7 @@ console.log(flat);
       id: 3,
       select: "Больше опций",
       active: false,
-      list: "uniqueRooms",
+      list: "",
     },
   ];
 
@@ -210,6 +238,7 @@ console.log(res);
   ];
   const itemsPerPage=6
   const [activePage, setActivePage] = useState(1) 
+  const [dropSelectList, setDropSelectList] = useState (false);
   const onClickButtonPagination = (page ) => {
      
     setActivePage(page);
@@ -220,9 +249,10 @@ console.log(res);
 
     return res.slice(indexOfFirstNews, indexOfLastNews);
   }, [activePage, res]);
+  const [activeSelect, setActiveSelect] = useState(0);
   return (
     <>
-      <HeaderBackground height="280px">
+      <HeaderBackground height="280px" >
         <ContentContainer flexDirection={"column"} >
           <FlexContainer flexDirection="column" alignItems={"flex-start"}>
             <Flex>
@@ -243,24 +273,45 @@ console.log(res);
           </FlexContainer>
         </ContentContainer>
       </HeaderBackground>
-      <BackgroundColor  >
+      <BackgroundColor  onClick={() => setDropSelectList(false)}>
         <ContentContainer width={'100%'} flexDirection='column'>
 
-          <FormSearch flexDirection='row' justifyContent={"space-between"} nav2={nav2} el='column'></FormSearch>
+          <FormSearch map={false} clearButton={true} flexDirection='row' alignItems='center' justifyContent={"space-between"} nav2={nav2}  dropSelectList={dropSelectList} setDropSelectList={setDropSelectList}></FormSearch>
 
         </ContentContainer>
       </BackgroundColor>
 
-      <ContentContainer flexDirection="column" width={'100%'}>
-        <div>
-          <Select select={'По умолчанию'} width={'180px'} left={'130px'}> </Select>
-
-        </div>
+      <ContentContainer flexDirection="column" width={'100%'} onClick={() => setDropSelectList(false)}>
+        <FlexContainer width={'100%'} justifyContent={'space-between'}>
+          <Select   width={'180px'} left={'130px'} 
+          techTitle={filter.techTitle}
+          list={filter.list}
+          activeSelect={activeSelect}
+          setActiveSelect={setActiveSelect}
+          id={filter.id}
+          item={filter.item}
+          select={filter.select}
+          dropSelectList={dropSelectList}
+          setDropSelectList={setDropSelectList}
+          > </Select>
+          <FlexContainer>
+          <Toggle onClick={() =>{setDisplayMethod('list')}}>
+            Список
+          </Toggle>
+          <Toggle onClick={() =>{setDisplayMethod('tile')}}>
+            Плитки
+          </Toggle>
+          
+          <Toggle>
+            Показать на карте
+          </Toggle>
+          </FlexContainer>
+        </FlexContainer>
         <h4>Найдено {res.length} результата</h4>
         <FlexContainer flexWrap='wrap' gap={'40px'}>
 
-          {console.log(res.length !== 0)}
-          {paginatedFlat.length !== 0 && paginatedFlat.map((item, index) => <CardResult key={index} flat={item}></CardResult>)}
+         
+          {paginatedFlat.length !== 0 && paginatedFlat.map((item, index) => displayMethod==="tile"? <CardResultTile key={index} flat={item}></CardResultTile>: <CardResultList key={index} flat={item}></CardResultList>)}
 
 
         </FlexContainer>

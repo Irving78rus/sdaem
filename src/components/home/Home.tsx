@@ -9,8 +9,11 @@ import car from "../../assest/img/car.png";
 import Flat from '../../assest/img/Flat.png'
 import house from "../../assest/img/house.png";
 import bane from "../../assest/img/bane.png";
-import masterSecure from "../../assest/img/masterSecure.png";
-import { NavLink } from "react-router-dom";
+import Boy from '../../assest/img/boy.png'
+import Cvib from '../../assest/icon/Cvib.svg'
+import CWhat from '../../assest/icon/CWhat.svg'
+import CMail from '../../assest/icon/CMail.svg'
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import ContentContainer from "../../UI/ContentContainer";
 import FlexContainer from "../../UI/FlexContainer";
@@ -18,11 +21,11 @@ import Button from "../../UI/Button";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import Input from "../../UI/Input";
-import { setUpPriceToStore } from "../../redux/baseFlat";
+import { setParams2, setUpPriceToStore } from "../../redux/baseFlat";
 import { setToPriceToStore } from "../../redux/baseFlat";
 import FormSearch from "./FormSearch";
 import Select from "../../UI/Select";
-import CardResult from "../result/CardResult";
+import CardResult from "../result/CardResultList";
 import Carousel from "../../UI/Carousel";
 import Slider from "react-slick";
 import Catalog from "../catalog/Catalog";
@@ -377,9 +380,85 @@ font-size: 14px;
 line-height: 17px;
 cursor:pointer;
 `
-
-export default function Home() {
+const ContactsComp = styled.div`
+padding:20px 0;
+width:247px;
+height:297px;
+background: #FFFFFF;
+display: flex;
+flex-direction:column;
+    justify-content: space-around;
+     align-items:center;
  
+.photo{
+  border: 6px solid #664EF9;
+  width:59px;
+  height:59px;
+  border-radius:50%;
+    margin:0;
+}
+.social{
+
+}
+p{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 100%;
+/* identical to box height, or 14px */
+
+display: flex;
+align-items: center;
+  margin:0;
+/* #BDBDBD */
+
+color: #BDBDBD;
+}
+h4{
+  margin:0;
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 100%;
+/* identical to box height, or 20px */
+
+display: flex;
+align-items: center;
+
+/* Style */
+
+color: #1E2123;
+}
+.link{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 100%;
+/* identical to box height, or 16px */
+
+ 
+text-decoration-line: underline;
+
+/* #664EF9 */
+
+color: #664EF9;
+}
+`
+ 
+export default function Home() {
+  
+ 
+  
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setParams2({ city: '', upPrice: 0, toPrice: 0,rooms:0,metro:'',district:'', sleepingPlaces:0,GasStove:null,Oven:null,
+    CoffeeMaker:null,MicrowaveOven:null,Dishes:null,Dishwasher:null} ));
+  }, []);
+  
 
   const nav = [
     {
@@ -428,7 +507,7 @@ export default function Home() {
     },
     {
       title: "Цена за сутки ",
-      techTitle: "sleepingPlaces",
+      techTitle: "price",
       id: 2,
       select: "Выберите",
       active: false,
@@ -444,28 +523,8 @@ export default function Home() {
     }
 
   ];
-  const params = useAppSelector((state: any) => state.baseFlat.params);
-
-
-  const res = flat.filter((item: any) => {
-    if (params.city && params.rooms && params.upPrice && params.toPrice) {
-      return (
-        params.city === item.city &&
-        item.rooms === params.rooms &&
-        item.cost > params.upPrice &&
-        item.cost < params.toPrice
-      );
-    }
-    if (params.city && params.rooms && params.upPrice) {
-      return params.city === item.city && item.rooms === params.rooms && item.cost > params.upPrice;
-    }
-    if (params.city && params.rooms) {
-      return params.city === item.city && item.rooms === params.rooms;
-    }
-    if (params.city) {
-      return params.city === item.city;
-    }
-  });
+ 
+ 
   const arr = ['dire', 'home', 'popular', 'dire', 'home', 'popular', 'dire', 'home', 'popular']
 
   const [isActive, setIsActive] = useState(0);
@@ -473,7 +532,7 @@ export default function Home() {
   const dire = ['Квартиры', "Квартиры в Гомеле", 'Квартиры в Гордно', 'Квартиры в Могилеве', 'Квартиры в Бресте', 'Квартиры в Витебске']
   const home = ['Котеджи и усадьбы', 'Квартиры в Могилеве', 'Квартиры в Могилеве', 'Квартиры в Могилеве']
   const popular = ['Популярные направления', 'Коттеджи и усадьбы на о. Брасласких ', 'Коттеджи и усадьбы (жилье) на Нарочи', 'Коттеджи и усадьбы (жилье) у воды']
-  const list = [dire, home, popular]
+ 
   let content = arr.map((item: any,index:any) => <SwiperSlide key={index}> <CardResult key={index} flat={item} ></CardResult></SwiperSlide>)
 
 
@@ -500,7 +559,12 @@ export default function Home() {
                   </li>
                 ))}
               </BottomNav>
-             <FormSearch backgroundColor={'white'} nav2={nav2} el='column' dropSelectList={dropSelectList} setDropSelectList={setDropSelectList}></FormSearch>
+             <FormSearch map={true} clearButton={false} backgroundColor={'white'} nav2={nav2} flexDirection='column' alignItems='flex-start' dropSelectList={dropSelectList} setDropSelectList={setDropSelectList}></FormSearch>
+           
+            
+           
+           
+           
             </FlexContainer>
           </ContentContainer>
         </BackgroundImg>

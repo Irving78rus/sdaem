@@ -12,7 +12,7 @@ export const Pagination = ({ pageQuantity, activePage, onClickButtonPagination, 
   const portionCount = Math.ceil(pageQuantity.length / (SizePage*itemsPerPage))
   let leftPortionPageNumber = (portionNumber - 1) * SizePage + 1;
   let rightPortionPageNumber = portionNumber * SizePage;
-console.log(portionCount,portionNumber);
+ 
   return (
     <PaginationStl>
       {portionNumber > 1 && (

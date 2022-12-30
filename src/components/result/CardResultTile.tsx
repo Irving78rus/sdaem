@@ -11,6 +11,7 @@ import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";
 import ContentContainer from "../../UI/ContentContainer";
 import { Line } from "../../UI/Line";
+import ContactComponent from "../share/ContactComponent";
 
 interface Props {
   height?: any;
@@ -145,8 +146,8 @@ color: #FFFFFF;
 text-shadow: 0px 1px 0px rgba(147, 79, 0, 0.3);
 }
 `
-export default function CardResult({ flat }: any) {
-
+export default function CardResultTile({ flat }: any) {
+  const [showContact,setShowContact]= useState(false)
   return (<>
     <Card  >
       <Gold><p>Gold</p></Gold>
@@ -157,18 +158,26 @@ export default function CardResult({ flat }: any) {
         <p className='rooms'>{flat.rooms} комн.  </p></FlexContainer>
 
       <p className='city'> {flat.city}, б-р Мулявина, д. 10</p>
-       <p className='city'>Метро  Метро</p>   
+       <p className='city'>M*{flat.metro}  {flat.district}</p>   
       <p className='description-city'>Какое-то описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание ...</p>
       <Line> </Line>
+      {flat.GasStove&& 'GasStove'}
+      {flat.Oven&&'Oven' }
+      {flat.CoffeeMaker&&'CoffeeMaker' }
+      {flat.MicrowaveOven&&'MicrowaveOven' }
+      {flat.Dishes&& 'Dishes'}
+      {flat.Dishwasher&&'Dishwasher' }
+    
+     
       <FlexContainer width='100%' margin='15px 0'>
         <img src={heart} alt='heart'></img>
-        <Button background='#F8F8F8' color='#664EF9' fontSize='14px'>
+        <Button background='#F8F8F8' color='#664EF9' fontSize='14px'  onClick={()=>setShowContact(!showContact)}>
           <img src={tel} alt='heart'></img> Контакты 
           </Button>
           <Button background='rgba(255, 213, 79, 0.1)' color='#FEC100;' fontSize='17px'>
           Подробнее 
           </Button>
-        
+          {showContact&&<ContactComponent></ContactComponent>} 
         
         </FlexContainer>
 

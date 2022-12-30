@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Check from '../assest/icon/check.svg'
-import { setGasStove } from "../redux/baseFlat";
+ 
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 const CheckboxStl = styled.div`
  display:flex;
@@ -43,22 +43,28 @@ margin-right:0.5em;
 margin-left:1.5em;
 }
 `
-const Checkbox = ({ label, id  }: any) => {
+const Checkbox = ({ label, id,setGasStove ,setOven,setCoffeeMaker,
+  setMicrowaveOven, setDishes, setDishwasher}: any) => {
   const params = useAppSelector((state: any) => state.baseFlat.params);
-  const [GasStove, sGasStove] = useState(params.GasStove||false);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(setGasStove(GasStove));
-  }, [GasStove,dispatch ]);
- 
-const [x, setX] = useState(false);
- const test =({ target: { checked } }:any)=>{
   
-  sGasStove(checked);
-
+  const allOption:any = {
+    'Газовая плита':setGasStove,
+    'Духовка':setOven,
+    'Кофеварка':setCoffeeMaker,
+    'Микроволновая печь':setMicrowaveOven,
+    'Посуда':setDishes,
+    'Посудомоечная машина':setDishwasher
+  }  
+  
+const [x, setX] = useState(false);
+ const test =({ target: { checked,id } }:any)=>{
+  for (let key in allOption) {
+   if( id===key){
+     allOption[key](checked) 
+     }
+  }
  }
- 
- 
+  
   return (
     <CheckboxStl>
 

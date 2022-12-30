@@ -10,24 +10,26 @@ interface  Props {
   height:any
   padding:any;
   fontSize:any;
+  borderRadius:any;
 }
 const ButtonStl = styled.button<Props>`
   
   background: ${props=>props.background||"linear-gradient(90deg, #9d94ff 0%, #6b50e9 94.5%)"} ;
-  border-radius: 19px;
+  border-radius:  ${props=>props.borderRadius|| '19px'};
+  
   padding: ${props=>props.padding|| '10px 18px'};
   border: none;
   width: ${props=>props.width|| ""};
-  height: ${props=>props.height|| '100%'};
+ 
   font-weight:${props=>props.fontWeight|| "400"};
   font-size:${props=>props.fontSize|| ""};
   display: flex;
   gap: 5px;
-   
-  line-height: 17px
-  color:${props=>props.color|| "white"};
-  background-color:${props=>props.backgroundColor||null}
-  opacity:${props=>props.opacity||null}
+  align-items:center;
+  line-height: 17px;
+  color:${props=>props.color||"white"};
+  background-color:${props=>props.backgroundColor||null};
+  opacity:${props=>props.opacity||null};
   &:hover{
   background: linear-gradient(90deg, #9d94ffe8 0%, #6c50e9eb 94.5%);
   cursor:pointer;
