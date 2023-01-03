@@ -29,7 +29,7 @@ const FormInput = `
 }
 `;
 
-export const Registration = styled.main`
+export const RegistrationStl = styled.main`
   background-image: url(${CityMap}),
     linear-gradient(1.09deg, #7e6af3 0.86%, #6540cd 99.01%);
   background-repeat: no-repeat;

@@ -1,80 +1,70 @@
 import {
-  Registration,
-  RegistrationContent,
-  RegistrationFormSection,
-  RegistrationFormTitle,
-  RegistrationForm,
-  RegistrationFormName,
-  RegistrationFormEmail,
-  RegistrationFormPassword,
-  RegistrationFormPasswordRepeat,
-  RegistrationRules,
-  RegistrationRulesHeading,
-  RegistrationRulesList,
-  RegistrationRulesItem,
-  RegistrationAuthRedirect,
+  RegistrationStl, RegistrationContent, RegistrationFormSection,
+  RegistrationFormTitle, RegistrationForm, RegistrationFormName,
+  RegistrationFormEmail, RegistrationFormPassword, RegistrationFormPasswordRepeat,
+  RegistrationRules, RegistrationRulesHeading, RegistrationRulesList,
+  RegistrationRulesItem, RegistrationAuthRedirect,
 } from "./style";
 import { Link } from "react-router-dom";
-import { FormButtonComponent } from "../../../UI/FormButton/FormButtonComponent";
-import { useEffect, useState } from "react";
 import { Button } from "../../../UI/FormButton/style";
+import { useState } from "react";
 
-export const RegistrationComponent = () => {
+export const Registration = () => {
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
 
-  const auth = (e: any) => {
+  interface User {
+    email: string,
+    login: string,
+    password: string,
+    passwordRepeat: string,
+  }
+
+  const auth = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    let allUsers: any = [];
+    let allUsers: User[] = [];
     if (localStorage.getItem("Users")) {
       allUsers = JSON.parse(localStorage.getItem("Users") || "");
     } else {
       localStorage.setItem("Users", JSON.stringify([]));
     }
-    const User: any = {
+    const User: User = {
       email: email,
       login: login,
       password: password,
       passwordRepeat: passwordRepeat,
     };
-   
-    if(allUsers.length!==0){
-     const res = allUsers.filter((item: any) => {
-      setError("")
+
+    if (allUsers.length !== 0) {
+      const res = allUsers.filter((item: User) => {
+        setError("")
         if (User.email === item.email) {
           setError("Такая почта уже используется");
-          console.log(123);
-          
         } else if (User.login === item.login) {
           setError("Такой логин уже используется");
-          console.log(123);
-        } 
+        }
         else if (User.password !== User.passwordRepeat) {
           setError("пароли не совпадают");
-          console.log(123);
-        } 
-        else{
+        }
+        else {
           return item
         }
-       
+
       });
-      const successRegistration = (allUsers:any,User:any)=>{
+      const successRegistration = (allUsers: User[], User: User) => {
         setError("рега успешная")
         localStorage.setItem("Users", JSON.stringify([...allUsers, User]))
       }
-      res.length===allUsers.length&&successRegistration(allUsers,User)
- 
-      
+      res.length === allUsers.length && successRegistration(allUsers, User)
     }
-    else{
+    else {
       if (User.password !== User.passwordRepeat) {
         setError("пароли не совпадают");
-        console.log(123);
+
       } else {
-        console.log(123);
         setError("");
         localStorage.setItem("Users", JSON.stringify([...allUsers, User]));
       }
@@ -82,39 +72,37 @@ export const RegistrationComponent = () => {
   };
 
   return (
-    <Registration>
+    <RegistrationStl>
       <RegistrationContent>
         <RegistrationFormSection>
           <RegistrationFormTitle>Регистрация</RegistrationFormTitle>
           <RegistrationForm>
             <RegistrationFormName
               placeholder="Логин"
-              onChange={(e: any) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setLogin(e.target.value);
               }}
             />
             <RegistrationFormEmail
               placeholder="Email"
-              onChange={(e: any) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setEmail(e.target.value);
               }}
             />
             <RegistrationFormPassword
               placeholder="Пароль"
-              onChange={(e: any) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setPassword(e.target.value);
               }}
             />
             <RegistrationFormPasswordRepeat
               placeholder="Повторите пароль"
-              onChange={(e: any) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setPasswordRepeat(e.target.value);
               }}
             />
             <Button
-              onClick={(e: any) => {
-                auth(e);
-              }}
+              onClick={(e) => { auth(e) }}
             >
               Зарегестрироваться
             </Button>
@@ -141,6 +129,6 @@ export const RegistrationComponent = () => {
           </RegistrationAuthRedirect>
         </RegistrationRules>
       </RegistrationContent>
-    </Registration>
+    </RegistrationStl>
   );
 };

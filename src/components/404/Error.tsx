@@ -1,7 +1,5 @@
 import React from "react";
- 
 import dots from "../../assest/img/dots.svg";
-import styled from "styled-components";
 import ContentContainer from "../../UI/ContentContainer";
 import FlexContainer from "../../UI/FlexContainer";
 import Button from "../../UI/Button";
