@@ -20,7 +20,7 @@ line-height: 17px;
 }
 `;
 
-export const FormMessage = styled.form `
+export const FormMessageStl = styled.form `
   label {
     color: #686868;
     font-weight: 500;

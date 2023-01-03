@@ -1,15 +1,15 @@
 import {
-  PopupSuccess,
+  PopupSuccessStl,
   PopupSuccessWindow,
   PopupSuccessTitle,
   PopupSuccessText,
   PopupSuccessCloseButton,
-} from './style';
+} from './PopupSuccessStyle';
 import { ShowPopupProps } from '../СontactsComponent';
 
-export const PopupSuccessComponent = ({ setIsShowPopup }: ShowPopupProps) => {
+export const PopupSuccess = ({ setIsShowPopup }: ShowPopupProps) => {
   return (
-    <PopupSuccess>
+    <PopupSuccessStl>
       <PopupSuccessWindow>
         <PopupSuccessTitle>Ваше письмо отправлено!</PopupSuccessTitle>
         <PopupSuccessText>
@@ -20,6 +20,6 @@ export const PopupSuccessComponent = ({ setIsShowPopup }: ShowPopupProps) => {
           Закрыть окно
         </PopupSuccessCloseButton>
       </PopupSuccessWindow>
-    </PopupSuccess>
+    </PopupSuccessStl>
   );
 };

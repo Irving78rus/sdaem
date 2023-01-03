@@ -1,5 +1,5 @@
 import {
-  ContactsInformation,
+  ContactsInformationStl,
   ContactsInformationTitle,
   ContactsInformationSubtitle,
   ContactsInformationData,
@@ -10,13 +10,13 @@ import {
   ContactsInformationLegal,
   ContactsInformationWarning,
   ContactsInformationWarningText,
-} from './style';
+} from './ContactsInformationStyle';
 
 import { WarningImageComponent } from '../../share/WarningImage/WarningImageComponent';
 
-export const ContactsInformationComponent = () => {
+export const ContactsInformation = () => {
   return (
-    <ContactsInformation>
+    <ContactsInformationStl>
       <ContactsInformationTitle>Контакты</ContactsInformationTitle>
       <ContactsInformationSubtitle>
         Если у Вас есть пожелания, предложения или претензии по организации
@@ -44,6 +44,6 @@ export const ContactsInformationComponent = () => {
           Администрация сайта не владеет информацией о наличии свободных квартир
         </ContactsInformationWarningText>
       </ContactsInformationWarning>
-    </ContactsInformation>
+    </ContactsInformationStl>
   );
 };

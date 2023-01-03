@@ -11,118 +11,16 @@ import webpay from "../../assest/img/webpay.png";
 import master from "../../assest/img/master.png";
 import masterSecure from "../../assest/img/masterSecure.png";
 import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+
 import ContentContainer from "../../UI/ContentContainer";
+import { BackgroundColor, BlockLeft, BlockRight, FooterLink, Ikon, NavStl } from "./FooterStyle";
 
 
-const BackgroundColor = styled.div`
-background-color: white;
-box-shadow: 0px -11px 40px rgba(39, 95, 158, 0.05);
-margin-top: auto;
-`
-const ContentContainerFooter = styled(ContentContainer)`
-height: 250px;
-`
-const BlockLeft = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-align-items: flex-start;
-width: 300px;
-p {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 13px;
-  color: #8291a3;
-}
-gap:10px;
-`
-const BlockRight = styled.div`
-display: flex;
-  flex-direction: column;
-  width:  70%;
-`
-const FooterLink = styled.div`
-display: flex;
-  justify-content: space-between;
-  
-  &:first-child {
-    margin-left: 0;
-  }
-`
-const NavStl = styled.ul`
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap:10px;
-  font-family: "Epilogue";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  color: #8291a3;
-  margin: 0;
-  text-decoration: none;
-  li {
-    
-    text-decoration: none;
-  }
-  li:first-child {
-    margin-left: 0;
-  }
-  .link {
-    padding-left: 0;
-  
-    font-family: "Epilogue";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    color: black;
-    line-height: 17px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-     
-  }
-  .active {
-    color: black;
-    border-bottom: 3px solid #ffd54f;
-    padding: 10px 0;
-  }
-  .flat {
-    padding-left: 0;
-    line-height: 17px;
-    font-family: "Epilogue";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    color: #8291A3;
-  
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    img {
-      padding-right: 10px;
-    }
-  }
- `
- const Ikon = styled.div`
-   display: flex;
-  justify-content: space-between;
-  img{
-    margin-left: 15px;
-  
-}
- `
 export default function Footer() {
-
+ 
   return (
     <BackgroundColor>
-      <ContentContainerFooter>
+      <ContentContainer height='250px'>
         <BlockLeft>
           <img src={logo} alt="logo" />
           <p>СДАЁМ БАЙ</p>
@@ -137,26 +35,26 @@ export default function Footer() {
         <BlockRight>
           <FooterLink>
             <NavStl>
-              <li><NavLink to="/k" className={({ isActive }) => (isActive ? "active link" : "link")} >Коттеджи и усадьбы</NavLink> </li>
-              <li><NavLink to="/l" className={({ isActive }) => (isActive ? "active link" : "link")} >Бани и Сауны</NavLink> </li>
-              <li><NavLink to="/m" className={({ isActive }) => (isActive ?"active link" : "link")} >Авто на прокат</NavLink> </li>
+              <li><NavLink to="/1" className={({ isActive }) => (isActive ? "active link" : "link")} >Коттеджи и усадьбы</NavLink> </li>
+              <li><NavLink to="/2" className={({ isActive }) => (isActive ? "active link" : "link")} >Бани и Сауны</NavLink> </li>
+              <li><NavLink to="/3" className={({ isActive }) => (isActive ?"active link" : "link")} >Авто на прокат</NavLink> </li>
             </NavStl>
             <NavStl>
-              <li><NavLink to="/k" className={({ isActive }) => (isActive ? "active link" : "link")} >Квартиры</NavLink> </li>
-              <li><NavLink to="/m" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Минске</NavLink> </li>
-              <li><NavLink to="/m" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Гомеле</NavLink> </li>
-              <li><NavLink to="/m" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Бресте</NavLink> </li>
+              <li><NavLink to="/4" className={({ isActive }) => (isActive ? "active link" : "link")} >Квартиры</NavLink> </li>
+              <li><NavLink to="/5" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Минске</NavLink> </li>
+              <li><NavLink to="/6" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Гомеле</NavLink> </li>
+              <li><NavLink to="/7" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Бресте</NavLink> </li>
             </NavStl>
             <NavStl>
-              <li><NavLink to="/k" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Витебске</NavLink> </li>
-              <li><NavLink to="/l" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Гродно</NavLink> </li>
-              <li><NavLink to="/m" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Могилеве</NavLink> </li>
+              <li><NavLink to="/8" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Витебске</NavLink> </li>
+              <li><NavLink to="/9" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Гродно</NavLink> </li>
+              <li><NavLink to="/10" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Могилеве</NavLink> </li>
             </NavStl>
             <NavStl>
-              <li><NavLink to="/k" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Новости</NavLink> </li>
-              <li><NavLink to="/l" className={({ isActive }) => (isActive ? "active flat" : "flat")} >размещения и тарифы</NavLink> </li>
-              <li><NavLink to="/m" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Объявления на карте</NavLink> </li>
-              <li><NavLink to="/m" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Контакты</NavLink> </li>
+              <li><NavLink to="/11" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Новости</NavLink> </li>
+              <li><NavLink to="/12" className={({ isActive }) => (isActive ? "active flat" : "flat")} >размещения и тарифы</NavLink> </li>
+              <li><NavLink to="/13" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Объявления на карте</NavLink> </li>
+              <li><NavLink to="/14" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Контакты</NavLink> </li>
             </NavStl>
           </FooterLink>
           <Ikon>
@@ -178,7 +76,7 @@ export default function Footer() {
  
         </BlockRight>
  
-      </ContentContainerFooter>
+      </ContentContainer>
 
     </BackgroundColor>
 

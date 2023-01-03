@@ -4,7 +4,7 @@ import {
   RegistrationFormEmail, RegistrationFormPassword, RegistrationFormPasswordRepeat,
   RegistrationRules, RegistrationRulesHeading, RegistrationRulesList,
   RegistrationRulesItem, RegistrationAuthRedirect,
-} from "./style";
+} from "./RegistrationStyle";
 import { Link } from "react-router-dom";
 import { Button } from "../../../UI/FormButton/style";
 import { useState } from "react";
@@ -39,7 +39,7 @@ export const Registration = () => {
     };
 
     if (allUsers.length !== 0) {
-      const res = allUsers.filter((item: User) => {
+      const res = allUsers.filter((item: User)=> {
         setError("")
         if (User.email === item.email) {
           setError("Такая почта уже используется");
@@ -52,8 +52,7 @@ export const Registration = () => {
         else {
           return item
         }
-
-      });
+     });
       const successRegistration = (allUsers: User[], User: User) => {
         setError("рега успешная")
         localStorage.setItem("Users", JSON.stringify([...allUsers, User]))

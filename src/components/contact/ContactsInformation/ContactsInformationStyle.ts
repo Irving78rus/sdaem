@@ -24,7 +24,7 @@ margin: 0;
  
 `;
 
-export const ContactsInformation = styled.section`
+export const ContactsInformationStl = styled.section`
   display: flex;
   flex-direction: column;
   row-gap: 30px;

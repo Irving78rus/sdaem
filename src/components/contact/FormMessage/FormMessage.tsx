@@ -1,33 +1,23 @@
 import {
-  FormMessage,
+  FormMessageStl,
   FormMessageUserInfo,
   FormMessageUserName,
   FormMessageUserEmail,
   FormMessageUserMessage,
   FormMessageButton,
-} from './style';
-import { useSendUserMessagesProps } from './hooks';
-import { PopupSuccessComponent } from '../PopupSuccess/PopupSuccessComponent';
- 
+} from './FormMessageStyle';
 import { ShowPopupProps } from '../СontactsComponent';
- 
 
-export const FormMessageComponent = ({ setIsShowPopup }: ShowPopupProps) => {
-   
-
+export const FormMessage = ({ setIsShowPopup }: ShowPopupProps) => {
   return (
     <>
-      <FormMessage
-        noValidate
-         
-      >
+      <FormMessageStl>
         <FormMessageUserInfo>
           <label>
             Ваше имя
             <FormMessageUserName
               placeholder='Введите имя'
               required
-               
             />
           </label>
           <label>
@@ -35,7 +25,6 @@ export const FormMessageComponent = ({ setIsShowPopup }: ShowPopupProps) => {
             <FormMessageUserEmail
               placeholder='Введите email'
               required
-               
             />
           </label>
         </FormMessageUserInfo>
@@ -44,11 +33,10 @@ export const FormMessageComponent = ({ setIsShowPopup }: ShowPopupProps) => {
           <FormMessageUserMessage
             placeholder='Сообщение'
             required
-            
           />
         </label>
         <FormMessageButton>Отправить</FormMessageButton>
-      </FormMessage>
+      </FormMessageStl>
     </>
   );
 };

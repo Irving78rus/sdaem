@@ -1,23 +1,20 @@
 import { useState } from 'react';
-import { Contacts } from './style';
-import { ContactsInformationComponent } from './ContactsInformation/ContactsInformationComponent';
-import { FormMessageComponent } from './FormMessage/FormMessageComponent';
-import { PopupSuccessComponent } from './PopupSuccess/PopupSuccessComponent';
+import { Contacts } from './СontactsComponentStyle';
+import { ContactsInformation } from './ContactsInformation/ContactsInformation';
+import { FormMessage } from './FormMessage/FormMessage';
+import { PopupSuccess} from './PopupSuccess/PopupSuccess';
 
-export interface ShowPopupProps {
-  setIsShowPopup: (isShowPopup: boolean) => void;
-}
-
+export interface ShowPopupProps { setIsShowPopup: (isShowPopup: boolean) => void}
   const СontactsComponent = () => {
   const [isShowPopup, setIsShowPopup] = useState(false);
 
   return (
     <>
       <Contacts>
-        <ContactsInformationComponent />
-        <FormMessageComponent setIsShowPopup={setIsShowPopup} />
+        <ContactsInformation />
+        <FormMessage setIsShowPopup={setIsShowPopup} />
       </Contacts>
-      {isShowPopup && <PopupSuccessComponent setIsShowPopup={setIsShowPopup} />}
+      {isShowPopup && <PopupSuccess setIsShowPopup={setIsShowPopup} />}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const PopupSuccess = styled.div`
+export const PopupSuccessStl = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
