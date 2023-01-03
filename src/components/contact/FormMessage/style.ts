@@ -20,9 +20,7 @@ line-height: 17px;
 }
 `;
 
-export const FormMessage = styled.form.attrs({
-  method: 'POST',
-})`
+export const FormMessage = styled.form `
   label {
     color: #686868;
     font-weight: 500;

@@ -15,14 +15,17 @@ import ContactComponent from "../share/ContactComponent";
 
 interface Props {
   height?: any;
-
+  
+ 
+    top?:any;
+  
 }
 const Card = styled.div`
  position:relative;
  background-color: #fff;
   margin-top:24px;
  width: 407px;
- filter: drop-shadow(rgba(135, 124, 202, 0.15) 0px 20px 40px);
+ box-shadow: 0px 20px 40px rgba(135, 124, 202, 0.15);
  border-radius: 10px;
  
  img{
@@ -126,11 +129,12 @@ cursor:pointer;
  }
 
 `
-const Gold = styled.div`
+
+const Gold = styled.div<Props>`
 background: linear-gradient(106.06deg, #FFD54F 1.12%, #FEC100 97.96%);
 border-radius: 0px 10px 10px 10px;
 position:absolute;
-top:0;
+top:${(props) => props.top || "0"};
 right:0;
  
 p{

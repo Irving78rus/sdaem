@@ -1,6 +1,7 @@
 import baseFlat from "./baseFlat";
+import userSetting from "./userSetting";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
- 
+
 // const rootReducer = combineReducers({
 //   filmContentSlice,
    
@@ -9,7 +10,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 export const store = configureStore({
   reducer: {
     baseFlat,
-    
+    userSetting
   },
 })
 export type RootState = ReturnType<typeof store.getState>

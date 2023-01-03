@@ -71,9 +71,7 @@ export const AuthSubtitle = styled.p`
   width: 75%;
 `;
 
-export const AuthForm = styled.form.attrs({
-  method: 'POST',
-})`
+export const AuthForm = styled.div`
   margin-top: 35px;
   display: flex;
   flex-direction: column;

@@ -69,9 +69,7 @@ export const RegistrationFormTitle = styled.h2`
   color: #000000;
 `;
 
-export const RegistrationForm = styled.form.attrs({
-  method: 'post',
-})`
+export const RegistrationForm = styled.form`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
