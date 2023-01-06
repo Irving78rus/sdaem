@@ -18,7 +18,7 @@ import Button from "../../UI/Button";
 import Select from "../../UI/Select";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import Input from "../../UI/Input";
-import { setGasStove, setParams, setParams2, setUpPriceToStore } from "../../redux/baseFlat";
+import { setGasStove,  ResetSearchParameters, setUpPriceToStore } from "../../redux/baseFlat";
 import { setToPriceToStore } from "../../redux/baseFlat";
 import MoreOption from "../../UI/MoreOption";
 import Checkbox from "../../UI/Checkbox ";
@@ -59,14 +59,15 @@ color: #BDBDBD;
 `;
 
 
-export default function FormSearch(props: any) {
+export default function FormSearch(props: any ) {
   const params = useAppSelector((state: any) => state.baseFlat.params);
+  const [test, settest] = useState(params);
 
-  const [city, setCity] = useState(params.city);
+
+  
   const [upPrice, setUpPrice] = useState('');
   const [toPrice, setToPrice] = useState('');
   const [rooms, setRooms] = useState(params.rooms);
- 
   const [sleepingPlaces, setSleepingPlaces] = useState(params.sleepingPlaces);
   const [GasStove, setGasStove] = useState(null);
   const [Oven, setOven] = useState(null);
@@ -75,24 +76,34 @@ export default function FormSearch(props: any) {
   const [Dishes, setDishes] = useState(null);
   const [Dishwasher, setDishwasher] = useState(null);
   const dispatch = useAppDispatch();
-  const [titleSelect, setTitleSelect] = useState('');
 
+
+
+
+ 
   const addParamsToStore = (e: any) => {
-    dispatch(setParams2({
-      city: city, upPrice: upPrice, toPrice: toPrice, rooms: rooms,
+    dispatch(ResetSearchParameters({
+      city: props.city, upPrice: upPrice, toPrice: toPrice, rooms: rooms,
       metro: props.metro, district: props.district, sleepingPlaces: sleepingPlaces, GasStove: GasStove, Oven: Oven,
       CoffeeMaker: CoffeeMaker, MicrowaveOven: MicrowaveOven, Dishes: Dishes, Dishwasher: Dishwasher
     }));
 
   }
   const clearParams = (e: any) => {
-    dispatch(setParams2({
+    dispatch(ResetSearchParameters({
       city: '', upPrice: 0, toPrice: 0, rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: null, Oven: null,
       CoffeeMaker: null, MicrowaveOven: null, Dishes: null, Dishwasher: null
     }));
-    setTitleSelect('')
     setUpPrice('')
     setToPrice('')
+    setRooms('')
+    setSleepingPlaces('')
+    setGasStove(null)
+    setOven(null)
+    setCoffeeMaker(null)
+    setMicrowaveOven(null)
+    setDishes(null)
+    setDishwasher(null)
 
   }
 
@@ -152,7 +163,7 @@ export default function FormSearch(props: any) {
 
   return (
     <>
-      <FlexContainer width={'100%'} backgroundColor={props.backgroundColor} >
+      <FlexContainer width={'100%'} backgroundColor={props.backgroundColor} flexWrap='wrap'>
 
         {props.nav2.map((item: any, index: any) => (
           <FlexContainer key={index} >
@@ -171,7 +182,7 @@ export default function FormSearch(props: any) {
                 left={'110px'}
                 dropSelectList={props.dropSelectList}
                 setDropSelectList={props.setDropSelectList}
-                setCity={setCity}
+                setCity={props.setCity}
                 setRooms={setRooms}
 
               >
@@ -272,3 +283,4 @@ export default function FormSearch(props: any) {
     </>
   );
 }
+ 

@@ -5,31 +5,32 @@ import heart from "../../../assest/img/heart.svg";
 import { NavLink } from "react-router-dom";
 import ContentContainer from "../../../UI/ContentContainer";
 import Boy from "../../../assest/img/boy.png";
-import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { useAppDispatch} from "../../../redux/hooks";
 import FlexContainer from "../../../UI/FlexContainer";
 import { authUser, setUser } from "../../../redux/userSetting";
-import { Arrow, BackgroundColor, DropTable, List, StylesTopLeftNav, StylesTopRightNav } from "./TopHeaderStyle";
+import {
+  Arrow,
+  BackgroundColor,
+  DropTable,
+  List,
+  StylesTopLeftNav,
+  StylesTopRightNav,
+} from "./TopHeaderStyle";
 
 export default function TopHeader() {
-  const isAuth = useAppSelector((state: any) => state.userSetting.isAuth);
-  const [active, setActive] = useState(false);
   const [showList, setShowList] = useState(false);
-  const dispatch = useAppDispatch()
-  const addClass = () => {
-    setActive(!active);
-  };
+  const dispatch = useAppDispatch();
   let user: any = {};
   if (localStorage.getItem("User")) {
     user = JSON.parse(localStorage.getItem("User") || "");
   }
   const logout = () => {
     localStorage.removeItem("User");
-    localStorage.setItem("isAuth", JSON.stringify(false))
-    dispatch(authUser(false))
-    dispatch(setUser({}))
-  }
-  console.log(user);
-  
+    localStorage.setItem("isAuth", JSON.stringify(false));
+    dispatch(authUser(false));
+    dispatch(setUser({}));
+  };
+
   return (
     <BackgroundColor>
       <ContentContainer>
@@ -37,17 +38,17 @@ export default function TopHeader() {
           <li>
             <NavLink to="" className={({ isActive }) => (isActive ? "link active" : "link")}>
               Главная
-            </NavLink>{" "}
+            </NavLink>
           </li>
           <li>
             <NavLink to="News" className={({ isActive }) => (isActive ? "link active" : "link")}>
               Новости
-            </NavLink>{" "}
+            </NavLink>
           </li>
           <li>
             <NavLink to="Catalog" className={({ isActive }) => (isActive ? "link active" : "link")}>
               Размещение и тарифы
-            </NavLink>{" "}
+            </NavLink>
           </li>
           <li>
             <NavLink to="W" className={({ isActive }) => (isActive ? "link active" : "link")}>
@@ -57,7 +58,6 @@ export default function TopHeader() {
           </li>
           <li>
             <NavLink to="Contact" className={({ isActive }) => (isActive ? "link active" : "link")}>
-
               Контакты
             </NavLink>
           </li>
@@ -66,33 +66,40 @@ export default function TopHeader() {
           <li>
             <NavLink
               to="Favorite"
-              className={({ isActive }) => (isActive ? "link active" : "link")}
-            >
+              className={({ isActive }) => (isActive ? "link active" : "link")}>
               Закладки <img src={heart} alt="map" />
             </NavLink>
           </li>
           <li>
             {user.login ? (
-            
-                <FlexContainer gap='10px' onClick={(e: any) => { setShowList(!showList) }} position='relative' >
-                  <img src={Boy} alt="boy" className="photo" style={{ cursor: 'pointer' }} /> 
-                  <div style={{ cursor: 'pointer' }}>{user.login} </div>
-                  <Arrow style={{ cursor: 'pointer' }}> <img src={Arrov} alt="arrov"></img>  </Arrow>
-                  {showList && <List><DropTable onClick={(e: any) => { logout() }}>Выход</DropTable>
-                  <DropTable>Что-то еще</DropTable>
-                  <DropTable>Что-то еще</DropTable>
-                  </List>}
-                </FlexContainer>
- 
+              <FlexContainer
+                gap="10px"
+                onClick={() => {setShowList(!showList)}}
+                position="relative">
 
+                <img src={Boy} alt="boy" className="photo" style={{ cursor: "pointer" }} />
+                <div style={{ cursor: "pointer" }}>{user.login} </div>
+                <Arrow style={{ cursor: "pointer" }}>
+                <img src={Arrov} alt="arrov"></img>
+                </Arrow>
+                {showList && (
+                  <List>
+                    <DropTable
+                      onClick={() => {logout()}}>
+                      Выход
+                    </DropTable>
+                    <DropTable>Что-то еще</DropTable>
+                    <DropTable>Что-то еще</DropTable>
+                  </List>
+                )}
+              </FlexContainer>
             ) : (
               <NavLink
                 to="Authorization"
-                className={({ isActive }) => (isActive ? "modification active" : "modification")}
-              >
+                className={({ isActive }) => (isActive ? "modification active" : "modification")}>
                 Вход и регистрация
               </NavLink>
-            )}{" "}
+            )}
           </li>
         </StylesTopRightNav>
       </ContentContainer>

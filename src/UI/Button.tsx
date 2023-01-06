@@ -11,16 +11,18 @@ interface  Props {
   padding:any;
   fontSize:any;
   borderRadius:any;
+  boxShadow:string;
+  margin:string
 }
 const ButtonStl = styled.button<Props>`
-  
+  margin:  ${props=>props.margin|| ''};
   background: ${props=>props.background||"linear-gradient(90deg, #9d94ff 0%, #6b50e9 94.5%)"} ;
   border-radius:  ${props=>props.borderRadius|| '19px'};
   
   padding: ${props=>props.padding|| '10px 18px'};
   border: none;
   width: ${props=>props.width|| ""};
- 
+  box-shadow:${props=>props.boxShadow|| ""}; 
   font-weight:${props=>props.fontWeight|| "400"};
   font-size:${props=>props.fontSize|| ""};
   display: flex;

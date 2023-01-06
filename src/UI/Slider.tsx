@@ -34,8 +34,39 @@ height:650px;
 padding:40px;
 
  `
- 
- 
+ const  ButtonSlider = styled.div`
+ position:relative;
+display:flex;
+width:40px;
+height:40px;
+border: 1px solid #664EF9;
+background:inherit;
+border-radius:50%;
+&:hover{
+  background:rgba(102, 78, 249, 0.1);
+};
+cursor:pointer;
+`
+const RightArrov =   styled.div`
+position:absolute;
+width:11px;
+height:11px;
+border-top: 2px solid #664EF9;
+border-right: 2px solid #664EF9;
+top: 37%;
+    left: 30%;
+    transform: rotate(45deg)
+`
+const LeftArrov =   styled.div`
+position:absolute;
+width:11px;
+height:11px;
+border-top: 2px solid #664EF9;
+border-right: 2px solid #664EF9;
+top: 37%;
+    left: 41%;
+    transform: rotate(225deg)
+`
 // import Checked from "./Checked";
 const PAGE_WIDTH = 1380
 // const maxOffset = -900
@@ -61,7 +92,7 @@ const Slider = () => {
       return Math.min(newOffset, minOffset);
     });
   };
-  console.log(photos);
+ 
   
   return (
     
@@ -75,7 +106,7 @@ const Slider = () => {
             >
               {photos.map((item: any) => (
                 <BlockItem key={item.id}>
-                  <> {console.log(item)      }
+                  <> 
                   <CardResultTile flat={item} top='-240px'></CardResultTile></>
                  
                 </BlockItem>
@@ -83,21 +114,17 @@ const Slider = () => {
             </APC>
           </Window>
         </ContentContainer>
-        <FlexContainer> {photos.length > 3 && (
-          <Button
-             
-            onClick={() => {
-              left();
-            }}
-          >{`<`}</Button>
+        <FlexContainer gap='20px'> {photos.length > 3 && (
+         <ButtonSlider onClick={() => {
+          left();
+        }}> <LeftArrov></LeftArrov>   </ButtonSlider>
         )}
+        
+        
         {photos.length > 3 && (
-          <Button
-             
-            onClick={() => {
-              right();
-            }}
-          >{`>`}</Button>
+          <ButtonSlider onClick={() => {
+            right();
+          }}> <RightArrov></RightArrov>   </ButtonSlider>
         )}</FlexContainer>
        
       </ContentContainer>

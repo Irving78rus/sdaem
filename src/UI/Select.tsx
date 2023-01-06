@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { isTemplateExpression } from "typescript";
 import Arrov from "../assest/icon/arrov.svg";
-import { setCountRooms, setDistrictToStore, setMetroToStore, setParams, setSleepingPlacesToStore } from "../redux/baseFlat";
+import { setCountRooms, setDistrictToStore, setMetroToStore,   setSleepingPlacesToStore } from "../redux/baseFlat";
 import { useAppDispatch } from "../redux/hooks";
 import { VerticalLine } from "./VerticalLine";
 interface Props {

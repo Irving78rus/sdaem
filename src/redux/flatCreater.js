@@ -1,6 +1,6 @@
 export const flatList = []
  
- const cityArr = ['Минск','Гомель','Брест','Брест',"Витебск","Гродно","Могилев"]
+export const cityArr = ['Минск','Гомель','Брест','Брест',"Витебск","Гродно","Могилев"]
  const MetroArr = ['Лесная','Петроградское','Девяткино','Парнас',"Площадь Восстания","Международная","Чернышевского"]
  const districtArr = ['Калининский','Петроградский','Центральный','Выборский',"Адмиралтейский","Гражданский","Академический"]
  const boolRand=()=>{
@@ -31,8 +31,8 @@ export const flatList = []
                 Oven:boolRand(),
                 CoffeeMaker:boolRand(),
                 MicrowaveOven:boolRand(),
-                 Dishes:boolRand(),
-                 Dishwasher :boolRand(), 
+                Dishes:boolRand(),
+                Dishwasher :boolRand(), 
             }
         )
     i++

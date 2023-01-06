@@ -10,6 +10,7 @@ import { authUser, setUser } from '../../../redux/userSetting';
 
 
 export const Authorization = () => {
+  const [error, setError] = useState(false);
   const dispatch = useAppDispatch()
   const navigate = useNavigate();
   const [allUsers, setAllUsers] = useState([])
@@ -25,14 +26,19 @@ export const Authorization = () => {
   }, []);
  
   const Login = (e: any) => {
+
     e.preventDefault();
     const res = allUsers.filter((item: any) => (item.email === email && item.password === password))
     if (res.length !== 0) {
+      setError(false)
       navigate("/")
       localStorage.setItem("User", JSON.stringify(res[0]))
       localStorage.setItem("isAuth", JSON.stringify(true))
       dispatch(authUser(true))
       dispatch(setUser(res[0]))
+    }
+    else{
+      setError(true)
     }
   }
 
@@ -51,6 +57,7 @@ export const Authorization = () => {
             setPassword(e.target.value);
           }} />
           <Button onClick={(e: any) => { Login(e) }}>Войти</Button>
+          {error&& <Button  >Войти</Button>}
         </AuthForm>
         <AuthFormCreateUser>
           Еще нет аккаунта? <Link to='/registration'>Создайте аккаунт</Link>

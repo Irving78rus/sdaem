@@ -37,7 +37,7 @@ export const Auth = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: scroll;
+ 
   height: 100vh;
 `;
 
