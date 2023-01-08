@@ -14,10 +14,12 @@ import FlexContainer from '../../UI/FlexContainer';
 import MailImg from '../../assest/icon/MailImg';
 import LockImg from '../../assest/icon/LockImg';
 
+import ReCAPTCHA from 'react-google-recaptcha';
+const key = '6LcbAeAjAAAAAJ-sKt9VimUkmFR8Uf2Z-vIkZWGM'
 interface Props {
   top?: string;
   right?: string;
-  
+
 }
 const LabelLogin = styled.label`
 position:relative;
@@ -31,9 +33,10 @@ right:255px;
 `;
 const IMGError = styled.div<Props>`
 position:absolute;
-top:${props=>props.top||'0px'}; 
-right:${props=>props.right||'15px'}; 
+top:${props => props.top || '0px'}; 
+right:${props => props.right || '15px'}; 
 `;
+
 export const ValidationSchemaExample = () => {
   const formik: any = useFormik({
     initialValues: {
@@ -124,7 +127,12 @@ export const ValidationSchemaExample = () => {
         {(formik.touched.confirmPassword && formik.errors.confirmPassword) && <IMGError><ErrorImg fill='red'></ErrorImg> </IMGError>}
       </LabelLogin>
 
+      <ReCAPTCHA style={{ marginTop: '20px' }}
 
+        sitekey={key}
+        size="normal"
+        onChange={t => console.log(t)}
+      />
       {(formik.touched.confirmPassword && formik.errors.confirmPassword) || (formik.touched.login && formik.errors.login) || (formik.touched.password && formik.errors.password) || (formik.touched.email && formik.errors.email) ? (
         <Button
           borderRadius='33px'
