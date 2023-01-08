@@ -18,6 +18,7 @@ interface  Props {
   
 }
 const ButtonStl = styled.button<Props>`
+position:relative;
   text-align: center;
   margin:  ${props=>props.margin|| ''};
   background: ${props=>props.background||"linear-gradient(90deg, #9d94ff 0%, #6b50e9 94.5%)"} ;

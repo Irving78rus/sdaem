@@ -17,9 +17,9 @@ const FormInput = `
    margin-top:10px;
   
   &.error{
-    outline: 2px solid red;
+    outline: 1px solid red;
     &:focus {
-      outline: 2px solid red;
+      outline: 1px solid red;
       color: #1E2123;
       background-color: #fff;
       cursor:text;
