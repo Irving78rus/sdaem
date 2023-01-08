@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import CityMap from '../../../assest/img/images/city-map.png';
 
 const FormInput = `
@@ -13,8 +14,10 @@ const FormInput = `
   padding: 16px 16px 16px 55px;
   box-sizing:border-box;
   cursor:default;
+   margin-top:10px;
+  
   &.error{
-    
+    outline: 2px solid red;
     &:focus {
       outline: 2px solid red;
       color: #1E2123;
@@ -89,14 +92,13 @@ export const RegistrationForm = styled.div`
   flex-direction: column;
   row-gap: 20px;
 `;
-
-export const RegistrationFormName = styled.div.attrs({
-  name: 'name',
-  type: 'text',
-  id: 'name',
-})`
-  ${FormInput}
-`;
+export const RegistrationFormName = styled.input.attrs(({ name,  type ,  id ,className }) => ({
+  name:  name  ,
+  type:  type  ,
+  id:  id  ,
+  className:className
+}))`${FormInput}`
+ 
 
 export const RegistrationFormEmail = styled.input.attrs({
   name: 'email',
