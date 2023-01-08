@@ -13,7 +13,22 @@ const FormInput = `
   padding: 16px 16px 16px 55px;
   box-sizing:border-box;
   cursor:default;
-
+  &.error{
+    
+    &:focus {
+      outline: 2px solid red;
+      color: #1E2123;
+      background-color: #fff;
+      cursor:text;
+  };
+    &::placeholder {
+      color: #686868;
+      
+  }
+  &:hover {
+      outline: 2px solid red;
+  }
+  }
   &:focus {
     outline: 2px solid rgba(78, 100, 249, 0.8);
     color: #1E2123;
@@ -69,13 +84,13 @@ export const RegistrationFormTitle = styled.h2`
   color: #000000;
 `;
 
-export const RegistrationForm = styled.form`
+export const RegistrationForm = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 `;
 
-export const RegistrationFormName = styled.input.attrs({
+export const RegistrationFormName = styled.div.attrs({
   name: 'name',
   type: 'text',
   id: 'name',

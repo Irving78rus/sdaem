@@ -11,6 +11,8 @@ export const Button = styled.button`
   text-align: center;
   color: #1e2123;
   border: none;
+  width: 100%;
+  margin-top:20px;
   &:hover {
     cursor: pointer;
   }
