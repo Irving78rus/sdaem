@@ -24,6 +24,7 @@ export const PopupSuccessComponent = ({
   register,
 }: ShowPopupProps) => {
   const navigate = useNavigate();
+  
   return (
     <PopupSuccess>
       <PopupSuccessWindow>
@@ -32,7 +33,7 @@ export const PopupSuccessComponent = ({
         <PopupSuccessCloseButton
           onClick={() => {
             setIsShowPopup(false);
-            if (register) navigate('/');
+            if (register) navigate('/Authorization');
           }}
         >
           {buttonText}

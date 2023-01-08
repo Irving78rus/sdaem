@@ -5,7 +5,7 @@ import heart from "../../../assest/img/heart.svg";
 import { NavLink } from "react-router-dom";
 import ContentContainer from "../../../UI/ContentContainer";
 import Boy from "../../../assest/img/boy.png";
-import { useAppDispatch} from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector} from "../../../redux/hooks";
 import FlexContainer from "../../../UI/FlexContainer";
 import { authUser, setUser } from "../../../redux/userSetting";
 import {
@@ -20,16 +20,19 @@ import {
 export default function TopHeader() {
   const [showList, setShowList] = useState(false);
   const dispatch = useAppDispatch();
-  let user: any = {};
-  if (localStorage.getItem("User")) {
-    user = JSON.parse(localStorage.getItem("User") || "");
-  }
+  const user:any = useAppSelector(state=>state.userSetting.user)
+  console.log(user);
+  
+  
+  
+  
   const logout = () => {
     localStorage.removeItem("User");
     localStorage.setItem("isAuth", JSON.stringify(false));
     dispatch(authUser(false));
     dispatch(setUser({}));
   };
+
 
   return (
     <BackgroundColor>

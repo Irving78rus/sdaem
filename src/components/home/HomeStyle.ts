@@ -306,7 +306,7 @@ color: #664EF9;
 }`;
 export const BottomLastBlock = styled.div`
   margin-top:200px;
-  height:700px;
+  
   display: flex;
   justify-content: space-between;
   width:100%;

@@ -9,16 +9,17 @@ import { Link } from "react-router-dom";
 import { Button } from "../../../UI/FormButton/style";
 import { useState } from "react";
 import { ValidationSchemaExample } from "../../test/test";
+import { PopupSuccessComponent } from "../PopupSuccess/PopupSuccessComponent";
 
 export const Registration = () => {
-   
+  const [isShowPopup, setIsShowPopup] = useState(false);
   return (
     <RegistrationStl>
       <RegistrationContent>
         <RegistrationFormSection>
           <RegistrationFormTitle>Регистрация</RegistrationFormTitle>
           <RegistrationForm>
-          <ValidationSchemaExample></ValidationSchemaExample>
+          <ValidationSchemaExample isShowPopup={isShowPopup} setIsShowPopup={setIsShowPopup}></ValidationSchemaExample>
           </RegistrationForm>
         </RegistrationFormSection>
         <RegistrationRules>
@@ -41,6 +42,15 @@ export const Registration = () => {
           </RegistrationAuthRedirect>
         </RegistrationRules>
       </RegistrationContent>
+      {isShowPopup && (
+        <PopupSuccessComponent
+          setIsShowPopup={setIsShowPopup}
+          title='Вы успешно зарегистрировались!'
+          text='Благодарим за регстрацию на sdaem.by. Теперь Вы можете размещать объявление о продаже или аренде!'
+          buttonText='Понятно'
+          register={true}
+        />
+      )}
     </RegistrationStl>
   );
 };

@@ -1,7 +1,7 @@
 
 
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { RegistrationFormName } from '../authorization/Registration/RegistrationStyle';
@@ -36,8 +36,21 @@ position:absolute;
 top:${props => props.top || '0px'}; 
 right:${props => props.right || '15px'}; 
 `;
+interface User {
+  login: string,
+  email: string,
+  password: string,
+  confirmPassword: string,
+}
+export const ValidationSchemaExample = ({setIsShowPopup}:any) => {
 
-export const ValidationSchemaExample = () => {
+  const [captcha, setCaptcha] = useState(false)
+  const [error, setError] = useState("");
+  useEffect(() => {
+
+  }, [])
+
+
   const formik: any = useFormik({
     initialValues: {
       login: '',
@@ -59,8 +72,44 @@ export const ValidationSchemaExample = () => {
         .oneOf([Yup.ref('password')], 'Пароли не совпадают')
         .required('Поле обязательно для заполнения'),
     }),
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (values: User) => {
+      let allUsers = [];
+      if (localStorage.getItem("Users")) {
+        allUsers = JSON.parse(localStorage.getItem("Users") || "");
+      } else {
+        localStorage.setItem("Users", JSON.stringify([]));
+      }
+      console.log(allUsers);
+      console.log(values);
+      if (allUsers.length !== 0) {
+        const res = allUsers.filter((item: User) => {
+          setError("")
+          if (values.email === item.email) {
+            setError("Такая почта уже используется");
+          } else if (values.login === item.login) {
+            setError("Такой логин уже используется");
+          }
+          else if (!captcha) {
+            setError("Введите капчу");
+          }
+          else {
+            return item
+          }
+        });
+        const successRegistration = (allUsers: User[], User: User) => {
+          setError("рега успешная")
+          localStorage.setItem("Users", JSON.stringify([...allUsers, User]))
+          setIsShowPopup(true);
+        }
+        (res.length === allUsers.length&&captcha) && successRegistration(allUsers, values)
+      }
+      else {
+
+        setError("");
+        captcha&&localStorage.setItem("Users", JSON.stringify([...allUsers, values]));
+        setIsShowPopup(true);
+      }
+
     },
   });
   return (
@@ -131,8 +180,9 @@ export const ValidationSchemaExample = () => {
 
         sitekey={key}
         size="normal"
-        onChange={t => console.log(t)}
+        onChange={(e) => { setCaptcha(true) }}
       />
+      {error && <div>{error}</div>}
       {(formik.touched.confirmPassword && formik.errors.confirmPassword) || (formik.touched.login && formik.errors.login) || (formik.touched.password && formik.errors.password) || (formik.touched.email && formik.errors.email) ? (
         <Button
           borderRadius='33px'
