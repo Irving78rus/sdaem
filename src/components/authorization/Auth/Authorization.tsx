@@ -4,19 +4,16 @@ import {
 } from './AuthorizationStyle';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
- 
 import { useAppDispatch } from '../../../redux/hooks';
 import { authUser, setUser } from '../../../redux/userSetting';
 import Button from '../../../UI/Button';
-import { ValidationSchemaExample } from '../../test/test';
-
-
+ 
 export const Authorization = () => {
   const [error, setError] = useState(false);
   const dispatch = useAppDispatch()
   const navigate = useNavigate();
   const [allUsers, setAllUsers] = useState([])
-  const [email, setEmail] = useState("");
+  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   useEffect(() => {
     if (localStorage.getItem("Users")) {
@@ -30,7 +27,7 @@ export const Authorization = () => {
   const Login = (e: any) => {
 
     e.preventDefault();
-    const res = allUsers.filter((item: any) => (item.email === email && item.password === password))
+    const res = allUsers.filter((item: any) => (item.login === login && item.password === password))
     if (res.length !== 0) {
       setError(false)
       navigate("/")
@@ -52,8 +49,8 @@ export const Authorization = () => {
           Авторизуйтесь, чтобы начать публиковать свои объявления
         </AuthSubtitle>
         <AuthForm>
-          <AuthFormName placeholder='Email' onChange={(e: any) => {
-            setEmail(e.target.value);
+          <AuthFormName placeholder='Логин' onChange={(e: any) => {
+            setLogin(e.target.value);
           }} />
           <AuthFormPassword placeholder='Пароль' onChange={(e: any) => {
             setPassword(e.target.value);
@@ -88,16 +85,4 @@ export const Authorization = () => {
     </Auth>
   );
 };
-// background-color: #ffd54f;
-//   border-radius: 33px;
-//   font-weight: 700;
-//   line-height: 24px;
-//   display: flex;
-//   justify-content: center;
-//   padding: 12px 0;
-//   text-align: center;
-//   color: #1e2123;
-//   border: none;
-//   &:hover {
-//     cursor: pointer;
-//   }
+ 

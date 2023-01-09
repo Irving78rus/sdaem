@@ -4,15 +4,15 @@
 import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { RegistrationFormName } from '../authorization/Registration/RegistrationStyle';
-import Button from '../../UI/Button';
+import { RegistrationFormName } from './RegistrationStyle';
+import Button from '../../../UI/Button';
 import styled from 'styled-components';
 import user from '../../assest/icon/user.svg';
-import UserImg from '../../assest/icon/UserImg';
-import ErrorImg from '../../assest/icon/ErrorImg';
-import FlexContainer from '../../UI/FlexContainer';
-import MailImg from '../../assest/icon/MailImg';
-import LockImg from '../../assest/icon/LockImg';
+import UserImg from '../../../assest/icon/UserImg';
+import ErrorImg from '../../../assest/icon/ErrorImg';
+import FlexContainer from '../../../UI/FlexContainer';
+import MailImg from '../../../assest/icon/MailImg';
+import LockImg from '../../../assest/icon/LockImg';
 
 import ReCAPTCHA from 'react-google-recaptcha';
 const key = '6LcbAeAjAAAAAJ-sKt9VimUkmFR8Uf2Z-vIkZWGM'
@@ -42,13 +42,11 @@ interface User {
   password: string,
   confirmPassword: string,
 }
-export const ValidationSchemaExample = ({setIsShowPopup}:any) => {
+export const FormRegistration = ({setIsShowPopup,captcha,setCaptcha}:any) => {
 
-  const [captcha, setCaptcha] = useState(false)
+
   const [error, setError] = useState("");
-  useEffect(() => {
 
-  }, [])
 
 
   const formik: any = useFormik({
@@ -104,10 +102,15 @@ export const ValidationSchemaExample = ({setIsShowPopup}:any) => {
         (res.length === allUsers.length&&captcha) && successRegistration(allUsers, values)
       }
       else {
-
-        setError("");
-        captcha&&localStorage.setItem("Users", JSON.stringify([...allUsers, values]));
-        setIsShowPopup(true);
+         if (!captcha) {
+          setError("Введите капчу");
+        }
+        else if(captcha){
+            setError("");
+            localStorage.setItem("Users", JSON.stringify([...allUsers, values]));
+            setIsShowPopup(true);
+          }
+        
       }
 
     },

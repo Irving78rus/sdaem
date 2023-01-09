@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Arrov from "../../../assest/icon/arrov.svg";
 import map from "../../../assest/img/map.svg";
 import heart from "../../../assest/img/heart.svg";
@@ -24,6 +24,13 @@ export default function TopHeader() {
   console.log(user);
   
   
+  useEffect(() => {
+    if (localStorage.getItem("User")) {
+      dispatch(setUser(JSON.parse(localStorage.getItem("User") || "")))
+  } 
+  }, [])
+
+
   
   
   const logout = () => {

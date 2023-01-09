@@ -8,18 +8,19 @@ import {
 import { Link } from "react-router-dom";
 import { Button } from "../../../UI/FormButton/style";
 import { useState } from "react";
-import { ValidationSchemaExample } from "../../test/test";
+import { FormRegistration } from "./FormRegistration";
 import { PopupSuccessComponent } from "../PopupSuccess/PopupSuccessComponent";
 
 export const Registration = () => {
   const [isShowPopup, setIsShowPopup] = useState(false);
+  const [captcha, setCaptcha] = useState(false)
   return (
     <RegistrationStl>
       <RegistrationContent>
         <RegistrationFormSection>
           <RegistrationFormTitle>Регистрация</RegistrationFormTitle>
           <RegistrationForm>
-          <ValidationSchemaExample isShowPopup={isShowPopup} setIsShowPopup={setIsShowPopup}></ValidationSchemaExample>
+          <FormRegistration setCaptcha={setCaptcha} captcha={captcha} setIsShowPopup={setIsShowPopup}></FormRegistration>
           </RegistrationForm>
         </RegistrationFormSection>
         <RegistrationRules>
