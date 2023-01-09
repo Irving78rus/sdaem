@@ -1,19 +1,20 @@
 import React from "react";
 import styled  from "styled-components";
 interface  Props {
-  justifyContent?:any;
-  alignItems?:any;
-  gap?:any;
-  flexDirection?:any;
-  width?:any;
-  height?:any;
-  flexWrap?:any;
-  backgroundColor?:any;
-  margin?:any;
-  position?:any;
-  top?:any;
-  padding?:any;
-  borderRight?:any;
+  justifyContent?:string;
+  alignItems?:string;
+  gap?:string;
+  flexDirection?:string;
+  width?:string;
+  height?:string;
+  flexWrap?:string;
+  backgroundColor?:string;
+  margin?:string;
+  position?:string;
+  top?:string;
+  padding?:string;
+  borderRight?:string;
+  borderRadius?:string;
 }
 const FlexContainerStl = styled.div<Props>`
   display:flex;
@@ -29,8 +30,8 @@ const FlexContainerStl = styled.div<Props>`
   position: ${props=>props.position||"relative"};
   top:${props=>props.top||0};
   padding: ${props=>props.padding||""}; 
-  border-right: ${props=>props. borderRight||""};
-   
+  border-right: ${props=>props.borderRight||""};
+  border-radius: ${props=>props.borderRadius||""}; 
 `
 
 const FlexContainer  = (props:any) => {

@@ -24,26 +24,27 @@ const FormInput = `
       background-color: #fff;
       cursor:text;
   };
-    &::placeholder {
-      color: #686868;
-      
-  }
-  &:hover {
+    &:hover {
       outline: 2px solid red;
   }
-  }
-  &:focus {
+}
+&:focus {
     outline: 2px solid rgba(78, 100, 249, 0.8);
     color: #1E2123;
     background-color: #fff;
     cursor:text;
 };
-  &::placeholder {
+&::placeholder {
     color: #686868;
     
 }
 &:hover {
     outline: 2px solid rgba(78, 100, 249, 0.8);
+    background-color: #fff;
+    &::placeholder {
+      color: #1E2123;
+      
+  }
 }
 `;
 
@@ -162,4 +163,23 @@ export const RegistrationAuthRedirect = styled.p`
     text-decoration: none;
     color: #664ef9;
   }
+`;
+interface Prop {
+  top?: string;
+  right?: string;
+
+}
+export const LabelLogin = styled.label`
+position:relative;
+`;
+export const IMGCont = styled.div<Prop>`
+position:absolute;
+top:${props => props.top || '0px'}; 
+right:${props => props.right || '255px'};
+ 
+`;
+export const IMGError = styled.div<Prop>`
+position:absolute;
+top:${props => props.top || '0px'}; 
+right:${props => props.right || '15px'}; 
 `;

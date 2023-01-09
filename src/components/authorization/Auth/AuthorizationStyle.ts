@@ -26,6 +26,7 @@ const FormInput = `
 }
 &:hover {
     outline: 2px solid rgba(78, 100, 249, 0.8);
+    background: #FFFFFF;
 }
 `;
 
@@ -71,7 +72,7 @@ export const AuthSubtitle = styled.p`
   width: 75%;
 `;
 
-export const AuthForm = styled.div`
+export const AuthForm = styled.form`
   margin-top: 35px;
   display: flex;
   flex-direction: column;
@@ -79,7 +80,7 @@ export const AuthForm = styled.div`
 `;
 
 export const AuthFormName = styled.input.attrs({
-  name: 'name',
+  name: 'login',
   type: 'text',
   id: 'name',
 })`

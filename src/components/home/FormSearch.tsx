@@ -18,7 +18,7 @@ import Button from "../../UI/Button";
 import Select from "../../UI/Select";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import Input from "../../UI/Input";
-import { setGasStove,  ResetSearchParameters, setUpPriceToStore } from "../../redux/baseFlat";
+import { setGasStove, ResetSearchParameters, setUpPriceToStore } from "../../redux/baseFlat";
 import { setToPriceToStore } from "../../redux/baseFlat";
 import MoreOption from "../../UI/MoreOption";
 import Checkbox from "../../UI/Checkbox ";
@@ -57,14 +57,21 @@ font-size: 14px;
 line-height: 17px;
 color: #BDBDBD;
 `;
+const RightArrov =   styled.div`
+ 
+width:9px;
+height:9px;
+border-top: 2.5px solid black;
+border-right: 2.5px solid black;
+ transform: rotate(45deg)
+`
 
-
-export default function FormSearch(props: any ) {
+export default function FormSearch(props: any) {
   const params = useAppSelector((state: any) => state.baseFlat.params);
   const [test, settest] = useState(params);
 
 
-  
+
   const [upPrice, setUpPrice] = useState('');
   const [toPrice, setToPrice] = useState('');
   const [rooms, setRooms] = useState(params.rooms);
@@ -80,7 +87,7 @@ export default function FormSearch(props: any ) {
 
 
 
- 
+
   const addParamsToStore = (e: any) => {
     dispatch(ResetSearchParameters({
       city: props.city, upPrice: upPrice, toPrice: toPrice, rooms: rooms,
@@ -163,12 +170,12 @@ export default function FormSearch(props: any ) {
 
   return (
     <>
-      <FlexContainer width={'100%'} backgroundColor={props.backgroundColor} flexWrap='wrap'>
+      <FlexContainer width={'100%'} backgroundColor={props.backgroundColor} flexWrap='wrap' borderRadius='0 10px 10px 10px'>
 
         {props.nav2.map((item: any, index: any) => (
           <FlexContainer key={index} >
 
-            <FlexContainer height='100px' justifyContent='center' key={item.id} flexDirection={props.flexDirection} alignItems={props.alignItems} gap='10px' padding='20px'>
+            <FlexContainer height='100px' justifyContent='center' key={item.id} flexDirection={props.flexDirection} alignItems={props.alignItems} padding='20px'>
               {item.title && <SelectTitle>{item.title}</SelectTitle>}
               {(item.id === 1 || item.id === 4) && <Select
                 techTitle={item.techTitle}
@@ -234,8 +241,9 @@ export default function FormSearch(props: any ) {
             <Button onClick={(e: any) => { addParamsToStore(e) }}
               fontSize='15px' fontWeight='800' background={"#FFD54F"}
               width={'130px'} height={'40px'} color={"black"}>
-              {'Показать >'}
-            </Button></NavLink>
+             <FlexContainer  width={'100%'}>Показать   <RightArrov></RightArrov></FlexContainer> 
+            </Button>
+            </NavLink>
 
         </FlexContainer>
 
@@ -283,4 +291,3 @@ export default function FormSearch(props: any ) {
     </>
   );
 }
- 

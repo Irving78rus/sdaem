@@ -102,7 +102,7 @@ export default function Home() {
       list: GetListUniqueItems('rooms'),
     },
     {
-      title: "Цена за сутки ",
+      title: "Цена за сутки (BYN)",
       techTitle: "price",
       id: 2,
       select: "Выберите",

@@ -183,10 +183,10 @@ export default function New() {
 
     </ContainerNew>
     <HeaderBackground height='777px' >
-      <ContentContainer>
-        <FlexContainer flexDirection="column" alignItems="start">
+      <ContentContainer  justifyContent='center'>
+        <FlexContainer flexDirection="column" alignItems="start" >
           <h2 style={{ marginTop: 60 }}>Читайте так же</h2>
-          <FlexContainer gap="30px">
+          <FlexContainer gap="30px" > 
             {arr.map(item => <Card key={item}>
               <img src={cartImage} alt="cartImage" />
               <h4>Линия Сталина: суровый отдых в усадьбах на сутки</h4>

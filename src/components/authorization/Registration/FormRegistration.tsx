@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { RegistrationFormName } from './RegistrationStyle';
+import { IMGCont, IMGError, LabelLogin, RegistrationFormName } from './RegistrationStyle';
 import Button from '../../../UI/Button';
 import styled from 'styled-components';
 import user from '../../assest/icon/user.svg';
@@ -16,26 +16,7 @@ import LockImg from '../../../assest/icon/LockImg';
 
 import ReCAPTCHA from 'react-google-recaptcha';
 const key = '6LcbAeAjAAAAAJ-sKt9VimUkmFR8Uf2Z-vIkZWGM'
-interface Props {
-  top?: string;
-  right?: string;
 
-}
-const LabelLogin = styled.label`
-position:relative;
- 
- 
-`;
-const IMGCont = styled.div`
-position:absolute;
-top:0;
-right:255px;
-`;
-const IMGError = styled.div<Props>`
-position:absolute;
-top:${props => props.top || '0px'}; 
-right:${props => props.right || '15px'}; 
-`;
 interface User {
   login: string,
   email: string,
