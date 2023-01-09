@@ -1,9 +1,5 @@
-import React, { useState,useMemo} from "react";
-
+import React, { useState,useMemo, useContext } from "react";
 import home from "../../assest/img/home.png";
-
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
 import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";
 import ContentContainer from "../../UI/ContentContainer";
@@ -14,161 +10,26 @@ import { useAppSelector } from "../../redux/hooks";
 import Select from "../../UI/Select";
 import { Pagination } from "../share/Pagination/Pagination";
 import ShearSocial from "../share/ShearSocial";
-
-// interface Props {
-//   height?: any;
-// }
-const HeaderBackground = styled.div`
-  background: linear-gradient(90deg, #94afff30 0%, #94afff30 94.5%);
-  height: ${(props) => props.height || "0px"};
-`;
-const Container = styled.div`
-  width: 844px;
-  margin: 0 auto;
-  margin-top: 42px;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 7px;
-`;
-const ContainerNew = styled.div`
-  width: 844px;
-  margin: 0 auto;
-  position: relative;
-  top: -40px;
-  display: flex;
-  flex-direction: column;
-  img {
-    width: 100%;
-    border-radius: 10px;
-  }
-  .dots {
-    position: absolute;
-    width: 61px;
-    height: 61px;
-    top: 100px;
-    left: -100px;
-  }
-`;
-
-const Title = styled.h1`
-  margin: 0;
-`;
-const Flex = styled.div`
-  justify-content: flex-start;
-  align-items: center;
-  display: flex;
-  gap: 7px;
-  p {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 100%;
-
-    color: #686868;
-  }
-`;
-const Circle = styled.div`
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background-color: #664ef9;
-`;
-const Card = styled.div`
-  background-color: #fff;
-  box-sizing: border-box;
-  width: 407px;
-  filter: drop-shadow(0px 20px 40px rgba(135, 124, 202, 0.15));
-  border-radius: 10px;
-  margin-top: 40px;
-  img {
-    border-radius: 10px;
-  }
-  h4,
-  p,
-  button,
-  div {
-    padding: 0 20px;
-  }
-  h4 {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 19px;
-  }
-  p {
-    color: #686868;
-  }
-  .line {
-    width: 300px;
-    height: 2px;
-    background-color: #f8f8f8;
-    margin: 20px auto;
-  }
-`;
-const FlexUpdt2 = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-
-  button {
-    background: rgba(102, 78, 249, 0.1);
-    border-radius: 18px;
-    padding: 10px 15px;
-    border: none;
-    color: #664ef9;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 17px;
-    cursor: pointer;
-  }
-  div {
-    background-color: #f8f8f8;
-    color: #8291a3;
-    border-radius: 18px;
-    padding: 12px 8px;
-  }
-`;
-const BackgroundColor = styled.div`
-background-color: white;
-box-shadow: 0px 20px 40px rgba(39, 95, 158, 0.08);
-  height:100%;
-`
-const Toggle = styled.div`
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 10px 15px;
-gap: 10px;
-
+import { Context } from "../../redux/context";
+import { BackgroundColor, Circle, Flex, HeaderBackground, Title, Toggle } from "./ResultStyle";
  
-background: #FFFFFF;
-box-shadow: 0px 5px 20px rgba(0, 96, 206, 0.1);
-border-radius: 18px;
-&:hover{
-  background: #F8F8F8;
- cursor:pointer;
-}
-`
 
 export default function Result() {
   const [displayMethod,setDisplayMethod] = useState('tile')
+  const { dropSelectList, setDropSelectList} = useContext(Context);
   const flat = useAppSelector((state ) => state.baseFlat.flat);
-  const filters =['по цене', 'по спальным местам']
-  
-   const filter = {
+   
+   const filter:any = {
       title: "",
       techTitle: "filter",
       id: 10,
       select: "По умолчанию",
       active: false,
-      list: filters,
+      list: ['по цене', 'по спальным местам'],
    }
   const rooms = flat.map((item ) => item.rooms);  
   const uniqueRooms = rooms.filter((item , pos ) => rooms.indexOf(item) === pos);
-  const nav2 = [
+  const SearchFormFields = [
 
     {
       title: "Комнаты ",
@@ -197,10 +58,10 @@ export default function Result() {
     },
   ];
 
-  const params = useAppSelector((state) => state.baseFlat.params);
+  const params:any = useAppSelector((state) => state.baseFlat.params);
   console.log(params);
 
-  const allParams = {}
+  const allParams:any = {}
   for (let key in params) {
     if (params[key]) {
       allParams[key] = params[key]
@@ -238,8 +99,8 @@ console.log(res);
   ];
   const itemsPerPage=6
   const [activePage, setActivePage] = useState(1) 
-  const [dropSelectList, setDropSelectList] = useState (false);
-  const onClickButtonPagination = (page ) => {
+   
+  const onClickButtonPagination = (page:any ) => {
      
     setActivePage(page);
   };
@@ -276,7 +137,7 @@ console.log(res);
       <BackgroundColor  onClick={() => setDropSelectList(false)}>
         <ContentContainer width={'100%'} flexDirection='column'>
 
-          <FormSearch map={false} clearButton={true} flexDirection='row' alignItems='center' justifyContent={"space-between"} nav2={nav2}  dropSelectList={dropSelectList} setDropSelectList={setDropSelectList}></FormSearch>
+          <FormSearch city={params.city} map={false} clearButton={true} flexDirection='row' alignItems='center' justifyContent={"space-between"} SearchFormFields={SearchFormFields}></FormSearch>
 
         </ContentContainer>
       </BackgroundColor>
@@ -289,10 +150,9 @@ console.log(res);
           activeSelect={activeSelect}
           setActiveSelect={setActiveSelect}
           id={filter.id}
-          item={filter.item}
+           
           select={filter.select}
-          dropSelectList={dropSelectList}
-          setDropSelectList={setDropSelectList}
+           
           > </Select>
           <FlexContainer>
           <Toggle onClick={() =>{setDisplayMethod('list')}}>

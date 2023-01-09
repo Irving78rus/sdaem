@@ -1,77 +1,21 @@
-import React, { useEffect, useState } from "react";
-import styles from "./style.module.scss";
-import logo from "../../assest/img/logo.png";
-import insta from "../../assest/img/insta.svg";
-import vk from "../../assest/img/vk.svg";
-import Back from "../../assest/img/404Back.png";
-import dots from "../../assest/img/dots.svg";
-import verifyVisa from "../../assest/img/verifyVisa.png";
-import snow from "../../assest/img/snow.png";
-import webpay from "../../assest/img/webpay.png";
+import React, { useContext, useEffect, useState } from "react";
 import MoreOptionIcon from "../../assest/icon/MoreOption.svg";
-import masterSecure from "../../assest/img/masterSecure.png";
 import { NavLink } from "react-router-dom";
-import styled from "styled-components";
-import ContentContainer from "../../UI/ContentContainer";
 import FlexContainer from "../../UI/FlexContainer";
 import Button from "../../UI/Button";
 import Select from "../../UI/Select";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import Input from "../../UI/Input";
-import { setGasStove, ResetSearchParameters, setUpPriceToStore } from "../../redux/baseFlat";
-import { setToPriceToStore } from "../../redux/baseFlat";
+import { ResetSearchParameters  } from "../../redux/baseFlat";
 import MoreOption from "../../UI/MoreOption";
 import Checkbox from "../../UI/Checkbox ";
 import { VerticalLine } from "../../UI/VerticalLine";
 import IconMap from "../share/IconMap";
-
-interface Props {
-  height: any;
-  margin: any;
-  justifyContent: any;
-  flexDirection: any;
-  width?: any;
-  backgroundColor: any;
-}
-const List = styled.div<Props>`
-  width: ${(props) => props.width || "100%"};
-  box-shadow: 0px 0px 40px rgba(135, 124, 202, 0.3);
-  height:100%;
-  background: #ffffff;
-  display:flex;
-  flex-wrap:wrap;
-  top: 47px;
-  left: 0;
-  flex-direction:column;
-  align-items:flex-start;
-   
- 
-`;
-const SelectTitle = styled.p`
- margin:0px;
- margin-bottom:11px;
- font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
-color: #BDBDBD;
-`;
-const RightArrov =   styled.div`
- 
-width:9px;
-height:9px;
-border-top: 2.5px solid black;
-border-right: 2.5px solid black;
- transform: rotate(45deg)
-`
+import { List, RightArrov, SelectTitle } from "./FormSearchStyle";
 
 export default function FormSearch(props: any) {
+ 
   const params = useAppSelector((state: any) => state.baseFlat.params);
-  const [test, settest] = useState(params);
-
-
-
   const [upPrice, setUpPrice] = useState('');
   const [toPrice, setToPrice] = useState('');
   const [rooms, setRooms] = useState(params.rooms);
@@ -83,10 +27,6 @@ export default function FormSearch(props: any) {
   const [Dishes, setDishes] = useState(null);
   const [Dishwasher, setDishwasher] = useState(null);
   const dispatch = useAppDispatch();
-
-
-
-
 
   const addParamsToStore = (e: any) => {
     dispatch(ResetSearchParameters({
@@ -172,7 +112,7 @@ export default function FormSearch(props: any) {
     <>
       <FlexContainer width={'100%'} backgroundColor={props.backgroundColor} flexWrap='wrap' borderRadius='0 10px 10px 10px'>
 
-        {props.nav2.map((item: any, index: any) => (
+        {props.SearchFormFields.map((item: any, index: any) => (
           <FlexContainer key={index} >
 
             <FlexContainer height='100px' justifyContent='center' key={item.id} flexDirection={props.flexDirection} alignItems={props.alignItems} padding='20px'>
@@ -187,16 +127,10 @@ export default function FormSearch(props: any) {
                 select={item.select}
                 width={'150px'}
                 left={'110px'}
-                dropSelectList={props.dropSelectList}
-                setDropSelectList={props.setDropSelectList}
                 setCity={props.setCity}
                 setRooms={setRooms}
-
-              >
-
-              </Select>
-
-              }
+             >
+              </Select>}
 
               {item.id === 2 && <FlexContainer height={"30px"} gap={"30px"}>
                 <Input
@@ -264,8 +198,7 @@ export default function FormSearch(props: any) {
                 select={item.select}
                 width={'150px'}
                 left={'110px'}
-                dropSelectList={props.dropSelectList}
-                setDropSelectList={props.setDropSelectList}
+                
                 setMetro={props.setMetro}
                 setDistrict={props.setDistrict}
                 setSleepingPlaces={setSleepingPlaces}

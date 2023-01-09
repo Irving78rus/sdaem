@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import elips from "../../assest/icon/elips.svg";
-import dots from "../../assest/img/dots.svg";
 import car from "../../assest/img/car.png";
 import Flat from "../../assest/img/Flat.png";
 import hand from "../../assest/img/handle.svg";
@@ -45,9 +44,11 @@ import { cityArr } from "../../redux/flatCreater";
 import { VerticalLine } from "../../UI/VerticalLine";
 import Dots, { DotsStl } from "../../UI/Dots";
 import IconMap from "../share/IconMap";
+import { Context } from "../../redux/context";
 
 
 export default function Home() {
+  const { dropSelectList, setDropSelectList} = useContext(Context);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [city, setCity] = useState('');
@@ -59,7 +60,7 @@ export default function Home() {
     }));
     navigate("/Result")
   }
-
+ 
   const topNavigationFormSearch = [
     {
       title: "Квартиры на сутки ",
@@ -158,7 +159,7 @@ export default function Home() {
   const params = useAppSelector((state: any) => state.baseFlat.params);
   const [metro, setMetro] = useState(params.metro);
   const [district, setDistrict] = useState(params.district);
-  const [dropSelectList, setDropSelectList] = useState(false);
+  
   return (
     <>
       <Background onClick={() => setDropSelectList(false)}>
@@ -185,11 +186,9 @@ export default function Home() {
                 map={true}
                 clearButton={false}
                 backgroundColor={"white"}
-                nav2={SearchFormFields}
+                SearchFormFields={SearchFormFields}
                 flexDirection="column"
                 alignItems="flex-start"
-                dropSelectList={dropSelectList}
-                setDropSelectList={setDropSelectList}
                 city={city}
                 setCity={setCity}
               ></FormSearch>
@@ -287,8 +286,7 @@ export default function Home() {
                       select={item.select}
                       width={"150px"}
                       left={"110px"}
-                      dropSelectList={dropSelectList}
-                      setDropSelectList={setDropSelectList}
+                       
                       setMetro={setMetro}
                       setDistrict={setDistrict}
                       metro={metro}

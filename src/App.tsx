@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
  
 import TopHeader from './components/header/topHeader/TopHeader';
 import BottomHeader from './components/header/bottomHeader/BottomHeader';
@@ -18,12 +18,17 @@ import { useAppSelector } from './redux/hooks';
 import Result from './components/result/Result';
 import { Authorization } from './components/authorization/Auth/Authorization';
 import { Registration } from './components/authorization/Registration/Registration';
+import { Context } from './redux/context';
 function App() {
  
-  
+  const [dropSelectList, setDropSelectList] = useState(false);
   return (
     <div  style={{minHeight:'100vh',display:'flex',flexDirection:'column' }}>
-   
+   <Context.Provider
+        value={{
+          dropSelectList, setDropSelectList
+        }}
+      >
     <TopHeader/>
     <BottomHeader/>
      
@@ -42,6 +47,7 @@ function App() {
     </Routes>
      
     <Footer/>
+    </Context.Provider>
        </div>
   );
 }

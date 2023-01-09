@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { isTemplateExpression } from "typescript";
 import Arrov from "../assest/icon/arrov.svg";
 import { setCountRooms, setDistrictToStore, setMetroToStore,   setSleepingPlacesToStore } from "../redux/baseFlat";
+import { Context } from "../redux/context";
 import { useAppDispatch } from "../redux/hooks";
 import { VerticalLine } from "./VerticalLine";
 interface Props {
@@ -92,12 +93,12 @@ position: relative;
   padding: 15px;
 `;
 const Select = (props: any) => {
-  
+  const { dropSelectList, setDropSelectList} = useContext(Context);
    
   const as = (e: any) => {
     e.stopPropagation();
     props.setActiveSelect(props.id);
-    props.setDropSelectList(!props.dropSelectList)
+     setDropSelectList(!dropSelectList)
   };
   const [title, setTitle] = useState ('');
   const dispatch = useAppDispatch();
@@ -125,7 +126,7 @@ const Select = (props: any) => {
   
     e.stopPropagation();
   props.setActiveSelect(0);
-  props.setDropSelectList(!props.dropSelectList)
+  setDropSelectList(!dropSelectList)
   };
   // console.log(props.dropSelectList,props.id,props.activeSelect,props.list);
   
@@ -141,7 +142,7 @@ const Select = (props: any) => {
           <img src={Arrov} alt="arrov"></img>
          
         </Arrow>
-        {props.dropSelectList && props.id === props.activeSelect && (
+        {dropSelectList && props.id === props.activeSelect && (
           <List {...props}>
             {" "}
             {props.list.map((item: any) => (
