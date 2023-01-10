@@ -103,6 +103,7 @@ export default function FormSearch(props: any) {
     }
 
   ];
+console.log(props);
 
   const [activeSelect, setActiveSelect] = useState(0);
   const allOption = ['Газовая плита', 'Духовка', "Кофеварка", "Микроволновая печь", "Посуда",

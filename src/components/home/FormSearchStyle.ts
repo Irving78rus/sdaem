@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 interface Props {
-    height: any;
-    margin: any;
-    justifyContent: any;
-    flexDirection: any;
+    height?: any;
+    margin?: any;
+    justifyContent?: any;
+    flexDirection?: any;
     width?: any;
-    backgroundColor: any;
+    backgroundColor?: any;
+    background?: any;
   }
   export  const List = styled.div<Props>`
     width: ${(props) => props.width || "100%"};
@@ -32,12 +33,12 @@ interface Props {
   line-height: 17px;
   color: #BDBDBD;
   `;
-  export const RightArrov =   styled.div`
-   
+  export const RightArrov =   styled.div<Props>`
+  
   width:9px;
   height:9px;
-  border-top: 2.5px solid black;
-  border-right: 2.5px solid black;
+  border-top:${(props) => `2.5px solid ${props.background}` || `2.5px solid black`}; 
+  border-right:${(props) => `2.5px solid ${props.background}` || `2.5px solid black`}; 
    transform: rotate(45deg)
   `
   

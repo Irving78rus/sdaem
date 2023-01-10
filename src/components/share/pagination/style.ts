@@ -1,7 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PaginationStl = styled.section`
- 
   display: flex;
   column-gap: 3px;
 `;
@@ -19,7 +18,6 @@ export const PaginationButton = styled.button.attrs((props) => ({
   cursor: pointer;
   color: #686868;
   &:hover {
-    
     border-bottom: 2px solid #ffd54f;
   }
 
@@ -28,11 +26,9 @@ export const PaginationButton = styled.button.attrs((props) => ({
     border-bottom: 2px solid #ffd54f;
   }
 `;
-export const ScrollPagination = styled.div `
-  
+export const ScrollPagination = styled.div`
   &:hover {
     cursor: pointer;
     border-bottom: 2px solid #ffd54f;
   }
- 
 `;

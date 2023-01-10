@@ -12,10 +12,11 @@ interface  Props {
   fontSize:any;
   borderRadius:any;
   boxShadow:string;
-  margin:string
-  lineHeight:string
-  backgroundHover:string
-  
+  margin:string;
+  lineHeight:string;
+  backgroundHover:string;
+  boxShadowHover:string;
+  colorHover:string;
 }
 const ButtonStl = styled.button<Props>`
 position:relative;
@@ -38,9 +39,10 @@ position:relative;
   background-color:${props=>props.backgroundColor||null};
   opacity:${props=>props.opacity||null};
   &:hover{
-    background: ${props=>props.backgroundHover||"linear-gradient(90deg, #9d94ffe8 0%, #6c50e9eb 94.5%)"};
-     
-  cursor:pointer;
+    background: ${props=>props.backgroundHover||""};
+    box-shadow: ${props=>props.boxShadowHover||""};
+    cursor:pointer;
+    color: ${props=>props.colorHover||""};
 }
 `
  

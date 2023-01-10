@@ -12,6 +12,7 @@ import { Pagination } from "../share/Pagination/Pagination";
 import ShearSocial from "../share/ShearSocial";
 import { Context } from "../../redux/context";
 import { BackgroundColor, Circle, Flex, HeaderBackground, Title, Toggle } from "./ResultStyle";
+import IconMap from "../share/IconMap";
  
 
 export default function Result() {
@@ -59,7 +60,7 @@ export default function Result() {
   ];
 
   const params:any = useAppSelector((state) => state.baseFlat.params);
-  console.log(params);
+
 
   const allParams:any = {}
   for (let key in params) {
@@ -67,7 +68,7 @@ export default function Result() {
       allParams[key] = params[key]
     }
   }
-  console.log(allParams);
+
   const res = flat.filter((item) => {
     let resParams = true
     for (let key in allParams) {
@@ -79,7 +80,7 @@ export default function Result() {
     return resParams && item
   });
 
-console.log(res);
+ 
   const recommendСriteria = [
     "Недорогие",
     "1-комнатные",
@@ -163,7 +164,7 @@ console.log(res);
           </Toggle>
           
           <Toggle>
-            Показать на карте
+          {<IconMap fill='#664EF9 '></IconMap>} Показать на карте 
           </Toggle>
           </FlexContainer>
         </FlexContainer>

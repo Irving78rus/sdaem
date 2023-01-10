@@ -45,6 +45,7 @@ import { VerticalLine } from "../../UI/VerticalLine";
 import Dots, { DotsStl } from "../../UI/Dots";
 import IconMap from "../share/IconMap";
 import { Context } from "../../redux/context";
+import { RightArrov } from "./FormSearchStyle";
 
 
 export default function Home() {
@@ -121,7 +122,7 @@ export default function Home() {
   ];
 
 
-  const [isActiveFieldsFormSearch, setIsActiveFieldsFieldsFormSearch] = useState(0);
+  const [isActiveFieldsFormSearch, setIsActiveFieldsFormSearch] = useState(0);
   const [activeSelectElement, setActiveSelectElement] = useState(0);
 
   const home = [
@@ -159,6 +160,7 @@ export default function Home() {
   const params = useAppSelector((state: any) => state.baseFlat.params);
   const [metro, setMetro] = useState(params.metro);
   const [district, setDistrict] = useState(params.district);
+  console.log(cityArr);
   
   return (
     <>
@@ -175,7 +177,7 @@ export default function Home() {
                     key={item.id}
                     className={isActiveFieldsFormSearch === item.id ? "link active" : "link"}
                     onClick={() => {
-                      setIsActiveFieldsFieldsFormSearch(item.id);
+                      setIsActiveFieldsFormSearch(item.id);
                     }}
                   >
                     {item.title}
@@ -311,7 +313,9 @@ export default function Home() {
               <Title>Предложений по Минску</Title>
             </Itog>
             <VerticalLine></VerticalLine>
-            <Button boxShadow='0px 15px 40px rgba(0, 96, 206, 0.15)'>Посмотреть все </Button>
+            <Button boxShadow='0px 15px 40px rgba(0, 96, 206, 0.15)'
+             backgroundHover='linear-gradient(90deg, #867CFC 0%, #6929F3 94.5%)'>
+              Посмотреть все <RightArrov background='white'></RightArrov>   </Button>
           </UnderSwiper>
 
 
@@ -328,7 +332,7 @@ export default function Home() {
               <p>
                 Ищите квартиры на сутки в центре города, возле парка или в живописном районе
               </p>
-              <Button background="white" color="black" fontWeight='600'>
+              <Button background="white" color="black" fontWeight='600'  colorHover='#FEC100'>
                 <IconMap fill='#FFD54F'></IconMap> Открыть карту
               </Button>
             </SearhToMapBlock>

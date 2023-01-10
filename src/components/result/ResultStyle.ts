@@ -22,7 +22,6 @@ interface Props {
       font-weight: 400;
       font-size: 14px;
       line-height: 100%;
-  
       color: #686868;
     }
   `;
@@ -43,9 +42,6 @@ interface Props {
   flex-direction: row;
   align-items: center;
   padding: 10px 15px;
-  gap: 10px;
-  
-   
   background: #FFFFFF;
   box-shadow: 0px 5px 20px rgba(0, 96, 206, 0.1);
   border-radius: 18px;

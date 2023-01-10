@@ -21,7 +21,7 @@ export default function TopHeader() {
   const [showList, setShowList] = useState(false);
   const dispatch = useAppDispatch();
   const user:any = useAppSelector(state=>state.userSetting.user)
-  console.log(user);
+ 
   
   
   useEffect(() => {

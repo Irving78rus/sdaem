@@ -119,12 +119,14 @@ export const IMG = styled.div<Props>`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #664ef9;
+   background: #664EF9;
     border-radius: 16px;
-    color: white;
+    color: rgba(255, 255, 255, 0.7);
     padding: 8px 14px;
     &:hover{
       cursor:pointer;
+      background: #612BFB;
+      color: #FFFFFF;
     }
   }
 
