@@ -12,6 +12,9 @@ import FlexContainer from "../../UI/FlexContainer";
 import ContentContainer from "../../UI/ContentContainer";
 import { Line } from "../../UI/Line";
 import ContactComponent from "../share/ContactComponent";
+import Metro from "../../assest/icon/Metro";
+import Elips from "../../assest/icon/Elips";
+import IconMap from "../share/IconMap";
 
 interface Props {
   height?: any;
@@ -34,6 +37,7 @@ const Card = styled.div`
   p {
     color: #686868;
     margin: 0;
+    
   }
   .line {
     width: 300px;
@@ -148,14 +152,14 @@ export default function CardResultList({ flat }: any) {
               Цена: {flat.cost} BYN <p>за сутки</p>
             </FlexContainer>
           </FlexContainer>
-          <p className="city"> {flat.city}, б-р Мулявина, д. 10</p>
+          <p className="city"> <IconMap fill={'#BDBDBD'}></IconMap> {flat.city}, б-р Мулявина, д. 10</p>
           <FlexContainer>
             <div className="rooms">
               {flat.rooms} {`(${flat.rooms - 1}+1)`}
             </div>
             <p className="rooms">{flat.rooms} комн. </p>
-            <p className="rooms">M*{flat.metro} </p>
-            <p className="rooms">{flat.district} </p>
+            <p className="rooms"><Metro fill={'#BDBDBD'}></Metro> {flat.metro} </p>
+            <p className="rooms"><Elips fill={'#BDBDBD'}></Elips> {flat.district} </p>
           </FlexContainer>
 
           <p className="description-city">
@@ -172,10 +176,10 @@ export default function CardResultList({ flat }: any) {
               padding="9px 15px"
               borderRadius="18px"
               fontWeight='700'
-              boxShadow = '0px 5px 20px rgba(0, 96, 206, 0.1)'  
+              boxShadow='0px 5px 20px rgba(0, 96, 206, 0.1)'
               onClick={() => setShowContact(!showContact)}
-              backgroundHover ='#F5F3FF'
-              boxShadowHover ='0px 5px 20px rgba(0, 96, 206, 0.1)'
+              backgroundHover='#F5F3FF'
+              boxShadowHover='0px 5px 20px rgba(0, 96, 206, 0.1)'
             >
               <img src={tel} alt="heart"></img> Контакты
             </Button>

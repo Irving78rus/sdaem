@@ -13,10 +13,13 @@ import ShearSocial from "../share/ShearSocial";
 import { Context } from "../../redux/context";
 import { BackgroundColor, Circle, Flex, HeaderBackground, Title, Toggle } from "./ResultStyle";
 import IconMap from "../share/IconMap";
+import ButtonPlit from "../../assest/icon/ButtonPlit";
+import ButtonList from "../../assest/icon/ButtonList";
  
 
 export default function Result() {
-  const [displayMethod,setDisplayMethod] = useState('tile')
+  const [isDisplayTile,setisDisplayTile] = useState(true)
+ 
   const { dropSelectList, setDropSelectList} = useContext(Context);
   const flat = useAppSelector((state ) => state.baseFlat.flat);
    
@@ -60,9 +63,9 @@ export default function Result() {
   ];
 
   const params:any = useAppSelector((state) => state.baseFlat.params);
+  
 
-
-  const allParams:any = {}
+ const allParams:any = {}
   for (let key in params) {
     if (params[key]) {
       allParams[key] = params[key]
@@ -106,12 +109,17 @@ export default function Result() {
     setActivePage(page);
   };
   const paginatedFlat = useMemo(() => {
-    const indexOfLastNews = activePage * itemsPerPage;
-    const indexOfFirstNews = indexOfLastNews - itemsPerPage;
-
-    return res.slice(indexOfFirstNews, indexOfLastNews);
+    
+      const indexOfLastNews = activePage * itemsPerPage;
+      const indexOfFirstNews = indexOfLastNews - itemsPerPage;
+  
+      return res.slice(indexOfFirstNews, indexOfLastNews);
+  
+   
   }, [activePage, res]);
   const [activeSelect, setActiveSelect] = useState(0);
+
+ 
   return (
     <>
       <HeaderBackground height="280px" >
@@ -156,11 +164,11 @@ export default function Result() {
            
           > </Select>
           <FlexContainer>
-          <Toggle onClick={() =>{setDisplayMethod('list')}}>
-            Список
+          <Toggle className={isDisplayTile?undefined:'active'} onClick={() =>{setisDisplayTile(false)}}>
+          <ButtonList fill='#664EF9'></ButtonList> Список
           </Toggle>
-          <Toggle onClick={() =>{setDisplayMethod('tile')}}>
-            Плитки
+          <Toggle className={isDisplayTile?'active':undefined} onClick={() =>{setisDisplayTile(true)}}>
+          <ButtonPlit fill='#664EF9'></ButtonPlit> Плитки
           </Toggle>
           
           <Toggle>
@@ -172,7 +180,7 @@ export default function Result() {
         <FlexContainer flexWrap='wrap' gap={'40px'}>
 
          
-          {paginatedFlat.length !== 0 && paginatedFlat.map((item, index) => displayMethod==="tile"? <CardResultTile key={index} flat={item}></CardResultTile>: <CardResultList key={index} flat={item}></CardResultList>)}
+          {paginatedFlat.length !== 0 && paginatedFlat.map((item:any, index:any) => isDisplayTile? <CardResultTile key={index} flat={item}></CardResultTile>: <CardResultList key={index} flat={item}></CardResultList>)}
 
 
         </FlexContainer>

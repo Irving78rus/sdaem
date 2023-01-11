@@ -12,6 +12,9 @@ import FlexContainer from "../../UI/FlexContainer";
 import ContentContainer from "../../UI/ContentContainer";
 import { Line } from "../../UI/Line";
 import ContactComponent from "../share/ContactComponent";
+import Metro from "../../assest/icon/Metro";
+import Elips from "../../assest/icon/Elips";
+import IconMap from "../share/IconMap";
 
 interface Props {
   height?: any;
@@ -78,6 +81,9 @@ const Card = styled.div`
     font-size: 17px;
     line-height: 19px;
     color: #000000;
+    display:flex;
+     justify-content:flex-start;
+     align-items:center;
   }
   .description-city {
     margin-top: 20px;
@@ -128,10 +134,11 @@ export default function CardResultTile({ flat }: any) {
             </div>
             <p className="rooms">{flat.rooms} комн. </p>
           </FlexContainer>
-
-          <p className="city"> {flat.city}, б-р Мулявина, д. 10</p>
+  
+     
+          <p className="city"> <IconMap fill={'#BDBDBD'} margin='0 5px 0 0'></IconMap> {flat.city}, б-р Мулявина, д. 10</p>
           <p className="city">
-            M*{flat.metro} {flat.district}
+          <Metro fill={'#BDBDBD'}></Metro>{flat.metro}  <Elips fill={'#BDBDBD'}></Elips>  {flat.district} 
           </p>
           <p className="description-city">
             Какое-то описание квартиры, описание квартиры, описание квартиры, описание квартиры,

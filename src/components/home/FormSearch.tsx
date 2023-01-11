@@ -130,6 +130,7 @@ console.log(props);
                 left={'110px'}
                 setCity={props.setCity}
                 setRooms={setRooms}
+                
              >
               </Select>}
 

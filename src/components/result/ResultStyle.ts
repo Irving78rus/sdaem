@@ -49,5 +49,9 @@ interface Props {
     background: #F8F8F8;
    cursor:pointer;
   }
+  &.active{
+    background: none;
+    box-shadow: none;
+  }
   `
   

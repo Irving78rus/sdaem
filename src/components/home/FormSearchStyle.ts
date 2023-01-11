@@ -23,9 +23,9 @@ interface Props {
      
    
   `;
- export const SelectTitle = styled.p`
-   margin:0px;
-   margin-bottom:11px;
+ export const SelectTitle = styled.p<Props>`
+   margin:${(props) => props.margin || `0`}; 
+  
    font-family: 'Inter';
   font-style: normal;
   font-weight: 500;

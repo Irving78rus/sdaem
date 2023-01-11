@@ -187,6 +187,7 @@ export default function Home() {
               <FormSearch
                 map={true}
                 clearButton={false}
+                
                 backgroundColor={"white"}
                 SearchFormFields={SearchFormFields}
                 flexDirection="column"

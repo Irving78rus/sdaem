@@ -5,11 +5,11 @@ import {createFlatList} from './flatCreater'
 createFlatList()
 const initialState = {
   flat: flatList,
-  params: { city: '', upPrice: 0, toPrice: 0,rooms:0,metro:'',district:'', sleepingPlaces:0,GasStove:null,Oven:null,
-  CoffeeMaker:null,MicrowaveOven:null,Dishes:null,Dishwasher:null} 
+  params: { city: 'Минск', upPrice: 0, toPrice: 0,rooms:0,metro:'',district:'', sleepingPlaces:0,GasStove:null,Oven:null,
+  CoffeeMaker:null,MicrowaveOven:null,Dishes:null,Dishwasher:null} ,
+ 
 };
-  
-
+ 
 const baseFlat = createSlice({
   name: "baseFlat",
   initialState,
