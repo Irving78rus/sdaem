@@ -15,6 +15,9 @@ import ContactComponent from "../share/ContactComponent";
 import Metro from "../../assest/icon/Metro";
 import Elips from "../../assest/icon/Elips";
 import IconMap from "../share/IconMap";
+import UserImg from "../../assest/icon/UserImg";
+import HeartImg from "../../assest/icon/HeartImg";
+import HeartImg2 from "../../assest/icon/HeartImg2";
 
 interface Props {
   height?: any;
@@ -72,6 +75,15 @@ const Card = styled.div`
     font-size: 14px;
     line-height: 17px;
     color: #686868;
+    margin: 0 5px;
+    display:flex;
+    align-items:center;
+    span{
+      color: #664EF9;
+    }
+    svg{
+      margin-right:6px;
+    }
   }
   .title {
     font-family: "Inter";
@@ -89,6 +101,7 @@ const Card = styled.div`
     font-size: 16px;
     line-height: 19px;
     color: #000000;
+    display:flex;
   }
   .description-city {
     margin-top: 20px;
@@ -155,11 +168,12 @@ export default function CardResultList({ flat }: any) {
           <p className="city"> <IconMap fill={'#BDBDBD'}></IconMap> {flat.city}, б-р Мулявина, д. 10</p>
           <FlexContainer>
             <div className="rooms">
+              <UserImg fill={'#686868'} opacity='1'></UserImg>
               {flat.rooms} {`(${flat.rooms - 1}+1)`}
             </div>
             <p className="rooms">{flat.rooms} комн. </p>
-            <p className="rooms"><Metro fill={'#BDBDBD'}></Metro> {flat.metro} </p>
-            <p className="rooms"><Elips fill={'#BDBDBD'}></Elips> {flat.district} </p>
+            <p className="rooms"><Metro fill={'#664EF9'}></Metro> {flat.metro} </p>
+            <p className="rooms"> <span> район: </span> {flat.district} </p>
           </FlexContainer>
 
           <p className="description-city">
@@ -181,7 +195,7 @@ export default function CardResultList({ flat }: any) {
               backgroundHover='#F5F3FF'
               boxShadowHover='0px 5px 20px rgba(0, 96, 206, 0.1)'
             >
-              <img src={tel} alt="heart"></img> Контакты
+              <img src={tel} alt="tel"></img> Контакты
             </Button>
             <Button
               background="rgba(235, 87, 87, 0.1)"
@@ -190,16 +204,10 @@ export default function CardResultList({ flat }: any) {
               padding="9px 15px"
               borderRadius="22px"
             >
-              <img src={heart2} alt="heart"></img>В закладки
+              В закладки  <HeartImg2></HeartImg2>
             </Button>
 
-            <Button
-              background="rgba(255, 213, 79, 0.1)"
-              color="#FEC100;"
-              fontSize="14px"
-              padding="9px 15px"
-              borderRadius="22px"
-            >
+            <Button background="rgba(255, 213, 79, 0.1)" color="#FEC100;" fontSize="14px" backgroundHover ='rgba(255, 213, 79, 0.2)'>
               Подробнее
             </Button>
             {showContact && <ContactComponent></ContactComponent>}

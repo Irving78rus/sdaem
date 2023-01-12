@@ -106,8 +106,8 @@ const Slider = () => {
             >
               {photos.map((item: any) => (
                 <BlockItem key={item.id}>
-                  <> 
-                  <CardResultTile flat={item} top='-240px'></CardResultTile></>
+                  
+                  <CardResultTile flat={item} top='-240px'></CardResultTile> 
                  
                 </BlockItem>
               ))}

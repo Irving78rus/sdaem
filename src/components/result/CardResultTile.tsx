@@ -15,6 +15,7 @@ import ContactComponent from "../share/ContactComponent";
 import Metro from "../../assest/icon/Metro";
 import Elips from "../../assest/icon/Elips";
 import IconMap from "../share/IconMap";
+import HeartImg from "../../assest/icon/HeartImg";
 
 interface Props {
   height?: any;
@@ -84,6 +85,13 @@ const Card = styled.div`
     display:flex;
      justify-content:flex-start;
      align-items:center;
+     svg{
+      margin-right:10px;
+       
+     }
+     span{
+      margin-right:10px;
+     }
   }
   .description-city {
     margin-top: 20px;
@@ -138,7 +146,8 @@ export default function CardResultTile({ flat }: any) {
      
           <p className="city"> <IconMap fill={'#BDBDBD'} margin='0 5px 0 0'></IconMap> {flat.city}, б-р Мулявина, д. 10</p>
           <p className="city">
-          <Metro fill={'#BDBDBD'}></Metro>{flat.metro}  <Elips fill={'#BDBDBD'}></Elips>  {flat.district} 
+          <Metro fill={'#BDBDBD'}></Metro> <span>{flat.metro} </span> 
+          <Elips fill={'#BDBDBD'}></Elips> <span>{flat.district} </span> 
           </p>
           <p className="description-city">
             Какое-то описание квартиры, описание квартиры, описание квартиры, описание квартиры,
@@ -154,7 +163,7 @@ export default function CardResultTile({ flat }: any) {
           {flat.Dishwasher && "Dishwasher"}
 
           <FlexContainer width="100%" margin="15px 0">
-            <img src={heart} alt="heart"></img>
+          <HeartImg></HeartImg>
             <Button
               background="#FFFFFF"
               color="#664EF9"
@@ -167,7 +176,7 @@ export default function CardResultTile({ flat }: any) {
             >
               <img src={tel} alt="tel"></img> Контакты
             </Button>
-            <Button background="rgba(255, 213, 79, 0.1)" color="#FEC100;" fontSize="17px" backgroundHover ='rgba(255, 213, 79, 0.2)'>
+            <Button background="rgba(255, 213, 79, 0.1)" color="#FEC100;" fontSize="14px" backgroundHover ='rgba(255, 213, 79, 0.2)'>
               Подробнее
             </Button>
             {showContact && <ContactComponent></ContactComponent>}
