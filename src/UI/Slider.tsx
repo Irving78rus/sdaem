@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CardResultTile from "../components/result/CardResultTile"
 import styled from "styled-components";
-import { useAppSelector } from "../redux/hooks";
-import Button from "./Button";
 import ContentContainer from "./ContentContainer";
 import FlexContainer from "./FlexContainer";
 
@@ -32,7 +30,10 @@ display:flex;
 width:370px;
 height:650px;
 padding:40px;
-
+.sliderImg{
+  width:200px;
+  height:150px;
+}
  `
  const  ButtonSlider = styled.div`
  position:relative;
@@ -70,8 +71,8 @@ top: 37%;
 // import Checked from "./Checked";
 const PAGE_WIDTH = 1380
 // const maxOffset = -900
-const Slider = () => {
-  const photos = useAppSelector((state: any) => state.baseFlat.flat);
+const Slider = ({photos,content=false,width,height,CardResultImg}:any) => {
+  
   const [offset, setOffset] = useState(0);
   const [maxOffset, setMaxOffset] = useState(0);
   useEffect(() => {
@@ -81,7 +82,7 @@ const Slider = () => {
   const right = () => {
     setOffset((prev) => {
 
-      const newOffset = prev - PAGE_WIDTH
+      const newOffset = prev - PAGE_WIDTH/3
       return Math.max(newOffset, maxOffset);
     });
   };
@@ -99,15 +100,15 @@ const Slider = () => {
       <ContentContainer flexDirection='column' justifyContent='center' padding='0'>
         
 
-        <ContentContainer width='1380px' height='675px' padding='0 80'> 
+        <ContentContainer width={width} height={height} padding='0 80'> 
           <Window>
             <APC
               style={{ transform: `translateX(${offset}px)` }}
             >
-              {photos.map((item: any) => (
-                <BlockItem key={item.id}>
-                  
-                  <CardResultTile flat={item} top='-240px'></CardResultTile> 
+              {photos.map((item: any,index:any) => (
+                <BlockItem key={index}>
+                  {content&&<CardResultTile flat={item} top='-240px'></CardResultTile> }
+                  {!content&&<img className='sliderImg' src={CardResultImg} alt="cartImage" />}
                  
                 </BlockItem>
               ))}

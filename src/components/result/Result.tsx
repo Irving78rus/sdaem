@@ -20,7 +20,7 @@ import ButtonList from "../../assest/icon/ButtonList";
 export default function Result() {
   const [isDisplayTile,setisDisplayTile] = useState(true)
  
-  const { dropSelectList, setDropSelectList} = useContext(Context);
+  const { setDropSelectList} = useContext(Context);
   const flat = useAppSelector((state ) => state.baseFlat.flat);
    
    const filter:any = {
@@ -63,25 +63,9 @@ export default function Result() {
   ];
 
   const params:any = useAppSelector((state) => state.baseFlat.params);
-  
-
- const allParams:any = {}
-  for (let key in params) {
-    if (params[key]) {
-      allParams[key] = params[key]
-    }
-  }
-
-  const res = flat.filter((item) => {
-    let resParams = true
-    for (let key in allParams) {
-      if (allParams[key] === item[key]) { }
-      else if (key === 'upPrice' && item.cost > allParams.upPrice) { }
-      else if (key === 'toPrice' && item.cost < allParams.toPrice) { }
-      else { resParams = false }
-    }
-    return resParams && item
-  });
+  const res:any = useAppSelector((state) => state.baseFlat.res);
+ console.log(res);
+ console.log(params);
 
  
   const recommendСriteria = [

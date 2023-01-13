@@ -1,16 +1,9 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { isTemplateExpression } from "typescript";
 import Arrov from "../assest/icon/arrov.svg";
-import {
-  setCountRooms,
-  setDistrictToStore,
-  setMetroToStore,
-  setSleepingPlacesToStore,
-} from "../redux/baseFlat";
 import { Context } from "../redux/context";
-import { useAppDispatch } from "../redux/hooks";
-import { VerticalLine } from "./VerticalLine";
+ 
+ 
 interface Props {
   background?: any;
   backgroundColor?: any;
@@ -96,10 +89,10 @@ const Select = (props: any) => {
     setDropSelectList(!dropSelectList);
   };
   const [title, setTitle] = useState("");
-  const dispatch = useAppDispatch();
+ 
   const addParams = (e: any, item: any, techTitle: any) => {
     setTitle(item);
-    console.log(item);
+     
 
     if (techTitle === "city") {
       props.setCity(item);

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import elips from "../../assest/icon/elips.svg";
 import car from "../../assest/img/car.png";
 import Flat from "../../assest/img/Flat.png";
@@ -11,7 +11,7 @@ import ContentContainer from "../../UI/ContentContainer";
 import FlexContainer from "../../UI/FlexContainer";
 import Button from "../../UI/Button";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { ResetSearchParameters } from "../../redux/baseFlat";
+import { getFilterFlats } from "../../redux/baseFlat";
 import FormSearch from "./FormSearch";
 import Select from "../../UI/Select";
 import { Line } from "../../UI/Line";
@@ -42,48 +42,28 @@ import { GetListUniqueItems } from "../share/hooks";
 import { useNavigate } from "react-router-dom";
 import { cityArr } from "../../redux/flatCreater";
 import { VerticalLine } from "../../UI/VerticalLine";
-import Dots, { DotsStl } from "../../UI/Dots";
+import Dots  from "../../UI/Dots";
 import IconMap from "../share/IconMap";
 import { Context } from "../../redux/context";
 import { RightArrov } from "./FormSearchStyle";
 
 
 export default function Home() {
-  const { dropSelectList, setDropSelectList} = useContext(Context);
+  const params = useAppSelector((state: any) => state.baseFlat.params);
+  const { setDropSelectList} = useContext(Context);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState(params.city);
   const flats = useAppSelector((state: any) => state.baseFlat.flat);
+  const topNavigationFormSearch = useAppSelector((state: any) => state.baseFlat.topNavigationFormSearch);
   const showFlatInCity = (item: string) => {
-    dispatch(ResetSearchParameters({
+    dispatch(getFilterFlats({
       city: item, upPrice: 0, toPrice: 0, rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: null, Oven: null,
       CoffeeMaker: null, MicrowaveOven: null, Dishes: null, Dishwasher: null
     }));
     navigate("/Result")
   }
  
-  const topNavigationFormSearch = [
-    {
-      title: "Квартиры на сутки ",
-      id: 1,
-      active: false,
-    },
-    {
-      title: "Коттеджи и усадьбы",
-      id: 2,
-      active: false,
-    },
-    {
-      title: "Бани и Сауны",
-      id: 3,
-      active: false,
-    },
-    {
-      title: "Авто на прокат",
-      id: 4,
-      active: false,
-    },
-  ];
 
 
   const SearchFormFields = [
@@ -157,10 +137,10 @@ export default function Home() {
     },
   ];
 
-  const params = useAppSelector((state: any) => state.baseFlat.params);
+
   const [metro, setMetro] = useState(params.metro);
   const [district, setDistrict] = useState(params.district);
-  console.log(cityArr);
+ 
   
   return (
     <>
@@ -172,7 +152,7 @@ export default function Home() {
             </h1>
             <FlexContainer flexDirection="column" alignItems="flex-start" width="100%">
               <BottomNav>
-                {topNavigationFormSearch.map((item) => (
+                {topNavigationFormSearch.map((item:any) => (
                   <li
                     key={item.id}
                     className={isActiveFieldsFormSearch === item.id ? "link active" : "link"}
@@ -208,6 +188,7 @@ export default function Home() {
               <FlexContainer justifyContent="flex-start" gap="10px" margin={"37px"} flexWrap='wrap'>
                 {cityArr.map((item: string) => <div className={"button"}
                   onClick={() => { showFlatInCity(item) }}
+                  key={item}
                 >{item}</div>)}
 
               </FlexContainer>
@@ -302,7 +283,7 @@ export default function Home() {
               <WrapperFilter2></WrapperFilter2>
             </WrapperFilter>
           </FlexContainer>
-          <Slider></Slider>
+          <Slider photos={flats} content={true} width='1380px' height='720px'></Slider>
           {/* <ContentSwiper>   <Carousel>
             {content}
           </Carousel>  </ContentSwiper> */}

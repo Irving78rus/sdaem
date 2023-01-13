@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import MoreOptionIcon from "../../assest/icon/MoreOption.svg";
 import { NavLink } from "react-router-dom";
 import FlexContainer from "../../UI/FlexContainer";
@@ -6,7 +6,7 @@ import Button from "../../UI/Button";
 import Select from "../../UI/Select";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import Input from "../../UI/Input";
-import { ResetSearchParameters  } from "../../redux/baseFlat";
+import { getFilterFlats  } from "../../redux/baseFlat";
 import MoreOption from "../../UI/MoreOption";
 import Checkbox from "../../UI/Checkbox ";
 import { VerticalLine } from "../../UI/VerticalLine";
@@ -29,7 +29,7 @@ export default function FormSearch(props: any) {
   const dispatch = useAppDispatch();
 
   const addParamsToStore = (e: any) => {
-    dispatch(ResetSearchParameters({
+    dispatch(getFilterFlats({
       city: props.city, upPrice: upPrice, toPrice: toPrice, rooms: rooms,
       metro: props.metro, district: props.district, sleepingPlaces: sleepingPlaces, GasStove: GasStove, Oven: Oven,
       CoffeeMaker: CoffeeMaker, MicrowaveOven: MicrowaveOven, Dishes: Dishes, Dishwasher: Dishwasher
@@ -37,7 +37,7 @@ export default function FormSearch(props: any) {
 
   }
   const clearParams = (e: any) => {
-    dispatch(ResetSearchParameters({
+    dispatch(getFilterFlats({
       city: '', upPrice: 0, toPrice: 0, rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: null, Oven: null,
       CoffeeMaker: null, MicrowaveOven: null, Dishes: null, Dishwasher: null
     }));

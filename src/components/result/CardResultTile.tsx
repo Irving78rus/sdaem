@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-import styles from "./style.module.scss";
-import home from "../../assest/img/home.png";
+ 
 
 import CardResultImg from "../../assest/img/CardResult.png";
-import heart from "../../assest/icon/heart.svg";
+ 
 import tel from "../../assest/icon/tel.svg";
-import { NavLink } from "react-router-dom";
+ 
 import styled from "styled-components";
 import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";
-import ContentContainer from "../../UI/ContentContainer";
+ 
 import { Line } from "../../UI/Line";
 import ContactComponent from "../share/ContactComponent";
 import Metro from "../../assest/icon/Metro";
 import Elips from "../../assest/icon/Elips";
 import IconMap from "../share/IconMap";
 import HeartImg from "../../assest/icon/HeartImg";
+import Slider from "../../UI/Slider";
 
 interface Props {
   height?: any;
@@ -121,6 +121,7 @@ const Gold = styled.div<Props>`
     text-shadow: 0px 1px 0px rgba(147, 79, 0, 0.3);
   }
 `;
+
 export default function CardResultTile({ flat }: any) {
   const [showContact, setShowContact] = useState(false);
   return (
@@ -129,7 +130,8 @@ export default function CardResultTile({ flat }: any) {
         <Gold>
           <p>Gold</p>
         </Gold>
-        <img src={CardResultImg} alt="cartImage" />
+          <Slider  photos={[1,2,3,4,5,6,7]} width='100%' height='200px' CardResultImg={CardResultImg}></Slider>
+          {/* <img src={CardResultImg} alt="cartImage" /> */}
         <FlexContainer flexDirection="column" padding="0 20px" alignItems="flex-start">
           <FlexContainer width="100%">
             <div>
