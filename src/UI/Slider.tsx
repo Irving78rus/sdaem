@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CardResultTile from "../components/result/CardResultTile"
 import styled from "styled-components";
+import { useAppSelector } from "../redux/hooks";
+import Button from "./Button";
 import ContentContainer from "./ContentContainer";
 import FlexContainer from "./FlexContainer";
 
@@ -75,11 +77,23 @@ const Slider = ({photos,content=false,width,height,CardResultImg}:any) => {
   
   const [offset, setOffset] = useState(0);
   const [maxOffset, setMaxOffset] = useState(0);
+  const [leftNumber, setLeftNumber]=useState(0)
+  const [rightNumber, setRightNumber]=useState(4)
+  const [res, setRes]=useState([photos.slice(0,3)])
+ 
+  useEffect(() => {
+    setRes(photos.slice(leftNumber,rightNumber)) 
+  }, [leftNumber,rightNumber,photos])
+  
   useEffect(() => {
     setMaxOffset(-(PAGE_WIDTH * (Math.ceil(photos.length / 3) - 1)));
   }, [photos]);
 
   const right = () => {
+    if(photos.length>rightNumber){
+      setRightNumber(prev=>prev+1)
+       
+    }
     setOffset((prev) => {
 
       const newOffset = prev - PAGE_WIDTH/3
@@ -87,8 +101,9 @@ const Slider = ({photos,content=false,width,height,CardResultImg}:any) => {
     });
   };
   const left = () => {
+    
     setOffset((prev) => {
-      const newOffset = prev + PAGE_WIDTH
+      const newOffset = prev + PAGE_WIDTH/3
       const minOffset = 0;
       return Math.min(newOffset, minOffset);
     });
@@ -105,8 +120,8 @@ const Slider = ({photos,content=false,width,height,CardResultImg}:any) => {
             <APC
               style={{ transform: `translateX(${offset}px)` }}
             >
-              {photos.map((item: any,index:any) => (
-                <BlockItem key={index}>
+              {res.map((item: any) => (
+                <BlockItem key={item.id}>
                   {content&&<CardResultTile flat={item} top='-240px'></CardResultTile> }
                   {!content&&<img className='sliderImg' src={CardResultImg} alt="cartImage" />}
                  
