@@ -11,7 +11,7 @@ interface Props {
   }
   export  const List = styled.div<Props>`
     width: ${(props) => props.width || "100%"};
-    box-shadow: 0px 0px 40px rgba(135, 124, 202, 0.3);
+    
     height:100%;
     background: #ffffff;
     display:flex;

@@ -46,14 +46,18 @@ import Dots  from "../../UI/Dots";
 import IconMap from "../share/IconMap";
 import { Context } from "../../redux/context";
 import { RightArrov } from "./FormSearchStyle";
+import { Flex } from "../result/ResultStyle";
 
 
 export default function Home() {
   const params = useAppSelector((state: any) => state.baseFlat.params);
-  const { setDropSelectList} = useContext(Context);
+  const {closeAllSelect,dropSelectList, setDropSelectList,isActiveSelectCity, setIsActiveSelectCity,isActiveSelectRooms, setIsActiveSelectRooms } = useContext(Context);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [city, setCity] = useState(params.city);
+  const [metro, setMetro] = useState(params.metro);
+  const [district, setDistrict] = useState(params.district);
   const flats = useAppSelector((state: any) => state.baseFlat.flat);
   const topNavigationFormSearch = useAppSelector((state: any) => state.baseFlat.topNavigationFormSearch);
   const showFlatInCity = (item: string) => {
@@ -64,43 +68,7 @@ export default function Home() {
     navigate("/Result")
   }
  
-
-
-  const SearchFormFields = [
-    {
-      title: "Город",
-      techTitle: "city",
-      select: "Выберите",
-      id: 1,
-      active: false,
-      list: GetListUniqueItems('city')
-    },
-    {
-      title: "Комнаты ",
-      techTitle: "rooms",
-      id: 4,
-      select: "Выберите",
-      active: false,
-      list: GetListUniqueItems('rooms'),
-    },
-    {
-      title: "Цена за сутки (BYN)",
-      techTitle: "price",
-      id: 2,
-      select: "Выберите",
-      active: false,
-      list: [],
-    },
-    {
-      title: "",
-      techTitle: "all",
-      id: 3,
-      select: "Больше опций",
-      active: false,
-      list: [],
-    },
-  ];
-
+ 
 
   const [isActiveFieldsFormSearch, setIsActiveFieldsFormSearch] = useState(0);
   const [activeSelectElement, setActiveSelectElement] = useState(0);
@@ -137,15 +105,12 @@ export default function Home() {
     },
   ];
 
-
-  const [metro, setMetro] = useState(params.metro);
-  const [district, setDistrict] = useState(params.district);
  
   
   return (
     <>
-      <Background onClick={() => setDropSelectList(false)}>
-        <BackgroundImg onClick={() => setDropSelectList(false)}>
+      <Background onClick={() => closeAllSelect()}>
+        <BackgroundImg onClick={() => closeAllSelect()}>
           <ContentContainer justifyContent="center" flexDirection="column" padding="0 120px">
             <h1>
               Sdaem.by - у нас живут <span>ваши объявления</span>
@@ -167,13 +132,15 @@ export default function Home() {
               <FormSearch
                 map={true}
                 clearButton={false}
-                
                 backgroundColor={"white"}
-                SearchFormFields={SearchFormFields}
                 flexDirection="column"
                 alignItems="flex-start"
                 city={city}
                 setCity={setCity}
+                metro={metro}
+                setMetro={setMetro}
+                district={district}
+                setDistrict={setDistrict}
               ></FormSearch>
             </FlexContainer>
           </ContentContainer>
@@ -260,7 +227,7 @@ export default function Home() {
                     alignItems="flex-start"
                     padding="20px"
                   >
-                    <Select
+                    {/* <Select
                       techTitle={item.techTitle}
                       list={item.list}
                       activeSelect={activeSelectElement}
@@ -276,18 +243,15 @@ export default function Home() {
                       metro={metro}
                       district={district}
                       backgroundColor='white'
-                    ></Select>
+                    ></Select> */}
                   </FlexContainer>
                 ))}
               </FlexContainer>
               <WrapperFilter2></WrapperFilter2>
             </WrapperFilter>
-          </FlexContainer>
-          <Slider photos={flats} content={true} width='1491px' ></Slider>
-          {/* <ContentSwiper>   <Carousel>
-            {content}
-          </Carousel>  </ContentSwiper> */}
-
+          </FlexContainer> 
+          <FlexContainer margin='30px 0 0 0'>      <Slider photos={flats} position='static' content={true} PAGE_WIDTH='1347' width='1347px' height={'615px'} style={{marginTop:'30px'}}></Slider></FlexContainer>
+      
           <UnderSwiper>
             <Itog>
               <FlexContainer alignItems='center'><p>341 <span>+</span>  </p></FlexContainer>

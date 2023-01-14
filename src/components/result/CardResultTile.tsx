@@ -25,7 +25,7 @@ const Card = styled.div`
   position: relative;
   background-color: #fff;
   width: 407px;
-  box-shadow: 0px 20px 40px rgba(135, 124, 202, 0.15);
+  box-shadow: 0px 20px 20px rgba(135, 124, 202, 0.15);
   border-radius: 10px;
   img {
     border-radius: 10px;
@@ -105,6 +105,7 @@ const Card = styled.div`
 const Gold = styled.div<Props>`
   background: linear-gradient(106.06deg, #ffd54f 1.12%, #fec100 97.96%);
   border-radius: 0px 10px 10px 10px;
+  z-index:2;
   position: absolute;
   top: ${(props) => props.top || "0"};
   right: 0;
@@ -129,7 +130,7 @@ export default function CardResultTile({ flat }: any) {
         <Gold>
           <p>Gold</p>
         </Gold>
-          <Slider  photos={[1,2,3,4,5,6,7]} width='100%' height='200px' CardResultImg={CardResultImg}></Slider>
+          <Slider  photos={[1,2,3,4,5,6,7]} widthButton='100%' top='50%' position='absolute' width='407px' height='200px' PAGE_WIDTH='1221' CardResultImg={CardResultImg} margin='0'></Slider>
           {/* <img src={CardResultImg} alt="cartImage" /> */}
         <FlexContainer flexDirection="column" padding="0 20px" alignItems="flex-start">
           <FlexContainer width="100%">
@@ -145,7 +146,7 @@ export default function CardResultTile({ flat }: any) {
           </FlexContainer>
   
      
-          <p className="city"> <IconMap fill={'#BDBDBD'} margin='0 5px 0 0'></IconMap> {flat.city}, б-р Мулявина, д. 10</p>
+          <div className="city"> <IconMap fill={'#BDBDBD'} margin='0 5px 0 0'></IconMap> {flat.city}, б-р Мулявина, д. 10</div>
           <p className="city">
           <Metro fill={'#BDBDBD'}></Metro> <span>{flat.metro} </span> 
           <Elips fill={'#BDBDBD'}></Elips> <span>{flat.district} </span> 
@@ -156,12 +157,12 @@ export default function CardResultTile({ flat }: any) {
             квартиры, описание ...
           </p>
           <Line> </Line>
-          {flat.GasStove && "GasStove"}
+          {/* {flat.GasStove && "GasStove"}
           {flat.Oven && "Oven"}
           {flat.CoffeeMaker && "CoffeeMaker"}
           {flat.MicrowaveOven && "MicrowaveOven"}
           {flat.Dishes && "Dishes"}
-          {flat.Dishwasher && "Dishwasher"}
+          {flat.Dishwasher && "Dishwasher"} */}
 
           <FlexContainer width="100%" margin="15px 0">
           <HeartImg></HeartImg>

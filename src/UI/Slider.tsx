@@ -5,7 +5,9 @@ import { useAppSelector } from "../redux/hooks";
 import Button from "./Button";
 import ContentContainer from "./ContentContainer";
 import FlexContainer from "./FlexContainer";
-
+interface Props {
+  margin?: any;
+}
 const Window = styled.div`
  
   display: flex;
@@ -13,12 +15,13 @@ const Window = styled.div`
   width: 100%;
   overflow: hidden;
   justify-content:flex-start;
+  
  `
- const APC = styled.div`
+const APC = styled.div`
  
  height: 100%;
  display: flex;
- gap: 90px;
+ 
  transition: translate;
  transition-property: transform;
  transition-duration: 300ms;
@@ -26,33 +29,60 @@ const Window = styled.div`
 }
  
  `
- const BlockItem = styled.div`
+const BlockItem = styled.div<Props>`
 
   position: relative;
 display:flex;
 width:407px;
 height:575px;
- 
+ margin: ${(props) => props.margin || '0 21px'};
 .sliderImg{
  
   width:407px;
-  height:200px;
+  height:250px;
 }
  `
- const  ButtonSlider = styled.div`
- position:relative;
-display:flex;
-width:40px;
-height:40px;
-border: 1px solid #664EF9;
-background:inherit;
-border-radius:50%;
-&:hover{
-  background:rgba(102, 78, 249, 0.1);
-};
+const ButtonSlider = styled.div`
+  &.homeSlider2{
+    position:relative;
+    display:flex;
+    width:29px;
+    height:29px;
+    background:rgba(255, 255, 255, 0.4);
+    border-radius:50%;
+    &:hover{
+      background:rgba(102, 78, 249, 0.1);
+    };
+    .leftArrov{
+      border-top: 2px solid #FFFFFF;
+      border-right: 2px solid #FFFFFF;
+      width:9px;
+      height:9px;
+    }
+    .rightArrov{
+      border-top: 2px solid #FFFFFF;
+      border-right: 2px solid #FFFFFF;
+      width:9px;
+      height:9px;
+    }
+  }
+    &.homeSlider{
+      position:relative;
+      display:flex;
+      width:40px;
+      height:40px;
+      border: 1px solid #664EF9;
+      background:inherit;
+      border-radius:50%;
+      &:hover{
+        background:rgba(102, 78, 249, 0.1);
+      };
+
+  }
+ 
 cursor:pointer;
 `
-const RightArrov =   styled.div`
+const RightArrov = styled.div`
 position:absolute;
 width:11px;
 height:11px;
@@ -62,7 +92,7 @@ top: 37%;
     left: 30%;
     transform: rotate(45deg)
 `
-const LeftArrov =   styled.div`
+const LeftArrov = styled.div`
 position:absolute;
 width:11px;
 height:11px;
@@ -73,79 +103,79 @@ top: 37%;
     transform: rotate(225deg)
 `
 // import Checked from "./Checked";
-const PAGE_WIDTH = 1491
+
 // const maxOffset = -900
-const Slider = ({photos,content=false,width,height,CardResultImg}:any) => {
-  
+const Slider = ({ photos, content = false, width, height, CardResultImg, margin, PAGE_WIDTH,position,widthButton,top }: any) => {
+
   const [offset, setOffset] = useState(0);
   const [maxOffset, setMaxOffset] = useState(0);
-  const [rightNumber, setRightNumber]=useState(4)
-  const [res, setRes]=useState([photos.slice(0,3)])
- 
+  const [rightNumber, setRightNumber] = useState(4)
+  const [res, setRes] = useState([photos.slice(0, 3)])
+
   useEffect(() => {
-    setRes(photos.slice(0,rightNumber)) 
-  }, [rightNumber,photos])
-  
+    setRes(photos.slice(0, rightNumber))
+  }, [rightNumber, photos])
+
   useEffect(() => {
     setMaxOffset(-(PAGE_WIDTH * (Math.ceil(photos.length / 3) - 1)));
   }, [photos]);
 
   const right = () => {
-    if(photos.length>rightNumber){
-      setRightNumber(prev=>prev+1)
-       
+    if (photos.length > rightNumber) {
+      setRightNumber(prev => prev + 1)
+
     }
     setOffset((prev) => {
 
-      const newOffset = prev - PAGE_WIDTH/3
+      const newOffset = prev - PAGE_WIDTH / 3
       return Math.max(newOffset, maxOffset);
     });
   };
   const left = () => {
-    
+
     setOffset((prev) => {
-      const newOffset = prev + PAGE_WIDTH/3
+      const newOffset = prev + PAGE_WIDTH / 3
       const minOffset = 0;
       return Math.min(newOffset, minOffset);
     });
   };
- 
-  
-  return (
-    
-      <ContentContainer flexDirection='column' justifyContent='center' padding='0'>
-        
 
-        <ContentContainer width={width} height={height} padding='0 80'> 
-          <Window>
-            <APC
-              style={{ transform: `translateX(${offset}px)` }}
-            >
-              {res.map((item: any) => (
-                <BlockItem key={item.id}>
-                  {content&&<CardResultTile flat={item} top='-240px'></CardResultTile> }
-                  {!content&&<img className='sliderImg' src={CardResultImg} alt="cartImage" />}
-                 
-                </BlockItem>
-              ))}
-            </APC>
-          </Window>
-        </ContentContainer>
-        <FlexContainer gap='20px'> {photos.length > 3 && (
-         <ButtonSlider onClick={() => {
-          left();
-        }}> <LeftArrov></LeftArrov>   </ButtonSlider>
-        )}
-        
-        
-        {photos.length > 3 && (
-          <ButtonSlider onClick={() => {
-            right();
-          }}> <RightArrov></RightArrov>   </ButtonSlider>
-        )}</FlexContainer>
-       
+
+  return (
+
+    <ContentContainer flexDirection='column' justifyContent='center' padding='0' >
+
+
+      <ContentContainer width={width} height={!content?'250px':height} padding='0'>
+        <Window>
+          <APC
+            style={{ transform: `translateX(${offset}px)` }}
+          >
+            {res.map((item: any,index:any) => (
+              <BlockItem key={index} margin={margin}>
+                {content && <CardResultTile flat={item} top='-240px'></CardResultTile>}
+                {!content && <img className='sliderImg' src={CardResultImg} alt="cartImage" />}
+
+              </BlockItem>
+            ))}
+          </APC>
+        </Window>
       </ContentContainer>
-    
+      <FlexContainer gap='20px' position={position} width={widthButton} top={top}> {photos.length > 3 && (
+        <ButtonSlider className={position==='absolute'?"homeSlider2":'homeSlider'} onClick={() => {
+          left();
+        }}> <LeftArrov className="leftArrov"></LeftArrov>   </ButtonSlider>
+       )}
+
+        {photos.length > 3 && (
+          <ButtonSlider className={position==='absolute'?"homeSlider2":'homeSlider'} onClick={() => {
+            right();
+          }}> <RightArrov className="rightArrov"></RightArrov>   </ButtonSlider>
+        )}
+      </FlexContainer>
+
+    </ContentContainer>
+
   );
 };
 

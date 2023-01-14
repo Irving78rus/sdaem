@@ -14,53 +14,10 @@ interface Props {
   left:any;
   flexDirection:any;
 }
-
-const SelectStl = styled.div<Props>`
-  display: flex;
-  align-items: center;
-  z-index:2;
-  padding: 17px 18px;
-  flex-direction:${props=>props.flexDirection||'row'};
-  width: ${(props) => props.width || "150px"};
-  font-weight: ${(props) => props.fontWeight || "400"};
-  color: ${(props) => props.color || "black"};
-  background-color: ${(props) => props.backgroundColor || "#F8F8F8"};
-  border: 2px solid #f8f8f8;
-  height: 31px;
-  border-radius: 20px;
-
-  &:hover {
-    background-color: rgba(102, 78, 249, 0.1);
-    cursor: pointer;
-    border: 2px solid rgba(102, 78, 249, 0);
-  }
-
-  &.active {
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    background-color: white;
-    border: 2px solid rgba(102, 78, 249, 0.8);
-  }
-`;
-const Arrow = styled.div<Props>`
- position: absolute;
- top:4px;
- border:none;
-    width: 66px;
-    height: 30px; 
-    img{
-      position: absolute;
-      border:none;
-      top:10px;
-      left:${(props) => props.left || "0px"};
-     
-    }
  
-}
- `;
-
 const Wrapper = styled.div`
+position:relative;
+top:110%;
   display: flex;
   align-items: center;
  cursor:pointer;

@@ -18,6 +18,7 @@ import IconMap from "../share/IconMap";
 import UserImg from "../../assest/icon/UserImg";
 import HeartImg from "../../assest/icon/HeartImg";
 import HeartImg2 from "../../assest/icon/HeartImg2";
+import Slider from "../../UI/Slider";
 
 interface Props {
   height?: any;
@@ -119,6 +120,7 @@ const Gold = styled.div`
   background: linear-gradient(106.06deg, #ffd54f 1.12%, #fec100 97.96%);
   border-radius: 0px 10px 10px 10px;
   position: absolute;
+  z-index:5;
   top: 0;
   right: 0;
   p {
@@ -151,7 +153,7 @@ export default function CardResultList({ flat }: any) {
     <>
       <Card>
         <IMGContainer>
-          <img src={CardResultImg} alt="cartImage" />
+        <Slider  photos={[1,2,3,4,5,6,7]} widthButton='100%' top='50%' position='absolute' width='407px' height='200px' PAGE_WIDTH='1221' CardResultImg={CardResultImg} margin='0'></Slider>
           <Gold>
             <p>Gold</p>
           </Gold>

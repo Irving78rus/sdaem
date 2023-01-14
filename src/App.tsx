@@ -20,13 +20,32 @@ import { Authorization } from './components/authorization/Auth/Authorization';
 import { Registration } from './components/authorization/Registration/Registration';
 import { Context } from './redux/context';
 function App() {
- 
+  const [isActiveSelectCity, setIsActiveSelectCity] = useState(false);
+  const [isActiveSelectRooms, setIsActiveSelectRooms] = useState(false);
+  const [isActiveSelectMetro, setIsActiveSelectMetro] = useState(false);
+  const [isActiveSelectDistrict, setIsActiveSelectDistrict] = useState(false);
+  const [isActiveSelectSleepingPlaces, setIsActiveSelectSleepingPlaces] = useState(false);
+
+ const closeAllSelect = ()=>{
+  setIsActiveSelectCity(false)
+  setIsActiveSelectRooms(false)
+  setIsActiveSelectMetro(false)
+  setIsActiveSelectDistrict(false)
+  setIsActiveSelectSleepingPlaces(false)
+  setDropSelectList(false)
+ }
+
   const [dropSelectList, setDropSelectList] = useState(false);
   return (
     <div  style={{minHeight:'100vh',display:'flex',flexDirection:'column' }}>
    <Context.Provider
         value={{
-          dropSelectList, setDropSelectList
+          dropSelectList, setDropSelectList,
+          isActiveSelectCity, setIsActiveSelectCity
+          ,isActiveSelectRooms, setIsActiveSelectRooms,
+          isActiveSelectMetro, setIsActiveSelectMetro,
+          isActiveSelectDistrict, setIsActiveSelectDistrict,
+          isActiveSelectSleepingPlaces, setIsActiveSelectSleepingPlaces,closeAllSelect
         }}
       >
     <TopHeader/>

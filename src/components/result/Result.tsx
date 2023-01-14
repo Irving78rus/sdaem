@@ -33,34 +33,7 @@ export default function Result() {
    }
   const rooms = flat.map((item ) => item.rooms);  
   const uniqueRooms = rooms.filter((item , pos ) => rooms.indexOf(item) === pos);
-  const SearchFormFields = [
-
-    {
-      title: "Комнаты ",
-      techTitle: "rooms",
-      id: 1,
-      select: "Выберите",
-      active: false,
-      list: uniqueRooms,
-    },
-    {
-      title: "Цена за сутки ",
-      techTitle: "price",
-      id: 2,
-      select: "Выберите",
-      active: false,
-      list: '',
-    },
    
-    {
-      title: "",
-      techTitle: "all",
-      id: 3,
-      select: "Больше опций",
-      active: false,
-      list: "",
-    },
-  ];
 
   const params:any = useAppSelector((state) => state.baseFlat.params);
   const res:any = useAppSelector((state) => state.baseFlat.res);
@@ -130,14 +103,14 @@ export default function Result() {
       <BackgroundColor  onClick={() => setDropSelectList(false)}>
         <ContentContainer width={'100%'} flexDirection='column'>
 
-          <FormSearch city={params.city} map={false} clearButton={true} flexDirection='row' alignItems='center' justifyContent={"space-between"} SearchFormFields={SearchFormFields}></FormSearch>
+          <FormSearch city={params.city} map={false} clearButton={true} flexDirection='row' alignItems='center' justifyContent={"space-between"}  ></FormSearch>
 
         </ContentContainer>
       </BackgroundColor>
 
       <ContentContainer flexDirection="column" width={'100%'} onClick={() => setDropSelectList(false)}>
-        <FlexContainer width={'100%'} justifyContent={'space-between'}>
-          <Select   width={'180px'} left={'130px'} 
+        <FlexContainer width={'100%'} justifyContent={'space-between'} margin='20px 0 0 0'>
+          {/* <Select   width={'180px'} left={'130px'} 
           techTitle={filter.techTitle}
           list={filter.list}
           activeSelect={activeSelect}
@@ -146,8 +119,8 @@ export default function Result() {
            
           select={filter.select}
            
-          > </Select>
-          <FlexContainer>
+          > </Select> */}
+          <FlexContainer >
           <Toggle className={isDisplayTile?undefined:'active'} onClick={() =>{setisDisplayTile(false)}}>
           <ButtonList fill='#664EF9'></ButtonList> Список
           </Toggle>

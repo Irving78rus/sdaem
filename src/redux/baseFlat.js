@@ -43,6 +43,7 @@ const baseFlat = createSlice({
   initialState,
   reducers: {
     getFilterFlats: (state, param) => {
+      console.log(param.payload);
       state.params = param.payload
       
       const allParams = {}
@@ -51,17 +52,21 @@ const baseFlat = createSlice({
           allParams[key] = param.payload[key]
         }
       }
-       
-      state.res = state.flat.filter((item) => {
+       console.log(allParams);
+      const result = state.flat.filter((item) => {
         let resParams = true
         for (let key in allParams) {
           if (allParams[key] === item[key]) { }
           else if (key === 'upPrice' && item.cost > allParams.upPrice) { }
           else if (key === 'toPrice' && item.cost < allParams.toPrice) { }
           else { resParams = false }
+          console.log(key);
         }
+         
         return resParams && item
       });
+      console.log(result);
+      state.res =  result
     },
     setCitytoStore: (state, param) => {
       state.params = { ...state.params, city: param.payload };
