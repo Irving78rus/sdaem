@@ -283,7 +283,7 @@ export default function Home() {
               <WrapperFilter2></WrapperFilter2>
             </WrapperFilter>
           </FlexContainer>
-          <Slider photos={flats} content={true} width='1380px' height='720px'></Slider>
+          <Slider photos={flats} content={true} width='1491px' ></Slider>
           {/* <ContentSwiper>   <Carousel>
             {content}
           </Carousel>  </ContentSwiper> */}

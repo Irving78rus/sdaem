@@ -12,6 +12,7 @@ const Window = styled.div`
   height: 100%;
   width: 100%;
   overflow: hidden;
+  justify-content:flex-start;
  `
  const APC = styled.div`
  
@@ -29,12 +30,13 @@ const Window = styled.div`
 
   position: relative;
 display:flex;
-width:370px;
-height:650px;
-padding:40px;
+width:407px;
+height:575px;
+ 
 .sliderImg{
-  width:200px;
-  height:150px;
+ 
+  width:407px;
+  height:200px;
 }
  `
  const  ButtonSlider = styled.div`
@@ -71,19 +73,18 @@ top: 37%;
     transform: rotate(225deg)
 `
 // import Checked from "./Checked";
-const PAGE_WIDTH = 1380
+const PAGE_WIDTH = 1491
 // const maxOffset = -900
 const Slider = ({photos,content=false,width,height,CardResultImg}:any) => {
   
   const [offset, setOffset] = useState(0);
   const [maxOffset, setMaxOffset] = useState(0);
-  const [leftNumber, setLeftNumber]=useState(0)
   const [rightNumber, setRightNumber]=useState(4)
   const [res, setRes]=useState([photos.slice(0,3)])
  
   useEffect(() => {
-    setRes(photos.slice(leftNumber,rightNumber)) 
-  }, [leftNumber,rightNumber,photos])
+    setRes(photos.slice(0,rightNumber)) 
+  }, [rightNumber,photos])
   
   useEffect(() => {
     setMaxOffset(-(PAGE_WIDTH * (Math.ceil(photos.length / 3) - 1)));

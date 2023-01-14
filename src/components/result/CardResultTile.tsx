@@ -24,7 +24,6 @@ interface Props {
 const Card = styled.div`
   position: relative;
   background-color: #fff;
-  margin-top: 24px;
   width: 407px;
   box-shadow: 0px 20px 40px rgba(135, 124, 202, 0.15);
   border-radius: 10px;
