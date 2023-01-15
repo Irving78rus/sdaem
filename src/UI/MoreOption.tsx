@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { isTemplateExpression } from "typescript";
 import Arrov from "../assest/icon/arrov.svg";
-import { setCountRooms,  setGasStove   } from "../redux/baseFlat";
+ 
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 interface Props {
   background?: any;

@@ -14,7 +14,7 @@ export const cityArr = ['Минск','Гомель','Брест',"Витебск
     while (i<500){
         const cityRand = Math.floor(Math.random() * cityArr.length);
         const costRand = Math.floor(Math.random() * 250)+1;
-        const roomsRand = Math.floor(Math.random() * 6)+1;
+        const roomsRand = Math.floor(Math.random() * 2)+1;
         const metroRand = Math.floor(Math.random() * MetroArr.length);
         const districtRand = Math.floor(Math.random() * districtArr.length);
         const sleepingPlacesRand = Math.floor(Math.random() * 4)+1;

@@ -35,15 +35,15 @@ export default function FormSearch(props: any) {
     isActiveSelectSleepingPlaces, setIsActiveSelectSleepingPlaces } = useContext(Context);
     const dispatch = useAppDispatch();
     console.log({
-      city: props.city, upPrice: upPrice, toPrice: toPrice, rooms: rooms,
-      metro: props.metro, district: props.district, sleepingPlaces: sleepingPlaces, GasStove: GasStove, Oven: Oven,
+      city: props.city, upPrice:  Number(upPrice), toPrice:  Number(toPrice), rooms: Number(rooms),
+      metro: props.metro, district: props.district, sleepingPlaces:  Number(sleepingPlaces), GasStove: GasStove, Oven: Oven,
       CoffeeMaker: CoffeeMaker, MicrowaveOven: MicrowaveOven, Dishes: Dishes, Dishwasher: Dishwasher
     });
     
     const addParamsToStore = (e: any) => {
       dispatch(getFilterFlats({
-        city: props.city, upPrice: upPrice, toPrice: toPrice, rooms: rooms,
-        metro: props.metro, district: props.district, sleepingPlaces: sleepingPlaces, GasStove: GasStove, Oven: Oven,
+        city: props.city, upPrice:  Number(upPrice), toPrice:  Number(toPrice), rooms: Number(rooms),
+        metro: props.metro, district: props.district, sleepingPlaces:  Number(sleepingPlaces), GasStove: GasStove, Oven: Oven,
         CoffeeMaker: CoffeeMaker, MicrowaveOven: MicrowaveOven, Dishes: Dishes, Dishwasher: Dishwasher
       }));
   
