@@ -11,7 +11,7 @@ export const cityArr = ['Минск','Гомель','Брест',"Витебск
  
  export const createFlatList = ()=>{
     let i = 0
-    while (i<500){
+    while (i<150000){
         const cityRand = Math.floor(Math.random() * cityArr.length);
         const costRand = Math.floor(Math.random() * 250)+1;
         const roomsRand = Math.floor(Math.random() * 2)+1;

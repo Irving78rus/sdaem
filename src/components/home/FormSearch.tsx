@@ -19,20 +19,15 @@ import { GetListUniqueItems } from "../share/hooks";
 
 export default function FormSearch(props: any) {
   const params = useAppSelector((state: any) => state.baseFlat.params);
-  const [upPrice, setUpPrice] = useState('');
-  const [toPrice, setToPrice] = useState('');
-  const [rooms, setRooms] = useState(params.rooms);
-  const [sleepingPlaces, setSleepingPlaces] = useState(params.sleepingPlaces);
-  const [GasStove, setGasStove] = useState(null);
-  const [Oven, setOven] = useState(null);
-  const [CoffeeMaker, setCoffeeMaker] = useState(null);
-  const [MicrowaveOven, setMicrowaveOven] = useState(null);
-  const [Dishes, setDishes] = useState(null);
-  const [Dishwasher, setDishwasher] = useState(null);
+  
+  
+  
   const { isActiveSelectCity, setIsActiveSelectCity, isActiveSelectRooms, setIsActiveSelectRooms,
     isActiveSelectMetro, setIsActiveSelectMetro,
     isActiveSelectDistrict, setIsActiveSelectDistrict,
-    isActiveSelectSleepingPlaces, setIsActiveSelectSleepingPlaces } = useContext(Context);
+    isActiveSelectSleepingPlaces, setIsActiveSelectSleepingPlaces,rooms, setRooms,sleepingPlaces, setSleepingPlaces,
+    GasStove, setGasStove,Oven, setOven,CoffeeMaker, setCoffeeMaker,MicrowaveOven, setMicrowaveOven,
+    Dishes, setDishes,Dishwasher, setDishwasher,upPrice, setUpPrice,toPrice, setToPrice } = useContext(Context);
     const dispatch = useAppDispatch();
     console.log({
       city: props.city, upPrice:  Number(upPrice), toPrice:  Number(toPrice), rooms: Number(rooms),
@@ -41,6 +36,8 @@ export default function FormSearch(props: any) {
     });
     
     const addParamsToStore = (e: any) => {
+      console.log(props.city);
+      
       dispatch(getFilterFlats({
         city: props.city, upPrice:  Number(upPrice), toPrice:  Number(toPrice), rooms: Number(rooms),
         metro: props.metro, district: props.district, sleepingPlaces:  Number(sleepingPlaces), GasStove: GasStove, Oven: Oven,
@@ -50,19 +47,19 @@ export default function FormSearch(props: any) {
     }
     const clearParams = (e: any) => {
       dispatch(getFilterFlats({
-        city: '', upPrice: 0, toPrice: 0, rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: null, Oven: null,
+        city: '', upPrice: '', toPrice: '', rooms: '', metro: '', district: '', sleepingPlaces: '', GasStove: null, Oven: null,
         CoffeeMaker: null, MicrowaveOven: null, Dishes: null, Dishwasher: null
       }));
       setUpPrice('')
       setToPrice('')
       setRooms('')
       setSleepingPlaces('')
-      setGasStove(null)
-      setOven(null)
-      setCoffeeMaker(null)
-      setMicrowaveOven(null)
-      setDishes(null)
-      setDishwasher(null)
+      setGasStove(false)
+      setOven(false)
+      setCoffeeMaker(false)
+      setMicrowaveOven(false)
+      setDishes(false)
+      setDishwasher(false)
   
     }
   const [isActive, setIsActive] = useState(false)
@@ -86,17 +83,17 @@ export default function FormSearch(props: any) {
         borderRadius="0 10px 10px 10px"
         onClick={(e: any) => setIsActiveSelectCity(false)}
       >
-         {props.map &&<><Select options={GetListUniqueItems('city')}  selectedOption={props.setCity} title='Город' isActiveSelect={isActiveSelectCity} setIsActiveSelect={setIsActiveSelectCity} />
+         {props.map &&<><Select options={GetListUniqueItems('city')} selected={props.city||'Выберите'}  selectedOption={props.setCity} title='Город' isActiveSelect={isActiveSelectCity} setIsActiveSelect={setIsActiveSelectCity} />
        <VerticalLine></VerticalLine></>  }
-        <Select options={GetListUniqueItems('rooms')} selectedOption={setRooms} title='Комнаты' isActiveSelect={isActiveSelectRooms} setIsActiveSelect={setIsActiveSelectRooms} />
+        <Select options={GetListUniqueItems('rooms')} selected={rooms||'Выберите'} selectedOption={setRooms} title='Комнаты' isActiveSelect={isActiveSelectRooms} setIsActiveSelect={setIsActiveSelectRooms} />
         <VerticalLine></VerticalLine>
         <FlexContainer flexDirection='column' gap='10px'>
           <SelectTitle>{"Цена за сутки (BYN)"}</SelectTitle>
           <FlexContainer  >
             <Input type={"text"} width={"80px"} height={"37px"} placeholder="  От"
-              onChange={(e: any) => { setUpPrice(e.target.value) }} value={upPrice} />
+              onChange={(e: any) => { setUpPrice(e.target.value) }} value={ upPrice} />
             <Input width={"80px"} placeholder="  До" type={"text"} height={"37px"}
-              onChange={(e: any) => { setToPrice(e.target.value) }} value={toPrice} />
+              onChange={(e: any) => { setToPrice(e.target.value) }} value={ toPrice} />
           </FlexContainer>
         </FlexContainer>
         <VerticalLine></VerticalLine>
@@ -122,9 +119,9 @@ export default function FormSearch(props: any) {
       </FlexContainer>
       {isActive && <List {...props}>
         <FlexContainer >
-          <Select options={uniqueMetro} selectedOption={props.setMetro} title='Метро' isActiveSelect={isActiveSelectMetro} setIsActiveSelect={setIsActiveSelectMetro} />
-          <Select options={uniqueDistrict} selectedOption={props.setDistrict} title='Район' isActiveSelect={isActiveSelectDistrict} setIsActiveSelect={setIsActiveSelectDistrict} />
-          <Select options={uniqueSleepingPlaces} selectedOption={setSleepingPlaces} title='Спальные места' isActiveSelect={isActiveSelectSleepingPlaces} setIsActiveSelect={setIsActiveSelectSleepingPlaces} />
+          <Select options={uniqueMetro} selected={props.metro||'Выберите'} selectedOption={props.setMetro} title='Метро' isActiveSelect={isActiveSelectMetro} setIsActiveSelect={setIsActiveSelectMetro} />
+          <Select options={uniqueDistrict} selected={props.district||'Выберите'} selectedOption={props.setDistrict} title='Район' isActiveSelect={isActiveSelectDistrict} setIsActiveSelect={setIsActiveSelectDistrict} />
+          <Select options={uniqueSleepingPlaces} selected={sleepingPlaces||'Выберите'} selectedOption={setSleepingPlaces} title='Спальные места' isActiveSelect={isActiveSelectSleepingPlaces} setIsActiveSelect={setIsActiveSelectSleepingPlaces} />
         </FlexContainer>
         <FlexContainer>
           {allOption.map((item: any, index) => (

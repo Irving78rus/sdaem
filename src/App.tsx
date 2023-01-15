@@ -20,6 +20,7 @@ import { Authorization } from './components/authorization/Auth/Authorization';
 import { Registration } from './components/authorization/Registration/Registration';
 import { Context } from './redux/context';
 function App() {
+  const params = useAppSelector((state: any) => state.baseFlat.params);
   const [isActiveSelectCity, setIsActiveSelectCity] = useState(false);
   const [isActiveSelectRooms, setIsActiveSelectRooms] = useState(false);
   const [isActiveSelectMetro, setIsActiveSelectMetro] = useState(false);
@@ -34,8 +35,20 @@ function App() {
   setIsActiveSelectSleepingPlaces(false)
   setDropSelectList(false)
  }
-
+ const [city, setCity] = useState(params.city);
+  const [metro, setMetro] = useState(params.metro);
+  const [district, setDistrict] = useState(params.district);
   const [dropSelectList, setDropSelectList] = useState(false);
+  const [rooms, setRooms] = useState(params.rooms);
+  const [sleepingPlaces, setSleepingPlaces] = useState(params.sleepingPlaces);
+  const [GasStove, setGasStove] = useState(params.GasStove);
+  const [Oven, setOven] = useState(params.Oven);
+  const [CoffeeMaker, setCoffeeMaker] = useState(params.CoffeeMaker);
+  const [MicrowaveOven, setMicrowaveOven] = useState(params.MicrowaveOven);
+  const [Dishes, setDishes] = useState(params.Dishes);
+  const [Dishwasher, setDishwasher] = useState(params.Dishwasher);
+  const [upPrice, setUpPrice] = useState(params.upPrice);
+  const [toPrice, setToPrice] = useState(params.toPrice);
   return (
     <div  style={{minHeight:'100vh',display:'flex',flexDirection:'column' }}>
    <Context.Provider
@@ -45,7 +58,13 @@ function App() {
           ,isActiveSelectRooms, setIsActiveSelectRooms,
           isActiveSelectMetro, setIsActiveSelectMetro,
           isActiveSelectDistrict, setIsActiveSelectDistrict,
-          isActiveSelectSleepingPlaces, setIsActiveSelectSleepingPlaces,closeAllSelect
+          isActiveSelectSleepingPlaces, setIsActiveSelectSleepingPlaces,closeAllSelect,
+          city, setCity,
+          metro, setMetro,
+          district, setDistrict,
+          rooms, setRooms,sleepingPlaces, setSleepingPlaces,
+          GasStove, setGasStove,Oven, setOven,CoffeeMaker, setCoffeeMaker,MicrowaveOven, setMicrowaveOven,
+          Dishes, setDishes,Dishwasher, setDishwasher,upPrice, setUpPrice,toPrice, setToPrice
         }}
       >
     <TopHeader/>

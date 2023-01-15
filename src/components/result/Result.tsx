@@ -19,7 +19,10 @@ import ButtonList from "../../assest/icon/ButtonList";
 export default function Result() {
   const [isDisplayTile, setisDisplayTile] = useState(true);
 
-  const { setDropSelectList } = useContext(Context);
+  const { setDropSelectList,
+    
+    metro, setMetro,
+    district, setDistrict } = useContext(Context);
   const flat = useAppSelector((state) => state.baseFlat.flat);
 
   const filter: any = {
@@ -32,7 +35,7 @@ export default function Result() {
   };
   const rooms = flat.map((item) => item.rooms);
   const uniqueRooms = rooms.filter((item, pos) => rooms.indexOf(item) === pos);
-
+const pending : any = useAppSelector((state) => state.baseFlat.pending);
   const params: any = useAppSelector((state) => state.baseFlat.params);
   const res: any = useAppSelector((state) => state.baseFlat.res);
   console.log(res);
@@ -108,6 +111,11 @@ export default function Result() {
             flexDirection="row"
             alignItems="center"
             justifyContent={"space-between"}
+             
+                metro={metro}
+                setMetro={setMetro}
+                district={district}
+                setDistrict={setDistrict}
           ></FormSearch>
         </ContentContainer>
       </BackgroundColor>
@@ -149,7 +157,7 @@ export default function Result() {
             <Toggle>{<IconMap fill="#664EF9 "></IconMap>} Показать на карте</Toggle>
           </FlexContainer>
         </FlexContainer>
-        <h4>Найдено {res.length} результата</h4>
+        {pending?<><h4>Найдено {res.length} результата</h4>
         <FlexContainer flexWrap="wrap" gap={"40px"}>
           {paginatedFlat.length !== 0 &&
             paginatedFlat.map((item: any, index: any) =>
@@ -159,7 +167,8 @@ export default function Result() {
                 <CardResultList key={index} flat={item}></CardResultList>
               )
             )}
-        </FlexContainer>
+        </FlexContainer></>:<div>Загрузка</div>}
+        
         <FlexContainer width={"100%"} alignItems={"center"} margin={"50px 0"}>
           <Pagination
             itemsPerPage={itemsPerPage}

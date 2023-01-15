@@ -51,13 +51,15 @@ import { Flex } from "../result/ResultStyle";
 
 export default function Home() {
   const params = useAppSelector((state: any) => state.baseFlat.params);
-  const {closeAllSelect,dropSelectList, setDropSelectList,isActiveSelectCity, setIsActiveSelectCity,isActiveSelectRooms, setIsActiveSelectRooms } = useContext(Context);
+  const {closeAllSelect,dropSelectList, setDropSelectList,isActiveSelectCity,
+     setIsActiveSelectCity,isActiveSelectRooms, setIsActiveSelectRooms,
+     city, setCity,
+     metro, setMetro,
+     district, setDistrict } = useContext(Context);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [city, setCity] = useState(params.city);
-  const [metro, setMetro] = useState(params.metro);
-  const [district, setDistrict] = useState(params.district);
+ 
   const flats = useAppSelector((state: any) => state.baseFlat.flat);
   const topNavigationFormSearch = useAppSelector((state: any) => state.baseFlat.topNavigationFormSearch);
   const showFlatInCity = (item: string) => {

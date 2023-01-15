@@ -98,10 +98,10 @@ line-height: 17px;
  
 color: #BDBDBD;
  `;
-const Select = ({options,title,isActiveSelect,setIsActiveSelect,selectedOption}:any) => {
+const Select = ({options,title,isActiveSelect,setIsActiveSelect,selectedOption,selected}:any) => {
   const {closeAllSelect} = useContext(Context);
 
-  const [selected, setSelected] = useState('Выберите');
+  const [selected2, setSelected2] = useState('Выберите');
   
 
   return (
@@ -112,7 +112,7 @@ const Select = ({options,title,isActiveSelect,setIsActiveSelect,selectedOption}:
             closeAllSelect()
             setIsActiveSelect(!isActiveSelect)
           }}>
-            <span>{selected}</span>
+            <span>{selected }</span>
             <Arrow >
             <img src={Arrov} alt="arrov"></img>
         </Arrow>
@@ -120,7 +120,7 @@ const Select = ({options,title,isActiveSelect,setIsActiveSelect,selectedOption}:
           {isActiveSelect&&
           <div className="dropdown-content">
             {options.map((option:any)=><div key={option} className="dropdown-item" onClick={(e:any)=>{
-              setSelected(e.target.textContent)
+               setSelected2(e.target.textContent)
               selectedOption(e.target.textContent)
               closeAllSelect()
               

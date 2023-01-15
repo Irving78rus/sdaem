@@ -7,12 +7,12 @@ const initialState = {
   flat: flatList,
   params: {
     city: "",
-    upPrice: 0,
-    toPrice: 0,
-    rooms: 0,
+    upPrice: "",
+    toPrice: "",
+    rooms: "",
     metro: "",
     district: "",
-    sleepingPlaces: 0,
+    sleepingPlaces: "",
     GasStove: null,
     Oven: null,
     CoffeeMaker: null,
@@ -43,6 +43,7 @@ const initialState = {
       active: false,
     },
   ],
+  pending:false
 };
 
 const baseFlat = createSlice({
@@ -50,9 +51,11 @@ const baseFlat = createSlice({
   initialState,
   reducers: {
     getFilterFlats: (state, param) => {
+      state.pending = false
       state.params = param.payload;
       const allParams = {};
       for (let key in param.payload) {
+        
         if (state.params[key]) {
           allParams[key] = param.payload[key];
         }
@@ -71,6 +74,7 @@ const baseFlat = createSlice({
 
         return resParams && item;
       });
+      state.pending = true
     },
      
   },
