@@ -120,7 +120,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
         onClick={() => setDropSelectList(false)}
       >
         <FlexContainer width={"100%"} justifyContent={"space-between"} margin="20px 0 0 0">
-        <Select options={['по цене','по умолчанию']} selected={filter||'Выберите'} selectedOption={setFilter} isActiveSelect={showSelectFilter} setIsActiveSelect={setShowSelectFilter} />
+        <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'} options={['по цене','по умолчанию']} selected={filter||'Выберите'} selectedOption={setFilter} isActiveSelect={showSelectFilter} setIsActiveSelect={setShowSelectFilter} />
           <FlexContainer>
             <Toggle
               className={isDisplayTile ? undefined : "active"}

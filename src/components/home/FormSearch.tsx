@@ -90,9 +90,9 @@ export default function FormSearch(props: any) {
         <FlexContainer flexDirection={props.flexDirection} gap='10px'>
           <SelectTitle>{"Цена за сутки (BYN)"}</SelectTitle>
           <FlexContainer  >
-            <Input type={"text"} width={"80px"} height={"37px"} placeholder="  От"
+            <Input type={"number"} width={"80px"} height={"37px"} placeholder="  От"
               onChange={(e: any) => { setUpPrice(e.target.value) }} value={ upPrice} />
-            <Input width={"80px"} placeholder="  До" type={"text"} height={"37px"}
+            <Input width={"80px"} placeholder="  До" type={"number"} height={"37px"}
               onChange={(e: any) => { setToPrice(e.target.value) }} value={ toPrice} />
           </FlexContainer>
         </FlexContainer>
@@ -102,16 +102,16 @@ export default function FormSearch(props: any) {
         {props.map &&<MoreOption onClick={(e: any) => open(e)}>На карте {<IconMap fill='#664EF9 '></IconMap>}</MoreOption>}
         <FlexContainer>
           {props.clearButton && (
-            <Button fontSize="15px" fontWeight="800" background={"#FFD54F"}
+            <Button fontSize="15px" fontWeight="600" background={"#F8F8F8"}
               width={"130px"} height={"40px"} color={"black"}  onClick={(e: any) => { clearParams(e) }}  >
               {"Очистить"}
             </Button>
           )}
           <NavLink to={"/Result"} style={{ marginRight: "34px", textDecoration: "none" }}>
-            <Button fontSize="15px" fontWeight="800" background={"#FFD54F"}
-              width={"130px"} height={"40px"} color={"black"} onClick={(e: any) => { addParamsToStore(e) }} >
+            <Button fontSize="15px" fontWeight={props.clearButton?"600":'700'} background={props.clearButton? '#664EF9':"#FFD54F"}
+              width={"100%"} height={"40px"} color={props.clearButton?"white":"black"} onClick={(e: any) => { addParamsToStore(e) }} >
               <FlexContainer width={"100%"}>
-                Показать <RightArrov></RightArrov>
+               {props.clearButton?"Показать объекты":'Показать'} <RightArrov></RightArrov>
               </FlexContainer>
             </Button>
           </NavLink>

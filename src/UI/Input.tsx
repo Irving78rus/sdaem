@@ -29,6 +29,7 @@ const InputStl = styled.input.attrs<Props>((attrs) => ({
   gap: 10px;
   border: 2px solid #f8f8f8;
   outline: none;
+
   &:focus {
     outline: none;
     border: 2px solid rgba(102, 78, 249, 0.8);
@@ -43,21 +44,20 @@ const InputB = styled.div<Props>`
   height: ${(props) => props.height || "100%"};
   position: relative;
   display: flex;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+     appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
   align-items: center;
   justify-content: center;
   svg {
     fill: currentColor;
   }
-`;
-const IMG = styled.div<Props>`
-  position: absolute;
-  svg {
-    fill: currentColor;
-  }
-  left: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 const Input = (props: any) => {
@@ -69,15 +69,5 @@ const Input = (props: any) => {
     </>
   );
 };
-// const Input = ({ children, placeholder, type,width }: any, props: any) => {
 
-//   return (
-//     <>
-//       <InputB {...props}>
-//        {children&&<IMG {...props}> {children} </IMG>}
-//         <InputStl {...props} placeholder={placeholder} type={type} width={width}/>
-//       </InputB>
-//     </>
-//   );
-// };
 export default Input;

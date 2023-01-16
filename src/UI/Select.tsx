@@ -15,7 +15,9 @@ interface Props {
   flexDirection?: any;
   display: any;
   alignItems: any;
+  boxShadow?: any;
 }
+ 
 
 const Dropdown = styled.div<Props>`
   padding:10px;
@@ -27,7 +29,8 @@ const Dropdown = styled.div<Props>`
     position: relative;
     width: 150px;
     height: 37px;
-    background: #f8f8f8;
+    background: ${(props) => props.background || '#f8f8f8'};  
+    box-shadow: ${(props) => props.boxShadow || ''};  
     border-radius: 20px;
     font-family: "Inter";
     font-style: normal;
@@ -82,13 +85,13 @@ const Arrow = styled.div `
  position: absolute;
  top:4px;
  border:none;
-    width: 66px;
+    width: 86%;
     height: 30px; 
     img{
       position: absolute;
       border:none;
       top:10px;
-      left:  100px ;
+      right:  0 ;
        
  }
  `;
@@ -102,7 +105,7 @@ color: #BDBDBD;
 const Select = (props:any ) => {
   const {closeAllSelect} = useContext(Context);
 
-  const [selected2, setSelected2] = useState('Выберите');
+ 
   
 
   return (
@@ -121,7 +124,7 @@ const Select = (props:any ) => {
           {props.isActiveSelect&&
           <div className="dropdown-content">
             {props.options.map((option:any)=><div key={option} className="dropdown-item" onClick={(e:any)=>{
-               setSelected2(e.target.textContent)
+               
                props.selectedOption(e.target.textContent)
               // closeAllSelect()
               props.setIsActiveSelect(!props.isActiveSelect)
