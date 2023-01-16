@@ -47,7 +47,7 @@ import IconMap from "../share/IconMap";
 import { Context } from "../../redux/context";
 import { RightArrov } from "./FormSearchStyle";
 import { Flex } from "../result/ResultStyle";
-
+ 
 
 export default function Home() {
   const params = useAppSelector((state: any) => state.baseFlat.params);
@@ -55,7 +55,10 @@ export default function Home() {
      setIsActiveSelectCity,isActiveSelectRooms, setIsActiveSelectRooms,
      city, setCity,
      metro, setMetro,
-     district, setDistrict } = useContext(Context);
+     district, setDistrict,
+     isActiveSelectMetro, setIsActiveSelectMetro,
+     isActiveSelectDistrict, setIsActiveSelectDistrict,
+    } = useContext(Context);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -87,28 +90,10 @@ export default function Home() {
     "Коттеджи и усадьбы (жилье) на Нарочи",
     "Коттеджи и усадьбы (жилье) у воды",
   ];
-
-  const MoreOptionsList = [
-    {
-      title: "Район",
-      techTitle: "district",
-      id: 7,
-      select: "Район",
-      active: false,
-      list: GetListUniqueItems('district'),
-    },
-    {
-      title: "Метро",
-      techTitle: "metro",
-      select: "Метро",
-      id: 8,
-      active: false,
-      list: GetListUniqueItems('metro'),
-    },
-  ];
-
  
-  
+
+  const uniqueMetro = GetListUniqueItems('metro')
+  const uniqueDistrict = GetListUniqueItems('district')
   return (
     <>
       <Background onClick={() => closeAllSelect()}>
@@ -143,6 +128,8 @@ export default function Home() {
                 setMetro={setMetro}
                 district={district}
                 setDistrict={setDistrict}
+                uniqueMetro={uniqueMetro}
+                uniqueDistrict={uniqueDistrict}
               ></FormSearch>
             </FlexContainer>
           </ContentContainer>
@@ -220,34 +207,9 @@ export default function Home() {
             <h3 className="subTitle"> Aренда квартир в {params.city}</h3>
             <WrapperFilter>
               <FlexContainer>
-                {MoreOptionsList.map((item: any) => (
-                  <FlexContainer
-                    height="100px"
-                    justifyContent="center"
-                    key={item.id}
-                    flexDirection="column"
-                    alignItems="flex-start"
-                    padding="20px"
-                  >
-                    {/* <Select
-                      techTitle={item.techTitle}
-                      list={item.list}
-                      activeSelect={activeSelectElement}
-                      setActiveSelect={setActiveSelectElement}
-                      id={item.id}
-                      item={item}
-                      select={item.select}
-                      width={"150px"}
-                      left={"110px"}
-                       
-                      setMetro={setMetro}
-                      setDistrict={setDistrict}
-                      metro={metro}
-                      district={district}
-                      backgroundColor='white'
-                    ></Select> */}
-                  </FlexContainer>
-                ))}
+              <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'} options={uniqueMetro}  selected={ metro || 'Метро'} selectedOption={ setMetro}  isActiveSelect={isActiveSelectMetro} setIsActiveSelect={setIsActiveSelectMetro} />
+              <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'} options={ uniqueDistrict}  selected={ district || 'Район'} selectedOption={ setDistrict}  isActiveSelect={isActiveSelectDistrict} setIsActiveSelect={setIsActiveSelectDistrict} />
+
               </FlexContainer>
               <WrapperFilter2></WrapperFilter2>
             </WrapperFilter>

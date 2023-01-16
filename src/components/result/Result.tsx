@@ -6,7 +6,7 @@ import ContentContainer from "../../UI/ContentContainer";
 import FormSearch from "../home/FormSearch";
 import CardResultTile from "./CardResultTile";
 import CardResultList from "./CardResultList";
-import { useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import Select from "../../UI/Select";
 import { Pagination } from "../share/Pagination/Pagination";
 import ShearSocial from "../share/ShearSocial";
@@ -16,6 +16,7 @@ import IconMap from "../share/IconMap";
 import ButtonPlit from "../../assest/icon/ButtonPlit";
 import ButtonList from "../../assest/icon/ButtonList";
 import { getWord } from "../share/utils/logic";
+import { getFilterFlats } from "../../redux/baseFlat";
 
 export default function Result() {
   const [isDisplayTile, setisDisplayTile] = useState(true);
@@ -34,24 +35,31 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
   const res: any = useAppSelector((state) => state.baseFlat.res);
   console.log(res);
   console.log(params);
-
   const recommendСriteria = [
-    "Недорогие",
-    "1-комнатные",
-    "2-комнатные",
-    "3-комнатные",
-    "4-комнатные",
-    "5-комнатные",
-    "Заводской р.",
-    "Ленинский р.",
-    "Московский р.",
-    "Октябрьский р.",
-    "Партизанский р.",
-    "Первомайский р.",
-    "Советский р.",
-    "Фрунзенский р.",
-    "Центральный р.",
+    {title:"Недорогие", name: "toPrice", value:60},
+    {title:"1-комнатные", name: "rooms" ,value:1} ,
+    {title:"2-комнатные", name: "rooms" ,value:2} ,
+    {title:"3-комнатные", name: "rooms" ,value:3} ,
+    {title:"4-комнатные", name: "rooms" ,value:4} ,
+    {title:"5-комнатные", name: "rooms" ,value:5} ,
+    {title:"Заводской р.", name: "district" ,value:'Заводской'} ,
+    {title:"Ленинский р.", name: "district" ,value:'Ленинский'} ,
+    {title:"Московский р.", name: "district" ,value:'Московский'} ,
+    {title:"Октябрьский р.", name: "district" ,value:'Октябрьский'} ,
+    {title:"Партизанский р.", name: "district" ,value:'Партизанский'} ,
+    {title:"Первомайский р.", name: "district" ,value:'Первомайский'} ,
+    {title:"Советский р.", name: "district" ,value:'Советский'} ,
+    {title:"Фрунзенский р.", name: "district" ,value:'Фрунзенский'} ,
+    {title:"Центральный р.", name: "district" ,value:'Центральный'} ,
   ];
+
+  const dispatch = useAppDispatch();
+  const addParamsToStore = (item:any) => {
+   
+    dispatch(getFilterFlats({[item.name]:item.value}));
+
+  }
+  
   const itemsPerPage = 6;
   const [activePage, setActivePage] = useState(1);
 
@@ -70,26 +78,28 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
   return (
     <>
       <HeaderBackground height="280px">
-        <ContentContainer flexDirection={"column"}>
+        <ContentContainer flexDirection={"column"} alignItems={"flex-start"}>
           <FlexContainer flexDirection="column" alignItems={"flex-start"}>
             <Flex>
               <img src={home} alt="home" />
-              <p>Аренда</p>
+              
               <Circle></Circle>
-              <p>Аренда квартир в {params.city}: </p>
+              <p>Квартиры в  {params.city==="Гродно"?"Гродно":params.city==="Гомель"?"Гомеле":(params.city+'e')} </p>
             </Flex>
-            <Title>Аренда квартир в {params.city}</Title>
+            <Title>Аренда квартир в {params.city==="Гродно"?"Гродно":params.city==="Гомель"?"Гомеле":(params.city+'e')} </Title>
             <p>Рекомендуем посмотреть </p>
             <FlexContainer justifyContent={"flex-start"} gap={"15px"} flexWrap="wrap">
               {recommendСriteria.map((item) => (
                 <Button
-                  key={item}
+                  key={item.title}
                   color={"#664EF9"}
                   height={"30px"}
                   padding={"6px 10px"}
                   background={"rgba(102, 78, 249, 0.1)"}
+                  onClick={() =>{addParamsToStore(item)}}
+                  backgroundHover='rgba(102, 78, 249, 0.2)'
                 >
-                  {item}
+                  {item.title}
                 </Button>
               ))}
             </FlexContainer>
@@ -152,7 +162,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
                 <CardResultList key={index} flat={item}></CardResultList>
               )
             )}
-        </FlexContainer></>:<div>Загрузка</div>}
+        </FlexContainer></>:<div>Задайте параметры поиска</div>}
         
         <FlexContainer width={"100%"} alignItems={"center"} margin={"50px 0"}>
           <Pagination

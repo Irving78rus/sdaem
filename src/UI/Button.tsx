@@ -17,6 +17,7 @@ interface  Props {
   backgroundHover:string;
   boxShadowHover:string;
   colorHover:string;
+  opacityHover:string;
 }
 const ButtonStl = styled.button<Props>`
 position:relative;
@@ -43,6 +44,7 @@ position:relative;
     box-shadow: ${props=>props.boxShadowHover||""};
     cursor:pointer;
     color: ${props=>props.colorHover||""};
+    opacity:${props=>props.opacityHover||null};
 }
 `
  
