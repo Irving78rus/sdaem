@@ -84,9 +84,9 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
               <img src={home} alt="home" />
               
               <Circle></Circle>
-              <p>Квартиры в  {params.city==="Гродно"?"Гродно":params.city==="Гомель"?"Гомеле":(params.city+'e')} </p>
+              {params.city?<p>Квартиры в  {params.city==="Гродно"?"Гродно":params.city==="Гомель"?"Гомеле":(params.city+'e')} </p>:<p>Квартиры в Белоруссии</p>}
             </Flex>
-            <Title>Аренда квартир в {params.city==="Гродно"?"Гродно":params.city==="Гомель"?"Гомеле":(params.city+'e')} </Title>
+            {params.city?<Title>Аренда квартир в {params.city==="Гродно"?"Гродно":params.city==="Гомель"?"Гомеле":(params.city+'e')} </Title>:<Title>Аренда квартир в Белоруссии</Title>}
             <p>Рекомендуем посмотреть </p>
             <FlexContainer justifyContent={"flex-start"} gap={"15px"} flexWrap="wrap">
               {recommendСriteria.map((item) => (
