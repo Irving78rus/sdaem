@@ -19,21 +19,14 @@ import { getWord } from "../share/utils/logic";
 
 export default function Result() {
   const [isDisplayTile, setisDisplayTile] = useState(true);
-
+  const [showSelectFilter, setShowSelectFilter] = useState(false);
+  const [filter, setFilter] = useState('');
   const { setDropSelectList,
     
     metro, setMetro,
     district, setDistrict } = useContext(Context);
   const flat = useAppSelector((state) => state.baseFlat.flat);
-
-  const filter: any = {
-    title: "",
-    techTitle: "filter",
-    id: 10,
-    select: "По умолчанию",
-    active: false,
-    list: ["по цене", "по спальным местам"],
-  };
+ 
   const rooms = flat.map((item) => item.rooms);
   const uniqueRooms = rooms.filter((item, pos) => rooms.indexOf(item) === pos);
 const pending : any = useAppSelector((state) => state.baseFlat.pending);
@@ -127,16 +120,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
         onClick={() => setDropSelectList(false)}
       >
         <FlexContainer width={"100%"} justifyContent={"space-between"} margin="20px 0 0 0">
-          {/* <Select   width={'180px'} left={'130px'} 
-          techTitle={filter.techTitle}
-          list={filter.list}
-          activeSelect={activeSelect}
-          setActiveSelect={setActiveSelect}
-          id={filter.id}
-           
-          select={filter.select}
-           
-          > </Select> */}
+        <Select options={['по цене','по умолчанию']} selected={filter||'Выберите'} selectedOption={setFilter} isActiveSelect={showSelectFilter} setIsActiveSelect={setShowSelectFilter} />
           <FlexContainer>
             <Toggle
               className={isDisplayTile ? undefined : "active"}

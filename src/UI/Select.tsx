@@ -123,8 +123,8 @@ const Select = (props:any ) => {
             {props.options.map((option:any)=><div key={option} className="dropdown-item" onClick={(e:any)=>{
                setSelected2(e.target.textContent)
                props.selectedOption(e.target.textContent)
-              closeAllSelect()
-              
+              // closeAllSelect()
+              props.setIsActiveSelect(!props.isActiveSelect)
               }}>{option}</div>)}
         </div> }
           
