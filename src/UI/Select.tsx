@@ -12,15 +12,16 @@ interface Props {
   fontWeight?: any;
   width?: any;
   left: any;
-  flexDirection: any;
+  flexDirection?: any;
   display: any;
   alignItems: any;
 }
 
-const Dropdown = styled.div`
+const Dropdown = styled.div<Props>`
   padding:10px;
   display:flex;
-  flex-direction:column;
+  flex-direction:${(props) => props.flexDirection || 'column'};
+  align-items:${(props) => (props.flexDirection==='row'&&'center') || 'flex-start'};
   gap:10px;
   .dropdown-btn {
     position: relative;
@@ -98,30 +99,30 @@ line-height: 17px;
  
 color: #BDBDBD;
  `;
-const Select = ({options,title,isActiveSelect,setIsActiveSelect,selectedOption,selected}:any) => {
+const Select = (props:any ) => {
   const {closeAllSelect} = useContext(Context);
 
   const [selected2, setSelected2] = useState('Выберите');
   
 
   return (
-    <Dropdown>
-      <Title>{title} </Title>
-          <div className={isActiveSelect?"dropdown-btn active":'dropdown-btn'}  onClick={(e:any)=>{
+    <Dropdown {...props}>
+      <Title>{props.title} </Title>
+          <div className={props.isActiveSelect?"dropdown-btn active":'dropdown-btn'}  onClick={(e:any)=>{
             e.stopPropagation();
             closeAllSelect()
-            setIsActiveSelect(!isActiveSelect)
+            props.setIsActiveSelect(!props.isActiveSelect)
           }}>
-            <span>{selected }</span>
+            <span>{props.selected }</span>
             <Arrow >
             <img src={Arrov} alt="arrov"></img>
         </Arrow>
           </div>
-          {isActiveSelect&&
+          {props.isActiveSelect&&
           <div className="dropdown-content">
-            {options.map((option:any)=><div key={option} className="dropdown-item" onClick={(e:any)=>{
+            {props.options.map((option:any)=><div key={option} className="dropdown-item" onClick={(e:any)=>{
                setSelected2(e.target.textContent)
-              selectedOption(e.target.textContent)
+               props.selectedOption(e.target.textContent)
               closeAllSelect()
               
               }}>{option}</div>)}

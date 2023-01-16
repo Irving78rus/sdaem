@@ -85,9 +85,9 @@ export default function FormSearch(props: any) {
       >
          {props.map &&<><Select options={GetListUniqueItems('city')} selected={props.city||'Выберите'}  selectedOption={props.setCity} title='Город' isActiveSelect={isActiveSelectCity} setIsActiveSelect={setIsActiveSelectCity} />
        <VerticalLine></VerticalLine></>  }
-        <Select options={GetListUniqueItems('rooms')} selected={rooms||'Выберите'} selectedOption={setRooms} title='Комнаты' isActiveSelect={isActiveSelectRooms} setIsActiveSelect={setIsActiveSelectRooms} />
+        <Select options={GetListUniqueItems('rooms')} flexDirection={props.flexDirection} selected={rooms||'Выберите'} selectedOption={setRooms} title='Комнаты' isActiveSelect={isActiveSelectRooms} setIsActiveSelect={setIsActiveSelectRooms} />
         <VerticalLine></VerticalLine>
-        <FlexContainer flexDirection='column' gap='10px'>
+        <FlexContainer flexDirection={props.flexDirection} gap='10px'>
           <SelectTitle>{"Цена за сутки (BYN)"}</SelectTitle>
           <FlexContainer  >
             <Input type={"text"} width={"80px"} height={"37px"} placeholder="  От"

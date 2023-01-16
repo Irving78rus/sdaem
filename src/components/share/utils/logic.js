@@ -27,4 +27,9 @@ export const createNumbersForCell = (count) => {
     rightPortionPageNumber
   }
  } 
- 
+ export const getWord = (number, first, second, three) => {
+  const lastFigure = number % 10;
+  if (lastFigure === 1) return first;
+  if (lastFigure > 1 && lastFigure < 5) return second;
+  else return three;
+};

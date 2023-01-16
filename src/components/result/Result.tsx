@@ -15,6 +15,7 @@ import { BackgroundColor, Circle, Flex, HeaderBackground, Title, Toggle } from "
 import IconMap from "../share/IconMap";
 import ButtonPlit from "../../assest/icon/ButtonPlit";
 import ButtonList from "../../assest/icon/ButtonList";
+import { getWord } from "../share/utils/logic";
 
 export default function Result() {
   const [isDisplayTile, setisDisplayTile] = useState(true);
@@ -157,7 +158,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
             <Toggle>{<IconMap fill="#664EF9 "></IconMap>} Показать на карте</Toggle>
           </FlexContainer>
         </FlexContainer>
-        {pending?<><h4>Найдено {res.length} результата</h4>
+        {pending?<><h4>{getWord(res.length,'Найден','Найдено','Найдено')} {res.length} {getWord(res.length,'результат','результата','результатов')}  </h4>
         <FlexContainer flexWrap="wrap" gap={"40px"}>
           {paginatedFlat.length !== 0 &&
             paginatedFlat.map((item: any, index: any) =>
