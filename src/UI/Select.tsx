@@ -95,12 +95,12 @@ const Arrow = styled.div `
        
  }
  `;
- const Title = styled.div `
+ const Title = styled.div<Props>`
  font-weight: 500;
 font-size: 14px;
 line-height: 17px;
  
-color: #BDBDBD;
+color:${(props) => props.color  || '#BDBDBD'};  
  `;
 const Select = (props:any ) => {
   const {closeAllSelect} = useContext(Context);
@@ -110,7 +110,7 @@ const Select = (props:any ) => {
 
   return (
     <Dropdown {...props}>
-      <Title>{props.title} </Title>
+      <Title {...props}>{props.title} </Title>
           <div className={props.isActiveSelect?"dropdown-btn active":'dropdown-btn'}  onClick={(e:any)=>{
             e.stopPropagation();
             closeAllSelect()

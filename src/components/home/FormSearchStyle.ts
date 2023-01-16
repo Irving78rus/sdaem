@@ -31,7 +31,7 @@ interface Props {
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: #BDBDBD;
+  color:${(props) => props.color  || '#BDBDBD'}; 
   `;
   export const RightArrov =   styled.div<Props>`
   

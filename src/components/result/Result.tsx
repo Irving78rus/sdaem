@@ -105,7 +105,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
             flexDirection="row"
             alignItems="center"
             justifyContent={"space-between"}
-             
+             color = '#664EF9'
                 metro={metro}
                 setMetro={setMetro}
                 district={district}

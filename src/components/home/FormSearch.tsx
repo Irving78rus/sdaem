@@ -77,23 +77,23 @@ export default function FormSearch(props: any) {
   
   return (
     <>
-      <FlexContainer width={"100vw"}
+      <FlexContainer width={"100%"}
       borderBottom='1px solid rgba(78, 100, 249, 0.1)'
       borderTop = '1px solid rgba(78, 100, 249, 0.1)'
           backgroundColor={props.backgroundColor}
           flexWrap="wrap"
           borderRadius="0 10px 10px 10px"
           onClick={(e: any) => setIsActiveSelectCity(false)}>
-        <ContentContainer width={"100%"}
+        <FlexContainer width={"100%"} padding='0 80px'
          
           
         >
           {props.map && <><Select options={GetListUniqueItems('city')} selected={props.city || 'Выберите'} selectedOption={props.setCity} title='Город' isActiveSelect={isActiveSelectCity} setIsActiveSelect={setIsActiveSelectCity} />
             <VerticalLine></VerticalLine></>}
-          <Select options={GetListUniqueItems('rooms')} flexDirection={props.flexDirection} selected={rooms || 'Выберите'} selectedOption={setRooms} title='Комнаты' isActiveSelect={isActiveSelectRooms} setIsActiveSelect={setIsActiveSelectRooms} />
+          <Select options={GetListUniqueItems('rooms')} color={props.color} flexDirection={props.flexDirection} selected={rooms || 'Выберите'} selectedOption={setRooms} title='Комнаты' isActiveSelect={isActiveSelectRooms} setIsActiveSelect={setIsActiveSelectRooms} />
           <VerticalLine></VerticalLine>
           <FlexContainer flexDirection={props.flexDirection} gap='10px'>
-            <SelectTitle>{"Цена за сутки (BYN)"}</SelectTitle>
+            <SelectTitle color={props.color}>{"Цена за сутки (BYN)"}</SelectTitle>
             <FlexContainer gap='10px' >
               <Input type={"number"} width={"80px"} height={"37px"} placeholder="  От"
                 onChange={(e: any) => { setUpPrice(e.target.value) }} value={upPrice} />
@@ -121,16 +121,16 @@ export default function FormSearch(props: any) {
               </Button>
             </NavLink>
           </FlexContainer>
-        </ContentContainer>
+        </FlexContainer>
       </FlexContainer>
 
       {isActive &&
         <ContentContainer width={"100%"}>
           <List {...props}>
             <FlexContainer >
-              <Select options={uniqueMetro} selected={props.metro || 'Выберите'} selectedOption={props.setMetro} title='Метро' isActiveSelect={isActiveSelectMetro} setIsActiveSelect={setIsActiveSelectMetro} />
-              <Select options={uniqueDistrict} selected={props.district || 'Выберите'} selectedOption={props.setDistrict} title='Район' isActiveSelect={isActiveSelectDistrict} setIsActiveSelect={setIsActiveSelectDistrict} />
-              <Select options={uniqueSleepingPlaces} selected={sleepingPlaces || 'Выберите'} selectedOption={setSleepingPlaces} title='Спальные места' isActiveSelect={isActiveSelectSleepingPlaces} setIsActiveSelect={setIsActiveSelectSleepingPlaces} />
+              <Select options={uniqueMetro} color={props.color} selected={props.metro || 'Выберите'} selectedOption={props.setMetro} title='Метро' isActiveSelect={isActiveSelectMetro} setIsActiveSelect={setIsActiveSelectMetro} />
+              <Select options={uniqueDistrict} color={props.color} selected={props.district || 'Выберите'} selectedOption={props.setDistrict} title='Район' isActiveSelect={isActiveSelectDistrict} setIsActiveSelect={setIsActiveSelectDistrict} />
+              <Select options={uniqueSleepingPlaces} color={props.color} selected={sleepingPlaces || 'Выберите'} selectedOption={setSleepingPlaces} title='Спальные места' isActiveSelect={isActiveSelectSleepingPlaces} setIsActiveSelect={setIsActiveSelectSleepingPlaces} />
             </FlexContainer>
             <FlexContainer>
               {allOption.map((item: any, index) => (
