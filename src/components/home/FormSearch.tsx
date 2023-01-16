@@ -84,7 +84,7 @@ export default function FormSearch(props: any) {
           flexWrap="wrap"
           borderRadius="0 10px 10px 10px"
           onClick={(e: any) => setIsActiveSelectCity(false)}>
-        <FlexContainer width={"100%"} padding='0 80px'
+        <FlexContainer width={"100%"} padding={props.clearButton?'0 80px':"0"}
          
           
         >
