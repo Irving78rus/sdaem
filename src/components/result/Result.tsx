@@ -97,7 +97,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
         </ContentContainer>
       </HeaderBackground>
       <BackgroundColor onClick={() => setDropSelectList(false)}>
-        <ContentContainer width={"100%"} flexDirection="column">
+        <FlexContainer width={"100%"} flexDirection="column">
           <FormSearch
             city={params.city}
             map={false}
@@ -111,7 +111,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
                 district={district}
                 setDistrict={setDistrict}
           ></FormSearch>
-        </ContentContainer>
+        </FlexContainer>
       </BackgroundColor>
 
       <ContentContainer

@@ -15,6 +15,8 @@ interface  Props {
   padding?:string;
   borderRight?:string;
   borderRadius?:string;
+  borderBottom?:string;
+  borderTop?:string;
 }
 const FlexContainerStl = styled.div<Props>`
   display:flex;
@@ -32,8 +34,9 @@ const FlexContainerStl = styled.div<Props>`
   padding: ${props=>props.padding||""}; 
   border-right: ${props=>props.borderRight||""};
   border-radius: ${props=>props.borderRadius||""}; 
+  border-bottom: ${props=>props.borderBottom||""}; 
+  border-top: ${props=>props.borderTop||""};  
 `
-
 const FlexContainer  = (props:any) => {
   return <FlexContainerStl {...props} />;
 };
