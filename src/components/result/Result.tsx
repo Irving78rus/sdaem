@@ -17,6 +17,7 @@ import ButtonPlit from "../../assest/icon/ButtonPlit";
 import ButtonList from "../../assest/icon/ButtonList";
 import { getWord } from "../share/utils/logic";
 import { getFilterFlats } from "../../redux/baseFlat";
+import { GetListUniqueItems } from "../share/hooks";
 
 export default function Result() {
   const [isDisplayTile, setisDisplayTile] = useState(true);
@@ -74,7 +75,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
     return res.slice(indexOfFirstNews, indexOfLastNews);
   }, [activePage, res]);
   const [activeSelect, setActiveSelect] = useState(0);
-
+ 
   return (
     <>
       <HeaderBackground height="280px">
@@ -120,6 +121,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
                 setMetro={setMetro}
                 district={district}
                 setDistrict={setDistrict}
+                
           ></FormSearch>
         </FlexContainer>
       </BackgroundColor>
@@ -130,7 +132,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
         onClick={() => setDropSelectList(false)}
       >
         <FlexContainer width={"100%"} justifyContent={"space-between"} margin="20px 0 0 0">
-        <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'} options={['по цене','по умолчанию']} selected={filter||'Выберите'} selectedOption={setFilter} isActiveSelect={showSelectFilter} setIsActiveSelect={setShowSelectFilter} />
+        <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'} options={['По убыванию цены','По возрастанию цены']} selected={filter||'Выберите'} selectedOption={setFilter} isActiveSelect={showSelectFilter} setIsActiveSelect={setShowSelectFilter} />
           <FlexContainer>
             <Toggle
               className={isDisplayTile ? undefined : "active"}

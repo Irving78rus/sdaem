@@ -128,8 +128,7 @@ export default function Home() {
                 setMetro={setMetro}
                 district={district}
                 setDistrict={setDistrict}
-                uniqueMetro={uniqueMetro}
-                uniqueDistrict={uniqueDistrict}
+                 
               ></FormSearch>
             </FlexContainer>
           </ContentContainer>

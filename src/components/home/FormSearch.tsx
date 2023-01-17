@@ -70,6 +70,7 @@ export default function FormSearch(props: any) {
   }
   const allOption = ['Газовая плита', 'Духовка', "Кофеварка", "Микроволновая печь", "Посуда", "Посудомоечная машина"]
   
+  const uniqueMetro = GetListUniqueItems('metro')
   const uniqueDistrict = GetListUniqueItems('district')
   const uniqueSleepingPlaces = GetListUniqueItems('sleepingPlaces')
 
@@ -128,8 +129,8 @@ export default function FormSearch(props: any) {
         <FlexContainer width={"100%"}  padding={props.clearButton?'0 80px':"0"}>
           <List {...props}>
             <FlexContainer >
-              <Select options={props.uniqueMetro} color={props.color} selected={props.metro || 'Выберите'} selectedOption={props.setMetro} title='Метро' isActiveSelect={isActiveSelectMetro} setIsActiveSelect={setIsActiveSelectMetro} />
-              <Select options={props.uniqueDistrict} color={props.color} selected={props.district || 'Выберите'} selectedOption={props.setDistrict} title='Район' isActiveSelect={isActiveSelectDistrict} setIsActiveSelect={setIsActiveSelectDistrict} />
+              <Select options={uniqueMetro} color={props.color} selected={props.metro || 'Выберите'} selectedOption={props.setMetro} title='Метро' isActiveSelect={isActiveSelectMetro} setIsActiveSelect={setIsActiveSelectMetro} />
+              <Select options={uniqueDistrict} color={props.color} selected={props.district || 'Выберите'} selectedOption={props.setDistrict} title='Район' isActiveSelect={isActiveSelectDistrict} setIsActiveSelect={setIsActiveSelectDistrict} />
               <Select options={uniqueSleepingPlaces} color={props.color} selected={sleepingPlaces || 'Выберите'} selectedOption={setSleepingPlaces} title='Спальные места' isActiveSelect={isActiveSelectSleepingPlaces} setIsActiveSelect={setIsActiveSelectSleepingPlaces} />
             </FlexContainer>
             <FlexContainer>

@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { flatList } from "./flatCreater";
+ 
 import { createFlatList } from "./flatCreater";
-createFlatList();
-
+ 
 const initialState = {
-  flat: flatList,
+  flat: createFlatList(),
   params: {
     city: "",
     upPrice: "",
@@ -76,11 +75,19 @@ const baseFlat = createSlice({
       });
       state.pending = true
     },
+    filterFlatForPrice: (state,param ) => {
+      if(param.payload==='up'){}
+      state.res = state.res.sort((a, b) => a.cost - b.cost);
+      if (param.payload==='down') {
+        state.res = state.res.sort((a, b) => b.cost - a.cost);
+      }
+    },
     
   },
 });
 
 export const {
   getFilterFlats,
+  filterFlatForPrice
 } = baseFlat.actions;
 export default baseFlat.reducer;

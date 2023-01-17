@@ -1,4 +1,4 @@
-export const flatList = []
+
  
 export const cityArr = ['Минск','Гомель','Брест',"Витебск","Гродно","Могилев"]
  const MetroArr = ['Лесная','Петроградское','Девяткино','Парнас',"Площадь Восстания","Международная","Чернышевского"]
@@ -10,8 +10,9 @@ export const cityArr = ['Минск','Гомель','Брест',"Витебск
  
  
  export const createFlatList = ()=>{
+    const flatList = []
     let i = 0
-    while (i<150000){
+    while (i<150000 ){
         const cityRand = Math.floor(Math.random() * cityArr.length);
         const costRand = Math.floor(Math.random() * 250)+1;
         const roomsRand = Math.floor(Math.random() * 5)+1;
@@ -37,5 +38,6 @@ export const cityArr = ['Минск','Гомель','Брест',"Витебск
         )
     i++
     }
+    return flatList
   }
    

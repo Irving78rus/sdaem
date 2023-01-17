@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Arrov from "../assest/icon/arrov.svg";
+import { filterFlatForPrice } from "../redux/baseFlat";
 import { Context } from "../redux/context";
+import { useAppDispatch } from "../redux/hooks";
  
  
 interface Props {
@@ -27,7 +29,8 @@ const Dropdown = styled.div<Props>`
   gap:10px;
   .dropdown-btn {
     position: relative;
-    width: 150px;
+    min-width: 150px;
+    width:100%;
     height: 37px;
     background: ${(props) => props.background || '#f8f8f8'};  
     box-shadow: ${(props) => props.boxShadow || ''};  
@@ -73,7 +76,8 @@ const Dropdown = styled.div<Props>`
     flex: none;
     order: 1;
     flex-grow: 0;
-    width: 150px;
+    min-width: 150px;
+    width:100%;
     height: 37px;
     &:hover {
       background: #f8f8f8;
@@ -105,7 +109,7 @@ color:${(props) => props.color  || '#BDBDBD'};
 const Select = (props:any ) => {
   const {closeAllSelect} = useContext(Context);
 
- 
+  const dispatch = useAppDispatch();
   
 
   return (
@@ -124,10 +128,15 @@ const Select = (props:any ) => {
           {props.isActiveSelect&&
           <div className="dropdown-content">
             {props.options.map((option:any)=><div key={option} className="dropdown-item" onClick={(e:any)=>{
-               
-               props.selectedOption(e.target.textContent)
+              props.selectedOption(e.target.textContent)
               // closeAllSelect()
               props.setIsActiveSelect(!props.isActiveSelect)
+              if(e.target.textContent==='По возрастанию цены'){
+                dispatch(filterFlatForPrice('up'))
+              }
+              if (e.target.textContent==='По убыванию цены'){
+                dispatch(filterFlatForPrice('down'))
+              }
               }}>{option}</div>)}
         </div> }
           
