@@ -8,7 +8,7 @@ export const cityArr: string[] = ['Минск','Гомель','Брест',"Ви
     return Rand 
  }
  
- interface flat {
+export interface flatModel {
     city:  string;
     cost: number;
     rooms: number;
@@ -24,7 +24,7 @@ export const cityArr: string[] = ['Минск','Гомель','Брест',"Ви
  }
  
  export const createFlatList = ()=>{
-    const flatList:flat[] = []
+    const flatList:flatModel[] = []
     let i: number = 0
     while (i<150000 ){
         const cityRand: number = Math.floor(Math.random() * cityArr.length);

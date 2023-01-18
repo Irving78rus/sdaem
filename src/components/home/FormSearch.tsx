@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MoreOptionIcon from "../../assest/icon/MoreOption.svg";
 import { NavLink } from "react-router-dom";
 import FlexContainer from "../../UI/FlexContainer";
@@ -30,15 +30,18 @@ export default function FormSearch(props: any) {
     GasStove, setGasStove, Oven, setOven, CoffeeMaker, setCoffeeMaker, MicrowaveOven, setMicrowaveOven,
     Dishes, setDishes, Dishwasher, setDishwasher, upPrice, setUpPrice, toPrice, setToPrice } = useContext(Context);
   const dispatch = useAppDispatch();
-  console.log({
-    city: props.city, upPrice: Number(upPrice), toPrice: Number(toPrice), rooms: Number(rooms),
-    metro: props.metro, district: props.district, sleepingPlaces: Number(sleepingPlaces), GasStove: GasStove, Oven: Oven,
-    CoffeeMaker: CoffeeMaker, MicrowaveOven: MicrowaveOven, Dishes: Dishes, Dishwasher: Dishwasher
-  });
+  
+
+  useEffect(() => {
+   if(upPrice>toPrice){
+    setToPrice(0)
+   }
+   
+  }, [upPrice,toPrice])
+  
 
   const addParamsToStore = (e: any) => {
-    console.log(props.city);
-
+   
     dispatch(getFilterFlats({
       city: props.city, upPrice: Number(upPrice), toPrice: Number(toPrice), rooms: Number(rooms),
       metro: props.metro, district: props.district, sleepingPlaces: Number(sleepingPlaces), GasStove: GasStove, Oven: Oven,
@@ -48,13 +51,13 @@ export default function FormSearch(props: any) {
   }
   const clearParams = (e: any) => {
     dispatch(getFilterFlats({
-      city: '', upPrice: '', toPrice: '', rooms: '', metro: '', district: '', sleepingPlaces: '', GasStove: null, Oven: null,
-      CoffeeMaker: null, MicrowaveOven: null, Dishes: null, Dishwasher: null
+      city: '', upPrice: 0, toPrice: 0, rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: false, Oven: false,
+      CoffeeMaker: false, MicrowaveOven: false, Dishes: false, Dishwasher: false
     }));
-    setUpPrice('')
-    setToPrice('')
-    setRooms('')
-    setSleepingPlaces('')
+    setUpPrice(0)
+    setToPrice(0)
+    setRooms(0)
+    setSleepingPlaces(0)
     setGasStove(false)
     setOven(false)
     setCoffeeMaker(false)

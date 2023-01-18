@@ -21,13 +21,30 @@ import { Registration } from './components/authorization/Registration/Registrati
 import { Context } from './redux/context';
 function App() {
   const params = useAppSelector((state: any) => state.baseFlat.params);
-  const [isActiveSelectCity, setIsActiveSelectCity] = useState(false);
-  const [isActiveSelectRooms, setIsActiveSelectRooms] = useState(false);
-  const [isActiveSelectMetro, setIsActiveSelectMetro] = useState(false);
-  const [isActiveSelectDistrict, setIsActiveSelectDistrict] = useState(false);
-  const [isActiveSelectSleepingPlaces, setIsActiveSelectSleepingPlaces] = useState(false);
+  const [isActiveSelectCity, setIsActiveSelectCity] = useState<boolean>(false);
+  const [isActiveSelectRooms, setIsActiveSelectRooms] = useState<boolean>(false);
+  const [isActiveSelectMetro, setIsActiveSelectMetro] = useState<boolean>(false);
+  const [isActiveSelectDistrict, setIsActiveSelectDistrict] = useState<boolean>(false);
+  const [isActiveSelectSleepingPlaces, setIsActiveSelectSleepingPlaces] = useState<boolean>(false);
 
- const closeAllSelect = ()=>{
+ 
+ const [city, setCity] = useState<string>(params.city);
+  const [metro, setMetro] = useState<string>(params.metro);
+  const [district, setDistrict] = useState<string>(params.district);
+  const [dropSelectList, setDropSelectList] = useState<boolean>(false);
+  const [rooms, setRooms] = useState<number>(params.rooms);
+  const [sleepingPlaces, setSleepingPlaces] = useState<number>(params.sleepingPlaces);
+  const [GasStove, setGasStove] = useState<boolean>(params.GasStove);
+  const [Oven, setOven] = useState<boolean>(params.Oven);
+  const [CoffeeMaker, setCoffeeMaker] = useState<boolean>(params.CoffeeMaker);
+  const [MicrowaveOven, setMicrowaveOven] = useState<boolean>(params.MicrowaveOven);
+  const [Dishes, setDishes] = useState<boolean>(params.Dishes);
+  const [Dishwasher, setDishwasher] = useState<boolean>(params.Dishwasher);
+  const [upPrice, setUpPrice] = useState<number>(params.upPrice);
+  const [toPrice, setToPrice] = useState<number>(params.toPrice);
+
+
+  const closeAllSelect = ():void=>{
   setIsActiveSelectCity(false)
   setIsActiveSelectRooms(false)
   setIsActiveSelectMetro(false)
@@ -35,20 +52,6 @@ function App() {
   setIsActiveSelectSleepingPlaces(false)
   setDropSelectList(false)
  }
- const [city, setCity] = useState(params.city);
-  const [metro, setMetro] = useState(params.metro);
-  const [district, setDistrict] = useState(params.district);
-  const [dropSelectList, setDropSelectList] = useState(false);
-  const [rooms, setRooms] = useState(params.rooms);
-  const [sleepingPlaces, setSleepingPlaces] = useState(params.sleepingPlaces);
-  const [GasStove, setGasStove] = useState(params.GasStove);
-  const [Oven, setOven] = useState(params.Oven);
-  const [CoffeeMaker, setCoffeeMaker] = useState(params.CoffeeMaker);
-  const [MicrowaveOven, setMicrowaveOven] = useState(params.MicrowaveOven);
-  const [Dishes, setDishes] = useState(params.Dishes);
-  const [Dishwasher, setDishwasher] = useState(params.Dishwasher);
-  const [upPrice, setUpPrice] = useState(params.upPrice);
-  const [toPrice, setToPrice] = useState(params.toPrice);
   return (
     <div  style={{minHeight:'100vh',display:'flex',flexDirection:'column' }}>
    <Context.Provider

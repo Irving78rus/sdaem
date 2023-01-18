@@ -107,7 +107,7 @@ line-height: 17px;
 color:${(props) => props.color  || '#BDBDBD'};  
  `;
 const Select = (props:any ) => {
-  const {closeAllSelect} = useContext(Context);
+  const {closeAllSelect}:any = useContext(Context);
 
   const dispatch = useAppDispatch();
   

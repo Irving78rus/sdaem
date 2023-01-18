@@ -51,8 +51,7 @@ import { Flex } from "../result/ResultStyle";
 
 export default function Home() {
   const params = useAppSelector((state: any) => state.baseFlat.params);
-  const {closeAllSelect,dropSelectList, setDropSelectList,isActiveSelectCity,
-     setIsActiveSelectCity,isActiveSelectRooms, setIsActiveSelectRooms,
+  const {closeAllSelect ,
      city, setCity,
      metro, setMetro,
      district, setDistrict,
@@ -67,8 +66,8 @@ export default function Home() {
   const topNavigationFormSearch = useAppSelector((state: any) => state.baseFlat.topNavigationFormSearch);
   const showFlatInCity = (item: string) => {
     dispatch(getFilterFlats({
-      city: item, upPrice: 0, toPrice: 0, rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: null, Oven: null,
-      CoffeeMaker: null, MicrowaveOven: null, Dishes: null, Dishwasher: null
+      city:item, upPrice: 0, toPrice: 0, rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: false, Oven: false,
+      CoffeeMaker: false, MicrowaveOven: false, Dishes: false, Dishwasher: false
     }));
     navigate("/Result")
   }
@@ -76,7 +75,7 @@ export default function Home() {
  
 
   const [isActiveFieldsFormSearch, setIsActiveFieldsFormSearch] = useState(0);
-  const [activeSelectElement, setActiveSelectElement] = useState(0);
+ 
 
   const home = [
     "Котеджи и усадьбы",

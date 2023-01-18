@@ -23,10 +23,8 @@ export default function Result() {
   const [isDisplayTile, setisDisplayTile] = useState(true);
   const [showSelectFilter, setShowSelectFilter] = useState(false);
   const [filter, setFilter] = useState('');
-  const { setDropSelectList,
-    
-    metro, setMetro,
-    district, setDistrict } = useContext(Context);
+  const { setDropSelectList, metro, setMetro,
+    district, setDistrict }:any = useContext(Context);
   const flat = useAppSelector((state) => state.baseFlat.flat);
  
   const rooms = flat.map((item) => item.rooms);
