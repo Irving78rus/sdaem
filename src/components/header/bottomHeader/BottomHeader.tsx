@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../assest/img/logo.png";
+import logo from "../../../assets/img/logo.png";
 import { NavLink } from "react-router-dom";
 import ContentContainer from "../../../UI/ContentContainer";
 import Button from "../../../UI/Button";

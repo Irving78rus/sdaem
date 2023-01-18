@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import styles from "./style.module.scss";
-import home from "../../../assest/img/home.png";
+import home from "../../../assets/img/home.png";
 
-import vk from "../../../assest/img/vkB.svg";
-import Viber from "../../../assest/img/VibB.svg";
-import telegram from "../../../assest/img/tgB.svg";
-import facebook from "../../../assest/img/FacB.svg";
-import WhatSub from "../../../assest/img/WhaB.svg";
+import vk from "../../../assets/img/vkB.svg";
+import Viber from "../../../assets/img/VibB.svg";
+import telegram from "../../../assets/img/tgB.svg";
+import facebook from "../../../assets/img/FacB.svg";
+import WhatSub from "../../../assets/img/WhaB.svg";
 
-import cartImage from "../../../assest/img/cartImage.png";
-import dots  from "../../../assest/img/dots.svg";
+import cartImage from "../../../assets/img/cartImage.png";
+import dots  from "../../../assets/img/dots.svg";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../../UI/Button";

@@ -53,13 +53,13 @@ const ButtonSlider = styled.div`
     &:hover{
       background:rgba(102, 78, 249, 0.1);
     };
-    .leftArrov{
+    .leftArrow{
       border-top: 2px solid #FFFFFF;
       border-right: 2px solid #FFFFFF;
       width:9px;
       height:9px;
     }
-    .rightArrov{
+    .rightArrow{
       border-top: 2px solid #FFFFFF;
       border-right: 2px solid #FFFFFF;
       width:9px;
@@ -82,7 +82,7 @@ const ButtonSlider = styled.div`
  
 cursor:pointer;
 `
-const RightArrov = styled.div`
+const RightArrow = styled.div`
 position:absolute;
 width:11px;
 height:11px;
@@ -92,7 +92,7 @@ top: 37%;
     left: 30%;
     transform: rotate(45deg)
 `
-const LeftArrov = styled.div`
+const LeftArrow = styled.div`
 position:absolute;
 width:11px;
 height:11px;
@@ -164,13 +164,13 @@ const Slider = ({ photos, content = false, width, height, CardResultImg, margin,
       <FlexContainer gap='20px' position={position} width={widthButton} top={top}> {photos.length > 3 && (
         <ButtonSlider className={position==='absolute'?"homeSlider2":'homeSlider'} onClick={() => {
           left();
-        }}> <LeftArrov className="leftArrov"></LeftArrov>   </ButtonSlider>
+        }}> <LeftArrow className="leftArrow"></LeftArrow>   </ButtonSlider>
        )}
 
         {photos.length > 3 && (
           <ButtonSlider className={position==='absolute'?"homeSlider2":'homeSlider'} onClick={() => {
             right();
-          }}> <RightArrov className="rightArrov"></RightArrov>   </ButtonSlider>
+          }}> <RightArrow className="rightArrow"></RightArrow>   </ButtonSlider>
         )}
       </FlexContainer>
 

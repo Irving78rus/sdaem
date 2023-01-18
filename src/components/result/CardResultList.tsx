@@ -1,28 +1,16 @@
 import React, { useState } from "react";
-import styles from "./style.module.scss";
-import home from "../../assest/img/home.png";
-import heart2 from "../../assest/img/images/heart.svg";
-import CardResultImg from "../../assest/img/CardResult.png";
-import heart from "../../assest/icon/heart.svg";
-import tel from "../../assest/icon/tel.svg";
-import { NavLink } from "react-router-dom";
+import CardResultImg from "../../assets/img/CardResult.png";
+import tel from "../../assets/icon/tel.svg";
 import styled from "styled-components";
 import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";
-import ContentContainer from "../../UI/ContentContainer";
-import { Line } from "../../UI/Line";
 import ContactComponent from "../share/ContactComponent";
-import Metro from "../../assest/icon/Metro";
-import Elips from "../../assest/icon/Elips";
+import Metro from "../../assets/icon/Metro";
 import IconMap from "../share/IconMap";
-import UserImg from "../../assest/icon/UserImg";
-import HeartImg from "../../assest/icon/HeartImg";
-import HeartImg2 from "../../assest/icon/HeartImg2";
+import UserImg from "../../assets/icon/UserImg";
+import HeartImg2 from "../../assets/icon/HeartImg2";
 import Slider from "../../UI/Slider";
 
-interface Props {
-  height?: any;
-}
 const Card = styled.div`
   display: flex;
   position: relative;

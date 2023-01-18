@@ -21,6 +21,8 @@ export interface flatModel {
     MicrowaveOven:boolean;
     Dishes:boolean;
     Dishwasher :boolean;
+    upPrice?: number ;
+    toPrice?: number ;
  }
  
  export const createFlatList = ()=>{

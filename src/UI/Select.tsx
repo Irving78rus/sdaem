@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import Arrov from "../assest/icon/arrov.svg";
+import arrow from "../assets/icon/arrow.svg";
 import { filterFlatForPrice } from "../redux/baseFlat";
 import { Context } from "../redux/context";
 import { useAppDispatch } from "../redux/hooks";
@@ -122,7 +122,7 @@ const Select = (props:any ) => {
           }}>
             <span>{props.selected }</span>
             <Arrow >
-            <img src={Arrov} alt="arrov"></img>
+            <img src={arrow} alt="Arrow"></img>
         </Arrow>
           </div>
           {props.isActiveSelect&&

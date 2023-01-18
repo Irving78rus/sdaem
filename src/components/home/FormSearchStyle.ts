@@ -33,7 +33,7 @@ interface Props {
   line-height: 17px;
   color:${(props) => props.color  || '#BDBDBD'}; 
   `;
-  export const RightArrov =   styled.div<Props>`
+  export const RightArrow =   styled.div<Props>`
   
   width:9px;
   height:9px;

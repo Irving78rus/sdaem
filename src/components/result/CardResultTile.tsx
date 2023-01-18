@@ -1,9 +1,9 @@
 import React, { useState } from "react";
  
 
-import CardResultImg from "../../assest/img/CardResult.png";
+import CardResultImg from "../../assets/img/CardResult.png";
  
-import tel from "../../assest/icon/tel.svg";
+import tel from "../../assets/icon/tel.svg";
  
 import styled from "styled-components";
 import Button from "../../UI/Button";
@@ -11,10 +11,10 @@ import FlexContainer from "../../UI/FlexContainer";
  
 import { Line } from "../../UI/Line";
 import ContactComponent from "../share/ContactComponent";
-import Metro from "../../assest/icon/Metro";
-import Elips from "../../assest/icon/Elips";
+import Metro from "../../assets/icon/Metro";
+import Elips from "../../assets/icon/Elips";
 import IconMap from "../share/IconMap";
-import HeartImg from "../../assest/icon/HeartImg";
+import HeartImg from "../../assets/icon/HeartImg";
 import Slider from "../../UI/Slider";
 
 interface Props {

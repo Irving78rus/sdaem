@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import elips from "../../assest/icon/elips.svg";
-import car from "../../assest/img/car.png";
-import Flat from "../../assest/img/Flat.png";
-import hand from "../../assest/img/handle.svg";
-import list from "../../assest/img/list.svg";
-import CardBackGround from "../../assest/img/CardBackGround.svg";
-import house from "../../assest/img/house.png";
-import bane from "../../assest/img/bane.png";
+import elips from "../../assets/icon/elips.svg";
+import car from "../../assets/img/car.png";
+import Flat from "../../assets/img/Flat.png";
+import hand from "../../assets/img/handle.svg";
+import list from "../../assets/img/list.svg";
+import CardBackGround from "../../assets/img/CardBackGround.svg";
+import house from "../../assets/img/house.png";
+import bane from "../../assets/img/bane.png";
 import ContentContainer from "../../UI/ContentContainer";
 import FlexContainer from "../../UI/FlexContainer";
 import Button from "../../UI/Button";
@@ -29,7 +29,7 @@ import {
   LeftBlock,
   MainBottomCard,
   RightBlock,
-  SearhToMapBlock,
+  SearchToMapBlock,
   ShowAllStl,
   SubTitle,
   TextBlock,
@@ -45,9 +45,7 @@ import { VerticalLine } from "../../UI/VerticalLine";
 import Dots  from "../../UI/Dots";
 import IconMap from "../share/IconMap";
 import { Context } from "../../redux/context";
-import { RightArrov } from "./FormSearchStyle";
-import { Flex } from "../result/ResultStyle";
- 
+import { RightArrow } from "./FormSearchStyle";
 
 export default function Home() {
   const params = useAppSelector((state: any) => state.baseFlat.params);
@@ -223,7 +221,7 @@ export default function Home() {
             <VerticalLine></VerticalLine>
             <Button boxShadow='0px 15px 40px rgba(0, 96, 206, 0.15)'
              backgroundHover='linear-gradient(90deg, #867CFC 0%, #6929F3 94.5%)'>
-              Посмотреть все <RightArrov background='white'></RightArrov>   </Button>
+              Посмотреть все <RightArrow background='white'></RightArrow>   </Button>
           </UnderSwiper>
 
 
@@ -234,7 +232,7 @@ export default function Home() {
 
           <ContentContainer justifyContent="center" flexDirection="column" alignItems="center">
             <Dots right='140px' top='46px' fill='white'></Dots>
-            <SearhToMapBlock>
+            <SearchToMapBlock>
 
               <h1>Поиск квартир на карте</h1>
               <p>
@@ -243,7 +241,7 @@ export default function Home() {
               <Button background="white" color="black" fontWeight='600'  colorHover='#FEC100'>
                 <IconMap fill='#FFD54F'></IconMap> Открыть карту
               </Button>
-            </SearhToMapBlock>
+            </SearchToMapBlock>
 
             <FlexContainer gap="20px" position="absolute" top="400px">
               <MainBottomCard>

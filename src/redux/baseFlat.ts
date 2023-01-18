@@ -1,4 +1,4 @@
-import { createSlice,PayloadAction } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
  import {flatModel} from './flatCreater'
 import { createFlatList } from "./flatCreater";
 
@@ -57,19 +57,20 @@ const initialState:initialStateModel = {
 
 
 interface paramsModel{
-  city?:  string|undefined;
-  upPrice?: number|undefined;
-  toPrice?: number|undefined;
-  rooms?: number|undefined;
-  metro?: string|undefined;
-  district?:string|undefined;
-  sleepingPlaces?:number|undefined;
-  GasStove?:boolean|undefined;
-  Oven?:boolean|undefined;
-  CoffeeMaker?:boolean|undefined;
-  MicrowaveOven?:boolean|undefined;
-  Dishes?:boolean|undefined;
-  Dishwasher?:boolean|undefined;
+  city?:  string 
+  cost?: number;
+  upPrice?: number 
+  toPrice?: number 
+  rooms?: number 
+  metro?: string 
+  district?:string 
+  sleepingPlaces?:number 
+  GasStove?:boolean 
+  Oven?:boolean 
+  CoffeeMaker?:boolean 
+  MicrowaveOven?:boolean 
+  Dishes?:boolean 
+  Dishwasher?:boolean 
  
 } 
 
@@ -88,12 +89,11 @@ const baseFlat = createSlice({
       for (let k in param.payload) {
         const key = k as keyof paramsModel;
          if (state.params[key]) {
-         allParams[key] = state.params[key];  
-          
+         allParams[key] = state.params[key];
         }
       }
 
-      state.res = state.flat.filter((item:any) => {
+      state.res = state.flat.filter((item:flatModel) => {
         let resParams = true;
         for (let k in allParams) {
           const key = k as keyof paramsModel;

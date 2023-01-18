@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useContext } from "react";
-import home from "../../assest/img/home.png";
+import home from "../../assets/img/home.png";
 import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";
 import ContentContainer from "../../UI/ContentContainer";
@@ -13,28 +13,25 @@ import ShearSocial from "../share/ShearSocial";
 import { Context } from "../../redux/context";
 import { BackgroundColor, Circle, Flex, HeaderBackground, Title, Toggle } from "./ResultStyle";
 import IconMap from "../share/IconMap";
-import ButtonPlit from "../../assest/icon/ButtonPlit";
-import ButtonList from "../../assest/icon/ButtonList";
+import ButtonPlit from "../../assets/icon/ButtonPlit";
+import ButtonList from "../../assets/icon/ButtonList";
 import { getWord } from "../share/utils/logic";
 import { getFilterFlats } from "../../redux/baseFlat";
-import { GetListUniqueItems } from "../share/hooks";
+
 
 export default function Result() {
-  const [isDisplayTile, setisDisplayTile] = useState(true);
+  const [isDisplayTile, setIsDisplayTile] = useState(true);
   const [showSelectFilter, setShowSelectFilter] = useState(false);
   const [filter, setFilter] = useState('');
   const { setDropSelectList, metro, setMetro,
-    district, setDistrict }:any = useContext(Context);
-  const flat = useAppSelector((state) => state.baseFlat.flat);
- 
-  const rooms = flat.map((item) => item.rooms);
-  const uniqueRooms = rooms.filter((item, pos) => rooms.indexOf(item) === pos);
+  district, setDistrict }:any = useContext(Context);
+
 const pending : any = useAppSelector((state) => state.baseFlat.pending);
   const params: any = useAppSelector((state) => state.baseFlat.params);
   const res: any = useAppSelector((state) => state.baseFlat.res);
   console.log(res);
   console.log(params);
-  const recommendСriteria = [
+  const recommendedСriteria = [
     {title:"Недорогие", name: "toPrice", value:60},
     {title:"1-комнатные", name: "rooms" ,value:1} ,
     {title:"2-комнатные", name: "rooms" ,value:2} ,
@@ -72,7 +69,6 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
 
     return res.slice(indexOfFirstNews, indexOfLastNews);
   }, [activePage, res]);
-  const [activeSelect, setActiveSelect] = useState(0);
  
   return (
     <>
@@ -88,7 +84,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
             {params.city?<Title>Аренда квартир в {params.city==="Гродно"?"Гродно":params.city==="Гомель"?"Гомеле":(params.city+'e')} </Title>:<Title>Аренда квартир в Белоруссии</Title>}
             <p>Рекомендуем посмотреть </p>
             <FlexContainer justifyContent={"flex-start"} gap={"15px"} flexWrap="wrap">
-              {recommendСriteria.map((item) => (
+              {recommendedСriteria.map((item) => (
                 <Button
                   key={item.title}
                   color={"#664EF9"}
@@ -135,7 +131,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
             <Toggle
               className={isDisplayTile ? undefined : "active"}
               onClick={() => {
-                setisDisplayTile(false);
+                setIsDisplayTile(false);
               }}
             >
               <ButtonList fill="#664EF9"></ButtonList> Список
@@ -143,7 +139,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
             <Toggle
               className={isDisplayTile ? "active" : undefined}
               onClick={() => {
-                setisDisplayTile(true);
+                setIsDisplayTile(true);
               }}
             >
               <ButtonPlit fill="#664EF9"></ButtonPlit> Плитки

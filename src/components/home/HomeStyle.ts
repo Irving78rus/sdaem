@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Back from "../../assest/img/404Back.png";
+import Back from "../../assets/img/404Back.png";
 
 interface Props {
   img?: string;
@@ -387,7 +387,7 @@ export const ShowAllStl = styled.div`
   line-height: 17px;
   cursor: pointer;
 `;
-export const SearhToMapBlock = styled.div`
+export const SearchToMapBlock = styled.div`
 position:relative;
 display: flex;
   justify-content: center;

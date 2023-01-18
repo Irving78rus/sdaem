@@ -1,9 +1,8 @@
 import styled from 'styled-components';
  
-import MarkerMap from '../../../assest/img/images/marker.svg';
-import Smartphone from '../../../assest/img/images/smartphone.svg';
-import Mail from '../../../assest/img/images/mail.svg';
-import Clock from '../../../assest/img/images/clock.svg';
+import Smartphone from '../../../assets/img/smartphone.svg';
+import Mail from '../../../assets/img/mail.svg';
+import Clock from '../../../assets/img/clock.svg';
 
 const beforeElementData = `
   background-color: rgba(255, 255, 255, 0.1);

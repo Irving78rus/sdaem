@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./style.module.scss";
-import home from "../../assest/img/home.png";
-import cartImage from "../../assest/img/cartImage.png";
-import heart from "../../../assest/img/heart.svg";
+import home from "../../assets/img/home.png";
+import cartImage from "../../assets/img/cartImage.png";
+import heart from "../../../assets/img/heart.svg";
 import { NavLink } from "react-router-dom";
  
 import styled from "styled-components";

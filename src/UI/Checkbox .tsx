@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Check from "../assest/icon/check.svg";
+import Check from "../assets/icon/check.svg";
 
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 const CheckboxStl = styled.div`

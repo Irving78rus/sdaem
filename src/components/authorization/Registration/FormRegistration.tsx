@@ -7,12 +7,12 @@ import * as Yup from 'yup';
 import { IMGCont, IMGError, LabelLogin, RegistrationFormName } from './RegistrationStyle';
 import Button from '../../../UI/Button';
 import styled from 'styled-components';
-import user from '../../assest/icon/user.svg';
-import UserImg from '../../../assest/icon/UserImg';
-import ErrorImg from '../../../assest/icon/ErrorImg';
+import user from '../../assets/icon/user.svg';
+import UserImg from '../../../assets/icon/UserImg';
+import ErrorImg from '../../../assets/icon/ErrorImg';
 import FlexContainer from '../../../UI/FlexContainer';
-import MailImg from '../../../assest/icon/MailImg';
-import LockImg from '../../../assest/icon/LockImg';
+import MailImg from '../../../assets/icon/MailImg';
+import LockImg from '../../../assets/icon/LockImg';
 
 import ReCAPTCHA from 'react-google-recaptcha';
 const key = '6LcbAeAjAAAAAJ-sKt9VimUkmFR8Uf2Z-vIkZWGM'

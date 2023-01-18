@@ -1,4 +1,4 @@
-import { ReactComponent as WarningIcon } from '../../../assest/img/images/warning.svg';
+import { ReactComponent as WarningIcon } from '../../../assets/img/warning.svg';
 import styled from 'styled-components';
 
 export const WarningImage = styled(WarningIcon)<{ color: string }>`

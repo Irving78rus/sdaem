@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import CityMap from '../../../assest/img/images/city-map.png';
+import CityMap from '../../../assets/img/city-map.png';
 
 const FormInput = `
   background-color: #f7f7f7;

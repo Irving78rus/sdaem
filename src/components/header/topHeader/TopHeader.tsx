@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Arrov from "../../../assest/icon/arrov.svg";
-import map from "../../../assest/img/map.svg";
-import heart from "../../../assest/img/heart.svg";
+import arrow from "../../../assets/icon/arrow.svg";
+import map from "../../../assets/img/map.svg";
+import heart from "../../../assets/img/heart.svg";
 import { NavLink } from "react-router-dom";
 import ContentContainer from "../../../UI/ContentContainer";
-import Boy from "../../../assest/img/boy.png";
+import Boy from "../../../assets/img/boy.png";
 import { useAppDispatch, useAppSelector} from "../../../redux/hooks";
 import FlexContainer from "../../../UI/FlexContainer";
 import { authUser, setUser } from "../../../redux/userSetting";
@@ -28,7 +28,7 @@ export default function TopHeader() {
     if (localStorage.getItem("User")) {
       dispatch(setUser(JSON.parse(localStorage.getItem("User") || "")))
   } 
-  }, [])
+  }, [dispatch])
 
 
   
@@ -90,7 +90,7 @@ export default function TopHeader() {
                 <img src={Boy} alt="boy" className="photo" style={{ cursor: "pointer" }} />
                 <div style={{ cursor: "pointer" }}>{user.login} </div>
                 <Arrow style={{ cursor: "pointer" }}>
-                <img src={Arrov} alt="arrov"></img>
+                <img src={arrow} alt="Arrow"></img>
                 </Arrow>
                 {showList && (
                   <List>

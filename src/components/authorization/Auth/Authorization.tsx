@@ -8,8 +8,8 @@ import { useAppDispatch } from '../../../redux/hooks';
 import { authUser, setUser } from '../../../redux/userSetting';
 import Button from '../../../UI/Button';
 import { IMGCont, LabelLogin, RegistrationFormName } from '../Registration/RegistrationStyle';
-import UserImg from '../../../assest/icon/UserImg';
-import LockImg from '../../../assest/icon/LockImg';
+import UserImg from '../../../assets/icon/UserImg';
+import LockImg from '../../../assets/icon/LockImg';
 
 export const Authorization = () => {
   const [onMouseEnterInput, setOnMouseEnterInput] = useState({login:false,lock:false});

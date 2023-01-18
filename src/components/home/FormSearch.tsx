@@ -1,25 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
-import MoreOptionIcon from "../../assest/icon/MoreOption.svg";
+import MoreOptionIcon from "../../assets/icon/MoreOption.svg";
 import { NavLink } from "react-router-dom";
 import FlexContainer from "../../UI/FlexContainer";
 import Button from "../../UI/Button";
 import Select from "../../UI/Select";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch } from "../../redux/hooks";
 import Input from "../../UI/Input";
 import { getFilterFlats } from "../../redux/baseFlat";
 import MoreOption from "../../UI/MoreOption";
 import Checkbox from "../../UI/Checkbox ";
 import { VerticalLine } from "../../UI/VerticalLine";
 import IconMap from "../share/IconMap";
-import { List, RightArrov, SelectTitle } from "./FormSearchStyle";
-import styled from "styled-components";
+import { List, RightArrow, SelectTitle } from "./FormSearchStyle";
+ 
 import { Context } from "../../redux/context";
-import Arrov from "../../assest/icon/arrov.svg";
+ 
 import { GetListUniqueItems } from "../share/hooks";
-import ContentContainer from "../../UI/ContentContainer";
+ 
 
 export default function FormSearch(props: any) {
-  const params = useAppSelector((state: any) => state.baseFlat.params);
+ 
 
 
 
@@ -37,7 +37,7 @@ export default function FormSearch(props: any) {
     setToPrice(0)
    }
    
-  }, [upPrice,toPrice])
+  }, [upPrice,toPrice,setToPrice])
   
 
   const addParamsToStore = (e: any) => {
@@ -120,7 +120,7 @@ export default function FormSearch(props: any) {
               <Button fontSize="15px" fontWeight={props.clearButton ? "600" : '700'} background={props.clearButton ? '#664EF9' : "#FFD54F"}
                 width={"100%"} height={"40px"} color={props.clearButton ? "white" : "black"} onClick={(e: any) => { addParamsToStore(e) }} >
                 <FlexContainer width={"100%"}>
-                  {props.clearButton ? "Показать объекты" : 'Показать'} <RightArrov></RightArrov>
+                  {props.clearButton ? "Показать объекты" : 'Показать'} <RightArrow></RightArrow>
                 </FlexContainer>
               </Button>
             </NavLink>

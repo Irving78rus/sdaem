@@ -1,9 +1,9 @@
 import React from "react";
  
-import Boy from '../../assest/img/boy.png'
-import Cvib from '../../assest/icon/Cvib.svg'
-import CWhat from '../../assest/icon/CWhat.svg'
-import CMail from '../../assest/icon/CMail.svg'
+import Boy from '../../assets/img/boy.png'
+import Cvib from '../../assets/icon/Cvib.svg'
+import CWhat from '../../assets/icon/CWhat.svg'
+import CMail from '../../assets/icon/CMail.svg'
 import { Link  } from "react-router-dom";
 import styled from "styled-components";
  

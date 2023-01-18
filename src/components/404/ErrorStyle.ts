@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Back from "../../assest/img/404Back.png";
+import Back from "../../assets/img/404Back.png";
 interface Props {
     top?: string;
     left?: string;

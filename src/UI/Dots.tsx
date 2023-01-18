@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import dots from "../assest/img/dots.svg";
+import dots from "../assets/img/dots.svg";
 interface Props {
     top?: string;
     left?: string;
