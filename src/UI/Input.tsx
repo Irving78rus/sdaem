@@ -2,22 +2,19 @@ import React from "react";
 import styled from "styled-components";
 
 interface Props {
-  justifyContent?: any;
-  alignItems?: any;
-  gap?: any;
-  height?: any;
-  width?: any;
-  type?: any;
-  children?: any;
-  paddingLeft?: any;
-  paddingRight?: any;
-  paddingTop?: any;
-  paddingBottom?: any;
+  justifyContent?: string;
+  alignItems?: string;
+  gap?: string;
+  height?: string;
+  width?: string;
+  type?: string;
+  children?: string;
+  paddingLeft?: string;
+  paddingRight?: string;
+  paddingTop?: string;
+  paddingBottom?: string;
 }
-// padding-left:${props=>props.paddingLeft||"50px"};
-// padding-right:${props=>props.paddingRight||"15px"};
-// padding-top:${props=>props.paddingTop||"15px"};
-// padding-bottom:${props=>props.paddingBottom||"15px"};
+
 const InputStl = styled.input.attrs<Props>((attrs) => ({
   type: attrs.type || "text",
   placeholder: attrs.placeholder || "",
@@ -29,7 +26,6 @@ const InputStl = styled.input.attrs<Props>((attrs) => ({
   gap: 10px;
   border: 2px solid #f8f8f8;
   outline: none;
-
   &:focus {
     outline: none;
     border: 2px solid rgba(102, 78, 249, 0.8);
@@ -46,7 +42,7 @@ const InputB = styled.div<Props>`
   display: flex;
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
-     appearance: none;
+    appearance: none;
     margin: 0;
   }
 

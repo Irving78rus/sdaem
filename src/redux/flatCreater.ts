@@ -1,3 +1,4 @@
+import { flatModel } from "./types";
 
  
 export const cityArr: string[] = ['Минск','Гомель','Брест',"Витебск","Гродно","Могилев"]
@@ -8,22 +9,6 @@ export const cityArr: string[] = ['Минск','Гомель','Брест',"Ви
     return Rand 
  }
  
-export interface flatModel {
-    city:  string;
-    cost: number;
-    rooms: number;
-    metro: string;
-    district:string;
-    sleepingPlaces:number;
-    GasStove:boolean;
-    Oven:boolean;
-    CoffeeMaker:boolean;
-    MicrowaveOven:boolean;
-    Dishes:boolean;
-    Dishwasher :boolean;
-    upPrice?: number ;
-    toPrice?: number ;
- }
  
  export const createFlatList = ()=>{
     const flatList:flatModel[] = []

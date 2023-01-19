@@ -52,7 +52,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
   const dispatch = useAppDispatch();
   const addParamsToStore = (item:any) => {
    
-    dispatch(getFilterFlats({[item.name]:item.value}));
+    // dispatch(getFilterFlats({[item.name]:item.value}));
 
   }
   

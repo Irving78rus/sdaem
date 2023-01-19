@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import { string } from "yup";
 import Check from "../assets/icon/check.svg";
 
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
 const CheckboxStl = styled.div`
  display:flex;
  align-items-center;
@@ -51,6 +51,25 @@ margin-right:0.5em;
 margin-left:1.5em;
 }
 `;
+interface chooseOptionPropsModel {
+  target: {
+    checked: boolean;
+    id: string;
+  };
+}
+ 
+
+interface CheckboxPropsModel{
+  label:string;
+  id:string;
+  setGasStove:void,
+  setOven:void,
+  setCoffeeMaker:void,
+  setMicrowaveOven:void,
+  setDishes:void,
+  setDishwasher:void,
+}
+
 const Checkbox = ({
   label,
   id,
@@ -60,8 +79,17 @@ const Checkbox = ({
   setMicrowaveOven,
   setDishes,
   setDishwasher,
-}: any) => {
- 
+}: CheckboxPropsModel) => {
+
+  interface allOptionModel{
+    "Газовая плита": void,
+    "Духовка": void,
+    "Кофеварка": void,
+    "Микроволновая печь": void,
+    "Посуда": void,
+    "Посудомоечная машина": void,
+  }
+
   const allOption: any = {
     "Газовая плита": setGasStove,
     "Духовка": setOven,
@@ -71,7 +99,7 @@ const Checkbox = ({
     "Посудомоечная машина": setDishwasher,
   };
 
-  const test = ({ target: { checked, id } }: any) => {
+  const chooseOption = ({ target: { checked, id } }: chooseOptionPropsModel) => {
     for (let key in allOption) {
       if (id === key) {
         allOption[key](checked);
@@ -84,8 +112,8 @@ const Checkbox = ({
       <input
         type="checkbox"
         id={id}
-        onChange={(e: any) => {
-          test(e);
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          chooseOption(e);
         }}
       />
       <label htmlFor={id}> {label}</label>

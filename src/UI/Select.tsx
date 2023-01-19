@@ -5,7 +5,6 @@ import { filterFlatForPrice } from "../redux/baseFlat";
 import { Context } from "../redux/context";
 import { useAppDispatch } from "../redux/hooks";
  
- 
 interface Props {
   background?: any;
   backgroundColor?: any;

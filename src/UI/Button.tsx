@@ -1,16 +1,16 @@
 import React from "react";
 import styled  from "styled-components";
 interface  Props {
-  background:any;
-  backgroundColor:any;
-  opacity:any;
-  color:any
-  fontWeight:any;
-  width:any;
-  height:any
-  padding:any;
-  fontSize:any;
-  borderRadius:any;
+  background:string;
+  backgroundColor:string;
+  opacity:string;
+  color:string
+  fontWeight:string;
+  width:string;
+  height:string
+  padding:string;
+  fontSize:string;
+  borderRadius:string;
   boxShadow:string;
   margin:string;
   lineHeight:string;

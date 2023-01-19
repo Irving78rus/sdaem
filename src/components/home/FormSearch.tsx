@@ -71,7 +71,7 @@ export default function FormSearch(props: any) {
     e.stopPropagation();
     setIsActive(!isActive)
   }
-  const allOption = ['Газовая плита', 'Духовка', "Кофеварка", "Микроволновая печь", "Посуда", "Посудомоечная машина"]
+  const allOption: string[] = ['Газовая плита', 'Духовка', "Кофеварка", "Микроволновая печь", "Посуда", "Посудомоечная машина"]
   
   const uniqueMetro = GetListUniqueItems('metro')
   const uniqueDistrict = GetListUniqueItems('district')
@@ -137,7 +137,7 @@ export default function FormSearch(props: any) {
               <Select options={uniqueSleepingPlaces} color={props.color} selected={sleepingPlaces || 'Выберите'} selectedOption={setSleepingPlaces} title='Спальные места' isActiveSelect={isActiveSelectSleepingPlaces} setIsActiveSelect={setIsActiveSelectSleepingPlaces} />
             </FlexContainer>
             <FlexContainer>
-              {allOption.map((item: any, index) => (
+              {allOption.map((item: string, index) => (
                 <Checkbox label={item} id={item} key={index} setGasStove={setGasStove} setOven={setOven} setCoffeeMaker={setCoffeeMaker}
                   setMicrowaveOven={setMicrowaveOven} setDishes={setDishes} setDishwasher={setDishwasher}
                 />

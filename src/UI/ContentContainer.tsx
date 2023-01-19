@@ -1,14 +1,14 @@
 import React from "react";
 import styled  from "styled-components";
 interface  Props {
-  height:any;
-  margin:any;
-  justifyContent:any;
-  flexDirection:any;
-  width:any;
-  alignItems:any;
-  position?:any;
-  padding?:any
+  height?:string;
+  margin?:string;
+  justifyContent?:string;
+  flexDirection?:string;
+  width?:string;
+  alignItems?:string;
+  position?:string;
+  padding?:string
 }
 const ContentContainerStl = styled.div<Props>`
 display: flex;

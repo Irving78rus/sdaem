@@ -10,13 +10,23 @@ import Button from '../../../UI/Button';
 import { IMGCont, LabelLogin, RegistrationFormName } from '../Registration/RegistrationStyle';
 import UserImg from '../../../assets/icon/UserImg';
 import LockImg from '../../../assets/icon/LockImg';
+export interface UserModel {
+  login:  string;
+  email: string;
+  password: string;
+  confirmPassword:string;
+  
+  
+}
+ 
+
 
 export const Authorization = () => {
   const [onMouseEnterInput, setOnMouseEnterInput] = useState({login:false,lock:false});
   const [error, setError] = useState(false);
   const dispatch = useAppDispatch()
   const navigate = useNavigate();
-  const [allUsers, setAllUsers] = useState([])
+  const [allUsers, setAllUsers] = useState<UserModel[]>([])
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   useEffect(() => {
@@ -28,10 +38,10 @@ export const Authorization = () => {
 
   }, []);
 
-  const Login = (e: any) => {
+  const Login = (e: React.ChangeEvent<HTMLInputElement>) => {
 
     e.preventDefault();
-    const res = allUsers.filter((item: any) => (item.login === login && item.password === password))
+    const res = allUsers.filter((item: UserModel) => (item.login === login && item.password === password))
     if (res.length !== 0) {
       setError(false)
       navigate("/")
@@ -44,7 +54,7 @@ export const Authorization = () => {
       setError(true)
     }
   }
-console.log(onMouseEnterInput);
+ 
 
   return (
     <Auth>
@@ -54,13 +64,13 @@ console.log(onMouseEnterInput);
           Авторизуйтесь, чтобы начать публиковать свои объявления
         </AuthSubtitle>
         <AuthForm>
-          <RegistrationFormName onChange={(e: any) => {
+          <RegistrationFormName onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setLogin(e.target.value)
           }}
-          onMouseEnter={(e)=>{setOnMouseEnterInput({login:true,lock:false})}}
-          onMouseLeave={(e)=>{setOnMouseEnterInput({login:false,lock:false})}}
-          onFocus    ={(e)=>{setOnMouseEnterInput({login:true,lock:false})}}
-          onBlur={(e)=>{setOnMouseEnterInput({login:false,lock:false})}}
+          onMouseEnter={()=>{setOnMouseEnterInput({login:true,lock:false})}}
+          onMouseLeave={()=>{setOnMouseEnterInput({login:false,lock:false})}}
+          onFocus    ={()=>{setOnMouseEnterInput({login:true,lock:false})}}
+          onBlur={()=>{setOnMouseEnterInput({login:false,lock:false})}}
             name={'login'}
             type={'text'}
             id={'login'}
@@ -70,7 +80,7 @@ console.log(onMouseEnterInput);
           >
             <IMGCont top='-50px' right='230px'> <UserImg opacity={onMouseEnterInput.login?'1':'0.3'}  fill={onMouseEnterInput.login?'#664EF9':'#686868'} ></UserImg></IMGCont>
           </LabelLogin>
-          <RegistrationFormName  onChange={(e: any) => {
+          <RegistrationFormName  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setPassword(e.target.value) 
             }} 
             name={'password'}
@@ -86,7 +96,7 @@ console.log(onMouseEnterInput);
           >
             <IMGCont top='-50px' right='230px'> <LockImg opacity={onMouseEnterInput.lock?'1':'0.3'}  fill={onMouseEnterInput.lock?'#664EF9':'#686868'} ></LockImg></IMGCont>
           </LabelLogin>
-          <Button onClick={(e: any) => { Login(e) }}
+          <Button onClick={(e:any) => { Login(e) }}
             borderRadius='33px'
             fontWeight='700'
             lineHeight='24px'
