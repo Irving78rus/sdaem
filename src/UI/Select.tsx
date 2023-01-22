@@ -53,7 +53,7 @@ const Dropdown = styled.div<Props>`
     
   }
   .active {
-    padding: 17px 18px;
+     
     display:   flex  ;
     align-items:    center  ;
     box-sizing: border-box;

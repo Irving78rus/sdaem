@@ -42,8 +42,8 @@ function App() {
   const [MicrowaveOven, setMicrowaveOven] = useState<boolean|undefined>(params.MicrowaveOven);
   const [Dishes, setDishes] = useState<boolean|undefined>(params.Dishes);
   const [Dishwasher, setDishwasher] = useState<boolean|undefined>(params.Dishwasher);
-  const [upPrice, setUpPrice] = useState<number|undefined>(params.upPrice);
-  const [toPrice, setToPrice] = useState<number|undefined>(params.toPrice);
+  const [upPrice, setUpPrice] = useState<number|string|undefined>(params.upPrice);
+  const [toPrice, setToPrice] = useState<number|string|undefined>(params.toPrice);
 
 
   const closeAllSelect = ():void=>{

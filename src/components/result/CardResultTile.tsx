@@ -157,14 +157,7 @@ export default function CardResultTile({ flat }: any) {
             квартиры, описание ...
           </p>
           <Line> </Line>
-          {/* {flat.GasStove && "GasStove"}
-          {flat.Oven && "Oven"}
-          {flat.CoffeeMaker && "CoffeeMaker"}
-          {flat.MicrowaveOven && "MicrowaveOven"}
-          {flat.Dishes && "Dishes"}
-          {flat.Dishwasher && "Dishwasher"} */}
-
-          <FlexContainer width="100%" margin="15px 0">
+                <FlexContainer width="100%" margin="15px 0">
           <HeartImg></HeartImg>
             <Button
               background="#FFFFFF"

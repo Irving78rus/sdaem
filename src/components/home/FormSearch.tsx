@@ -16,6 +16,7 @@ import { List, RightArrow, SelectTitle } from "./FormSearchStyle";
 import { Context } from "../../redux/context";
  
 import { GetListUniqueItems } from "../share/hooks";
+import { setTimeout } from "timers";
  
 
 export default function FormSearch(props: any) {
@@ -33,11 +34,16 @@ export default function FormSearch(props: any) {
   
 
   useEffect(() => {
-   if(upPrice>toPrice){
-    setToPrice(0)
-   }
+   let timerFunc= setTimeout(() => {
+      if(upPrice>toPrice){
+        setToPrice("")
+       }
+       return () => clearTimeout(timerFunc);
+    },  1000 )
+   
    
   }, [upPrice,toPrice,setToPrice])
+  
   
 
   const addParamsToStore = (e: any) => {
@@ -51,7 +57,7 @@ export default function FormSearch(props: any) {
   }
   const clearParams = (e: any) => {
     dispatch(getFilterFlats({
-      city: '', upPrice: 0, toPrice: 0, rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: false, Oven: false,
+      city: '', upPrice: '', toPrice: '', rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: false, Oven: false,
       CoffeeMaker: false, MicrowaveOven: false, Dishes: false, Dishwasher: false
     }));
     setUpPrice(0)
@@ -100,7 +106,7 @@ export default function FormSearch(props: any) {
             <SelectTitle color={props.color}>{"Цена за сутки (BYN)"}</SelectTitle>
             <FlexContainer gap='10px' >
               <Input type={"number"} width={"80px"} height={"37px"} placeholder="  От"
-                onChange={(e: any) => { setUpPrice(e.target.value) }} value={upPrice} />
+                onChange={(e: any) => { setUpPrice(e.target.value) }} value={upPrice}  />
               <Input width={"80px"} placeholder="  До" type={"number"} height={"37px"}
                 onChange={(e: any) => { setToPrice(e.target.value) }} value={toPrice} />
             </FlexContainer>

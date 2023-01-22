@@ -8,8 +8,8 @@ const initialState:initialStateModel = {
   flat: createFlatList(),
   params: {
     city: "",
-    upPrice: 0,
-    toPrice: 0,
+    upPrice: "",
+    toPrice: "",
     rooms: 0,
     metro: "",
     district: "",

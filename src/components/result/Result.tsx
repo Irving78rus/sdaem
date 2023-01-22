@@ -51,9 +51,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
 
   const dispatch = useAppDispatch();
   const addParamsToStore = (item:any) => {
-   
-    // dispatch(getFilterFlats({[item.name]:item.value}));
-
+    dispatch(getFilterFlats({[item.name]:item.value}));
   }
   
   const itemsPerPage = 6;
@@ -77,8 +75,7 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
           <FlexContainer flexDirection="column" alignItems={"flex-start"}>
             <Flex>
               <img src={home} alt="home" />
-              
-              <Circle></Circle>
+               <Circle></Circle>
               {params.city?<p>Квартиры в  {params.city==="Гродно"?"Гродно":params.city==="Гомель"?"Гомеле":(params.city+'e')} </p>:<p>Квартиры в Белоруссии</p>}
             </Flex>
             {params.city?<Title>Аренда квартир в {params.city==="Гродно"?"Гродно":params.city==="Гомель"?"Гомеле":(params.city+'e')} </Title>:<Title>Аренда квартир в Белоруссии</Title>}

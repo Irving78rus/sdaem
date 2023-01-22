@@ -67,8 +67,7 @@ export const Authorization = () => {
           <RegistrationFormName onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setLogin(e.target.value)
           }}
-          onMouseEnter={()=>{setOnMouseEnterInput({login:true,lock:false})}}
-          onMouseLeave={()=>{setOnMouseEnterInput({login:false,lock:false})}}
+           
           onFocus    ={()=>{setOnMouseEnterInput({login:true,lock:false})}}
           onBlur={()=>{setOnMouseEnterInput({login:false,lock:false})}}
             name={'login'}
@@ -87,8 +86,7 @@ export const Authorization = () => {
             type={'password'}
             id={'password'}
             placeholder='Пароль'
-            onMouseEnter={(e)=>{setOnMouseEnterInput({login:false,lock:true})}}
-            onMouseLeave={(e)=>{setOnMouseEnterInput({login:false,lock:false})}}
+             
             onFocus    ={(e)=>{setOnMouseEnterInput({login:false,lock:true})}}
           onBlur={(e)=>{setOnMouseEnterInput({login:false,lock:false})}}
             />

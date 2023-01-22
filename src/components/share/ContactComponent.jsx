@@ -1,15 +1,15 @@
 import React from "react";
- 
+
 import Boy from '../../assets/img/boy.png'
 import Cvib from '../../assets/icon/Cvib.svg'
 import CWhat from '../../assets/icon/CWhat.svg'
 import CMail from '../../assets/icon/CMail.svg'
-import { Link  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
- 
+
 import FlexContainer from "../../UI/FlexContainer";
- 
- 
+
+
 const ContactsComp = styled.div`
 position:absolute;
 top:-313px;
@@ -80,26 +80,23 @@ text-decoration-line: underline;
 color: #664EF9;
 }
 `
- 
+
 export default function ContactComponent() {
-   
+
   return (
-   
-       
-           <ContactsComp>
-             <img src={Boy}alt='boy' className='photo'/> 
-                <p>Владелец</p>   
-                <h4> Владимир</h4>
-                <h4>  +375 (29) 291-14-44</h4>
-               <Link to="#" className='link'>vladimir6234@tut.by </Link> 
-                <FlexContainer>
-                <img src={Cvib}alt='boy'/>
-                <img src={CWhat}alt='boy'/>
-                <img src={CMail}alt='boy'/>
-                
-                </FlexContainer>
-           </ContactsComp>
-       
-     
+    <ContactsComp>
+      <img src={Boy} alt='boy' className='photo' />
+      <p>Владелец</p>
+      <h4> Владимир</h4>
+      <h4>  +375 (29) 291-14-44</h4>
+      <Link to="#" className='link'>vladimir6234@tut.by </Link>
+      <FlexContainer>
+        <img src={Cvib} alt='boy' />
+        <img src={CWhat} alt='boy' />
+        <img src={CMail} alt='boy' />
+      </FlexContainer>
+    </ContactsComp>
+
+
   );
 }

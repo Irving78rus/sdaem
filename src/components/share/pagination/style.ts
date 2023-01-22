@@ -20,7 +20,6 @@ export const PaginationButton = styled.button.attrs((props) => ({
   &:hover {
     border-bottom: 2px solid #ffd54f;
   }
-
   &.activeButton {
     color: #000000;
     border-bottom: 2px solid #ffd54f;

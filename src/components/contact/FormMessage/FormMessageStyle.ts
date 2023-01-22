@@ -70,7 +70,10 @@ export const FormMessageUserMessage = styled.textarea.attrs({
   height: 200px;
 `;
 
-export const FormMessageButton = styled.button`
+export const FormMessageButton = styled.button.attrs({
+  type: 'submit',
+   
+})`
   margin: 10px auto 0;
   width: 33%;
   padding: 12px 20px;

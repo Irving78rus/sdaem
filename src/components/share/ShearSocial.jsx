@@ -2,8 +2,7 @@ import styled from "styled-components";
  
 
 const ShearStyled = styled.div`
-   
-  display: flex;
+    display: flex;
   justify-content: space-between;
   align-items: center;
   gap:20px;

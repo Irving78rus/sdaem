@@ -18,6 +18,7 @@ interface Props {
 const InputStl = styled.input.attrs<Props>((attrs) => ({
   type: attrs.type || "text",
   placeholder: attrs.placeholder || "",
+ 
 }))`
   background: #f8f8f8;
   width: ${(props) => props.width || "100%"};

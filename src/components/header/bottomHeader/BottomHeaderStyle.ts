@@ -18,6 +18,7 @@ color: #8291a3;
 margin: 0;
 text-decoration: none;
 li {
+  height:100%;
   margin-left: 57px;
   text-decoration: none;
 }
@@ -25,14 +26,15 @@ li:first-child {
   margin-left: 10px;
 }
 .link {
+  height:100%;
   padding-left: 0;
-
+  
   font-family: "Epilogue";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   color: black;
-
+  margin:auto;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -41,6 +43,7 @@ li:first-child {
   }
 }
 .active {
+   
   color: black;
   border-bottom: 3px solid #ffd54f;
   padding: 10px 0;

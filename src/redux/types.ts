@@ -21,8 +21,8 @@ export interface flatModel {
   MicrowaveOven: boolean;
   Dishes: boolean;
   Dishwasher: boolean;
-  upPrice?: number;
-  toPrice?: number;
+  upPrice?: number|string;
+  toPrice?: number|string;
 }
 export interface topNavigationFormSearchModel {
   title: string;
@@ -33,8 +33,8 @@ export interface topNavigationFormSearchModel {
 export interface paramsModel {
   city?: string;
   cost?: number;
-  upPrice?: number;
-  toPrice?: number;
+  upPrice?: number|string;
+  toPrice?: number|string;
   rooms?: number;
   metro?: string;
   district?: string;

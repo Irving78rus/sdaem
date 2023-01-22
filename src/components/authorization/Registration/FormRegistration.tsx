@@ -121,8 +121,6 @@ export const FormRegistration = ({setIsShowPopup,captcha,setCaptcha}:any) => {
         placeholder='email'
         className={(formik.touched.email && formik.errors.email) ? 'error' : ''}
       />
-
-
       <LabelLogin htmlFor='email' >
         <IMGCont><MailImg fill='#686868' ></MailImg ></IMGCont>
         {(formik.touched.email && formik.errors.email) && <IMGError><ErrorImg fill='red'></ErrorImg> </IMGError>}
