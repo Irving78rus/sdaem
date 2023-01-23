@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import styles from "./style.module.scss";
+import React from "react";
 import home from "../../../assets/img/home.png";
-
-import vk from "../../../assets/img/vkB.svg";
-import Viber from "../../../assets/img/VibB.svg";
-import telegram from "../../../assets/img/tgB.svg";
-import facebook from "../../../assets/img/FacB.svg";
-import WhatSub from "../../../assets/img/WhaB.svg";
-
 import cartImage from "../../../assets/img/cartImage.png";
 import dots from "../../../assets/img/dots.svg";
 import { NavLink } from "react-router-dom";
@@ -17,7 +9,7 @@ import FlexContainer from "../../../UI/FlexContainer";
 import ContentContainer from "../../../UI/ContentContainer";
 import ShearSocial from "../../share/ShearSocial";
 interface Props {
-  height?: any;
+  height?: string;
 }
 const HeaderBackground = styled.div<Props>`
   background: linear-gradient(90deg, #94afff30 0%, #94afff30 94.5%);
@@ -109,7 +101,7 @@ const Card = styled.div`
     margin: 20px auto;
   }
 `;
-const FlexUpdt2 = styled.div`
+const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -133,7 +125,7 @@ const FlexUpdt2 = styled.div`
   }
 `;
 export default function New() {
-  const arr = [1, 2, 3];
+  const arr: number[] = [1, 2, 3];
   return (
     <>
       <HeaderBackground height="280px">
@@ -193,7 +185,6 @@ export default function New() {
           </p>
 
           <p>
-            {" "}
             Посетить «Линию Сталина» будет интересно как взрослым, так и детям. Особенно мальчишкам!
             Уставшие от впечатлений, они будут рады вместо долгой дороги домой остановиться на ночь
             в уютном современном коттедже. На сайте можно выбрать и снять посуточно наиболее удобный
@@ -209,7 +200,7 @@ export default function New() {
           <FlexContainer flexDirection="column" alignItems="start">
             <h2 style={{ marginTop: 60 }}>Читайте так же</h2>
             <FlexContainer gap="30px">
-              {arr.map((item) => (
+              {arr.map((item: number) => (
                 <Card key={item}>
                   <img src={cartImage} alt="cartImage" />
                   <h4>Линия Сталина: суровый отдых в усадьбах на сутки</h4>
@@ -219,13 +210,12 @@ export default function New() {
                     снять коттедж на сутки для семьи или большой компании друзей. А...
                   </p>
                   <div className="line"></div>
-                  <FlexUpdt2>
+                  <Wrap>
                     <div>14 Января 2008</div>
                     <button>
-                      {" "}
                       <NavLink to="New">Читать</NavLink>
                     </button>
-                  </FlexUpdt2>
+                  </Wrap>
                 </Card>
               ))}
             </FlexContainer>

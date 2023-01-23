@@ -12,16 +12,16 @@ interface Props {
   borderBottomLeftRadius?: string;
   left?: string;
   margin?: string;
-  borderRadius?:string;
-  boxShadow?:string;
+  borderRadius?: string;
+  boxShadow?: string;
 }
 
 export const Background = styled.div<Props>`
   background: linear-gradient(0deg, #7e6af3 1.04%, #6540cd 100%);
   min-height: 600px;
-  border-bottom-left-radius:  ${(props) => props.borderBottomLeftRadius || "40px"};
+  border-bottom-left-radius: ${(props) => props.borderBottomLeftRadius || "40px"};
   border-bottom-right-radius: ${(props) => props.borderBottomRightRadius || "40px"};
-  margin:${(props) => props.margin || " 0 80px"};
+  margin: ${(props) => props.margin || " 0 80px"};
 `;
 export const BackgroundImg = styled.div`
   background-image: url(${Back});
@@ -35,7 +35,7 @@ export const BackgroundImg = styled.div`
     color: #ffd54f;
   }
 `;
-export const BottomNav = styled.ul `
+export const BottomNav = styled.ul`
   display: flex;
   list-style-type: none;
   justify-content: space-between;
@@ -83,17 +83,17 @@ export const BottomNav = styled.ul `
     color: black;
     background-color: white;
   }
- `
+`;
 
 export const IMG = styled.div<Props>`
   position: relative;
-  border-radius:  ${(props) => props.borderRadius || "10px"};
+  border-radius: ${(props) => props.borderRadius || "10px"};
   width: ${(props) => props.width || ""};
   height: ${(props) => props.height || ""};
   background-image: url(${(props) => props.backgroundImage || null});
   background-repeat: no-repeat;
-  background-position :center;
-  box-shadow:${(props) => props.boxShadow || ""}; 
+  background-position: center;
+  box-shadow: ${(props) => props.boxShadow || ""};
   p {
     margin: 37px;
     background: linear-gradient(90deg, #9d94ff 0%, #6b50e9 94.5%);
@@ -119,17 +119,16 @@ export const IMG = styled.div<Props>`
     display: flex;
     align-items: center;
     justify-content: center;
-   background: #664EF9;
+    background: #664ef9;
     border-radius: 16px;
     color: rgba(255, 255, 255, 0.7);
     padding: 8px 14px;
-    &:hover{
-      cursor:pointer;
-      background: #612BFB;
-      color: #FFFFFF;
+    &:hover {
+      cursor: pointer;
+      background: #612bfb;
+      color: #ffffff;
     }
   }
-
   img {
     position: absolute;
     bottom: 18px;
@@ -164,8 +163,8 @@ export const TextBlock = styled.div`
       align-items: center;
       justify-content: space-between;
       p:hover {
-        margin-left:10px;
-        cursor:pointer;
+        margin-left: 10px;
+        cursor: pointer;
       }
     }
     li:first-child {
@@ -175,7 +174,6 @@ export const TextBlock = styled.div`
       font-weight: 700;
       font-size: 18px;
     }
-   
   }
 `;
 export const MarginT = styled.div`
@@ -186,31 +184,27 @@ export const MarginT = styled.div`
   margin-top: 42px;
 `;
 export const SubTitle = styled.p`
- 
   text-transform: uppercase;
-  font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 17px;
-  background: linear-gradient(90deg, #9D94FF 0%, #6B50E9 94.5%);
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  background: linear-gradient(90deg, #9d94ff 0%, #6b50e9 94.5%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
- 
-`
+`;
 export const CardList = styled.div`
   width: 100%;
- 
-  .subTitle{
-    font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 25px;
-line-height: 30px;
-
-color: #000000;
+  .subTitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
   }
 `;
 
@@ -219,8 +213,8 @@ export const WrapperFilter = styled.div`
   width: 800px;
   display: flex;
   justify-content: center;
-   
-  position:relative;
+
+  position: relative;
   input {
     height: 37px;
     margin-top: 67px;
@@ -233,29 +227,26 @@ export const WrapperFilter = styled.div`
     padding-left: 15px;
   }
 `;
-export const WrapperFilter2 = styled.div`
-z-index: -1;
-width: 847px;
-left: 32px;
-height:1000px;
+export const WrapperBackground = styled.div`
+  z-index: -1;
+  width: 847px;
+  left: 32px;
+  height: 1000px;
   background: linear-gradient(90deg, #94afff23 0%, #4e65f91c 94.5%);
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
-  position:absolute;
-  
+  position: absolute;
 `;
-export const Title =styled.div`
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
- 
-color: #8291A3;
-
-opacity: 0.6;
-`
-export const Itog = styled.div`
+export const Title = styled.div`
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8291a3;
+  opacity: 0.6;
+`;
+export const TotalFlat = styled.div`
    display: flex;
    flex-direction:column;
     p{
@@ -281,7 +272,7 @@ export const Itog = styled.div`
        
     }
  }`;
-export const UnderSwiper = styled.div`
+export const UnderSlider = styled.div`
     display: flex;
  align-items:center;
  width:560px;
@@ -388,47 +379,42 @@ export const ShowAllStl = styled.div`
   cursor: pointer;
 `;
 export const SearchToMapBlock = styled.div`
-position:relative;
-display: flex;
+  position: relative;
+  display: flex;
   justify-content: center;
-  align-items:center;
-flex-direction:column;
- margin-top:75px;
-  width:390px;
-  text-align:center;
- 
-  p,h1{
+  align-items: center;
+  flex-direction: column;
+  margin-top: 75px;
+  width: 390px;
+  text-align: center;
+  p,
+  h1 {
     color: white;
   }
 `;
 export const CardGold = styled.div`
-background: linear-gradient(105.54deg, #FFD54F 33.53%, #FEC100 94.13%);
- position:relative;
-
-border-radius: 10px;
- width:406px;
- 
-  height:345px;
-  img{
-    position:absolute;
-    right:0;
-    bottom:0;
+  background: linear-gradient(105.54deg, #ffd54f 33.53%, #fec100 94.13%);
+  position: relative;
+  border-radius: 10px;
+  width: 406px;
+  height: 345px;
+  img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
-  .title{
-    margin-top:40px;
-    text-align:center;
+  .title {
+    margin-top: 40px;
+    text-align: center;
     font-weight: 700;
-font-size: 30px;
-line-height: 36px;
+    font-size: 30px;
+    line-height: 36px;
   }
-  .wrapper{
-    padding:0 38px;
+  .wrapper {
+    padding: 0 38px;
   }
-  p{
-    
+  p {
     position: relative;
-    z-index:2;
+    z-index: 2;
   }
-   
 `;
- 

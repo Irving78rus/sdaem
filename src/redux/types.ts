@@ -24,6 +24,7 @@ export interface flatModel {
   upPrice?: number|string;
   toPrice?: number|string;
 }
+
 export interface topNavigationFormSearchModel {
   title: string;
   id: number;

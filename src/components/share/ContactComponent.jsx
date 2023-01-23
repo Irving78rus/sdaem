@@ -90,7 +90,7 @@ export default function ContactComponent() {
       <h4> Владимир</h4>
       <h4>  +375 (29) 291-14-44</h4>
       <Link to="#" className='link'>vladimir6234@tut.by </Link>
-      <FlexContainer>
+      <FlexContainer gap='10px'>
         <img src={Cvib} alt='boy' />
         <img src={CWhat} alt='boy' />
         <img src={CMail} alt='boy' />

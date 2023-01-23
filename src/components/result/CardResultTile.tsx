@@ -1,14 +1,9 @@
 import React, { useState } from "react";
- 
-
 import CardResultImg from "../../assets/img/CardResult.png";
- 
 import tel from "../../assets/icon/tel.svg";
- 
 import styled from "styled-components";
 import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";
- 
 import { Line } from "../../UI/Line";
 import ContactComponent from "../share/ContactComponent";
 import Metro from "../../assets/icon/Metro";
@@ -16,6 +11,7 @@ import Elips from "../../assets/icon/Elips";
 import IconMap from "../share/IconMap";
 import HeartImg from "../../assets/icon/HeartImg";
 import Slider from "../../UI/Slider";
+import { flatModel } from "../../redux/types";
 
 interface Props {
   height?: any;
@@ -121,8 +117,11 @@ const Gold = styled.div<Props>`
     text-shadow: 0px 1px 0px rgba(147, 79, 0, 0.3);
   }
 `;
-
-export default function CardResultTile({ flat }: any) {
+interface CardResultTileProps{
+  flat: flatModel
+  top?: string
+}
+export default function CardResultTile({ flat }: CardResultTileProps) {
   const [showContact, setShowContact] = useState(false);
   return (
     <>

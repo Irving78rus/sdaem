@@ -10,6 +10,7 @@ import IconMap from "../share/IconMap";
 import UserImg from "../../assets/icon/UserImg";
 import HeartImg2 from "../../assets/icon/HeartImg2";
 import Slider from "../../UI/Slider";
+import { flatModel } from "../../redux/types";
 
 const Card = styled.div`
   display: flex;
@@ -135,7 +136,12 @@ const IMGContainer = styled.div`
 }
 }
 `;
-export default function CardResultList({ flat }: any) {
+interface CardResultListProps{
+  flat: flatModel
+}
+export default function CardResultList({ flat }:CardResultListProps) {
+  console.log(flat);
+  
   const [showContact, setShowContact] = useState(false);
   return (
     <>

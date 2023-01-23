@@ -25,7 +25,7 @@ import {
   CardList,
   IMG,
   IMGBlock,
-  Itog,
+  TotalFlat,
   LeftBlock,
   MainBottomCard,
   RightBlock,
@@ -34,46 +34,41 @@ import {
   SubTitle,
   TextBlock,
   Title,
-  UnderSwiper,
+  UnderSlider,
+  WrapperBackground,
   WrapperFilter,
-  WrapperFilter2,
 } from "./HomeStyle";
 import { GetListUniqueItems } from "../share/hooks";
 import { useNavigate } from "react-router-dom";
 import { cityArr } from "../../redux/flatCreater";
 import { VerticalLine } from "../../UI/VerticalLine";
-import Dots  from "../../UI/Dots";
+import Dots from "../../UI/Dots";
 import IconMap from "../share/IconMap";
 import { Context } from "../../redux/context";
 import { RightArrow } from "./FormSearchStyle";
+import { flatModel, stateModel, topNavigationFormSearchModel } from "../../redux/types";
 
 export default function Home() {
-  const params = useAppSelector((state: any) => state.baseFlat.params);
-  const {closeAllSelect ,
-     city, setCity,
-     metro, setMetro,
-     district, setDistrict,
-     isActiveSelectMetro, setIsActiveSelectMetro,
-     isActiveSelectDistrict, setIsActiveSelectDistrict,
-    } = useContext(Context);
+  const params = useAppSelector((state: stateModel) => state.baseFlat.params);
+  const [isActiveFieldsFormSearch, setIsActiveFieldsFormSearch] = useState<number>(0);
+  const { closeAllSelect,
+    metro, setMetro,
+    district, setDistrict,
+    isActiveSelectMetro, setIsActiveSelectMetro,
+    isActiveSelectDistrict, setIsActiveSelectDistrict,
+  } = useContext(Context);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
- 
-  const flats = useAppSelector((state: any) => state.baseFlat.flat);
-  const topNavigationFormSearch = useAppSelector((state: any) => state.baseFlat.topNavigationFormSearch);
+  const flats = useAppSelector((state: stateModel) => state.baseFlat.flat);
+  const topNavigationFormSearch = useAppSelector((state: stateModel) => state.baseFlat.topNavigationFormSearch);
   const showFlatInCity = (item: string) => {
     dispatch(getFilterFlats({
-      city:item, upPrice: 0, toPrice: 0, rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: false, Oven: false,
+      city: item, upPrice: 0, toPrice: 0, rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: false, Oven: false,
       CoffeeMaker: false, MicrowaveOven: false, Dishes: false, Dishwasher: false
     }));
     navigate("/Result")
   }
- 
- 
-
-  const [isActiveFieldsFormSearch, setIsActiveFieldsFormSearch] = useState(0);
- 
 
   const home = [
     "Котеджи и усадьбы",
@@ -87,7 +82,7 @@ export default function Home() {
     "Коттеджи и усадьбы (жилье) на Нарочи",
     "Коттеджи и усадьбы (жилье) у воды",
   ];
- 
+
 
   const uniqueMetro = GetListUniqueItems('metro')
   const uniqueDistrict = GetListUniqueItems('district')
@@ -101,7 +96,7 @@ export default function Home() {
             </h1>
             <FlexContainer flexDirection="column" alignItems="flex-start" width="100%">
               <BottomNav>
-                {topNavigationFormSearch.map((item:any) => (
+                {topNavigationFormSearch.map((item: topNavigationFormSearchModel) => (
                   <li
                     key={item.id}
                     className={isActiveFieldsFormSearch === item.id ? "link active" : "link"}
@@ -119,12 +114,6 @@ export default function Home() {
                 backgroundColor="white"
                 flexDirection="column"
                 alignItems="flex-start"
-                city={city}
-                setCity={setCity}
-                metro={metro}
-                setMetro={setMetro}
-                district={district}
-                setDistrict={setDistrict}
               ></FormSearch>
             </FlexContainer>
           </ContentContainer>
@@ -161,15 +150,13 @@ export default function Home() {
             </IMG>
           </IMGBlock>
           <TextBlock>
-
-
             <ul>
               <li >
                 <p>{"Квартиры"}</p>{flats.length}
               </li>
               {cityArr.map((item: string, index: number) => (
                 <li key={index}>
-                 <p>Квартиры в {item}</p><span>{flats.filter((flat: any) => item === flat.city).length}</span> 
+                  <p>Квартиры в {item}</p><span>{flats.filter((flat: flatModel) => item === flat.city).length}</span>
                 </li>
               ))}
             </ul>
@@ -181,9 +168,9 @@ export default function Home() {
               ))}
             </ul>
             <ul>
-              {popular.map((item, index) => (
+              {popular.map((item: string, index) => (
                 <li key={index}>
-                  <p>{item}</p>{" "}
+                  <p>{item}</p>
                 </li>
               ))}
             </ul>
@@ -202,27 +189,33 @@ export default function Home() {
             <h3 className="subTitle"> Aренда квартир в {params.city}</h3>
             <WrapperFilter>
               <FlexContainer>
-              <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'} options={uniqueMetro}  selected={ metro || 'Метро'} selectedOption={ setMetro}  isActiveSelect={isActiveSelectMetro} setIsActiveSelect={setIsActiveSelectMetro} />
-              <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'} options={ uniqueDistrict}  selected={ district || 'Район'} selectedOption={ setDistrict}  isActiveSelect={isActiveSelectDistrict} setIsActiveSelect={setIsActiveSelectDistrict} />
-
+                <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'}
+                  options={uniqueMetro} selected={metro || 'Метро'} selectedOption={setMetro}
+                  isActiveSelect={isActiveSelectMetro} setIsActiveSelect={setIsActiveSelectMetro} />
+                <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'}
+                  options={uniqueDistrict} selected={district || 'Район'} selectedOption={setDistrict}
+                  isActiveSelect={isActiveSelectDistrict} setIsActiveSelect={setIsActiveSelectDistrict} />
               </FlexContainer>
-              <WrapperFilter2></WrapperFilter2>
+              <WrapperBackground></WrapperBackground>
             </WrapperFilter>
-          </FlexContainer> 
-          <FlexContainer margin='30px 0 0 0'>      <Slider photos={flats} position='static' content={true} PAGE_WIDTH='1347' width='1347px' height={'615px'} style={{marginTop:'30px'}}></Slider></FlexContainer>
-      
-          <UnderSwiper>
-            <Itog>
-              <FlexContainer alignItems='center'><p>341 <span>+</span>  </p></FlexContainer>
+          </FlexContainer>
 
+          <FlexContainer margin='30px 0 0 0'>
+            <Slider photos={flats} position='static' content={true} PAGE_WIDTH='1347'
+              width='1347px' height={'615px'} style={{ marginTop: '30px' }}>
+            </Slider>
+          </FlexContainer>
+
+          <UnderSlider>
+            <TotalFlat>
+              <FlexContainer alignItems='center'><p>341 <span>+</span>  </p></FlexContainer>
               <Title>Предложений по Минску</Title>
-            </Itog>
+            </TotalFlat>
             <VerticalLine></VerticalLine>
             <Button boxShadow='0px 15px 40px rgba(0, 96, 206, 0.15)'
-             backgroundHover='linear-gradient(90deg, #867CFC 0%, #6929F3 94.5%)'>
-              Посмотреть все <RightArrow background='white'></RightArrow>   </Button>
-          </UnderSwiper>
-
+              backgroundHover='linear-gradient(90deg, #867CFC 0%, #6929F3 94.5%)'>
+              Посмотреть все <RightArrow background='white'></RightArrow> </Button>
+          </UnderSlider>
 
         </FlexContainer>
       </CardList>
@@ -232,12 +225,11 @@ export default function Home() {
           <ContentContainer justifyContent="center" flexDirection="column" alignItems="center">
             <Dots right='140px' top='46px' fill='white'></Dots>
             <SearchToMapBlock>
-
               <h1>Поиск квартир на карте</h1>
               <p>
                 Ищите квартиры на сутки в центре города, возле парка или в живописном районе
               </p>
-              <Button background="white" color="black" fontWeight='600'  colorHover='#FEC100'>
+              <Button background="white" color="black" fontWeight='600' colorHover='#FEC100'>
                 <IconMap fill='#FFD54F'></IconMap> Открыть карту
               </Button>
             </SearchToMapBlock>
@@ -279,14 +271,14 @@ export default function Home() {
                 <div className="wrapper"> <p>
                   Приоритетное размещение Gold позволяет закрепить ваше объявление в верхней части каталога!
                 </p>
-                <p>
-                  Gold объявления перемещаются каждые 5 мин на 1 позицию, что делает размещение одинаковым для всех.
-                </p>
+                  <p>
+                    Gold объявления перемещаются каждые 5 мин на 1 позицию, что делает размещение одинаковым для всех.
+                  </p>
 
-                <Button  margin ='30px 0 0 0' background={'linear-gradient(270deg, #7E6AF3 0%, #6540CD 100%)'} height={"30px"} color={"white"}>
-                  Еще о тарифе Gold
-                </Button></div>
-               
+                  <Button margin='30px 0 0 0' background={'linear-gradient(270deg, #7E6AF3 0%, #6540CD 100%)'} height={"30px"} color={"white"}>
+                    Еще о тарифе Gold
+                  </Button></div>
+
               </CardGold>
             </FlexContainer>
           </ContentContainer>
@@ -299,17 +291,16 @@ export default function Home() {
           justifyContent="flex-start"
           alignItems="flex-start"
         >
-          <FlexContainer width={"90%"} height={'50px'} justifyContent='flex-end' >  <Dots fill='#FFD54F' position='static'></Dots>  </FlexContainer>
-        
+          <FlexContainer width={"90%"} height={'50px'} justifyContent='flex-end' >
+            <Dots fill='#FFD54F' position='static'></Dots> </FlexContainer>
           <SubTitle>ЧТО ТАКОЕ SDAEM.BY </SubTitle>
-        
+
           <FlexContainer width={"100%"}>
             <LeftBlock>
               <h3> Квартира на сутки в Минске</h3>
               <FlexContainer gap={"20px"} alignItems="flex-start" margin="0 0 30px 0" >
                 <IMG backgroundImage={Flat} width={"50%"} height={"270px"} borderRadius='20px'></IMG>
                 <p style={{ width: "50%" }}>
-                  {" "}
                   <span> Нужна квартира на сутки в Минске?</span> <br />
                   На веб-сайте sdaem.by вас ждет масса выгодных предложений. Каталог насчитывает{" "}
                   <span>более 500 квартир.</span> Благодаря удобной навигации вы быстро найдете
@@ -326,7 +317,7 @@ export default function Home() {
                 сайте представлены исключительно квартиры на сутки без посредников, что избавляет
                 посетителей от необходимости взаимодействовать с агентствами, тратя свое время и
                 деньги. Также пользователи сайта могут совершенно бесплатно размещать объявления о
-                готовности сдать квартиру на сутки.{" "}
+                готовности сдать квартиру на сутки.
               </p>
             </LeftBlock>
             <RightBlock>
@@ -345,7 +336,6 @@ export default function Home() {
               <Line> </Line>
               <p>Линия Сталина: суровый отдых в усадьбах на сутки</p>
               <span>14 Январь</span>
-
               <ShowAllStl>{"Посмотреть все >"}</ShowAllStl>
             </RightBlock>
           </FlexContainer>

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import TopHeader from "./components/header/topHeader/TopHeader";
 import BottomHeader from "./components/header/bottomHeader/BottomHeader";
 import News from "./components/news/News";
-
 import New from "./components/news/new/New";
 import Home from "./components/home/Home";
 import СontactsComponent from "./components/contact/СontactsComponent";
@@ -12,7 +11,6 @@ import Catalog from "./components/catalog/Catalog";
 import Favorite from "./components/favorite/Favorite";
 import Footer from "./components/footer/Footer";
 import { Route, Routes } from "react-router-dom";
-
 import { useAppSelector } from "./redux/hooks";
 import Result from "./components/result/Result";
 import { Authorization } from "./components/authorization/Auth/Authorization";
@@ -42,20 +40,20 @@ function App() {
   const [Dishwasher, setDishwasher] = useState<boolean | undefined>(params.Dishwasher);
   const [upPrice, setUpPrice] = useState<number | string | undefined>(params.upPrice);
   const [toPrice, setToPrice] = useState<number | string | undefined>(params.toPrice);
-  const [time, setTime] = useState<number>(0);
-  useEffect(() => {
-    const gameTime = setInterval(() => setTime((prev) => prev + 1), 800);
-    if (time > 1) {
-      clearInterval(gameTime);
-      if (upPrice && toPrice && Number(upPrice) > Number(toPrice)) {
-        setToPrice("");
-        setTime(0);
-      }
-    }
-    return () => {
-      clearInterval(gameTime);
-    };
-  }, [upPrice, toPrice, time]);
+  // const [time, setTime] = useState<number>(0);
+  // useEffect(() => {
+  //   const gameTime = setInterval(() => setTime((prev) => prev + 1), 800);
+  //   if (time > 1) {
+  //     clearInterval(gameTime);
+  //     if (upPrice && toPrice && Number(upPrice) > Number(toPrice)) {
+  //       setToPrice("");
+  //       setTime(0);
+  //     }
+  //   }
+  //   return () => {
+  //     clearInterval(gameTime);
+  //   };
+  // }, [upPrice, toPrice, time]);
 
   const closeAllSelect = (): void => {
     setIsActiveSelectCity(false);

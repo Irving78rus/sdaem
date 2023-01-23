@@ -14,24 +14,55 @@ import IconMap from "../share/IconMap";
 import { List, RightArrow, SelectTitle } from "./FormSearchStyle";
 import { Context } from "../../redux/context";
 import { GetListUniqueItems } from "../share/hooks";
+interface FormSearchProps {
+  map: boolean
+  clearButton: boolean
+  backgroundColor?: string
+  flexDirection?: string
+  alignItems?: string
+  justifyContent?: string
+  color?: string
+}
 
-export default function FormSearch(props: any) {
+
+
+export default function FormSearch({
+  map,
+  clearButton,
+  backgroundColor,
+  flexDirection,
+  alignItems,
+  justifyContent,
+  color, }: FormSearchProps) {
   const { isActiveSelectCity, setIsActiveSelectCity, isActiveSelectRooms, setIsActiveSelectRooms,
     isActiveSelectMetro, setIsActiveSelectMetro,
     isActiveSelectDistrict, setIsActiveSelectDistrict,
     isActiveSelectSleepingPlaces, setIsActiveSelectSleepingPlaces, rooms, setRooms, sleepingPlaces, setSleepingPlaces,
     GasStove, setGasStove, Oven, setOven, CoffeeMaker, setCoffeeMaker, MicrowaveOven, setMicrowaveOven,
-    Dishes, setDishes, Dishwasher, setDishwasher, upPrice, setUpPrice, toPrice, setToPrice } = useContext(Context);
+    Dishes, setDishes, Dishwasher, setDishwasher, upPrice, setUpPrice, toPrice, setToPrice,
+    city,
+    setCity,
+    metro,
+    setMetro,
+    district,
+    setDistrict,
+
+
+  } = useContext(Context);
   const dispatch = useAppDispatch();
 
   const addParamsToStore = () => {
-    dispatch(getFilterFlats({
-      city: props.city, upPrice: Number(upPrice), toPrice: Number(toPrice), rooms: Number(rooms),
-      metro: props.metro, district: props.district, sleepingPlaces: Number(sleepingPlaces),
-      GasStove: GasStove, Oven: Oven,
-      CoffeeMaker: CoffeeMaker, MicrowaveOven: MicrowaveOven, Dishes: Dishes, Dishwasher: Dishwasher
-    }));
-
+    if (upPrice && toPrice && Number(upPrice) > Number(toPrice)) {
+      setToPrice("");
+    }
+    else{
+      dispatch(getFilterFlats({
+        city: city, upPrice: Number(upPrice), toPrice: Number(toPrice), rooms: Number(rooms),
+        metro: metro, district: district, sleepingPlaces: Number(sleepingPlaces),
+        GasStove: GasStove, Oven: Oven,
+        CoffeeMaker: CoffeeMaker, MicrowaveOven: MicrowaveOven, Dishes: Dishes, Dishwasher: Dishwasher
+      }));
+    }
   }
   const clearParams = () => {
     dispatch(getFilterFlats({
@@ -67,30 +98,30 @@ export default function FormSearch(props: any) {
       <FlexContainer width={"100%"}
         borderBottom='1px solid rgba(78, 100, 249, 0.1)'
         borderTop='1px solid rgba(78, 100, 249, 0.1)'
-        backgroundColor={props.backgroundColor}
+        backgroundColor={backgroundColor}
         flexWrap="wrap"
         borderRadius="0 10px 10px 10px"
         onClick={() => setIsActiveSelectCity(false)}>
 
-        <FlexContainer width={"100%"} padding={props.clearButton ? '0 80px' : "0"}
+        <FlexContainer width={"100%"} padding={clearButton ? '0 80px' : "0"}
           flexWrap="wrap">
 
-          {props.map &&
+          {map &&
             <>
               <Select options={GetListUniqueItems('city')}
-                selected={props.city || 'Выберите'} selectedOption={props.setCity} title='Город'
+                selected={city || 'Выберите'} selectedOption={setCity} title='Город'
                 isActiveSelect={isActiveSelectCity} setIsActiveSelect={setIsActiveSelectCity} />
               <VerticalLine></VerticalLine>
             </>}
 
-          <Select options={GetListUniqueItems('rooms')} color={props.color}
-            flexDirection={props.flexDirection} selected={rooms || 'Выберите'}
+          <Select options={GetListUniqueItems('rooms')} color={color}
+            flexDirection={flexDirection} selected={rooms || 'Выберите'}
             selectedOption={setRooms} title='Комнаты' isActiveSelect={isActiveSelectRooms}
             setIsActiveSelect={setIsActiveSelectRooms} />
           <VerticalLine></VerticalLine>
 
-          <FlexContainer flexDirection={props.flexDirection} gap='10px'>
-            <SelectTitle color={props.color}>{"Цена за сутки (BYN)"}</SelectTitle>
+          <FlexContainer flexDirection={flexDirection} gap='10px'>
+            <SelectTitle color={color}>{"Цена за сутки (BYN)"}</SelectTitle>
             <FlexContainer gap='10px' >
               <Input type={"number"} width={"80px"} height={"37px"} placeholder="  От"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUpPrice(e.target.value) }} value={upPrice} />
@@ -105,11 +136,11 @@ export default function FormSearch(props: any) {
           </MoreOption>
           <VerticalLine></VerticalLine>
 
-          {props.map && <MoreOption onClick={(e: React.MouseEvent<HTMLElement>) => open(e)}>
+          {map && <MoreOption onClick={(e: React.MouseEvent<HTMLElement>) => open(e)}>
             На карте {<IconMap fill='#664EF9 '></IconMap>}
           </MoreOption>}
           <FlexContainer gap='10px'>
-            {props.clearButton && (
+            {clearButton && (
               <Button fontSize="15px" fontWeight="600" background={"#F8F8F8"}
                 width={"130px"} height={"40px"} color={"black"} onClick={() => { clearParams() }}  >
                 {"Очистить"}
@@ -117,12 +148,12 @@ export default function FormSearch(props: any) {
             )}
 
             <NavLink to={"/Result"} style={{ marginRight: "34px", textDecoration: "none" }}>
-              <Button fontSize="15px" fontWeight={props.clearButton ? "600" : '700'}
-                background={props.clearButton ? '#664EF9' : "#FFD54F"}
-                width={"100%"} height={"40px"} color={props.clearButton ? "white" : "black"}
+              <Button fontSize="15px" fontWeight={clearButton ? "600" : '700'}
+                background={clearButton ? '#664EF9' : "#FFD54F"}
+                width={"100%"} height={"40px"} color={clearButton ? "white" : "black"}
                 onClick={() => { addParamsToStore() }} >
                 <FlexContainer width={"100%"}>
-                  {props.clearButton ? "Показать объекты" : 'Показать'} <RightArrow></RightArrow>
+                  {clearButton ? "Показать объекты" : 'Показать'} <RightArrow></RightArrow>
                 </FlexContainer>
               </Button>
             </NavLink>
@@ -132,16 +163,16 @@ export default function FormSearch(props: any) {
       </FlexContainer>
 
       {isActive &&
-        <FlexContainer width={"100%"} padding={props.clearButton ? '0 80px' : "0"}>
-          <List {...props}>
+        <FlexContainer width={"100%"} padding={clearButton ? '0 80px' : "0"}>
+          <List >
             <FlexContainer >
-              <Select options={uniqueMetro} color={props.color} selected={props.metro || 'Выберите'}
-                selectedOption={props.setMetro} title='Метро' isActiveSelect={isActiveSelectMetro}
+              <Select options={uniqueMetro} color={color} selected={metro || 'Выберите'}
+                selectedOption={setMetro} title='Метро' isActiveSelect={isActiveSelectMetro}
                 setIsActiveSelect={setIsActiveSelectMetro} />
-              <Select options={uniqueDistrict} color={props.color} selected={props.district || 'Выберите'}
-                selectedOption={props.setDistrict} title='Район' isActiveSelect={isActiveSelectDistrict}
+              <Select options={uniqueDistrict} color={color} selected={district || 'Выберите'}
+                selectedOption={setDistrict} title='Район' isActiveSelect={isActiveSelectDistrict}
                 setIsActiveSelect={setIsActiveSelectDistrict} />
-              <Select options={uniqueSleepingPlaces} color={props.color} selected={sleepingPlaces || 'Выберите'}
+              <Select options={uniqueSleepingPlaces} color={color} selected={sleepingPlaces || 'Выберите'}
                 selectedOption={setSleepingPlaces} title='Спальные места'
                 isActiveSelect={isActiveSelectSleepingPlaces} setIsActiveSelect={setIsActiveSelectSleepingPlaces} />
             </FlexContainer>

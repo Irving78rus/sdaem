@@ -17,20 +17,19 @@ import ButtonPlit from "../../assets/icon/ButtonPlit";
 import ButtonList from "../../assets/icon/ButtonList";
 import { getWord } from "../share/utils/logic";
 import { getFilterFlats } from "../../redux/baseFlat";
+import { flatModel, paramsModel, stateModel } from "../../redux/types";
 
 
 export default function Result() {
   const [isDisplayTile, setIsDisplayTile] = useState(true);
   const [showSelectFilter, setShowSelectFilter] = useState(false);
   const [filter, setFilter] = useState('');
-  const { setDropSelectList, metro, setMetro,
-  district, setDistrict }:any = useContext(Context);
+  const { setDropSelectList  }  = useContext(Context);
 
-const pending : any = useAppSelector((state) => state.baseFlat.pending);
-  const params: any = useAppSelector((state) => state.baseFlat.params);
-  const res: any = useAppSelector((state) => state.baseFlat.res);
-  console.log(res);
-  console.log(params);
+const pending : boolean = useAppSelector((state:stateModel) => state.baseFlat.pending);
+  const params: paramsModel = useAppSelector((state:stateModel) => state.baseFlat.params);
+  const res: flatModel[] = useAppSelector((state:stateModel) => state.baseFlat.res);
+
   const recommendedСriteria = [
     {title:"Недорогие", name: "toPrice", value:60},
     {title:"1-комнатные", name: "rooms" ,value:1} ,
@@ -61,12 +60,13 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
     setActivePage(page);
   };
 
-  const paginatedFlat = useMemo(() => {
+  const paginatedFlat:flatModel[] = useMemo(() => {
     const indexOfLastNews = activePage * itemsPerPage;
     const indexOfFirstNews = indexOfLastNews - itemsPerPage;
 
     return res.slice(indexOfFirstNews, indexOfLastNews);
   }, [activePage, res]);
+ console.log(paginatedFlat);
  
   return (
     <>
@@ -76,9 +76,17 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
             <Flex>
               <img src={home} alt="home" />
                <Circle></Circle>
-              {params.city?<p>Квартиры в  {params.city==="Гродно"?"Гродно":params.city==="Гомель"?"Гомеле":(params.city+'e')} </p>:<p>Квартиры в Белоруссии</p>}
+              {params.city?<p>Квартиры в 
+                 {params.city==="Гродно"
+                 ?"Гродно":params.city==="Гомель"
+                 ?"Гомеле":(params.city+'e')} </p>
+                 :<p>Квартиры в Белоруссии</p>}
             </Flex>
-            {params.city?<Title>Аренда квартир в {params.city==="Гродно"?"Гродно":params.city==="Гомель"?"Гомеле":(params.city+'e')} </Title>:<Title>Аренда квартир в Белоруссии</Title>}
+            {params.city?<Title>Аренда квартир в
+               {params.city==="Гродно"
+               ?"Гродно":params.city==="Гомель"
+               ?"Гомеле":(params.city+'e')} </Title>
+               :<Title>Аренда квартир в Белоруссии</Title>}
             <p>Рекомендуем посмотреть </p>
             <FlexContainer justifyContent={"flex-start"} gap={"15px"} flexWrap="wrap">
               {recommendedСriteria.map((item) => (
@@ -101,17 +109,14 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
       <BackgroundColor onClick={() => setDropSelectList(false)}>
         <FlexContainer width={"100%"} flexDirection="column">
           <FormSearch
-            city={params.city}
+          
             map={false}
             clearButton={true}
             flexDirection="row"
             alignItems="center"
             justifyContent={"space-between"}
              color = '#664EF9'
-                metro={metro}
-                setMetro={setMetro}
-                district={district}
-                setDistrict={setDistrict}
+             
                 
           ></FormSearch>
         </FlexContainer>
@@ -123,7 +128,9 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
         onClick={() => setDropSelectList(false)}
       >
         <FlexContainer width={"100%"} justifyContent={"space-between"} margin="20px 0 0 0">
-        <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'} options={['По убыванию цены','По возрастанию цены']} selected={filter||'Выберите'} selectedOption={setFilter} isActiveSelect={showSelectFilter} setIsActiveSelect={setShowSelectFilter} />
+        <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'}
+         options={['По убыванию цены','По возрастанию цены']} selected={filter||'Выберите'} 
+         selectedOption={setFilter} isActiveSelect={showSelectFilter} setIsActiveSelect={setShowSelectFilter} />
           <FlexContainer>
             <Toggle
               className={isDisplayTile ? undefined : "active"}
@@ -145,10 +152,11 @@ const pending : any = useAppSelector((state) => state.baseFlat.pending);
             <Toggle>{<IconMap fill="#664EF9 "></IconMap>} Показать на карте</Toggle>
           </FlexContainer>
         </FlexContainer>
-        {pending?<><h4>{getWord(res.length,'Найден','Найдено','Найдено')} {res.length} {getWord(res.length,'результат','результата','результатов')}  </h4>
+        {pending?<><h4>{getWord(res.length,'Найден','Найдено','Найдено')} {res.length}
+         {getWord(res.length,'результат','результата','результатов')}  </h4>
         <FlexContainer flexWrap="wrap" gap={"40px"}>
           {paginatedFlat.length !== 0 &&
-            paginatedFlat.map((item: any, index: any) =>
+            paginatedFlat.map((item: flatModel, index: number) =>
               isDisplayTile ? (
                 <CardResultTile key={index} flat={item}></CardResultTile>
               ) : (

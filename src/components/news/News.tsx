@@ -130,7 +130,7 @@ const Card = styled.div`
     margin: 20px auto;
   }
 `;
-const FlexUpdt2 = styled.div`
+const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -153,7 +153,7 @@ const FlexUpdt2 = styled.div`
   }
 `;
 export default function News() {
-  const arr = [1, 2, 3, 4, 5, 6];
+  const arr:number[] = [1, 2, 3, 4, 5, 6];
   return (
     <MarginT>
       <ContentContainerFooter>
@@ -173,7 +173,7 @@ export default function News() {
         
       </ContentContainerFooter>
       <ContentContainerMofic>
-        {arr.map((item) => (
+        {arr.map((item:number) => (
           <Card key={item}>
             <img src={cartImage} alt="cartImage" />
             <h4>Линия Сталина: суровый отдых в усадьбах на сутки</h4>
@@ -183,12 +183,12 @@ export default function News() {
               сутки для семьи или большой компании друзей. А...
             </p>
             <div className="line"></div>
-            <FlexUpdt2>
+            <Wrap>
               <div>14 Января 2008</div>
               <button>
                 <NavLink to="New">Читать</NavLink>
               </button>
-            </FlexUpdt2>
+            </Wrap>
           </Card>
         ))}
       </ContentContainerMofic>
