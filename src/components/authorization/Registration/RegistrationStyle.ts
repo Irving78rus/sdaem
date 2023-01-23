@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import CityMap from '../../../assets/img/city-map.png';
 
 const FormInput = `
@@ -43,20 +42,18 @@ const FormInput = `
     background-color: #fff;
     &::placeholder {
       color: #1E2123;
-      
   }
 }
 `;
 
 export const RegistrationStl = styled.main`
   background-image: url(${CityMap}),
-    linear-gradient(1.09deg, #7e6af3 0.86%, #6540cd 99.01%);
+  linear-gradient(1.09deg, #7e6af3 0.86%, #6540cd 99.01%);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
- 
   height: 100vh;
 `;
 
@@ -93,37 +90,13 @@ export const RegistrationForm = styled.div`
   flex-direction: column;
   row-gap: 20px;
 `;
-export const RegistrationFormName = styled.input.attrs(({ name,  type ,  id ,className }) => ({
+export const InputField = styled.input.attrs(({ name,  type ,  id ,className }) => ({
   name:  name  ,
   type:  type  ,
   id:  id  ,
   className:className
 }))`${FormInput}`
- 
 
-export const RegistrationFormEmail = styled.input.attrs({
-  name: 'email',
-  type: 'email',
-  id: 'email',
-})`
-  ${FormInput}
-`;
-
-export const RegistrationFormPassword = styled.input.attrs({
-  name: 'password',
-  type: 'password',
-  id: 'password',
-})`
-  ${FormInput}
-`;
-
-export const RegistrationFormPasswordRepeat = styled.input.attrs({
-  name: 'password',
-  type: 'password',
-  id: 'password-repeat',
-})`
-  ${FormInput}
-`;
 
 export const RegistrationRules = styled.div`
   font-family: sans-serif;

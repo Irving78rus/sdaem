@@ -28,7 +28,6 @@ li:first-child {
 .link {
   height:100%;
   padding-left: 0;
-  
   font-family: "Epilogue";
   font-style: normal;
   font-weight: 600;
@@ -43,7 +42,6 @@ li:first-child {
   }
 }
 .active {
-   
   color: black;
   border-bottom: 3px solid #ffd54f;
   padding: 10px 0;

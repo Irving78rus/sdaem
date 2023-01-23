@@ -1,19 +1,17 @@
 import {
   RegistrationStl, RegistrationContent, RegistrationFormSection,
-  RegistrationFormTitle, RegistrationForm, RegistrationFormName,
-  RegistrationFormEmail, RegistrationFormPassword, RegistrationFormPasswordRepeat,
-  RegistrationRules, RegistrationRulesHeading, RegistrationRulesList,
+  RegistrationFormTitle, RegistrationForm, 
+   RegistrationRules, RegistrationRulesHeading, RegistrationRulesList,
   RegistrationRulesItem, RegistrationAuthRedirect,
 } from "./RegistrationStyle";
 import { Link } from "react-router-dom";
-import { Button } from "../../../UI/FormButton/style";
 import { useState } from "react";
 import { FormRegistration } from "./FormRegistration";
 import { PopupSuccessComponent } from "../PopupSuccess/PopupSuccessComponent";
 
 export const Registration = () => {
-  const [isShowPopup, setIsShowPopup] = useState(false);
-  const [captcha, setCaptcha] = useState(false)
+  const [isShowPopup, setIsShowPopup] = useState<boolean>(false);
+  const [captcha, setCaptcha] = useState<boolean>(false)
   return (
     <RegistrationStl>
       <RegistrationContent>

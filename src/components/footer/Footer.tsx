@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import styles from "./style.module.scss";
+import React  from "react";
 import logo from "../../assets/img/logo.png";
 import insta from "../../assets/img/insta.svg";
 import vk from "../../assets/img/vk.svg";
@@ -11,10 +10,8 @@ import webpay from "../../assets/img/webpay.png";
 import master from "../../assets/img/master.png";
 import masterSecure from "../../assets/img/masterSecure.png";
 import { NavLink } from "react-router-dom";
-
 import ContentContainer from "../../UI/ContentContainer";
 import { BackgroundColor, BlockLeft, BlockRight, FooterLink, Ikon, NavStl } from "./FooterStyle";
-
 
 export default function Footer() {
  
@@ -37,7 +34,7 @@ export default function Footer() {
             <NavStl>
               <li><NavLink to="/1" className={({ isActive }) => (isActive ? "active link" : "link")} >Коттеджи и усадьбы</NavLink> </li>
               <li><NavLink to="/2" className={({ isActive }) => (isActive ? "active link" : "link")} >Бани и Сауны</NavLink> </li>
-              <li><NavLink to="/3" className={({ isActive }) => (isActive ?"active link" : "link")} >Авто на прокат</NavLink> </li>
+              <li><NavLink to="/3" className={({ isActive }) => (isActive ? "active link" : "link")} >Авто на прокат</NavLink> </li>
             </NavStl>
             <NavStl>
               <li><NavLink to="/4" className={({ isActive }) => (isActive ? "active link" : "link")} >Квартиры</NavLink> </li>

@@ -1,44 +1,14 @@
 import styled from 'styled-components';
 import CityMap from '../../../assets/img/city-map.png';
 
-const FormInput = `
-  background-color: #f7f7f7;
-  border:none;
-  border-radius: 30px;
-  width: 100%;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  color: #1E2123;
-  padding: 16px 16px 16px 55px;
-  box-sizing:border-box;
-  cursor:default;
-
-  &:focus {
-    outline: 2px solid rgba(78, 100, 249, 0.8);
-    color: #1E2123;
-    background-color: #fff;
-    cursor:text;
-};
-  &::placeholder {
-    color: #686868;
-    
-}
-&:hover {
-    outline: 2px solid rgba(78, 100, 249, 0.8);
-    background: #FFFFFF;
-}
-`;
-
 export const Auth = styled.main`
   background-image: url(${CityMap}),
-    linear-gradient(1.09deg, #7e6af3 0.86%, #6540cd 99.01%);
+  linear-gradient(1.09deg, #7e6af3 0.86%, #6540cd 99.01%);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
- 
   height: 100vh;
 `;
 
@@ -78,22 +48,8 @@ export const AuthForm = styled.form`
   flex-direction: column;
   row-gap: 15px;
 `;
-
-export const AuthFormName = styled.input.attrs({
-  name: 'login',
-  type: 'text',
-  id: 'name',
-})`
-  ${FormInput}
-`;
-
-export const AuthFormPassword = styled.input.attrs({
-  name: 'password',
-  type: 'password',
-  id: 'password',
-})`
-  ${FormInput}
-`;
+ 
+ 
 
 export const AuthFormCreateUser = styled.p`
   margin: 50px 0 0;

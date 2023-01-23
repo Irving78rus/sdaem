@@ -16,8 +16,7 @@ export interface ShowPopupProps {
   register?: boolean;
 }
 
-export const PopupSuccessComponent = ({
-  setIsShowPopup,
+export const PopupSuccessComponent = ({  setIsShowPopup,
   title,
   text,
   buttonText,

@@ -5,7 +5,7 @@ import heart from "../../../assets/img/heart.svg";
 import { NavLink } from "react-router-dom";
 import ContentContainer from "../../../UI/ContentContainer";
 import Boy from "../../../assets/img/boy.png";
-import { useAppDispatch, useAppSelector} from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import FlexContainer from "../../../UI/FlexContainer";
 import { authUser, setUser } from "../../../redux/userSetting";
 import {
@@ -16,30 +16,29 @@ import {
   StylesTopLeftNav,
   StylesTopRightNav,
 } from "./TopHeaderStyle";
-
+export interface UserModel {
+  login?: string;
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
+}
 export default function TopHeader() {
   const [showList, setShowList] = useState(false);
   const dispatch = useAppDispatch();
-  const user:any = useAppSelector(state=>state.userSetting.user)
- 
-  
-  
+  const user: UserModel = useAppSelector((state) => state.userSetting.user);
+
   useEffect(() => {
     if (localStorage.getItem("User")) {
-      dispatch(setUser(JSON.parse(localStorage.getItem("User") || "")))
-  } 
-  }, [dispatch])
+      dispatch(setUser(JSON.parse(localStorage.getItem("User") || "")));
+    }
+  }, [dispatch]);
 
-
-  
-  
   const logout = () => {
     localStorage.removeItem("User");
     localStorage.setItem("isAuth", JSON.stringify(false));
     dispatch(authUser(false));
     dispatch(setUser({}));
   };
-
 
   return (
     <BackgroundColor>
@@ -76,7 +75,8 @@ export default function TopHeader() {
           <li>
             <NavLink
               to="Favorite"
-              className={({ isActive }) => (isActive ? "link active" : "link")}>
+              className={({ isActive }) => (isActive ? "link active" : "link")}
+            >
               Закладки <img src={heart} alt="map" />
             </NavLink>
           </li>
@@ -84,18 +84,23 @@ export default function TopHeader() {
             {user.login ? (
               <FlexContainer
                 gap="10px"
-                onClick={() => {setShowList(!showList)}}
-                position="relative">
-
+                onClick={() => {
+                  setShowList(!showList);
+                }}
+                position="relative"
+              >
                 <img src={Boy} alt="boy" className="photo" style={{ cursor: "pointer" }} />
                 <div style={{ cursor: "pointer" }}>{user.login} </div>
                 <Arrow style={{ cursor: "pointer" }}>
-                <img src={arrow} alt="Arrow"></img>
+                  <img src={arrow} alt="Arrow"></img>
                 </Arrow>
                 {showList && (
                   <List>
                     <DropTable
-                      onClick={() => {logout()}}>
+                      onClick={() => {
+                        logout();
+                      }}
+                    >
                       Выход
                     </DropTable>
                     <DropTable>Что-то еще</DropTable>
@@ -106,7 +111,8 @@ export default function TopHeader() {
             ) : (
               <NavLink
                 to="Authorization"
-                className={({ isActive }) => (isActive ? "modification active" : "modification")}>
+                className={({ isActive }) => (isActive ? "modification active" : "modification")}
+              >
                 Вход и регистрация
               </NavLink>
             )}

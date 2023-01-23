@@ -58,7 +58,6 @@ export const NavStl = styled.ul`
   }
   .link {
     padding-left: 0;
-  
     font-family: "Epilogue";
     font-style: normal;
     font-weight: 700;

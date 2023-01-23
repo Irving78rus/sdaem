@@ -11,7 +11,6 @@ const beforeElementData = `
   padding: 8px 8px;
   border-radius: 17px;
   margin-right: 20px;
-  
 `;
 
 const dataItem = `
@@ -20,7 +19,6 @@ margin: 0;
   align-items: center;
   font-weight: 600;
   font-size: 18px;
- 
 `;
 
 export const ContactsInformationStl = styled.section`

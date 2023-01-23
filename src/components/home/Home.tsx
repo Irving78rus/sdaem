@@ -116,7 +116,7 @@ export default function Home() {
               <FormSearch
                 map={true}
                 clearButton={false}
-                backgroundColor={"white"}
+                backgroundColor="white"
                 flexDirection="column"
                 alignItems="flex-start"
                 city={city}
@@ -125,7 +125,6 @@ export default function Home() {
                 setMetro={setMetro}
                 district={district}
                 setDistrict={setDistrict}
-                 
               ></FormSearch>
             </FlexContainer>
           </ContentContainer>

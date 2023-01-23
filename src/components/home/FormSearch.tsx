@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import MoreOptionIcon from "../../assets/icon/MoreOption.svg";
 import { NavLink } from "react-router-dom";
 import FlexContainer from "../../UI/FlexContainer";
@@ -12,18 +12,10 @@ import Checkbox from "../../UI/Checkbox ";
 import { VerticalLine } from "../../UI/VerticalLine";
 import IconMap from "../share/IconMap";
 import { List, RightArrow, SelectTitle } from "./FormSearchStyle";
- 
 import { Context } from "../../redux/context";
- 
 import { GetListUniqueItems } from "../share/hooks";
-import { setTimeout } from "timers";
- 
 
 export default function FormSearch(props: any) {
- 
-
-
-
   const { isActiveSelectCity, setIsActiveSelectCity, isActiveSelectRooms, setIsActiveSelectRooms,
     isActiveSelectMetro, setIsActiveSelectMetro,
     isActiveSelectDistrict, setIsActiveSelectDistrict,
@@ -31,33 +23,20 @@ export default function FormSearch(props: any) {
     GasStove, setGasStove, Oven, setOven, CoffeeMaker, setCoffeeMaker, MicrowaveOven, setMicrowaveOven,
     Dishes, setDishes, Dishwasher, setDishwasher, upPrice, setUpPrice, toPrice, setToPrice } = useContext(Context);
   const dispatch = useAppDispatch();
-  
 
-  useEffect(() => {
-   let timerFunc= setTimeout(() => {
-      if(upPrice>toPrice){
-        setToPrice("")
-       }
-       return () => clearTimeout(timerFunc);
-    },  1000 )
-   
-   
-  }, [upPrice,toPrice,setToPrice])
-  
-  
-
-  const addParamsToStore = (e: any) => {
-   
+  const addParamsToStore = () => {
     dispatch(getFilterFlats({
       city: props.city, upPrice: Number(upPrice), toPrice: Number(toPrice), rooms: Number(rooms),
-      metro: props.metro, district: props.district, sleepingPlaces: Number(sleepingPlaces), GasStove: GasStove, Oven: Oven,
+      metro: props.metro, district: props.district, sleepingPlaces: Number(sleepingPlaces),
+      GasStove: GasStove, Oven: Oven,
       CoffeeMaker: CoffeeMaker, MicrowaveOven: MicrowaveOven, Dishes: Dishes, Dishwasher: Dishwasher
     }));
 
   }
-  const clearParams = (e: any) => {
+  const clearParams = () => {
     dispatch(getFilterFlats({
-      city: '', upPrice: '', toPrice: '', rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: false, Oven: false,
+      city: '', upPrice: '', toPrice: '', rooms: 0, metro: '', district: '',
+      sleepingPlaces: 0, GasStove: false, Oven: false,
       CoffeeMaker: false, MicrowaveOven: false, Dishes: false, Dishwasher: false
     }));
     setUpPrice(0)
@@ -73,78 +52,103 @@ export default function FormSearch(props: any) {
 
   }
   const [isActive, setIsActive] = useState(false)
-  const open = (e: any) => {
+  const open = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     setIsActive(!isActive)
   }
-  const allOption: string[] = ['Газовая плита', 'Духовка', "Кофеварка", "Микроволновая печь", "Посуда", "Посудомоечная машина"]
-  
+  const allOption: string[] = ['Газовая плита', 'Духовка', "Кофеварка",
+    "Микроволновая печь", "Посуда", "Посудомоечная машина"]
   const uniqueMetro = GetListUniqueItems('metro')
   const uniqueDistrict = GetListUniqueItems('district')
   const uniqueSleepingPlaces = GetListUniqueItems('sleepingPlaces')
 
-  
-  
   return (
     <>
       <FlexContainer width={"100%"}
-      borderBottom='1px solid rgba(78, 100, 249, 0.1)'
-      borderTop = '1px solid rgba(78, 100, 249, 0.1)'
-          backgroundColor={props.backgroundColor}
-          flexWrap="wrap"
-          borderRadius="0 10px 10px 10px"
-          onClick={(e: any) => setIsActiveSelectCity(false)}>
-        <FlexContainer width={"100%"} padding={props.clearButton?'0 80px':"0"}
-          flexWrap="wrap"
-          
-        >
-          {props.map && <><Select options={GetListUniqueItems('city')} selected={props.city || 'Выберите'} selectedOption={props.setCity} title='Город' isActiveSelect={isActiveSelectCity} setIsActiveSelect={setIsActiveSelectCity} />
-            <VerticalLine></VerticalLine></>}
-          <Select options={GetListUniqueItems('rooms')} color={props.color} flexDirection={props.flexDirection} selected={rooms || 'Выберите'} selectedOption={setRooms} title='Комнаты' isActiveSelect={isActiveSelectRooms} setIsActiveSelect={setIsActiveSelectRooms} />
+        borderBottom='1px solid rgba(78, 100, 249, 0.1)'
+        borderTop='1px solid rgba(78, 100, 249, 0.1)'
+        backgroundColor={props.backgroundColor}
+        flexWrap="wrap"
+        borderRadius="0 10px 10px 10px"
+        onClick={() => setIsActiveSelectCity(false)}>
+
+        <FlexContainer width={"100%"} padding={props.clearButton ? '0 80px' : "0"}
+          flexWrap="wrap">
+
+          {props.map &&
+            <>
+              <Select options={GetListUniqueItems('city')}
+                selected={props.city || 'Выберите'} selectedOption={props.setCity} title='Город'
+                isActiveSelect={isActiveSelectCity} setIsActiveSelect={setIsActiveSelectCity} />
+              <VerticalLine></VerticalLine>
+            </>}
+
+          <Select options={GetListUniqueItems('rooms')} color={props.color}
+            flexDirection={props.flexDirection} selected={rooms || 'Выберите'}
+            selectedOption={setRooms} title='Комнаты' isActiveSelect={isActiveSelectRooms}
+            setIsActiveSelect={setIsActiveSelectRooms} />
           <VerticalLine></VerticalLine>
+
           <FlexContainer flexDirection={props.flexDirection} gap='10px'>
             <SelectTitle color={props.color}>{"Цена за сутки (BYN)"}</SelectTitle>
             <FlexContainer gap='10px' >
               <Input type={"number"} width={"80px"} height={"37px"} placeholder="  От"
-                onChange={(e: any) => { setUpPrice(e.target.value) }} value={upPrice}  />
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUpPrice(e.target.value) }} value={upPrice} />
               <Input width={"80px"} placeholder="  До" type={"number"} height={"37px"}
-                onChange={(e: any) => { setToPrice(e.target.value) }} value={toPrice} />
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setToPrice(e.target.value) }} value={toPrice} />
             </FlexContainer>
           </FlexContainer>
           <VerticalLine></VerticalLine>
-          <MoreOption onClick={(e: any) => open(e)}> Больше опций <img src={MoreOptionIcon} alt="MoreOptionIcon" /></MoreOption>
+
+          <MoreOption onClick={(e: React.MouseEvent<HTMLElement>) => open(e)}> Больше опций
+            <img src={MoreOptionIcon} alt="MoreOptionIcon" />
+          </MoreOption>
           <VerticalLine></VerticalLine>
-          {props.map && <MoreOption onClick={(e: any) => open(e)}>На карте {<IconMap fill='#664EF9 '></IconMap>}</MoreOption>}
+
+          {props.map && <MoreOption onClick={(e: React.MouseEvent<HTMLElement>) => open(e)}>
+            На карте {<IconMap fill='#664EF9 '></IconMap>}
+          </MoreOption>}
           <FlexContainer gap='10px'>
             {props.clearButton && (
               <Button fontSize="15px" fontWeight="600" background={"#F8F8F8"}
-                width={"130px"} height={"40px"} color={"black"} onClick={(e: any) => { clearParams(e) }}  >
+                width={"130px"} height={"40px"} color={"black"} onClick={() => { clearParams() }}  >
                 {"Очистить"}
               </Button>
             )}
+
             <NavLink to={"/Result"} style={{ marginRight: "34px", textDecoration: "none" }}>
-              <Button fontSize="15px" fontWeight={props.clearButton ? "600" : '700'} background={props.clearButton ? '#664EF9' : "#FFD54F"}
-                width={"100%"} height={"40px"} color={props.clearButton ? "white" : "black"} onClick={(e: any) => { addParamsToStore(e) }} >
+              <Button fontSize="15px" fontWeight={props.clearButton ? "600" : '700'}
+                background={props.clearButton ? '#664EF9' : "#FFD54F"}
+                width={"100%"} height={"40px"} color={props.clearButton ? "white" : "black"}
+                onClick={() => { addParamsToStore() }} >
                 <FlexContainer width={"100%"}>
                   {props.clearButton ? "Показать объекты" : 'Показать'} <RightArrow></RightArrow>
                 </FlexContainer>
               </Button>
             </NavLink>
+
           </FlexContainer>
         </FlexContainer>
       </FlexContainer>
 
       {isActive &&
-        <FlexContainer width={"100%"}  padding={props.clearButton?'0 80px':"0"}>
+        <FlexContainer width={"100%"} padding={props.clearButton ? '0 80px' : "0"}>
           <List {...props}>
             <FlexContainer >
-              <Select options={uniqueMetro} color={props.color} selected={props.metro || 'Выберите'} selectedOption={props.setMetro} title='Метро' isActiveSelect={isActiveSelectMetro} setIsActiveSelect={setIsActiveSelectMetro} />
-              <Select options={uniqueDistrict} color={props.color} selected={props.district || 'Выберите'} selectedOption={props.setDistrict} title='Район' isActiveSelect={isActiveSelectDistrict} setIsActiveSelect={setIsActiveSelectDistrict} />
-              <Select options={uniqueSleepingPlaces} color={props.color} selected={sleepingPlaces || 'Выберите'} selectedOption={setSleepingPlaces} title='Спальные места' isActiveSelect={isActiveSelectSleepingPlaces} setIsActiveSelect={setIsActiveSelectSleepingPlaces} />
+              <Select options={uniqueMetro} color={props.color} selected={props.metro || 'Выберите'}
+                selectedOption={props.setMetro} title='Метро' isActiveSelect={isActiveSelectMetro}
+                setIsActiveSelect={setIsActiveSelectMetro} />
+              <Select options={uniqueDistrict} color={props.color} selected={props.district || 'Выберите'}
+                selectedOption={props.setDistrict} title='Район' isActiveSelect={isActiveSelectDistrict}
+                setIsActiveSelect={setIsActiveSelectDistrict} />
+              <Select options={uniqueSleepingPlaces} color={props.color} selected={sleepingPlaces || 'Выберите'}
+                selectedOption={setSleepingPlaces} title='Спальные места'
+                isActiveSelect={isActiveSelectSleepingPlaces} setIsActiveSelect={setIsActiveSelectSleepingPlaces} />
             </FlexContainer>
             <FlexContainer>
               {allOption.map((item: string, index) => (
-                <Checkbox label={item} id={item} key={index} setGasStove={setGasStove} setOven={setOven} setCoffeeMaker={setCoffeeMaker}
+                <Checkbox label={item} id={item} key={index} setGasStove={setGasStove} setOven={setOven}
+                  setCoffeeMaker={setCoffeeMaker}
                   setMicrowaveOven={setMicrowaveOven} setDishes={setDishes} setDishwasher={setDishwasher}
                 />
               ))}
