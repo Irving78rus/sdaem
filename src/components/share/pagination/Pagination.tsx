@@ -1,8 +1,16 @@
 import {  useState } from "react";
+import { flatModel } from "../../../redux/types";
  
 import { PaginationStl, PaginationButton,ScrollPagination } from "./style";
 
-export const Pagination = ({ pageQuantity, activePage, onClickButtonPagination, itemsPerPage }:any) => {
+interface PaginationProps{
+  pageQuantity:flatModel[];
+  activePage:number;
+  onClickButtonPagination :(page: number) => void;  
+  itemsPerPage:number;
+}
+
+export const Pagination = ({ pageQuantity, activePage, onClickButtonPagination, itemsPerPage }:PaginationProps) => {
   const quantityButtons = Array.from(
     { length: Math.ceil(pageQuantity.length / itemsPerPage) },
     (v, i) => i + 1

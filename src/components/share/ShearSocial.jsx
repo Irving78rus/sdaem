@@ -1,29 +1,28 @@
 import styled from "styled-components";
- 
 
 const ShearStyled = styled.div`
-    display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  gap:20px;
+  gap: 20px;
   div {
     display: flex;
     justify-content: center;
     align-items: center;
-    background:${(props) => props.background || 'rgba(102, 78, 249, 0.1)'};  
+    background: ${(props) => props.background || "rgba(102, 78, 249, 0.1)"};
     border-radius: 50%;
     /* padding: 12px; */
     width: 34px;
     height: 34px;
     svg {
       path {
-        fill: ${(props) => props.fill || '#664EF9'};
+        fill: ${(props) => props.fill || "#664EF9"};
       }
     }
     &:hover {
       svg {
         path {
-          fill: ${(props) => props.fill || '#664EF9'};
+          fill: ${(props) => props.fill || "#664EF9"};
         }
       }
     }
