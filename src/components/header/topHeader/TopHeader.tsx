@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import arrow from "../../../assets/icon/arrow.svg";
 import map from "../../../assets/icon/map.svg";
 import { NavLink } from "react-router-dom";
-import ContentContainer from "../../../UI/ContentContainer";
+import ContentContainer from "../../UI/ContentContainer";
 import Boy from "../../../assets/icon/boy.png";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import FlexContainer from "../../../UI/FlexContainer";
+import FlexContainer from "../../UI/FlexContainer";
 import { authUser, setUser } from "../../../redux/userSetting";
 import {
   Arrow,
@@ -15,7 +15,6 @@ import {
   StylesTopLeftNav,
   StylesTopRightNav,
 } from "./TopHeaderStyle";
-import HeartImg from "../../../assets/icon/HeartImg";
 import HeartImg2 from "../../../assets/icon/HeartImg2";
 export interface UserModel {
   login?: string;

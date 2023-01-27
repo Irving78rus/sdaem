@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import CardResultImg from "../../assets/icon/CardResult.png";
 import tel from "../../assets/icon/tel.svg";
 import styled from "styled-components";
-import Button from "../../UI/Button";
-import FlexContainer from "../../UI/FlexContainer";
+import Button from "../UI/Button";
+import FlexContainer from "../UI/FlexContainer";
 import ContactComponent from "../share/ContactComponent";
 import Metro from "../../assets/icon/Metro";
-import IconMap from "../share/IconMap";
+ 
 import UserImg from "../../assets/icon/UserImg";
 import HeartImg2 from "../../assets/icon/HeartImg2";
-import Slider from "../../UI/Slider";
+import Slider from "../UI/Slider";
 import { flatModel } from "../../redux/types";
+import IconMap from "../../assets/icon/IconMap";
 
 const Card = styled.div`
   display: flex;

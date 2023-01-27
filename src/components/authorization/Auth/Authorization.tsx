@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../../redux/hooks";
 import { authUser, setUser } from "../../../redux/userSetting";
-import Button from "../../../UI/Button";
+import Button from "../../UI/Button";
 import { IMGCont, LabelLogin, InputField } from "../Registration/RegistrationStyle";
 import UserImg from "../../../assets/icon/UserImg";
 import LockImg from "../../../assets/icon/LockImg";

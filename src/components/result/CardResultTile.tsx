@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import CardResultImg from "../../assets/icon/CardResult.png";
 import tel from "../../assets/icon/tel.svg";
 import styled from "styled-components";
-import Button from "../../UI/Button";
-import FlexContainer from "../../UI/FlexContainer";
-import { Line } from "../../UI/Line";
+import Button from "../UI/Button";
+import FlexContainer from "../UI/FlexContainer";
+import { Line } from "../UI/Line";
 import ContactComponent from "../share/ContactComponent";
 import Metro from "../../assets/icon/Metro";
 import Elips from "../../assets/icon/Elips";
-import IconMap from "../share/IconMap";
+ 
 import HeartImg from "../../assets/icon/HeartImg";
-import Slider from "../../UI/Slider";
+import Slider from "../UI/Slider";
 import { flatModel } from "../../redux/types";
+import IconMap from "../../assets/icon/IconMap";
 
 interface Props {
   height?: any;
@@ -145,7 +146,9 @@ export default function CardResultTile({ flat }: CardResultTileProps) {
           </FlexContainer>
   
      
-          <div className="city"> <IconMap fill={'#BDBDBD'} margin='0 5px 0 0'></IconMap> {flat.city}, б-р Мулявина, д. 10</div>
+          <div className="city"> <IconMap fill={'#BDBDBD'} margin='0 5px 0 0'></IconMap>
+           {flat.city}, б-р Мулявина, д. 10
+           </div>
           <p className="city">
           <Metro fill={'#BDBDBD'}></Metro> <span>{flat.metro} </span> 
           <Elips fill={'#BDBDBD'}></Elips> <span>{flat.district} </span> 

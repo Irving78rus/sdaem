@@ -5,10 +5,10 @@ import dots from "../../../assets/icon/dots.svg";
 import { NavLink } from "react-router-dom";
 import { Card, Circle,   Container,   ContainerNew,   Flex,   HeaderBackground,   Title,   Wrap, } from ".././NewsStyle";
 
-import Button from "../../../UI/Button";
-import FlexContainer from "../../../UI/FlexContainer";
-import ContentContainer from "../../../UI/ContentContainer";
-import ShearSocial from "../../share/ShearSocial";
+import Button from "../../UI/Button";
+import FlexContainer from "../../UI/FlexContainer";
+import ContentContainer from "../../UI/ContentContainer";
+import ShearSocial from "../../../assets/icon/ShearSocial";
 
 export default function New() {
   const arr: number[] = [1, 2, 3];

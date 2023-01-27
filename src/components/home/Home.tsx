@@ -7,15 +7,15 @@ import list from "../../assets/icon/list.svg";
 import CardBackGround from "../../assets/icon/CardBackGround.svg";
 import house from "../../assets/icon/house.png";
 import bane from "../../assets/icon/bane.png";
-import ContentContainer from "../../UI/ContentContainer";
-import FlexContainer from "../../UI/FlexContainer";
-import Button from "../../UI/Button";
+import ContentContainer from "../UI/ContentContainer";
+import FlexContainer from "../UI/FlexContainer";
+import Button from "../UI/Button";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { getFilterFlats } from "../../redux/baseFlat";
 import FormSearch from "./FormSearch";
-import Select from "../../UI/Select";
-import { Line } from "../../UI/Line";
-import Slider from "../../UI/Slider";
+import Select from "../UI/Select";
+import { Line } from "../UI/Line";
+import Slider from "../UI/Slider";
 import {
   Background,
   BackgroundImg,
@@ -41,12 +41,13 @@ import {
 import { GetListUniqueItems } from "../share/hooks";
 import { useNavigate } from "react-router-dom";
 import { cityArr } from "../../redux/flatCreater";
-import { VerticalLine } from "../../UI/VerticalLine";
-import Dots from "../../UI/Dots";
-import IconMap from "../share/IconMap";
+import { VerticalLine } from "../UI/VerticalLine";
+import Dots from "../UI/Dots";
+ 
 import { Context } from "../../redux/context";
 import { RightArrow } from "./FormSearchStyle";
 import { flatModel, stateModel, topNavigationFormSearchModel } from "../../redux/types";
+import IconMap from "../../assets/icon/IconMap";
 
 export default function Home() {
   const params = useAppSelector((state: stateModel) => state.baseFlat.params);
@@ -91,7 +92,7 @@ export default function Home() {
       <Background onClick={() => closeAllSelect()}>
         <BackgroundImg onClick={() => closeAllSelect()}>
           <ContentContainer justifyContent="center" flexDirection="column" padding="0 120px">
-            <h1>
+            <h1 style={{margin:'80px 0 50px 0'}}>
               Sdaem.by - у нас живут <span>ваши объявления</span>
             </h1>
             <FlexContainer flexDirection="column" alignItems="flex-start" width="100%">

@@ -1,23 +1,24 @@
 import React, { useState, useMemo, useContext } from "react";
 import home from "../../assets/icon/home.png";
-import Button from "../../UI/Button";
-import FlexContainer from "../../UI/FlexContainer";
-import ContentContainer from "../../UI/ContentContainer";
+import Button from "../UI/Button";
+import FlexContainer from "../UI/FlexContainer";
+import ContentContainer from "../UI/ContentContainer";
 import FormSearch from "../home/FormSearch";
 import CardResultTile from "./CardResultTile";
 import CardResultList from "./CardResultList";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import Select from "../../UI/Select";
+import Select from "../UI/Select";
 import { Pagination } from "../share/Pagination/Pagination";
-import ShearSocial from "../share/ShearSocial";
+import ShearSocial from "../../assets/icon/ShearSocial";
 import { Context } from "../../redux/context";
 import { BackgroundColor, Circle, Flex, HeaderBackground, Title, Toggle } from "./ResultStyle";
-import IconMap from "../share/IconMap";
+ 
 import ButtonPlit from "../../assets/icon/ButtonPlit";
 import ButtonList from "../../assets/icon/ButtonList";
 import { getWord } from "../share/utils/logic";
 import { getFilterFlats } from "../../redux/baseFlat";
 import { flatModel, paramsModel, stateModel } from "../../redux/types";
+import IconMap from "../../assets/icon/IconMap";
 
 interface recommendedСriteriaModel{
   title:string;
@@ -179,7 +180,7 @@ export default function Result() {
         {pending ? (
           <>
             <h4>
-              {getWord(res.length, "Найден", "Найдено", "Найдено")} {res.length}
+              {getWord(res.length, "Найден", "Найдено", "Найдено")} {res.length}{" "}
               {getWord(res.length, "результат", "результата", "результатов")} 
             </h4>
             <FlexContainer flexWrap="wrap" gap={"40px"}>

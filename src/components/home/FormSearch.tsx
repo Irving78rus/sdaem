@@ -1,19 +1,20 @@
 import React, { useContext, useState } from "react";
 import MoreOptionIcon from "../../assets/icon/MoreOption.svg";
 import { NavLink } from "react-router-dom";
-import FlexContainer from "../../UI/FlexContainer";
-import Button from "../../UI/Button";
-import Select from "../../UI/Select";
+import FlexContainer from "../UI/FlexContainer";
+import Button from "../UI/Button";
+import Select from "../UI/Select";
 import { useAppDispatch } from "../../redux/hooks";
-import Input from "../../UI/Input";
+import Input from "../UI/Input";
 import { getFilterFlats } from "../../redux/baseFlat";
-import MoreOption from "../../UI/MoreOption";
-import Checkbox from "../../UI/Checkbox ";
-import { VerticalLine } from "../../UI/VerticalLine";
-import IconMap from "../share/IconMap";
+import MoreOption from "../UI/MoreOption";
+import Checkbox from "../UI/Checkbox ";
+import { VerticalLine } from "../UI/VerticalLine";
+ 
 import { List, RightArrow, SelectTitle } from "./FormSearchStyle";
 import { Context } from "../../redux/context";
 import { GetListUniqueItems } from "../share/hooks";
+import IconMap from "../../assets/icon/IconMap";
 interface FormSearchProps {
   map: boolean
   clearButton: boolean
@@ -96,8 +97,9 @@ export default function FormSearch({
   return (
     <>
       <FlexContainer width={"100%"}
+     
         borderBottom='1px solid rgba(78, 100, 249, 0.1)'
-        borderTop='1px solid rgba(78, 100, 249, 0.1)'
+        height={map ?"100px":"80px"}
         backgroundColor={backgroundColor}
         flexWrap="wrap"
         borderRadius="0 10px 10px 10px"

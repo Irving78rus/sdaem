@@ -10,7 +10,7 @@ import webpay from "../../assets/icon/webpay.png";
 import master from "../../assets/icon/master.png";
 import masterSecure from "../../assets/icon/masterSecure.png";
 import { NavLink } from "react-router-dom";
-import ContentContainer from "../../UI/ContentContainer";
+import ContentContainer from "../UI/ContentContainer";
 import { BackgroundColor, BlockLeft, BlockRight, FooterLink, Ikon, NavStl } from "./FooterStyle";
 
 export default function Footer() {

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import arrow from "../assets/icon/arrow.svg";
-import { filterFlatForPrice } from "../redux/baseFlat";
-import { Context } from "../redux/context";
-import { useAppDispatch } from "../redux/hooks";
+import arrow from "../../assets/icon/arrow.svg";
+import { filterFlatForPrice } from "../../redux/baseFlat";
+import { Context } from "../../redux/context";
+import { useAppDispatch } from "../../redux/hooks";
  
 interface Props {
   background?: any;

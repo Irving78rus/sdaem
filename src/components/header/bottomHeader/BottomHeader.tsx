@@ -1,10 +1,11 @@
 import React from "react";
 import logo from "../../../assets/icon/logo.png";
 import { NavLink } from "react-router-dom";
-import ContentContainer from "../../../UI/ContentContainer";
-import Button from "../../../UI/Button";
-import IconMap from "../../share/IconMap";
+import ContentContainer from "../../UI/ContentContainer";
+import Button from "../../UI/Button";
+ 
 import { BackgroundColor, BottomNav } from "./BottomHeaderStyle";
+import IconMap from "../../../assets/icon/IconMap";
 
 export default function BottomHeader() {
 

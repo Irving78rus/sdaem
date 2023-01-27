@@ -18,7 +18,7 @@ interface Props {
 
 export const Background = styled.div<Props>`
   background: linear-gradient(0deg, #7e6af3 1.04%, #6540cd 100%);
-  min-height: 600px;
+  min-height: 430px;
   border-bottom-left-radius: ${(props) => props.borderBottomLeftRadius || "40px"};
   border-bottom-right-radius: ${(props) => props.borderBottomRightRadius || "40px"};
   margin: ${(props) => props.margin || " 0 80px"};
@@ -27,7 +27,7 @@ export const BackgroundImg = styled.div`
   background-image: url(${Back});
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
-  min-height: 600px;
+  min-height: 430px;
   h1 {
     color: white;
   }

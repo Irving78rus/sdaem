@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CardResultTile from "../components/result/CardResultTile";
+import CardResultTile from "../result/CardResultTile";
 import styled from "styled-components";
 import ContentContainer from "./ContentContainer";
 import FlexContainer from "./FlexContainer";

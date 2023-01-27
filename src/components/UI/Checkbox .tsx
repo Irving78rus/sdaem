@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { string } from "yup";
-import Check from "../assets/icon/check.svg";
+import Check from "../../assets/icon/check.svg";
 
 const CheckboxStl = styled.div`
  display:flex;
