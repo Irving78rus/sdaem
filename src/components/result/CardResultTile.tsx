@@ -8,11 +8,10 @@ import { Line } from "../UI/Line";
 import ContactComponent from "../share/ContactComponent";
 import Metro from "../../assets/icon/Metro";
 import Elips from "../../assets/icon/Elips";
- 
-import HeartImg from "../../assets/icon/HeartImg";
 import Slider from "../UI/Slider";
 import { flatModel } from "../../redux/types";
 import IconMap from "../../assets/icon/IconMap";
+import HeartImg from "../../assets/icon/HeartImg";
 
 interface Props {
   height?: any;
@@ -160,7 +159,7 @@ export default function CardResultTile({ flat }: CardResultTileProps) {
           </p>
           <Line> </Line>
                 <FlexContainer width="100%" margin="15px 0">
-          <HeartImg></HeartImg>
+         <FlexContainer width={'33px'} height={'33px'} justifyContent="center" backgroundColor='rgba(235, 87, 87, 0.1)' borderRadius={'50%'}><HeartImg fill={'#EB5757'}></HeartImg ></FlexContainer>  
             <Button
               background="#FFFFFF"
               color="#664EF9"

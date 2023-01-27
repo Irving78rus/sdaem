@@ -17,6 +17,7 @@ interface  Props {
   borderRadius?:string;
   borderBottom?:string;
   borderTop?:string;
+  maxWidth?:string;
 }
 const FlexContainerStl = styled.div<Props>`
   display:flex;
@@ -25,6 +26,7 @@ const FlexContainerStl = styled.div<Props>`
   gap:${props=>props.gap||'0px'};
   flex-direction:${props=>props.flexDirection||'row'};
   width:${props=>props.width||""};
+  max-width:${props=>props.maxWidth||""};
   height:${props=>props.height||""};
   flex-wrap:${props=>props.flexWrap||""}; 
   background-color: ${props=>props.backgroundColor||""}; 

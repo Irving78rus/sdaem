@@ -235,7 +235,7 @@ export default function Home() {
               </Button>
             </SearchToMapBlock>
 
-            <FlexContainer gap="20px" position="absolute" top="400px">
+            <FlexContainer gap="20px" position="absolute" top="325px">
               <MainBottomCard>
                 <FlexContainer gap="24px">
                   <IMG backgroundImage={hand} width={"100px"} height={"100px"} borderRadius="50%" boxShadow='0px 11px 20px rgba(127, 155, 187, 0.16)'></IMG>

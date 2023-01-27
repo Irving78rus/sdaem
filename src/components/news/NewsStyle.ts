@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 interface Props {
@@ -62,22 +63,7 @@ export const MarginT = styled.div`
   margin: 0 auto;
   margin-top: 42px;
 `;
-export const ContentContainerFooter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  max-width: 1440px;
 
-  margin: 0 auto;
-  position: relative;
-`;
-export const ContentContainerMofic = styled.div`
-  display: flex;
-  justify-content: space-between;
-  max-width: 1440px;
-
-  margin: 0 auto;
-  flex-wrap: wrap;
-`;
 export const WrapperTitle = styled.div`
   width: 50%;
   margin: 0;
@@ -93,16 +79,11 @@ export const WrapperTitle = styled.div`
     line-height: 100%;
   }
 `;
-
-export const FlexUpdt = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  p {
-    font-size: 14px;
-    color: #686868;
-  }
+export const TopTitle = styled.p`
+  font-size: 14px;
+  color: #686868;
 `;
+
 export const Circle = styled.div`
   width: 3px;
   height: 3px;
@@ -112,6 +93,7 @@ export const Circle = styled.div`
 
 export const WrapperFilter = styled.div`
   position: absolute;
+  z-index: -1;
   right: -40px;
   top: 50px;
   width: 800px;
@@ -124,7 +106,6 @@ export const WrapperFilter = styled.div`
   input {
     height: 37px;
     margin-top: 67px;
-
     width: 616px;
     color: black;
     border-radius: 20px;
@@ -203,4 +184,7 @@ export const Wrap = styled.div`
     border-radius: 18px;
     padding: 12px 8px;
   }
+`;
+export const NavLinkStl = styled(NavLink)`
+  text-decoration: none;
 `;

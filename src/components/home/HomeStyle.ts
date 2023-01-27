@@ -298,8 +298,8 @@ color: #664EF9;
 }
 }`;
 export const BottomLastBlock = styled.div`
-  margin-top:200px;
-  
+  margin-top:300px;
+  margin-bottom:50px;
   display: flex;
   justify-content: space-between;
   width:100%;

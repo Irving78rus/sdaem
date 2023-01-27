@@ -8,7 +8,7 @@ import ContactComponent from "../share/ContactComponent";
 import Metro from "../../assets/icon/Metro";
  
 import UserImg from "../../assets/icon/UserImg";
-import HeartImg2 from "../../assets/icon/HeartImg2";
+import HeartImg2 from "../../assets/icon/HeartImg";
 import Slider from "../UI/Slider";
 import { flatModel } from "../../redux/types";
 import IconMap from "../../assets/icon/IconMap";
@@ -201,7 +201,7 @@ export default function CardResultList({ flat }:CardResultListProps) {
               padding="9px 15px"
               borderRadius="22px"
             >
-              В закладки  <HeartImg2></HeartImg2>
+              В закладки  <HeartImg2 fill={'#EB5757'}></HeartImg2>
             </Button>
 
             <Button background="rgba(255, 213, 79, 0.1)" color="#FEC100;" fontSize="14px" backgroundHover ='rgba(255, 213, 79, 0.2)'>

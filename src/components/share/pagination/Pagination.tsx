@@ -4,7 +4,7 @@ import { flatModel } from "../../../redux/types";
 import { PaginationStl, PaginationButton,ScrollPagination } from "./style";
 
 interface PaginationProps{
-  pageQuantity:flatModel[];
+  pageQuantity:any[];
   activePage:number;
   onClickButtonPagination :(page: number) => void;  
   itemsPerPage:number;

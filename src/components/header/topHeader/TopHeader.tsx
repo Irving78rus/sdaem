@@ -15,7 +15,7 @@ import {
   StylesTopLeftNav,
   StylesTopRightNav,
 } from "./TopHeaderStyle";
-import HeartImg2 from "../../../assets/icon/HeartImg2";
+import HeartImg from "../../../assets/icon/HeartImg";
 export interface UserModel {
   login?: string;
   email?: string;
@@ -77,7 +77,7 @@ export default function TopHeader() {
               to="Favorite"
               className={({ isActive }) => (isActive ? "link active" : "link")}
             >
-              Закладки <div style={{marginLeft:'10px'}}></div> <HeartImg2 ></HeartImg2>
+              Закладки <div style={{marginLeft:'10px'}}></div> <HeartImg ></HeartImg>
             </NavLink>
           </li>
           <li>
