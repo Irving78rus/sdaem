@@ -1,5 +1,5 @@
 import React from "react";
-import Boy from "../../assets/img/boy.png";
+import Boy from "../../assets/icon/boy.png";
 import Cvib from "../../assets/icon/Cvib.svg";
 import CWhat from "../../assets/icon/CWhat.svg";
 import CMail from "../../assets/icon/CMail.svg";

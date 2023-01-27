@@ -1,7 +1,7 @@
 import React from "react";
-import home from "../../../assets/img/home.png";
-import cartImage from "../../../assets/img/cartImage.png";
-import dots from "../../../assets/img/dots.svg";
+import home from "../../../assets/icon/home.png";
+import cartImage from "../../../assets/icon/cartImage.png";
+import dots from "../../../assets/icon/dots.svg";
 import { NavLink } from "react-router-dom";
 import { Card, Circle,   Container,   ContainerNew,   Flex,   HeaderBackground,   Title,   Wrap, } from ".././NewsStyle";
 

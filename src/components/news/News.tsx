@@ -1,6 +1,6 @@
 import React from "react";
-import home from "../../assets/img/home.png";
-import cartImage from "../../assets/img/cartImage.png";
+import home from "../../assets/icon/home.png";
+import cartImage from "../../assets/icon/cartImage.png";
 import { NavLink } from "react-router-dom";
 import { Card, Circle, ContentContainerFooter, ContentContainerMofic, FlexUpdt, MarginT, Wrap, WrapperFilter, WrapperTitle } from "./NewsStyle";
 

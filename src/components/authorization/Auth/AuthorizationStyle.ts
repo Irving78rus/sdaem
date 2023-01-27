@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CityMap from '../../../assets/img/city-map.png';
+import CityMap from '../../../assets/icon/city-map.png';
 
 export const Auth = styled.main`
   background-image: url(${CityMap}),

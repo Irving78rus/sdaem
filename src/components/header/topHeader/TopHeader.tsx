@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import arrow from "../../../assets/icon/arrow.svg";
-import map from "../../../assets/img/map.svg";
-import heart from "../../../assets/img/heart.svg";
+import map from "../../../assets/icon/map.svg";
 import { NavLink } from "react-router-dom";
 import ContentContainer from "../../../UI/ContentContainer";
-import Boy from "../../../assets/img/boy.png";
+import Boy from "../../../assets/icon/boy.png";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import FlexContainer from "../../../UI/FlexContainer";
 import { authUser, setUser } from "../../../redux/userSetting";
@@ -16,6 +15,8 @@ import {
   StylesTopLeftNav,
   StylesTopRightNav,
 } from "./TopHeaderStyle";
+import HeartImg from "../../../assets/icon/HeartImg";
+import HeartImg2 from "../../../assets/icon/HeartImg2";
 export interface UserModel {
   login?: string;
   email?: string;
@@ -77,7 +78,7 @@ export default function TopHeader() {
               to="Favorite"
               className={({ isActive }) => (isActive ? "link active" : "link")}
             >
-              Закладки <img src={heart} alt="map" />
+              Закладки <div style={{marginLeft:'10px'}}></div> <HeartImg2 ></HeartImg2>
             </NavLink>
           </li>
           <li>

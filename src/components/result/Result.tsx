@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useContext } from "react";
-import home from "../../assets/img/home.png";
+import home from "../../assets/icon/home.png";
 import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";
 import ContentContainer from "../../UI/ContentContainer";

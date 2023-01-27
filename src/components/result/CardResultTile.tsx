@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CardResultImg from "../../assets/img/CardResult.png";
+import CardResultImg from "../../assets/icon/CardResult.png";
 import tel from "../../assets/icon/tel.svg";
 import styled from "styled-components";
 import Button from "../../UI/Button";

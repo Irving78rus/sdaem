@@ -1,5 +1,5 @@
 import React from "react";
-import dots from "../../assets/img/dots.svg";
+import dots from "../../assets/icon/dots.svg";
 import ContentContainer from "../../UI/ContentContainer";
 import FlexContainer from "../../UI/FlexContainer";
 import Button from "../../UI/Button";
