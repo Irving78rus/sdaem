@@ -19,6 +19,7 @@ export const List = styled.div<Props>`
   left: 0;
   flex-direction: column;
   align-items: flex-start;
+   border-radius:0px 0px 10px 10px;
 `;
 export const SelectTitle = styled.p<Props>`
   margin: ${(props) => props.margin || `0`};

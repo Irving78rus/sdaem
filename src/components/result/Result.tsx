@@ -30,7 +30,7 @@ export default function Result() {
   const [isDisplayTile, setIsDisplayTile] = useState(true);
   const [showSelectFilter, setShowSelectFilter] = useState(false);
   const [filter, setFilter] = useState("");
-  const { setDropSelectList } = useContext(Context);
+  const { setDropSelectList }:any = useContext(Context);
 
   const pending: boolean = useAppSelector((state: stateModel) => state.baseFlat.pending);
   const params: paramsModel = useAppSelector((state: stateModel) => state.baseFlat.params);

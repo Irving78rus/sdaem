@@ -99,10 +99,10 @@ export default function FormSearch({
       <FlexContainer width={"100%"}
      
         borderBottom='1px solid rgba(78, 100, 249, 0.1)'
-        height={map ?"100px":"80px"}
+        height={map ?"100%":"80px"}
         backgroundColor={backgroundColor}
         flexWrap="wrap"
-        borderRadius="0 10px 10px 10px"
+        borderRadius={isActive?"0 10px 0 0":"0 10px 10px 10px"} 
         onClick={() => setIsActiveSelectCity(false)}>
 
         <FlexContainer width={"100%"} padding={clearButton ? '0 80px' : "0"}
@@ -165,7 +165,9 @@ export default function FormSearch({
       </FlexContainer>
 
       {isActive &&
-        <FlexContainer width={"100%"} padding={clearButton ? '0 80px' : "0"}>
+        <FlexContainer width={"100%"} padding={clearButton ? '0 80px' : "0"} 
+       
+        >
           <List >
             <FlexContainer >
               <Select options={uniqueMetro} color={color} selected={metro || 'Выберите'}
@@ -178,7 +180,7 @@ export default function FormSearch({
                 selectedOption={setSleepingPlaces} title='Спальные места'
                 isActiveSelect={isActiveSelectSleepingPlaces} setIsActiveSelect={setIsActiveSelectSleepingPlaces} />
             </FlexContainer>
-            <FlexContainer>
+            <FlexContainer flexWrap = 'wrap'>
               {allOption.map((item: string, index) => (
                 <Checkbox label={item} id={item} key={index} setGasStove={setGasStove} setOven={setOven}
                   setCoffeeMaker={setCoffeeMaker}

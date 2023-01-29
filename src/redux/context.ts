@@ -2,48 +2,48 @@
 
 import React from "react";
 
-// export interface defaultValue {
-//     dropSelectList: boolean;
-//     setDropSelectList:any;
-//     isActiveSelectCity:any;
-//     setIsActiveSelectCity:any;
-//    isActiveSelectRooms:any;
-//     setIsActiveSelectRooms:any;
-//     isActiveSelectMetro:any;
-//     setIsActiveSelectMetro:any;
-//     isActiveSelectDistrict:any;
-//     setIsActiveSelectDistrict:any;
-//     isActiveSelectSleepingPlaces:any;
-//     setIsActiveSelectSleepingPlaces:any;
-//     closeAllSelect:any;
-//     city:any;
-//     setCity:any;
-//     metro:any;
-//     setMetro:any;
-//     district:any;
-//     setDistrict:any;
-//     rooms:any;
-//     setRooms:any;
-//     sleepingPlaces:any;
-//     setSleepingPlaces:any;
-//     GasStove:any;
-//     setGasStove:any;
-//     Oven:any;
-//     setOven:any;
-//     CoffeeMaker:any;
-//     setCoffeeMaker:any;
-//     MicrowaveOven:any;
-//     setMicrowaveOven:any;
-//     Dishes:any;
-//     setDishes:any;
-//     Dishwasher:any;
-//     setDishwasher:any;
-//     upPrice:any;
-//     setUpPrice:any;
-//     toPrice:any;
-//     setToPrice:any;
+export interface defaultValue {
+    dropSelectList?: boolean;
+    setDropSelectList?:any;
+    isActiveSelectCity?:any;
+    setIsActiveSelectCity?:any;
+   isActiveSelectRooms?:any;
+    setIsActiveSelectRooms?:any;
+    isActiveSelectMetro?:any;
+    setIsActiveSelectMetro?:any;
+    isActiveSelectDistrict?:any;
+    setIsActiveSelectDistrict?:any;
+    isActiveSelectSleepingPlaces?:any;
+    setIsActiveSelectSleepingPlaces?:any;
+    closeAllSelect?:any;
+    city?:any;
+    setCity?:any;
+    metro?:any;
+    setMetro?:any;
+    district?:any;
+    setDistrict?:any;
+    rooms?:any;
+    setRooms?:any;
+    sleepingPlaces?:any;
+    setSleepingPlaces?:any;
+    GasStove?:any;
+    setGasStove?:any;
+    Oven?:any;
+    setOven?:any;
+    CoffeeMaker?:any;
+    setCoffeeMaker?:any;
+    MicrowaveOven?:any;
+    setMicrowaveOven?:any;
+    Dishes?:any;
+    setDishes?:any;
+    Dishwasher?:any;
+    setDishwasher?:any;
+    upPrice?:any;
+    setUpPrice?:any;
+    toPrice?:any;
+    setToPrice?:any;
 
-// }
+  }
 // export const initialValue: defaultValue = {
 //     dropSelectList :false,
 //     setDropSelectList,
@@ -85,4 +85,4 @@ import React from "react";
 //     toPrice:false,
 //     setToPrice:false
 // }
-export const Context = React.createContext( );
+export const Context = React.createContext<defaultValue>({});

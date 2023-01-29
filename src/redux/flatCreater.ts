@@ -23,6 +23,7 @@ export const cityArr: string[] = ['Минск','Гомель','Брест',"Ви
         
         flatList.push(
             {
+                
                 city:  cityArr[cityRand],
                 cost: costRand,
                 rooms: roomsRand,
