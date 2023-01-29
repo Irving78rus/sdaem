@@ -26,7 +26,7 @@ export default function Result({ res }: ResultProps) {
   const [filter, setFilter] = useState("");
   const { setDropSelectList }: any = useContext(Context);
   const pending: boolean = useAppSelector((state: stateModel) => state.baseFlat.pending);
-
+  const favoriteFlats = useAppSelector((state: stateModel) => state.baseFlat.favoriteFlats);
   const onClickButtonPagination = (page: number) => {
     setActivePage(page);
   };
@@ -86,9 +86,9 @@ export default function Result({ res }: ResultProps) {
               {paginatedFlat.length !== 0 &&
                 paginatedFlat.map((item: flatModel, index: number) =>
                   isDisplayTile ? (
-                    <CardResultTile key={index} flat={item}></CardResultTile>
+                    <CardResultTile key={index} flat={item} favoriteFlats={favoriteFlats}></CardResultTile>
                   ) : (
-                    <CardResultList key={index} flat={item}></CardResultList>
+                    <CardResultList key={index} flat={item} favoriteFlats={favoriteFlats}></CardResultList>
                   )
                 )}
             </FlexContainer>

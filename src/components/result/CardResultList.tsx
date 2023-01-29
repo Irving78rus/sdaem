@@ -6,9 +6,7 @@ import Button from "../UI/Button";
 import FlexContainer from "../UI/FlexContainer";
 import ContactComponent from "../share/ContactComponent";
 import Metro from "../../assets/icon/Metro";
- 
 import UserImg from "../../assets/icon/UserImg";
-import HeartImg2 from "../../assets/icon/HeartImg";
 import Slider from "../UI/Slider";
 import { flatModel, stateModel } from "../../redux/types";
 import IconMap from "../../assets/icon/IconMap";
@@ -142,10 +140,11 @@ const IMGContainer = styled.div`
 `;
 interface CardResultListProps{
   flat: flatModel
+  favoriteFlats: flatModel[]|[]
 }
-export default function CardResultList({ flat }:CardResultListProps) {
+export default function CardResultList({ flat,favoriteFlats }:CardResultListProps) {
   const dispatch = useAppDispatch();
-  const favoriteFlats = useAppSelector((state: stateModel) => state.baseFlat.favoriteFlats);
+ 
   const addFavoriteFlat =(e:any)=>{
  
     dispatch(changeFavoriteFlat(flat.id))

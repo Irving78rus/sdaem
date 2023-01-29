@@ -12,8 +12,6 @@ import Slider from "../UI/Slider";
 import { flatModel, stateModel } from "../../redux/types";
 import IconMap from "../../assets/icon/IconMap";
 import HeartImg from "../../assets/icon/HeartImg";
- 
- 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { changeFavoriteFlat } from "../../redux/baseFlat";
 import { HeartWrapper } from "./ResultStyle";
@@ -81,16 +79,15 @@ const Card = styled.div`
     font-size: 17px;
     line-height: 19px;
     color: #000000;
-    display:flex;
-     justify-content:flex-start;
-     align-items:center;
-     svg{
-      margin-right:10px;
-       
-     }
-     span{
-      margin-right:10px;
-     }
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    svg {
+      margin-right: 10px;
+    }
+    span {
+      margin-right: 10px;
+    }
   }
   .description-city {
     margin-top: 20px;
@@ -105,7 +102,7 @@ const Card = styled.div`
 const Gold = styled.div<Props>`
   background: linear-gradient(106.06deg, #ffd54f 1.12%, #fec100 97.96%);
   border-radius: 0px 10px 10px 10px;
-  z-index:2;
+  z-index: 2;
   position: absolute;
   top: ${(props) => props.top || "0"};
   right: 0;
@@ -121,21 +118,21 @@ const Gold = styled.div<Props>`
     text-shadow: 0px 1px 0px rgba(147, 79, 0, 0.3);
   }
 `;
-interface CardResultTileProps{
-  flat: flatModel
-  top?: string
+interface CardResultTileProps {
+  flat: flatModel;
+  top?: string;
+  favoriteFlats:flatModel[]|[]
 }
-export default function CardResultTile({ flat }: CardResultTileProps) {
+export default function CardResultTile({ flat,favoriteFlats }: CardResultTileProps) {
   const [showContact, setShowContact] = useState(false);
-  
+
   const dispatch = useAppDispatch();
-  const favoriteFlats = useAppSelector((state: stateModel) => state.baseFlat.favoriteFlats);
   
-  
-const addFavoriteFlat =(e:any)=>{
-  
-  dispatch(changeFavoriteFlat(flat.id))
-}
+console.log('CardResultTile');
+
+  const addFavoriteFlat = (e: any) => {
+    dispatch(changeFavoriteFlat(flat.id));
+  };
 
   return (
     <>
@@ -143,8 +140,18 @@ const addFavoriteFlat =(e:any)=>{
         <Gold>
           <p>Gold</p>
         </Gold>
-          <Slider  photos={[1,2,3,4,5,6,7]} widthButton='100%' top='50%' position='absolute' width='407px' height='200px' PAGE_WIDTH='1221' CardResultImg={CardResultImg} margin='0'></Slider>
-          {/* <img src={CardResultImg} alt="cartImage" /> */}
+        <Slider
+          photos={[1, 2, 3, 4, 5, 6, 7]}
+          widthButton="100%"
+          top="50%"
+          position="absolute"
+          width="407px"
+          height="200px"
+          PAGE_WIDTH="1221"
+          CardResultImg={CardResultImg}
+          margin="0"
+        ></Slider>
+        {/* <img src={CardResultImg} alt="cartImage" /> */}
         <FlexContainer flexDirection="column" padding="0 20px" alignItems="flex-start">
           <FlexContainer width="100%">
             <div>
@@ -157,14 +164,15 @@ const addFavoriteFlat =(e:any)=>{
             </div>
             <p className="rooms">{flat.rooms} комн. </p>
           </FlexContainer>
-  
-     
-          <div className="city"> <IconMap fill={'#BDBDBD'} margin='0 5px 0 0'></IconMap>
-           {flat.city}, б-р Мулявина, д. 10
-           </div>
+
+          <div className="city">
+            {" "}
+            <IconMap fill={"#BDBDBD"} margin="0 5px 0 0"></IconMap>
+            {flat.city}, б-р Мулявина, д. 10
+          </div>
           <p className="city">
-          <Metro fill={'#BDBDBD'}></Metro> <span>{flat.metro} </span> 
-          <Elips fill={'#BDBDBD'}></Elips> <span>{flat.district} </span> 
+            <Metro fill={"#BDBDBD"}></Metro> <span>{flat.metro} </span>
+            <Elips fill={"#BDBDBD"}></Elips> <span>{flat.district} </span>
           </p>
           <p className="description-city">
             Какое-то описание квартиры, описание квартиры, описание квартиры, описание квартиры,
@@ -172,23 +180,35 @@ const addFavoriteFlat =(e:any)=>{
             квартиры, описание ...
           </p>
           <Line> </Line>
-                <FlexContainer width="100%" margin="15px 0">
-         <HeartWrapper onClick={(e:any)=>{addFavoriteFlat(e)}} >
-          <HeartImg fill={'#EB5757'} back={favoriteFlats.some((item:flatModel)=>item.id===flat.id)?"red":'none'} ></HeartImg >
-          </HeartWrapper>  
+          <FlexContainer width="100%" margin="15px 0">
+            <HeartWrapper
+              onClick={(e: any) => {
+                addFavoriteFlat(e);
+              }}
+            >
+              <HeartImg
+                fill={"#EB5757"}
+                back={favoriteFlats.some((item: flatModel) => item.id === flat.id) ? "red" : "none"}
+              ></HeartImg>
+            </HeartWrapper>
             <Button
               background="#FFFFFF"
               color="#664EF9"
               fontSize="14px"
               onClick={() => setShowContact(!showContact)}
-              backgroundHover ='#F5F3FF'
-              boxShadowHover ='0px 5px 20px rgba(0, 96, 206, 0.1)'
-              boxShadow = '0px 5px 20px rgba(0, 96, 206, 0.1)' 
-              fontWeight='700'
+              backgroundHover="#F5F3FF"
+              boxShadowHover="0px 5px 20px rgba(0, 96, 206, 0.1)"
+              boxShadow="0px 5px 20px rgba(0, 96, 206, 0.1)"
+              fontWeight="700"
             >
               <img src={tel} alt="tel"></img> Контакты
             </Button>
-            <Button  background="rgba(255, 213, 79, 0.1)" color="#FEC100;" fontSize="14px" backgroundHover ='rgba(255, 213, 79, 0.2)'>
+            <Button
+              background="rgba(255, 213, 79, 0.1)"
+              color="#FEC100;"
+              fontSize="14px"
+              backgroundHover="rgba(255, 213, 79, 0.2)"
+            >
               Подробнее
             </Button>
             {showContact && <ContactComponent></ContactComponent>}

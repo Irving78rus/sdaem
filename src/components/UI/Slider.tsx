@@ -3,6 +3,8 @@ import CardResultTile from "../result/CardResultTile";
 import styled from "styled-components";
 import ContentContainer from "./ContentContainer";
 import FlexContainer from "./FlexContainer";
+import { useAppSelector } from "../../redux/hooks";
+import { stateModel } from "../../redux/types";
 interface Props {
   margin?: any;
 }
@@ -136,7 +138,7 @@ const Slider = ({
       return Math.min(newOffset, minOffset);
     });
   };
-
+  const favoriteFlats = useAppSelector((state: stateModel) => state.baseFlat.favoriteFlats);
   return (
     <ContentContainer flexDirection="column" justifyContent="center" padding="0">
       <ContentContainer width={width} height={!content ? "250px" : height} padding="0">
@@ -144,7 +146,7 @@ const Slider = ({
           <APC style={{ transform: `translateX(${offset}px)` }}>
             {res.map((item: any, index: any) => (
               <BlockItem key={index} margin={margin}>
-                {content && <CardResultTile flat={item} top="-240px"></CardResultTile>}
+                {content && <CardResultTile flat={item} top="-240px" favoriteFlats={favoriteFlats}></CardResultTile>}
                 {!content && <img className="sliderImg" src={CardResultImg} alt="cartImage" />}
               </BlockItem>
             ))}

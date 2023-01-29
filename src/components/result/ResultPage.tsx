@@ -59,7 +59,7 @@ export default function ResultPage() {
               <Circle></Circle>
               {params.city ? (
                 <p>
-                  Квартиры в
+                  Квартиры в {" "}
                   {params.city === "Гродно"
                     ? "Гродно"
                     : params.city === "Гомель"
@@ -72,7 +72,7 @@ export default function ResultPage() {
             </Flex>
             {params.city ? (
               <Title>
-                Аренда квартир в
+                Аренда квартир в{" "}
                 {params.city === "Гродно"
                   ? "Гродно"
                   : params.city === "Гомель"
