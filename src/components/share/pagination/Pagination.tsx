@@ -1,5 +1,5 @@
 import {  useState } from "react";
-import { flatModel } from "../../../redux/types";
+ 
  
 import { PaginationStl, PaginationButton,ScrollPagination } from "./style";
 

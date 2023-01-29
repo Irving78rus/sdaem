@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface Props {
-  width?: any;
+  width?: string;
 }
 
 const Wrapper = styled.div`

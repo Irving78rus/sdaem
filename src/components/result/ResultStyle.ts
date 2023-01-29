@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface Props {
-    height?: any;
+    height?: string;
   }
   export const HeaderBackground = styled.div<Props>`
     background: linear-gradient(90deg, #94afff30 0%, #94afff30 94.5%);

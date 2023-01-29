@@ -14,8 +14,8 @@ import IconMap from "../../assets/icon/IconMap";
 import HeartImg from "../../assets/icon/HeartImg";
 
 interface Props {
-  height?: any;
-  top?: any;
+  height?: string;
+  top?: string;
 }
 const Card = styled.div`
   position: relative;

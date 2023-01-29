@@ -143,7 +143,7 @@ interface CardResultListProps{
 export default function CardResultList({ flat }:CardResultListProps) {
   console.log(flat);
   
-  const [showContact, setShowContact] = useState(false);
+  const [showContact, setShowContact] = useState<boolean>(false);
   return (
     <>
       <Card>

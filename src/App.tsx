@@ -54,7 +54,7 @@ function App() {
   //     clearInterval(gameTime);
   //   };
   // }, [upPrice, toPrice, time]);
-
+ 
   const closeAllSelect = (): void => {
     setIsActiveSelectCity(false);
     setIsActiveSelectRooms(false);

@@ -148,7 +148,7 @@ export default function Result() {
       >
         <FlexContainer width={"100%"} justifyContent={"space-between"} margin="20px 0 0 0">
           <Select
-            background={"#FFFFFF"}
+            background="#FFFFFF"
             boxShadow={"0px 5px 20px rgba(0, 96, 206, 0.1)"}
             options={["По убыванию цены", "По возрастанию цены"]}
             selected={filter || "Выберите"}
