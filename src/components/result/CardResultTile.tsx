@@ -9,10 +9,14 @@ import ContactComponent from "../share/ContactComponent";
 import Metro from "../../assets/icon/Metro";
 import Elips from "../../assets/icon/Elips";
 import Slider from "../UI/Slider";
-import { flatModel } from "../../redux/types";
+import { flatModel, stateModel } from "../../redux/types";
 import IconMap from "../../assets/icon/IconMap";
 import HeartImg from "../../assets/icon/HeartImg";
-
+ 
+ 
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { changeFavoriteFlat } from "../../redux/baseFlat";
+import { HeartWrapper } from "./ResultStyle";
 interface Props {
   height?: string;
   top?: string;
@@ -123,6 +127,16 @@ interface CardResultTileProps{
 }
 export default function CardResultTile({ flat }: CardResultTileProps) {
   const [showContact, setShowContact] = useState(false);
+  
+  const dispatch = useAppDispatch();
+  const favoriteFlats = useAppSelector((state: stateModel) => state.baseFlat.favoriteFlats);
+  
+  
+const addFavoriteFlat =(e:any)=>{
+  
+  dispatch(changeFavoriteFlat(flat.id))
+}
+
   return (
     <>
       <Card>
@@ -159,7 +173,9 @@ export default function CardResultTile({ flat }: CardResultTileProps) {
           </p>
           <Line> </Line>
                 <FlexContainer width="100%" margin="15px 0">
-         <FlexContainer width={'33px'} height={'33px'} justifyContent="center" backgroundColor='rgba(235, 87, 87, 0.1)' borderRadius={'50%'}><HeartImg fill={'#EB5757'}></HeartImg ></FlexContainer>  
+         <HeartWrapper onClick={(e:any)=>{addFavoriteFlat(e)}} >
+          <HeartImg fill={'#EB5757'} back={favoriteFlats.some((item:flatModel)=>item.id===flat.id)?"red":'none'} ></HeartImg >
+          </HeartWrapper>  
             <Button
               background="#FFFFFF"
               color="#664EF9"
@@ -172,7 +188,7 @@ export default function CardResultTile({ flat }: CardResultTileProps) {
             >
               <img src={tel} alt="tel"></img> Контакты
             </Button>
-            <Button background="rgba(255, 213, 79, 0.1)" color="#FEC100;" fontSize="14px" backgroundHover ='rgba(255, 213, 79, 0.2)'>
+            <Button  background="rgba(255, 213, 79, 0.1)" color="#FEC100;" fontSize="14px" backgroundHover ='rgba(255, 213, 79, 0.2)'>
               Подробнее
             </Button>
             {showContact && <ContactComponent></ContactComponent>}

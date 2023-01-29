@@ -10,8 +10,11 @@ import Metro from "../../assets/icon/Metro";
 import UserImg from "../../assets/icon/UserImg";
 import HeartImg2 from "../../assets/icon/HeartImg";
 import Slider from "../UI/Slider";
-import { flatModel } from "../../redux/types";
+import { flatModel, stateModel } from "../../redux/types";
 import IconMap from "../../assets/icon/IconMap";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { changeFavoriteFlat } from "../../redux/baseFlat";
+import HeartImg from "../../assets/icon/HeartImg";
 
 const Card = styled.div`
   display: flex;
@@ -141,7 +144,12 @@ interface CardResultListProps{
   flat: flatModel
 }
 export default function CardResultList({ flat }:CardResultListProps) {
-  console.log(flat);
+  const dispatch = useAppDispatch();
+  const favoriteFlats = useAppSelector((state: stateModel) => state.baseFlat.favoriteFlats);
+  const addFavoriteFlat =(e:any)=>{
+ 
+    dispatch(changeFavoriteFlat(flat.id))
+  }
   
   const [showContact, setShowContact] = useState<boolean>(false);
   return (
@@ -200,11 +208,12 @@ export default function CardResultList({ flat }:CardResultListProps) {
               fontSize="14px"
               padding="9px 15px"
               borderRadius="22px"
+              onClick={(e:any)=>{addFavoriteFlat(e)}}
             >
-              В закладки  <HeartImg2 fill={'#EB5757'}></HeartImg2>
+              В закладки  <HeartImg fill={'#EB5757'} back={favoriteFlats.some((item:flatModel)=>item.id===flat.id)?"red":'none'}></HeartImg>
             </Button>
 
-            <Button background="rgba(255, 213, 79, 0.1)" color="#FEC100;" fontSize="14px" backgroundHover ='rgba(255, 213, 79, 0.2)'>
+            <Button onClick={(e:any)=>{addFavoriteFlat(e)}} background="rgba(255, 213, 79, 0.1)" color="#FEC100;" fontSize="14px" backgroundHover ='rgba(255, 213, 79, 0.2)'>
               Подробнее
             </Button>
             {showContact && <ContactComponent></ContactComponent>}

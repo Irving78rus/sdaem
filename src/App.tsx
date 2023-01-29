@@ -17,6 +17,7 @@ import { Authorization } from "./components/authorization/Auth/Authorization";
 import { Registration } from "./components/authorization/Registration/Registration";
 import { Context } from "./redux/context";
 import { stateModel } from "./redux/types";
+import ResultPage from "./components/result/ResultPage";
 
 function App() {
   const params = useAppSelector((state: stateModel) => state.baseFlat.params);
@@ -117,7 +118,7 @@ function App() {
           <Route path="News/*" element={<New />} />
           <Route path="Contact" element={<СontactsComponent />} />
           <Route path="Authorization" element={<Authorization />} />
-          <Route path="Result" element={<Result />} />
+          <Route path="Result" element={<ResultPage />} />
           <Route path="Registration" element={<Registration />} />
           <Route path="Catalog" element={<Catalog />} />
           <Route path="Favorite" element={<Favorite />} />

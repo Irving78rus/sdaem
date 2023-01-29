@@ -37,25 +37,6 @@ interface Props {
   box-shadow: 0px 20px 40px rgba(39, 95, 158, 0.08);
     height:100%;
   `
-  export const HeartWrapper = styled.div`
-  display:flex;
-  width:33px; 
-  height:33px; 
-  justify-content:center;
-  align-items:center; 
-  background-color: rgba(235, 87, 87, 0.1);
-   border-radius:50%;
-  &:hover{
-    cursor:pointer;
-       svg{
-        fill:rgba(235, 87, 87, 0.4);
-       }
-   
-  
-}
-  `
-
-  
  export const Toggle = styled.div`
   display: flex;
   flex-direction: row;

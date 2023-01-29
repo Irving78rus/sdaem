@@ -1,10 +1,10 @@
-import { createSlice} from "@reduxjs/toolkit";
- 
+import { createSlice } from "@reduxjs/toolkit";
+
 import { createFlatList } from "./flatCreater";
 import { flatModel, initialStateModel, paramsModel, payloadModel } from "./types";
 
 
-const initialState:initialStateModel = {
+const initialState: initialStateModel = {
   flat: createFlatList(),
   params: {
     city: "",
@@ -44,29 +44,24 @@ const initialState:initialStateModel = {
       active: false,
     },
   ],
-  pending:false
+  pending: false,
+  favoriteFlats: []
 };
 
 const baseFlat = createSlice({
   name: "baseFlat",
   initialState,
   reducers: {
-    getFilterFlats: (state:  initialStateModel , param: payloadModel): void => {
+    getFilterFlats: (state: initialStateModel, param: payloadModel): void => {
       state.pending = false;
       state.params = param.payload;
       const allParams: any = {};
       for (let k in param.payload) {
         const key = k as keyof paramsModel;
-       
-        if (state.params[key] ) {
-          console.log(key);
-          console.log(allParams[key]);
-           
-          
-            allParams[key] = state.params[key];
+        if (state.params[key]) {
+          allParams[key] = state.params[key];
         }
       }
-
       state.res = state.flat.filter((item: flatModel) => {
         let resParams = true;
         for (let k in allParams) {
@@ -78,26 +73,41 @@ const baseFlat = createSlice({
             resParams = false;
           }
         }
-
         return resParams && item;
       });
       state.pending = true;
     },
-    filterFlatForPrice: (state,param ) => {
-      if(param.payload==='up'){
+    filterFlatForPrice: (state, param) => {
+      if (param.payload === 'up') {
         state.res = state.res.sort((a, b) => a.cost - b.cost);
       }
-    
-      if (param.payload==='down') {
+      if (param.payload === 'down') {
         state.res = state.res.sort((a, b) => b.cost - a.cost);
       }
     },
-    
+    changeFavoriteFlat: (state, id ) => {
+      if (
+        state.favoriteFlats.every(
+          (item:any) => item.id !== id.payload
+        )
+      ) {
+        const selectedFlats = state.flat.filter(item=>item.id===id.payload)
+        state.favoriteFlats.push(...selectedFlats);
+        console.log(1);
+        
+      }
+      else{
+        state.favoriteFlats=state.favoriteFlats.filter((item:any)=>item.id!==id.payload)
+        console.log(2);
+      }
+    },
+
   },
 });
 
 export const {
   getFilterFlats,
-  filterFlatForPrice
+  filterFlatForPrice,
+  changeFavoriteFlat
 } = baseFlat.actions;
 export default baseFlat.reducer;

@@ -11,11 +11,14 @@ import {
   Arrow,
   BackgroundColor,
   DropTable,
+  FavoriteWrap,
+  HeartCount,
   List,
   StylesTopLeftNav,
   StylesTopRightNav,
 } from "./TopHeaderStyle";
 import HeartImg from "../../../assets/icon/HeartImg";
+import { stateModel } from "../../../redux/types";
 export interface UserModel {
   login?: string;
   email?: string;
@@ -25,8 +28,8 @@ export interface UserModel {
 export default function TopHeader() {
   const [showList, setShowList] = useState(false);
   const dispatch = useAppDispatch();
-  const user: UserModel = useAppSelector((state) => state.userSetting.user);
-
+  const user: UserModel = useAppSelector((state: stateModel) => state.userSetting.user);
+  const favoriteFlats = useAppSelector((state: stateModel) => state.baseFlat.favoriteFlats);
   useEffect(() => {
     if (localStorage.getItem("User")) {
       dispatch(setUser(JSON.parse(localStorage.getItem("User") || "")));
@@ -77,7 +80,10 @@ export default function TopHeader() {
               to="Favorite"
               className={({ isActive }) => (isActive ? "link active" : "link")}
             >
-              Закладки <div style={{marginLeft:'10px'}}></div> <HeartImg ></HeartImg>
+              Закладки <FavoriteWrap >
+                <HeartCount>{favoriteFlats.length?favoriteFlats.length:null}</HeartCount>
+                </FavoriteWrap>
+                <HeartImg back={favoriteFlats.length?"red":'none'}></HeartImg>
             </NavLink>
           </li>
           <li>

@@ -90,3 +90,12 @@ export const DropTable = styled.div`
 position: relative;
 padding: 5px;
 `;
+export const FavoriteWrap = styled.div`
+position: relative;
+margin-left:10px;
+`;
+export const HeartCount = styled.div`
+position: absolute;
+ top:-15px;
+ left:15px;
+`;

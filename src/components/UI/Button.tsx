@@ -45,6 +45,9 @@ position:relative;
     cursor:pointer;
     color: ${props=>props.colorHover||""};
     opacity:${props=>props.opacityHover||null};
+    svg{
+      fill:rgba(235, 87, 87, 0.4);
+     }
 }
 `
  

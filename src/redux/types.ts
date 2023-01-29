@@ -9,6 +9,7 @@ export interface initialStateUserSettingModel {
 }
 
 export interface flatModel {
+  id:number;
   city: string;
   cost: number;
   rooms: number;
@@ -32,6 +33,7 @@ export interface topNavigationFormSearchModel {
 }
 
 export interface paramsModel {
+  id?:number;
   city?: string;
   cost?: number;
   upPrice?: number|string;
@@ -59,4 +61,5 @@ export interface initialStateModel {
   res: flatModel[];
   topNavigationFormSearch: topNavigationFormSearchModel[];
   pending: boolean;
+  favoriteFlats:any;
 }
