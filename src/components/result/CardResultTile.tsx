@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CardResultImg from "../../assets/icon/CardResult.png";
+import FlatImage from "../../assets/icon/FlatImage.png";
 import tel from "../../assets/icon/tel.svg";
 import styled from "styled-components";
 import Button from "../UI/Button";
@@ -127,11 +127,8 @@ export default function CardResultTile({ flat,favoriteFlats }: CardResultTilePro
   const [showContact, setShowContact] = useState(false);
 
   const dispatch = useAppDispatch();
-  
-console.log('CardResultTile');
-
   const addFavoriteFlat = (e: any) => {
-    dispatch(changeFavoriteFlat(flat.id));
+   dispatch(changeFavoriteFlat(flat.id));
   };
 
   return (
@@ -148,10 +145,10 @@ console.log('CardResultTile');
           width="407px"
           height="200px"
           PAGE_WIDTH="1221"
-          CardResultImg={CardResultImg}
+          CardResultImg={FlatImage}
           margin="0"
         ></Slider>
-        {/* <img src={CardResultImg} alt="cartImage" /> */}
+         
         <FlexContainer flexDirection="column" padding="0 20px" alignItems="flex-start">
           <FlexContainer width="100%">
             <div>

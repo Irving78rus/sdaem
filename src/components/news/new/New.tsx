@@ -1,6 +1,6 @@
 import React from "react";
 import home from "../../../assets/icon/home.png";
-import cartImage from "../../../assets/icon/cartImage.png";
+import FlatImage from "../../../assets/icon/FlatImage.png";
 import dots from "../../../assets/icon/dots.svg";
 import { NavLink } from "react-router-dom";
 import { Card, Circle,   Container,   ContainerNew,   Flex,   HeaderBackground,   Title,   Wrap, } from ".././NewsStyle";
@@ -42,7 +42,7 @@ export default function New() {
       </HeaderBackground>
       <ContainerNew>
         <FlexContainer flexDirection="column" alignItems="start">
-          <img src={cartImage} alt="flat"></img>
+          <img src={FlatImage} alt="flatImage"></img>
           <img src={dots} alt="dots" className={"dots"}></img>
           <p>
             Итак, утром вы выезжаете в путь по Молодеченской трассе. Если автомобиля у вас нет -
@@ -88,7 +88,7 @@ export default function New() {
             <FlexContainer gap="30px">
               {arr.map((item: number) => (
                 <Card key={item}>
-                  <img src={cartImage} alt="cartImage" />
+                  <img src={FlatImage} alt="FlatImage" />
                   <h4>Линия Сталина: суровый отдых в усадьбах на сутки</h4>
                   <p>
                     Чем заняться в выходные? Когда нет безотлагательных домашних дел, а на улице

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CardResultImg from "../../assets/icon/CardResult.png";
+import FlatImage from "../../assets/icon/FlatImage.png";
 import tel from "../../assets/icon/tel.svg";
 import styled from "styled-components";
 import Button from "../UI/Button";
@@ -144,18 +144,17 @@ interface CardResultListProps{
 }
 export default function CardResultList({ flat,favoriteFlats }:CardResultListProps) {
   const dispatch = useAppDispatch();
- 
-  const addFavoriteFlat =(e:any)=>{
+   const addFavoriteFlat =(e:any)=>{
  
     dispatch(changeFavoriteFlat(flat.id))
   }
-  
+
   const [showContact, setShowContact] = useState<boolean>(false);
   return (
     <>
       <Card>
         <IMGContainer>
-        <Slider  photos={[1,2,3,4,5,6,7]} widthButton='100%' top='50%' position='absolute' width='407px' height='200px' PAGE_WIDTH='1221' CardResultImg={CardResultImg} margin='0'></Slider>
+        <Slider  photos={[1,2,3,4,5,6,7]} widthButton='100%' top='50%' position='absolute' width='407px' height='200px' PAGE_WIDTH='1221' CardResultImg={FlatImage} margin='0'></Slider>
           <Gold>
             <p>Gold</p>
           </Gold>

@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import home from "../../assets/icon/home.png";
-import cartImage from "../../assets/icon/cartImage.png";
+import FlatImage from "../../assets/icon/FlatImage.png";
 import { NavLink } from "react-router-dom";
 import { Card, Circle,  TopTitle, MarginT, NavLinkStl, Wrap, WrapperFilter, WrapperTitle } from "./NewsStyle";
 import FlexContainer from "../UI/FlexContainer";
@@ -42,7 +42,7 @@ export default function News() {
       <FlexContainer maxWidth='1440px' justifyContent='center' gap='25px' margin='0 auto 30px auto' flexWrap='wrap' >
         {paginatedNews.map((item:number) => (
           <Card key={item}>
-            <img src={cartImage} alt="cartImage" />
+            <img src={FlatImage} alt="FlatImage" />
             <h4>Линия Сталина: суровый отдых в усадьбах на сутки</h4>
             <p>
               Чем заняться в выходные? Когда нет безотлагательных домашних дел, а на улице хорошая

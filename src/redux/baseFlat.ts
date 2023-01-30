@@ -78,14 +78,17 @@ const baseFlat = createSlice({
       state.pending = true;
     },
     filterFlatForPrice: (state, param) => {
+      state.pending = false;
       if (param.payload === 'up') {
         state.res = state.res.sort((a, b) => a.cost - b.cost);
       }
       if (param.payload === 'down') {
         state.res = state.res.sort((a, b) => b.cost - a.cost);
       }
+      state.pending = true;
     },
     changeFavoriteFlat: (state, id ) => {
+      state.pending = false;
       if (
         state.favoriteFlats.every(
           (item:any) => item.id !== id.payload
@@ -93,13 +96,14 @@ const baseFlat = createSlice({
       ) {
         const selectedFlats = state.flat.filter(item=>item.id===id.payload)
         state.favoriteFlats.push(...selectedFlats);
-        console.log(1);
+         
         
       }
       else{
         state.favoriteFlats=state.favoriteFlats.filter((item:any)=>item.id!==id.payload)
-        console.log(2);
+        
       }
+      state.pending = true;
     },
 
   },

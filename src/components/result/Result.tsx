@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useContext } from "react";
+import React, { useState, useMemo, useContext, useEffect } from "react";
 import FlexContainer from "../UI/FlexContainer";
 import ContentContainer from "../UI/ContentContainer";
 import CardResultTile from "./CardResultTile";
@@ -17,16 +17,18 @@ import IconMap from "../../assets/icon/IconMap";
 
 interface ResultProps {
   res: flatModel[];
+  favoriteFlats : flatModel[]|[];
 }
 
-export default function Result({ res }: ResultProps) {
+export default function Result({ res ,favoriteFlats}: ResultProps) {
+
   const [isDisplayTile, setIsDisplayTile] = useState(true);
   const [showSelectFilter, setShowSelectFilter] = useState(false);
   const [activePage, setActivePage] = useState<number>(1);
   const [filter, setFilter] = useState("");
   const { setDropSelectList }: any = useContext(Context);
   const pending: boolean = useAppSelector((state: stateModel) => state.baseFlat.pending);
-  const favoriteFlats = useAppSelector((state: stateModel) => state.baseFlat.favoriteFlats);
+ 
   const onClickButtonPagination = (page: number) => {
     setActivePage(page);
   };
@@ -37,6 +39,7 @@ export default function Result({ res }: ResultProps) {
     const indexOfFirstNews = indexOfLastNews - itemsPerPage;
     return res.slice(indexOfFirstNews, indexOfLastNews);
   }, [activePage, res]);
+ 
 
   return (
     <>

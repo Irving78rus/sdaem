@@ -147,7 +147,7 @@ const Slider = ({
             {res.map((item: any, index: any) => (
               <BlockItem key={index} margin={margin}>
                 {content && <CardResultTile flat={item} top="-240px" favoriteFlats={favoriteFlats}></CardResultTile>}
-                {!content && <img className="sliderImg" src={CardResultImg} alt="cartImage" />}
+                {!content && <img className="sliderImg" src={CardResultImg} alt="FlatImage" />}
               </BlockItem>
             ))}
           </APC>

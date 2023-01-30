@@ -48,7 +48,7 @@ export default function ResultPage() {
   const addParamsToStore = (item: recommendedСriteriaModel) => {
     dispatch(getFilterFlats({ [item.name]: item.value }));
   };
- 
+  const favoriteFlats = useAppSelector((state: stateModel) => state.baseFlat.favoriteFlats);
    return (
     <>
       <HeaderBackground height="280px">
@@ -115,7 +115,7 @@ export default function ResultPage() {
           ></FormSearch>
         </FlexContainer>
       </BackgroundColor>
-         <Result res={res}></Result>
+         <Result res={res} favoriteFlats={favoriteFlats}></Result>
        
     </>
   );
