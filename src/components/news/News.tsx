@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import { Card, Circle,  TopTitle, MarginT, NavLinkStl, Wrap, WrapperFilter, WrapperTitle } from "./NewsStyle";
 import FlexContainer from "../UI/FlexContainer";
 import { Pagination } from "../share/Pagination/Pagination";
+import HomeSvg from "../../assets/icon/HomeSvg";
+import LoopSvg from "../../assets/icon/LoopSvg";
 
 
 export default function News() {
@@ -26,7 +28,7 @@ export default function News() {
       <FlexContainer maxWidth='1440px' margin='0 auto' position='relative'>
         <WrapperTitle>
           <FlexContainer gap='10px' justifyContent='flex-start'>
-            <img src={home} alt="home" />
+            <HomeSvg></HomeSvg>
             <Circle></Circle>
             <TopTitle>Новости</TopTitle>
           </FlexContainer>
@@ -35,7 +37,7 @@ export default function News() {
 
         <WrapperFilter>
           <input placeholder="Поиск по статьям" />
-          <button className="button"> search</button>
+          <button className="button"> <LoopSvg></LoopSvg></button>
         </WrapperFilter>
         
       </FlexContainer>

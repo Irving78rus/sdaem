@@ -1,5 +1,5 @@
 import React from "react";
-import home from "../../../assets/icon/home.png";
+ 
 import FlatImage from "../../../assets/icon/FlatImage.png";
 import dots from "../../../assets/icon/dots.svg";
 import { NavLink } from "react-router-dom";
@@ -9,6 +9,7 @@ import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";
 import ContentContainer from "../../UI/ContentContainer";
 import ShearSocial from "../../../assets/icon/ShearSocial";
+import HomeSvg from "../../../assets/icon/HomeSvg";
 
 export default function New() {
   const arr: number[] = [1, 2, 3];
@@ -17,7 +18,7 @@ export default function New() {
       <HeaderBackground height="280px">
         <Container>
           <Flex>
-            <img src={home} alt="home" />
+          <HomeSvg></HomeSvg>
             <p>Новости</p>
             <Circle></Circle>
             <p>Линия Сталина: суровый отдых в усадьбах на сутки Линия Сталина: </p>

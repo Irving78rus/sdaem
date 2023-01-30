@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import elips from "../../assets/icon/elips.svg";
+ 
 import car from "../../assets/icon/car.png";
 import Flat from "../../assets/icon/Flat.png";
 import hand from "../../assets/icon/handle.svg";
@@ -15,7 +15,7 @@ import { getFilterFlats } from "../../redux/baseFlat";
 import FormSearch from "./FormSearch";
 import Select from "../UI/Select";
 import { Line } from "../UI/Line";
-import Slider from "../UI/Slider";
+import Slider, { ButtonSlider } from "../UI/Slider";
 import {
   Background,
   BackgroundImg,
@@ -43,12 +43,22 @@ import { useNavigate } from "react-router-dom";
 import { cityArr } from "../../redux/flatCreater";
 import { VerticalLine } from "../UI/VerticalLine";
 import Dots from "../UI/Dots";
- 
+
 import { Context } from "../../redux/context";
 import { RightArrow } from "./FormSearchStyle";
 import { flatModel, stateModel, topNavigationFormSearchModel } from "../../redux/types";
 import IconMap from "../../assets/icon/IconMap";
-
+import styled from "styled-components";
+export const ButtonRightArrow = styled.div`
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  top: 37%;
+  left: 30%;
+  transform: rotate(45deg);
+`;
 export default function Home() {
   const params = useAppSelector((state: stateModel) => state.baseFlat.params);
   const [isActiveFieldsFormSearch, setIsActiveFieldsFormSearch] = useState<number>(0);
@@ -92,7 +102,7 @@ export default function Home() {
       <Background onClick={() => closeAllSelect()}>
         <BackgroundImg onClick={() => closeAllSelect()}>
           <ContentContainer justifyContent="center" flexDirection="column" padding="0 120px">
-            <h1 style={{margin:'80px 0 50px 0'}}>
+            <h1 style={{ margin: '80px 0 50px 0' }}>
               Sdaem.by - у нас живут <span>ваши объявления</span>
             </h1>
             <FlexContainer flexDirection="column" alignItems="flex-start" width="100%">
@@ -137,17 +147,41 @@ export default function Home() {
             <IMG backgroundImage={house} width={"407px"} height={"270px"}>
               <p>Снять коттедж на праздник</p>
               <h3 className={"h3"}>Котеджы и усадьбы</h3>
-              <img src={elips} alt="elips"></img>
+              <ButtonSlider
+                className={"homeSlider"}
+                border='1px solid #ffffff'
+                position={'absolute'}
+                top={'78%'}
+                left={'85%'}
+              >
+                <ButtonRightArrow className="rightArrow"></ButtonRightArrow>{" "}
+              </ButtonSlider>
             </IMG>
             <IMG backgroundImage={bane} width={"407px"} height={"270px"}>
               <p>попариться в бане с друзьями</p>
               <h3 className={"h3"}>Бани и сауны</h3>
-              <img src={elips} alt="elips"></img>
+              <ButtonSlider
+                className={"homeSlider"}
+                border='1px solid #ffffff'
+                position={'absolute'}
+                top={'78%'}
+                left={'85%'}
+              >
+                <ButtonRightArrow className="rightArrow"></ButtonRightArrow>{" "}
+              </ButtonSlider>
             </IMG>
             <IMG backgroundImage={car} width={"516px"} height={"270px"}>
               <p>Если срочно нужна машина</p>
               <h3 className={"h3"}>Авто на прокат</h3>
-              <img src={elips} alt="elips"></img>
+              <ButtonSlider
+                className={"homeSlider"}
+                border='1px solid #ffffff'
+                position={'absolute'}
+                top={'78%'}
+                left={'85%'}
+              >
+                <ButtonRightArrow className="rightArrow"></ButtonRightArrow>{" "}
+              </ButtonSlider>
             </IMG>
           </IMGBlock>
           <TextBlock>
@@ -184,7 +218,7 @@ export default function Home() {
           flexDirection="column"
           alignItems="flex-start"
           padding={"0 80px"}
-        >
+         >
           <SubTitle>Квартиры на сутки </SubTitle>
           <FlexContainer width="100%">
             <h3 className="subTitle"> Aренда квартир в {params.city}</h3>

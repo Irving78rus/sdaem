@@ -1,5 +1,5 @@
 import React, {  useContext } from "react";
-import home from "../../assets/icon/home.png";
+ 
 import Button from "../UI/Button";
 import FlexContainer from "../UI/FlexContainer";
 import ContentContainer from "../UI/ContentContainer";
@@ -14,6 +14,7 @@ import { getFilterFlats } from "../../redux/baseFlat";
 import { flatModel, paramsModel, stateModel } from "../../redux/types";
  
 import Result from "./Result";
+import HomeSvg from "../../assets/icon/HomeSvg";
 
 interface recommendedСriteriaModel{
   title:string;
@@ -55,7 +56,7 @@ export default function ResultPage() {
         <ContentContainer flexDirection={"column"} alignItems={"flex-start"}>
           <FlexContainer flexDirection="column" alignItems={"flex-start"}>
             <Flex>
-              <img src={home} alt="home" />
+            <HomeSvg></HomeSvg>
               <Circle></Circle>
               {params.city ? (
                 <p>

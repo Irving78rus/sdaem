@@ -6,7 +6,11 @@ import FlexContainer from "./FlexContainer";
 import { useAppSelector } from "../../redux/hooks";
 import { stateModel } from "../../redux/types";
 interface Props {
-  margin?: any;
+  margin?: string;
+  border?: string;
+  position?: string;
+  top?: string;
+  left?: string;
 }
 const Window = styled.div`
   display: flex;
@@ -36,7 +40,7 @@ const BlockItem = styled.div<Props>`
     height: 250px;
   }
 `;
-const ButtonSlider = styled.div`
+export const ButtonSlider = styled.div<Props>`
   &.homeSlider2 {
     position: relative;
     display: flex;
@@ -61,12 +65,13 @@ const ButtonSlider = styled.div`
     }
   }
   &.homeSlider {
-    position: relative;
+    position:${props=>props.position||"relative"};    
+    top:${props=>props.top||"0"};     
+    left:${props=>props.left||"0"};   
     display: flex;
     width: 40px;
     height: 40px;
-    border: 1px solid #664ef9;
-    background: inherit;
+    border: ${props=>props.border||"1px solid #664ef9"};   
     border-radius: 50%;
     &:hover {
       background: rgba(102, 78, 249, 0.1);
@@ -75,7 +80,7 @@ const ButtonSlider = styled.div`
 
   cursor: pointer;
 `;
-const RightArrow = styled.div`
+export const RightArrow = styled.div`
   position: absolute;
   width: 11px;
   height: 11px;

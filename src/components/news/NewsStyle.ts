@@ -115,6 +115,7 @@ export const WrapperFilter = styled.div`
     padding-left: 15px;
   }
   .button {
+    width: 7%;
     position: relative;
     right: 50px;
     margin-top: 67px;
