@@ -60,7 +60,8 @@ export const FormMessage = ({ setIsShowPopup }: ShowPopupProps) => {
           <FormMessageUserMessage placeholder="Сообщение" />
         </label>
         <FormMessageButton
-          onClick={() => {
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+            e.preventDefault();
             setIsShowPopup(true);
           }}
         >
