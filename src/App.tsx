@@ -41,20 +41,7 @@ function App() {
   const [Dishwasher, setDishwasher] = useState<boolean | undefined>(params.Dishwasher);
   const [upPrice, setUpPrice] = useState<number | string | undefined>(params.upPrice);
   const [toPrice, setToPrice] = useState<number | string | undefined>(params.toPrice);
-  // const [time, setTime] = useState<number>(0);
-  // useEffect(() => {
-  //   const gameTime = setInterval(() => setTime((prev) => prev + 1), 800);
-  //   if (time > 1) {
-  //     clearInterval(gameTime);
-  //     if (upPrice && toPrice && Number(upPrice) > Number(toPrice)) {
-  //       setToPrice("");
-  //       setTime(0);
-  //     }
-  //   }
-  //   return () => {
-  //     clearInterval(gameTime);
-  //   };
-  // }, [upPrice, toPrice, time]);
+  
  
   const closeAllSelect = (): void => {
     setIsActiveSelectCity(false);
@@ -119,7 +106,7 @@ function App() {
           <Route path="Contact" element={<СontactsComponent />} />
           <Route path="Authorization" element={<Authorization />} />
           <Route path="Result" element={<ResultPage />} />
-          <Route path="Registration" element={<Registration />} />
+          <Route path="Registration" element={<Registration/>} />
           <Route path="Catalog" element={<Catalog />} />
           <Route path="Favorite" element={<Favorite />} />
           <Route path="*" element={<Error />} />
