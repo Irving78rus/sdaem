@@ -58,9 +58,9 @@ export const Flex = styled.div`
 
 export const MarginT = styled.div`
   position: relative;
-  max-width: 1440px;
+   
   padding: 0 80px;
-  margin: 0 auto;
+  
   margin-top: 42px;
 `;
 
@@ -93,9 +93,9 @@ export const Circle = styled.div`
 
 export const WrapperFilter = styled.div`
   position: absolute;
-  z-index: -1;
-  right: -40px;
-  top: 50px;
+ 
+  right: -80px;
+  top: 0px;
   width: 800px;
   height: 850px;
   background: linear-gradient(90deg, #94afff23 0%, #4e65f91c 94.5%);
@@ -110,6 +110,7 @@ export const WrapperFilter = styled.div`
     color: black;
     border-radius: 20px;
     border: none;
+    outline:none;
   }
   input::placeholder {
     padding-left: 15px;

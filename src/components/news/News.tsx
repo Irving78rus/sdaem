@@ -25,7 +25,7 @@ export default function News() {
   }, [activePage, arr]);
   return (
     <MarginT>
-      <FlexContainer maxWidth='1440px' margin='0 auto' position='relative'>
+      <FlexContainer   margin='0 auto' position='relative'>
         <WrapperTitle>
           <FlexContainer gap='10px' justifyContent='flex-start'>
             <HomeSvg></HomeSvg>
@@ -36,12 +36,12 @@ export default function News() {
         </WrapperTitle>
 
         <WrapperFilter>
-          <input placeholder="Поиск по статьям" />
+          <input placeholder="Поиск по статьям" type={'text'}/>
           <button className="button"> <LoopSvg></LoopSvg></button>
         </WrapperFilter>
         
       </FlexContainer>
-      <FlexContainer maxWidth='1440px' justifyContent='center' gap='25px' margin='0 auto 30px auto' flexWrap='wrap' >
+      <FlexContainer gap='25px' margin='0 auto 30px auto' flexWrap='wrap' >
         {paginatedNews.map((item:number) => (
           <Card key={item}>
             <img src={FlatImage} alt="FlatImage" />
