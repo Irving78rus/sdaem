@@ -58,9 +58,7 @@ export const Flex = styled.div`
 
 export const MarginT = styled.div`
   position: relative;
-   
   padding: 0 80px;
-  
   margin-top: 42px;
 `;
 

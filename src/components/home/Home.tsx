@@ -39,7 +39,7 @@ import {
   WrapperFilter,
 } from "./HomeStyle";
 import { GetListUniqueItems } from "../share/hooks";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { cityArr } from "../../redux/flatCreater";
 import { VerticalLine } from "../UI/VerticalLine";
 import Dots from "../UI/Dots";
@@ -357,21 +357,21 @@ export default function Home() {
             </LeftBlock>
             <RightBlock>
               <h2>Новости</h2>
-              <p>Линия Сталина: суровый отдых в усадьбах на сутки</p>
+              <NavLink to="News/New">Линия Сталина: суровый отдых в усадьбах на сутки</NavLink>
               <span>14 Январь</span>
               <Line> </Line>
-              <p>Линия Сталина: суровый отдых в усадьбах на сутки</p>
+              <NavLink to="News/New">Линия Сталина: суровый отдых в усадьбах на сутки</NavLink>
               <span>14 Январь</span>
               <Line> </Line>
-              <p>Линия Сталина: суровый отдых в усадьбах на сутки</p>
+              <NavLink to="News/New">Линия Сталина: суровый отдых в усадьбах на сутки</NavLink>
               <span>14 Январь</span>
               <Line> </Line>
-              <p>Линия Сталина: суровый отдых в усадьбах на сутки</p>
+              <NavLink to="News/New">Линия Сталина: суровый отдых в усадьбах на сутки</NavLink>
               <span>14 Январь</span>
               <Line> </Line>
-              <p>Линия Сталина: суровый отдых в усадьбах на сутки</p>
+              <NavLink to="News/New">Линия Сталина: суровый отдых в усадьбах на сутки</NavLink>
               <span>14 Январь</span>
-              <ShowAllStl>{"Посмотреть все >"}</ShowAllStl>
+              <ShowAllStl> <NavLink  to="News">{"Посмотреть все >"}</NavLink> </ShowAllStl>
             </RightBlock>
           </FlexContainer>
         </ContentContainer>

@@ -331,52 +331,57 @@ export const LeftBlock = styled.div`
   }
 }`;
 export const RightBlock = styled.div`
- width: 406px;
- padding: 33px 23px;
- &>*{
+  width: 406px;
+  padding: 33px 23px;
+  &>*{
   margin:3px 0;
- }
-
-box-shadow: 0px 20px 40px rgba(135, 124, 202, 0.15);
-border-radius: 10px;
+  }
+  box-shadow: 0px 20px 40px rgba(135, 124, 202, 0.15);
+  border-radius: 10px;
  h2{
   margin-bottom:26px ;
   font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 25px;
-line-height: 30px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
  }
- p{
-  font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 17px;
-&:hover{
-  color: #664EF9;
-cursor:pointer;
-}
- }
- span{
- font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 15px;
-color: #8291A3;
-}
+  a{
+    display:block;
+   color:black;
+   font-family: 'Inter';
+   font-style: normal;
+   font-weight: 600;
+   font-size: 14px;
+   line-height: 17px;
+   text-decoration: none;
+   &:hover{
+    color: #664EF9;
+    cursor:pointer;
+    }
+  }
+  span{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #8291A3;
+  }
 }`;
 
 export const ShowAllStl = styled.div`
   margin-top: 20px;
-  color: #664ef9;
+  
   font-family: "Inter";
   font-style: normal;
   font-weight: 800;
   font-size: 14px;
   line-height: 17px;
   cursor: pointer;
+  a{
+  color: #664ef9;
+  }
 `;
 export const SearchToMapBlock = styled.div`
   position: relative;
