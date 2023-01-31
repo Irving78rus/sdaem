@@ -11,7 +11,7 @@ import MoreOption from "../UI/MoreOption";
 import Checkbox from "../UI/Checkbox ";
 import { VerticalLine } from "../UI/VerticalLine";
  
-import { List, RightArrow, SelectTitle } from "./FormSearchStyle";
+import { HorizontalLine, List, RightArrow, SelectTitle } from "./FormSearchStyle";
 import { Context } from "../../redux/context";
 import { GetListUniqueItems } from "../share/hooks";
 import IconMap from "../../assets/icon/IconMap";
@@ -127,6 +127,7 @@ export default function FormSearch({
             <FlexContainer gap='10px' >
               <Input type={"number"} width={"80px"} height={"37px"} placeholder="  От"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUpPrice(e.target.value) }} value={upPrice} />
+             <HorizontalLine></HorizontalLine>
               <Input width={"80px"} placeholder="  До" type={"number"} height={"37px"}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setToPrice(e.target.value) }} value={toPrice} />
             </FlexContainer>

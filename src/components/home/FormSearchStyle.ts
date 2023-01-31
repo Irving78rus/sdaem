@@ -38,3 +38,8 @@ export const RightArrow = styled.div<Props>`
   border-right: ${(props) => `2.5px solid ${props.background}` || `2.5px solid black`};
   transform: rotate(45deg);
 `;
+export const HorizontalLine = styled.div<Props>`
+width: 7px;
+height: 1px;
+background: #4E64F9;
+`;
