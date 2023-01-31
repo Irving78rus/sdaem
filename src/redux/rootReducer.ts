@@ -7,12 +7,14 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
    
 // });
 
-export const store = configureStore({
+ const rootReducer = configureStore({
   reducer: {
     baseFlat,
     userSetting
   },
 })
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof rootReducer.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = typeof rootReducer.dispatch
+
+export default rootReducer

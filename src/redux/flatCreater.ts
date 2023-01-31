@@ -10,10 +10,10 @@ export const cityArr: string[] = ['Минск','Гомель','Брест',"Ви
  }
  
  
- export const createFlatList = ()=>{
+ export const createFlatList = (n:number)=>{
     const flatList:flatModel[] = []
     let i: number = 0
-    while (i<150000 ){
+    while (i<n ){
         const cityRand: number = Math.floor(Math.random() * cityArr.length);
         const costRand: number = Math.floor(Math.random() * 250)+1;
         const roomsRand: number = Math.floor(Math.random() * 5)+1;

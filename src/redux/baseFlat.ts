@@ -5,7 +5,7 @@ import { flatModel, initialStateModel, paramsModel, payloadModel } from "./types
 
 
 const initialState: initialStateModel = {
-  flat: createFlatList(),
+  flat: createFlatList(150000),
   params: {
     city: "",
     upPrice: "",
