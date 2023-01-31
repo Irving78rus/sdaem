@@ -119,7 +119,7 @@ color:${(props) => props.color  || '#BDBDBD'};
   flexDirection?:string;
  }
  
-const Select = ({title,isActiveSelect,setIsActiveSelect,selected,selectedOption,options}:semiProps, props:Props ) => {
+const Select = ( props:any ) => {
   const {closeAllSelect}:any = useContext(Context);
 
   const dispatch = useAppDispatch();
@@ -127,23 +127,23 @@ const Select = ({title,isActiveSelect,setIsActiveSelect,selected,selectedOption,
 
   return (
     <Dropdown {...props}>
-      <Title {...props}>{ title} </Title>
-          <div className={isActiveSelect?"dropdown-btn active":'dropdown-btn'}  onClick={(e:any)=>{
+      <Title {...props}>{props.title} </Title>
+          <div className={props.isActiveSelect?"dropdown-btn active":'dropdown-btn'}  onClick={(e:any)=>{
             e.stopPropagation();
             closeAllSelect()
-            setIsActiveSelect(!isActiveSelect)
+            props.setIsActiveSelect(!props.isActiveSelect)
           }}>
-            <span>{selected }</span>
+            <span>{props.selected }</span>
             <Arrow >
             <img src={arrow} alt="Arrow"></img>
         </Arrow>
           </div>
-          {isActiveSelect&&
+          {props.isActiveSelect&&
           <div className="dropdown-content">
-            {options.map((option:string)=><div key={option} className="dropdown-item" onClick={(e:any)=>{
-              selectedOption(e.target.textContent)
+            {props.options.map((option:string)=><div key={option} className="dropdown-item" onClick={(e:any)=>{
+              props.selectedOption(e.target.textContent)
               // closeAllSelect()
-              setIsActiveSelect(!isActiveSelect)
+              props.setIsActiveSelect(!props.isActiveSelect)
               if(e.target.textContent==='По возрастанию цены'){
                 dispatch(filterFlatForPrice('up'))
               }
