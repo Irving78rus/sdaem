@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useContext, useEffect } from "react";
+import  { useState, useMemo, useContext } from "react";
 import FlexContainer from "../UI/FlexContainer";
 import ContentContainer from "../UI/ContentContainer";
 import CardResultTile from "./CardResultTile";

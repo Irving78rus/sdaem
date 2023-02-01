@@ -12,7 +12,7 @@ import {
   ContactsInformationWarningText,
 } from './ContactsInformationStyle';
 
-import { WarningImageComponent } from '../../share/WarningImage/WarningImageComponent';
+import { WarningImageComponent } from '../../../../share/WarningImage/WarningImageComponent';
 
 export const ContactsInformation = () => {
   return (

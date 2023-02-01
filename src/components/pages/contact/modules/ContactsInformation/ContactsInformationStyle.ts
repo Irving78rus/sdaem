@@ -1,8 +1,8 @@
 import styled from 'styled-components';
  
-import Smartphone from '../../../assets/icon/smartphone.svg';
-import Mail from '../../../assets/icon/mail.svg';
-import Clock from '../../../assets/icon/clock.svg';
+import Smartphone from '../../../../../assets/icon/smartphone.svg';
+import Mail from '../../../../../assets/icon/mail.svg';
+import Clock from '../../../../../assets/icon/clock.svg';
 
 const beforeElementData = `
   background-color: rgba(255, 255, 255, 0.1);

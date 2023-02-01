@@ -1,7 +1,7 @@
 import { Circle, TopTitle, WrapperFilter, WrapperTitle } from "./NewsSearchStyle";
-import FlexContainer from "../../../UI/FlexContainer";
-import HomeSvg from "../../../../assets/icon/HomeSvg";
-import LoopSvg from "../../../../assets/icon/LoopSvg";
+import FlexContainer from "../../../../UI/FlexContainer";
+import HomeSvg from "../../../../../assets/icon/HomeSvg";
+import LoopSvg from "../../../../../assets/icon/LoopSvg";
 
 export default function NewsSearch() {
   return (

@@ -1,17 +1,18 @@
 import React  from "react";
-import logo from "../../assets/icon/logo.png";
-import insta from "../../assets/icon/insta.svg";
-import vk from "../../assets/icon/vk.svg";
-import teleg from "../../assets/icon/teleg.svg";
-import visa from "../../assets/icon/visa.png";
-import verifyVisa from "../../assets/icon/verifyVisa.png";
-import snow from "../../assets/icon/snow.png";
-import webpay from "../../assets/icon/webpay.png";
-import master from "../../assets/icon/master.png";
-import masterSecure from "../../assets/icon/masterSecure.png";
+import logo from "../../../assets/icon/logo.png";
+import insta from "../../../assets/icon/insta.svg";
+import vk from "../../../assets/icon/vk.svg";
+import teleg from "../../../assets/icon/teleg.svg";
+import visa from "../../../assets/icon/visa.png";
+import verifyVisa from "../../../assets/icon/verifyVisa.png";
+import snow from "../../../assets/icon/snow.png";
+import webpay from "../../../assets/icon/webpay.png";
+import master from "../../../assets/icon/master.png";
+import masterSecure from "../../../assets/icon/masterSecure.png";
 import { NavLink } from "react-router-dom";
-import ContentContainer from "../UI/ContentContainer";
+import ContentContainer from "../../UI/ContentContainer"; 
 import { BackgroundColor, BlockLeft, BlockRight, FooterLink, Ikon, NavStl } from "./FooterStyle";
+
 
 export default function Footer() {
  
@@ -69,13 +70,8 @@ export default function Footer() {
               <img src={snow} alt="map" />
             </div>
           </Ikon>
-
- 
         </BlockRight>
- 
-      </ContentContainer>
-
+       </ContentContainer>
     </BackgroundColor>
-
   );
 }

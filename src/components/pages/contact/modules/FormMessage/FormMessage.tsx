@@ -6,11 +6,11 @@ import {
   FormMessageUserMessage,
   FormMessageButton,
 } from "./FormMessageStyle";
-import { ShowPopupProps } from "../СontactsComponent";
-import { IMGCont } from "../../pages/Registration/RegistrationStyle";
-import UserImg from "../../../assets/icon/UserImg";
+import { ShowPopupProps } from "../../СontactsComponent";
+import { IMGCont } from "../../../Registration/RegistrationStyle";
+import UserImg from "../../../../../assets/icon/UserImg";
 import { useState } from "react";
-import MailImg from "../../../assets/icon/MailImg";
+import MailImg from "../../../../../assets/icon/MailImg";
 
 export const FormMessage = ({ setIsShowPopup }: ShowPopupProps) => {
   const [onMouseEnterInput, setOnMouseEnterInput] = useState({ login: false, mail: false });

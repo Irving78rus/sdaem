@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import { ContactsInformation } from './modules/ContactsInformation/ContactsInformation';
+import { FormMessage } from './modules/FormMessage/FormMessage';
+import { PopupSuccess} from './modules/PopupSuccess/PopupSuccess';
 import { Contacts } from './СontactsComponentStyle';
-import { ContactsInformation } from './ContactsInformation/ContactsInformation';
-import { FormMessage } from './FormMessage/FormMessage';
-import { PopupSuccess} from './PopupSuccess/PopupSuccess';
 
 export interface ShowPopupProps { setIsShowPopup: (isShowPopup: boolean) => void}
   const СontactsComponent = () => {

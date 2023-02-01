@@ -29,7 +29,7 @@ const Dropdown = styled.div<Props>`
   .dropdown-btn {
     position: relative;
     min-width: 150px;
-    width:100%;
+    width:115%;
     height: 37px;
     background: ${(props) => props.background || '#f8f8f8'};  
     box-shadow: ${(props) => props.boxShadow || ''};  

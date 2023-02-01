@@ -1,8 +1,8 @@
 import React from "react";
-import dots from "../../assets/icon/dots.svg";
-import ContentContainer from "../UI/ContentContainer";
-import FlexContainer from "../UI/FlexContainer";
-import Button from "../UI/Button";
+import dots from "../../../assets/icon/dots.svg";
+import ContentContainer from "../../UI/ContentContainer";
+import FlexContainer from "../../UI/FlexContainer";
+import Button from "../../UI/Button";
 import { Background, BackgroundImg, Dots, LeftBlock, RightBlock } from "./ErrorStyle";
 
 export default function Error() {

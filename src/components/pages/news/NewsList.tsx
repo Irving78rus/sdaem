@@ -1,14 +1,9 @@
 import React, { useMemo, useState } from "react";
- 
 import FlatImage from "../../../assets/icon/FlatImage.png";
- 
 import { Card, MarginT, NavLinkStl, Wrap } from "./NewsLIstStyle";
 import FlexContainer from "../../UI/FlexContainer";
 import { Pagination } from "../../share/Pagination/Pagination";
-import NewsSearch from "./modules/NewsSearch";
- 
- 
-
+import NewsSearch from "./modules/NewsSearch/NewsSearch";
 
 export default function NewsLIst() {
   const arr:number[] = [1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14];

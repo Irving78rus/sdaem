@@ -1,15 +1,13 @@
 import React from "react";
- 
 import FlatImage from "../../../assets/icon/FlatImage.png";
 import dots from "../../../assets/icon/dots.svg";
-import { NavLink } from "react-router-dom";
-import { Card, Circle,   Container,   ContainerNew,   Flex,   HeaderBackground,   Title,   Wrap, } from "./NewStyle";
-
+import { Circle, Container, ContainerNew, Flex, HeaderBackground, Title } from "./NewStyle";
 import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";
 import ContentContainer from "../../UI/ContentContainer";
 import ShearSocial from "../../../assets/icon/ShearSocial";
 import HomeSvg from "../../../assets/icon/HomeSvg";
+import CardNew from "../news/modules/RenderNews/component/CardNew";
 
 export default function New() {
   const arr: number[] = [1, 2, 3];
@@ -18,7 +16,7 @@ export default function New() {
       <HeaderBackground height="280px">
         <Container>
           <Flex>
-          <HomeSvg></HomeSvg>
+            <HomeSvg></HomeSvg>
             <p>Новости</p>
             <Circle></Circle>
             <p>Линия Сталина: суровый отдых в усадьбах на сутки Линия Сталина: </p>
@@ -88,22 +86,7 @@ export default function New() {
             <h2 style={{ marginTop: 60 }}>Читайте так же</h2>
             <FlexContainer gap="30px">
               {arr.map((item: number) => (
-                <Card key={item}>
-                  <img src={FlatImage} alt="FlatImage" />
-                  <h4>Линия Сталина: суровый отдых в усадьбах на сутки</h4>
-                  <p>
-                    Чем заняться в выходные? Когда нет безотлагательных домашних дел, а на улице
-                    хорошая погода, хочется уехать из города, чтобы сменить обстановку. Например,
-                    снять коттедж на сутки для семьи или большой компании друзей. А...
-                  </p>
-                  <div className="line"></div>
-                  <Wrap>
-                    <div>14 Января 2008</div>
-                    <button>
-                      <NavLink to="New">Читать</NavLink>
-                    </button>
-                  </Wrap>
-                </Card>
+                <CardNew key={item}></CardNew>
               ))}
             </FlexContainer>
           </FlexContainer>

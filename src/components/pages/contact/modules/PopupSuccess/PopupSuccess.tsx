@@ -5,7 +5,7 @@ import {
   PopupSuccessText,
   PopupSuccessCloseButton,
 } from './PopupSuccessStyle';
-import { ShowPopupProps } from '../СontactsComponent';
+import { ShowPopupProps } from '../../СontactsComponent';
 
 export const PopupSuccess = ({ setIsShowPopup }: ShowPopupProps) => {
   return (

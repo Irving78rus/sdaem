@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-import TopHeader from "./components/header/topHeader/TopHeader";
-import BottomHeader from "./components/header/bottomHeader/BottomHeader";
+import TopHeader from "./components/pages/header/topHeader/TopHeader";
+import BottomHeader from "./components/pages/header/bottomHeader/BottomHeader";
  
 import New from "./components/pages/new/New";
 import Home from "./components/home/Home";
-import СontactsComponent from "./components/contact/СontactsComponent";
-import Error from "./components/404/Error";
-import Catalog from "./components/catalog/Catalog";
-import Favorite from "./components/favorite/Favorite";
-import Footer from "./components/footer/Footer";
+import СontactsComponent from "./components/pages/contact/СontactsComponent";
+import Error from "./components/pages/404/Error";
+import Catalog from "./components/pages/catalog/Catalog";
+import Favorite from "./components/pages/favorite/Favorite";
+import Footer from "./components/pages/footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import { useAppSelector } from "./redux/hooks";
 import Result from "./components/result/Result";
