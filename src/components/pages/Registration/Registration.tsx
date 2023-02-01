@@ -6,8 +6,8 @@ import {
 } from "./RegistrationStyle";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { FormRegistration } from "./FormRegistration";
-import { PopupSuccessComponent } from "../PopupSuccess/PopupSuccessComponent";
+import { FormRegistration } from "./modules/FormRegistration/FormRegistration";
+import { PopupSuccessComponent } from "./modules/PopupSuccess/PopupSuccessComponent";
 
 export const Registration = () => {
   const [isShowPopup, setIsShowPopup] = useState<boolean>(false);

@@ -3,7 +3,7 @@ import React from "react";
 import FlatImage from "../../../assets/icon/FlatImage.png";
 import dots from "../../../assets/icon/dots.svg";
 import { NavLink } from "react-router-dom";
-import { Card, Circle,   Container,   ContainerNew,   Flex,   HeaderBackground,   Title,   Wrap, } from ".././NewsStyle";
+import { Card, Circle,   Container,   ContainerNew,   Flex,   HeaderBackground,   Title,   Wrap, } from "./NewStyle";
 
 import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";

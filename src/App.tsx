@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import TopHeader from "./components/header/topHeader/TopHeader";
 import BottomHeader from "./components/header/bottomHeader/BottomHeader";
-import News from "./components/news/News";
-import New from "./components/news/new/New";
+ 
+import New from "./components/pages/new/New";
 import Home from "./components/home/Home";
 import СontactsComponent from "./components/contact/СontactsComponent";
 import Error from "./components/404/Error";
@@ -13,11 +13,12 @@ import Footer from "./components/footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import { useAppSelector } from "./redux/hooks";
 import Result from "./components/result/Result";
-import { Authorization } from "./components/authorization/Auth/Authorization";
-import { Registration } from "./components/authorization/Registration/Registration";
+import { Authorization } from "./components/pages/authorization/Authorization";
+import { Registration } from "./components/pages/Registration/Registration";
 import { Context } from "./redux/context";
 import { stateModel } from "./redux/types";
 import ResultPage from "./components/result/ResultPage";
+import NewsLIst from "./components/pages/news/NewsList";
 
 function App() {
   const params = useAppSelector((state: stateModel) => state.baseFlat.params);
@@ -101,7 +102,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="News" element={<News />} />
+          <Route path="News" element={<NewsLIst />} />
           <Route path="News/*" element={<New />} />
           <Route path="Contact" element={<СontactsComponent />} />
           <Route path="Authorization" element={<Authorization />} />

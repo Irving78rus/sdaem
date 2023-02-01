@@ -1,19 +1,15 @@
 import {
-  Auth,
-  AuthContent,
-  AuthTitle,
-  AuthSubtitle,
   AuthForm,
-  AuthFormCreateUser,
-} from "./AuthorizationStyle";
-import { Link, useNavigate } from "react-router-dom";
+
+} from "./AuthorizationFormStyle";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useAppDispatch } from "../../../redux/hooks";
-import { authUser, setUser } from "../../../redux/userSetting";
-import Button from "../../UI/Button";
-import { IMGCont, LabelLogin, InputField } from "../Registration/RegistrationStyle";
-import UserImg from "../../../assets/icon/UserImg";
-import LockImg from "../../../assets/icon/LockImg";
+import { useAppDispatch } from "../../../../../redux/hooks";
+import { authUser, setUser } from "../../../../../redux/userSetting";
+import Button from "../../../../UI/Button";
+import { IMGCont, LabelLogin, InputField } from "../../../Registration/RegistrationStyle";
+import UserImg from "../../../../../assets/icon/UserImg";
+import LockImg from "../../../../../assets/icon/LockImg";
 export interface UserModel {
   login: string;
   email: string;
@@ -21,7 +17,7 @@ export interface UserModel {
   confirmPassword: string;
 }
 
-export const Authorization = () => {
+export const AuthorizationForm = () => {
   const [onMouseEnterInput, setOnMouseEnterInput] = useState({ login: false, lock: false });
   const [error, setError] = useState(false);
   const dispatch = useAppDispatch();
@@ -55,10 +51,7 @@ export const Authorization = () => {
   };
 
   return (
-    <Auth>
-      <AuthContent>
-        <AuthTitle>Авторизация</AuthTitle>
-        <AuthSubtitle>Авторизуйтесь, чтобы начать публиковать свои объявления</AuthSubtitle>
+  
         <AuthForm>
           <InputField
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,10 +84,10 @@ export const Authorization = () => {
             type={"password"}
             id={"password"}
             placeholder="Пароль"
-            onFocus={(e) => {
+            onFocus={() => {
               setOnMouseEnterInput({ login: false, lock: true });
             }}
-            onBlur={(e) => {
+            onBlur={() => {
               setOnMouseEnterInput({ login: false, lock: false });
             }}
           />
@@ -134,10 +127,6 @@ export const Authorization = () => {
             </Button>
           )}
         </AuthForm>
-        <AuthFormCreateUser>
-          Еще нет аккаунта? <Link to="/registration">Создайте аккаунт</Link>
-        </AuthFormCreateUser>
-      </AuthContent>
-    </Auth>
+        
   );
 };

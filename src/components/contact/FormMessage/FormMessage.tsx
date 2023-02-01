@@ -7,7 +7,7 @@ import {
   FormMessageButton,
 } from "./FormMessageStyle";
 import { ShowPopupProps } from "../СontactsComponent";
-import { IMGCont } from "../../authorization/Registration/RegistrationStyle";
+import { IMGCont } from "../../pages/Registration/RegistrationStyle";
 import UserImg from "../../../assets/icon/UserImg";
 import { useState } from "react";
 import MailImg from "../../../assets/icon/MailImg";

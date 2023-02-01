@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { IMGCont, IMGError, LabelLogin, InputField } from "./RegistrationStyle";
-import Button from "../../UI/Button";
-import UserImg from "../../../assets/icon/UserImg";
-import ErrorImg from "../../../assets/icon/ErrorImg";
-import MailImg from "../../../assets/icon/MailImg";
-import LockImg from "../../../assets/icon/LockImg";
+import { IMGCont, IMGError, LabelLogin, InputField } from "../../RegistrationStyle";
+import Button from "../../../../UI/Button";
+import UserImg from "../../../../../assets/icon/UserImg";
+import ErrorImg from "../../../../../assets/icon/ErrorImg";
+import MailImg from "../../../../../assets/icon/MailImg";
+import LockImg from "../../../../../assets/icon/LockImg";
 import ReCAPTCHA from "react-google-recaptcha";
 const key = "6LcbAeAjAAAAAJ-sKt9VimUkmFR8Uf2Z-vIkZWGM";
 interface FormRegistrationProps {

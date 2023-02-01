@@ -1,15 +1,16 @@
 import React, { useMemo, useState } from "react";
-import home from "../../assets/icon/home.png";
-import FlatImage from "../../assets/icon/FlatImage.png";
-import { NavLink } from "react-router-dom";
-import { Card, Circle,  TopTitle, MarginT, NavLinkStl, Wrap, WrapperFilter, WrapperTitle } from "./NewsStyle";
-import FlexContainer from "../UI/FlexContainer";
-import { Pagination } from "../share/Pagination/Pagination";
-import HomeSvg from "../../assets/icon/HomeSvg";
-import LoopSvg from "../../assets/icon/LoopSvg";
+ 
+import FlatImage from "../../../assets/icon/FlatImage.png";
+ 
+import { Card, MarginT, NavLinkStl, Wrap } from "./NewsLIstStyle";
+import FlexContainer from "../../UI/FlexContainer";
+import { Pagination } from "../../share/Pagination/Pagination";
+import NewsSearch from "./modules/NewsSearch";
+ 
+ 
 
 
-export default function News() {
+export default function NewsLIst() {
   const arr:number[] = [1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14];
   const [activePage, setActivePage] = useState<number>(1);
 
@@ -25,22 +26,7 @@ export default function News() {
   }, [activePage, arr]);
   return (
     <MarginT>
-      <FlexContainer   margin='0 auto' position='relative'>
-        <WrapperTitle>
-          <FlexContainer gap='10px' justifyContent='flex-start'>
-            <HomeSvg></HomeSvg>
-            <Circle></Circle>
-            <TopTitle>Новости</TopTitle>
-          </FlexContainer>
-          <h2>Новости</h2>
-        </WrapperTitle>
-
-        <WrapperFilter>
-          <input placeholder="Поиск по статьям" type={'text'}/>
-          <button className="button"> <LoopSvg></LoopSvg></button>
-        </WrapperFilter>
-        
-      </FlexContainer>
+      <NewsSearch/> 
       <FlexContainer gap='25px' margin='0 auto 30px auto' flexWrap='wrap' >
         {paginatedNews.map((item:number) => (
           <Card key={item}>

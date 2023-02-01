@@ -41,16 +41,7 @@ export const AuthSubtitle = styled.p`
   text-align: center;
   width: 75%;
 `;
-
-export const AuthForm = styled.form`
-  margin-top: 35px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 15px;
-`;
  
- 
-
 export const AuthFormCreateUser = styled.p`
   margin: 50px 0 0;
   font-size: 14px;
