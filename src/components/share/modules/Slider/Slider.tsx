@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import CardResultTile from "../result/CardResultTile";
+import CardResultTile from "../../../pages/searchResult/module/component/CardResultTile";
 import styled from "styled-components";
-import ContentContainer from "./ContentContainer";
-import FlexContainer from "./FlexContainer";
-import { useAppSelector } from "../../redux/hooks";
-import { stateModel } from "../../redux/types";
+import ContentContainer from "../../../UI/ContentContainer";
+import FlexContainer from "../../../UI/FlexContainer";
+import { useAppSelector } from "../../../../redux/hooks";
+import { stateModel } from "../../../../redux/types";
 interface Props {
   margin?: string;
   border?: string;

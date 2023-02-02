@@ -1,19 +1,19 @@
 import  { useState, useMemo, useContext } from "react";
-import FlexContainer from "../UI/FlexContainer";
-import ContentContainer from "../UI/ContentContainer";
-import CardResultTile from "./CardResultTile";
-import CardResultList from "./CardResultList";
-import { useAppSelector } from "../../redux/hooks";
-import Select from "../UI/Select";
-import { Pagination } from "../share/Pagination/Pagination";
-import ShearSocial from "../../assets/icon/ShearSocial";
-import { Context } from "../../redux/context";
+import FlexContainer from "../../../UI/FlexContainer";
+import ContentContainer from "../../../UI/ContentContainer";
+import CardResultTile from "./component/CardResultTile";
+import CardResultList from "./component/CardResultList";
+import { useAppSelector } from "../../../../redux/hooks";
+import Select from "../../../UI/Select";
+import { Pagination } from "../../../share/modules/Pagination/Pagination";
+import ShearSocial from "../../../../assets/icon/ShearSocial";
+import { Context } from "../../../../redux/context";
 import { Toggle } from "./ResultStyle";
-import ButtonPlit from "../../assets/icon/ButtonPlit";
-import ButtonList from "../../assets/icon/ButtonList";
-import { getWord } from "../share/utils/logic";
-import { flatModel, stateModel } from "../../redux/types";
-import IconMap from "../../assets/icon/IconMap";
+import ButtonPlit from "../../../../assets/icon/ButtonPlit";
+import ButtonList from "../../../../assets/icon/ButtonList";
+import { getWord } from "../../../share/utils/helpers";
+import { flatModel, stateModel } from "../../../../redux/types";
+import IconMap from "../../../../assets/icon/IconMap";
 
 interface ResultProps {
   res: flatModel[];

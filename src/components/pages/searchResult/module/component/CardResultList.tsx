@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import FlatImage from "../../assets/icon/FlatImage.png";
-import tel from "../../assets/icon/tel.svg";
+import FlatImage from "../../../../../assets/icon/FlatImage.png";
+import tel from "../../../../../assets/icon/tel.svg";
 import styled from "styled-components";
-import Button from "../UI/Button";
-import FlexContainer from "../UI/FlexContainer";
-import ContactComponent from "../share/ContactComponent";
-import Metro from "../../assets/icon/Metro";
-import UserImg from "../../assets/icon/UserImg";
-import Slider from "../UI/Slider";
-import { flatModel, stateModel } from "../../redux/types";
-import IconMap from "../../assets/icon/IconMap";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { changeFavoriteFlat } from "../../redux/baseFlat";
-import HeartImg from "../../assets/icon/HeartImg";
+import Button from "../../../../UI/Button";
+import FlexContainer from "../../../../UI/FlexContainer";
+import ContactComponent from "./ContactComponent";
+import Metro from "../../../../../assets/icon/Metro";
+import UserImg from "../../../../../assets/icon/UserImg";
+import Slider from "../../../../share/modules/Slider/Slider";
+import { flatModel, stateModel } from "../../../../../redux/types";
+import IconMap from "../../../../../assets/icon/IconMap";
+import { useAppDispatch, useAppSelector } from "../../../../../redux/hooks";
+import { changeFavoriteFlat } from "../../../../../redux/baseFlat";
+import HeartImg from "../../../../../assets/icon/HeartImg";
 
 const Card = styled.div`
   display: flex;

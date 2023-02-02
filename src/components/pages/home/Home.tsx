@@ -1,21 +1,21 @@
 import React, { useContext, useState } from "react";
  
-import car from "../../assets/icon/car.png";
-import Flat from "../../assets/icon/Flat.png";
-import hand from "../../assets/icon/handle.svg";
-import list from "../../assets/icon/list.svg";
-import CardBackGround from "../../assets/icon/CardBackGround.svg";
-import house from "../../assets/icon/house.png";
-import bane from "../../assets/icon/bane.png";
-import ContentContainer from "../UI/ContentContainer";
-import FlexContainer from "../UI/FlexContainer";
-import Button from "../UI/Button";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { getFilterFlats } from "../../redux/baseFlat";
-import FormSearch from "./FormSearch";
-import Select from "../UI/Select";
-import { Line } from "../UI/Line";
-import Slider, { ButtonSlider } from "../UI/Slider";
+import car from "../../../assets/icon/car.png";
+import Flat from "../../../assets/icon/Flat.png";
+import hand from "../../../assets/icon/handle.svg";
+import list from "../../../assets/icon/list.svg";
+import CardBackGround from "../../../assets/icon/CardBackGround.svg";
+import house from "../../../assets/icon/house.png";
+import bane from "../../../assets/icon/bane.png";
+import ContentContainer from "../../UI/ContentContainer";
+import FlexContainer from "../../UI/FlexContainer";
+import Button from "../../UI/Button";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { getFilterFlats } from "../../../redux/baseFlat";
+import FormSearch from "../../share/modules/FormSearch/FormSearch";
+import Select from "../../UI/Select";
+import { Line } from "../../UI/Line";
+import Slider, { ButtonSlider } from "../../share/modules/Slider/Slider";
 import {
   Background,
   BackgroundImg,
@@ -38,16 +38,15 @@ import {
   WrapperBackground,
   WrapperFilter,
 } from "./HomeStyle";
-import { GetListUniqueItems } from "../share/hooks";
+import { GetListUniqueItems } from "../../share/hooks";
 import { NavLink, useNavigate } from "react-router-dom";
-import { cityArr } from "../../redux/flatCreater";
-import { VerticalLine } from "../UI/VerticalLine";
-import Dots from "../UI/Dots";
-
-import { Context } from "../../redux/context";
-import { RightArrow } from "./FormSearchStyle";
-import { flatModel, stateModel, topNavigationFormSearchModel } from "../../redux/types";
-import IconMap from "../../assets/icon/IconMap";
+import { cityArr } from "../../../redux/flatCreater";
+import { VerticalLine } from "../../UI/VerticalLine";
+import Dots from "../../UI/Dots";
+import { Context } from "../../../redux/context";
+import { RightArrow } from "./HomeStyle";
+import { flatModel, stateModel, topNavigationFormSearchModel } from "../../../redux/types";
+import IconMap from "../../../assets/icon/IconMap";
 import styled from "styled-components";
 export const ButtonRightArrow = styled.div`
   position: absolute;
@@ -235,7 +234,7 @@ export default function Home() {
             </WrapperFilter>
           </FlexContainer>
 
-          <FlexContainer margin='30px 0 0 0'>
+          <FlexContainer margin='30px auto 0 auto'>
             <Slider photos={flats} position='static' content={true} PAGE_WIDTH='1347'
               width='1347px' height={'615px'} style={{ marginTop: '30px' }}>
             </Slider>

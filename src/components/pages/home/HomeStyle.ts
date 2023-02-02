@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Back from "../../assets/icon/404Back.png";
+import Back from "../../../assets/icon/404Back.png";
 
 interface Props {
   img?: string;
@@ -14,6 +14,7 @@ interface Props {
   margin?: string;
   borderRadius?: string;
   boxShadow?: string;
+  background?: string;
 }
 
 export const Background = styled.div<Props>`
@@ -422,4 +423,11 @@ export const CardGold = styled.div`
     position: relative;
     z-index: 2;
   }
+`;
+export const RightArrow = styled.div<Props>`
+  width: 9px;
+  height: 9px;
+  border-top: ${(props) => `2.5px solid ${props.background}` || `2.5px solid black`};
+  border-right: ${(props) => `2.5px solid ${props.background}` || `2.5px solid black`};
+  transform: rotate(45deg);
 `;

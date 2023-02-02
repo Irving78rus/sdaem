@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { renderWithProviders } from "./test-utils";
 import App from "./App";
 import { createFlatList } from "./redux/flatCreater";
-import { getWord } from "./components/share/utils/logic";
+import { getWord } from "./components/share/utils/helpers";
 
 test("get right array length", () => {
   renderWithProviders(

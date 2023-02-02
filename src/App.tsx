@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 import TopHeader from "./components/pages/header/topHeader/TopHeader";
 import BottomHeader from "./components/pages/header/bottomHeader/BottomHeader";
- 
 import New from "./components/pages/new/New";
-import Home from "./components/home/Home";
+import Home from "./components/pages/home/Home";
 import СontactsComponent from "./components/pages/contact/СontactsComponent";
 import Error from "./components/pages/404/Error";
 import Catalog from "./components/pages/catalog/Catalog";
@@ -12,12 +10,11 @@ import Favorite from "./components/pages/favorite/Favorite";
 import Footer from "./components/pages/footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import { useAppSelector } from "./redux/hooks";
-import Result from "./components/result/Result";
 import { Authorization } from "./components/pages/authorization/Authorization";
 import { Registration } from "./components/pages/Registration/Registration";
 import { Context } from "./redux/context";
 import { stateModel } from "./redux/types";
-import ResultPage from "./components/result/ResultPage";
+import ResultPage from "./components/pages/searchResult/ResultPage";
 import NewsLIst from "./components/pages/news/NewsList";
 
 function App() {

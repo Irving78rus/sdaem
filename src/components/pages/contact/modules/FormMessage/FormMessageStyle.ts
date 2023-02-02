@@ -41,6 +41,10 @@ export const FormMessageUserInfo = styled.div`
   display: flex;
   column-gap: 30px;
 `;
+export const FormMessageLabel = styled.label`
+  width:267px;
+  position: relative;
+`;
 
 export const FormMessageUserName = styled.input.attrs({
   type: 'text',

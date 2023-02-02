@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import FlatImage from "../../../assets/icon/FlatImage.png";
 import { Card, MarginT, NavLinkStl, Wrap } from "./NewsLIstStyle";
 import FlexContainer from "../../UI/FlexContainer";
-import { Pagination } from "../../share/Pagination/Pagination";
+import { Pagination } from "../../share/modules/Pagination/Pagination";
 import NewsSearch from "./modules/NewsSearch/NewsSearch";
 
 export default function NewsLIst() {

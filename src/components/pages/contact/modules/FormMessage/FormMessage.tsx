@@ -5,6 +5,7 @@ import {
   FormMessageUserEmail,
   FormMessageUserMessage,
   FormMessageButton,
+  FormMessageLabel,
 } from "./FormMessageStyle";
 import { ShowPopupProps } from "../../СontactsComponent";
 import { IMGCont } from "../../../Registration/RegistrationStyle";
@@ -18,7 +19,7 @@ export const FormMessage = ({ setIsShowPopup }: ShowPopupProps) => {
     <>
       <FormMessageStl>
         <FormMessageUserInfo>
-          <label style={{ position: "relative" }}>
+          <FormMessageLabel >
             <IMGCont top="45px" right="230px">
              <UserImg
                 opacity={onMouseEnterInput.login ? "1" : "0.3"}
@@ -35,8 +36,8 @@ export const FormMessage = ({ setIsShowPopup }: ShowPopupProps) => {
                 setOnMouseEnterInput({ login: false, mail: false });
               }}
             />
-          </label>
-          <label style={{ position: "relative" }}>
+          </FormMessageLabel>
+          <FormMessageLabel >
             <IMGCont top="45px" right="230px">
               <MailImg
                 opacity={onMouseEnterInput.mail ? "1" : "0.3"}
@@ -53,7 +54,7 @@ export const FormMessage = ({ setIsShowPopup }: ShowPopupProps) => {
                 setOnMouseEnterInput({ login: false, mail: false });
               }}
             />
-          </label>
+          </FormMessageLabel>
         </FormMessageUserInfo>
         <label>
           Ваше сообщение

@@ -1,20 +1,20 @@
 import React, { useContext, useState } from "react";
-import MoreOptionIcon from "../../assets/icon/MoreOption.svg";
+import MoreOptionIcon from "../../../../assets/icon/MoreOption.svg";
 import { NavLink } from "react-router-dom";
-import FlexContainer from "../UI/FlexContainer";
-import Button from "../UI/Button";
-import Select from "../UI/Select";
-import { useAppDispatch } from "../../redux/hooks";
-import Input from "../UI/Input";
-import { getFilterFlats } from "../../redux/baseFlat";
-import MoreOption from "../UI/MoreOption";
-import Checkbox from "../UI/Checkbox ";
-import { VerticalLine } from "../UI/VerticalLine";
+import FlexContainer from "../../../UI/FlexContainer";
+import Button from "../../../UI/Button";
+import Select from "../../../UI/Select";
+import { useAppDispatch } from "../../../../redux/hooks";
+import Input from "../../../UI/Input";
+import { getFilterFlats } from "../../../../redux/baseFlat";
+import MoreOption from "./components/MoreOption";
+import Checkbox from "../../../UI/Checkbox ";
+import { VerticalLine } from "../../../UI/VerticalLine";
  
 import { HorizontalLine, List, RightArrow, SelectTitle } from "./FormSearchStyle";
-import { Context } from "../../redux/context";
-import { GetListUniqueItems } from "../share/hooks";
-import IconMap from "../../assets/icon/IconMap";
+import { Context } from "../../../../redux/context";
+import { GetListUniqueItems } from "../../hooks";
+import IconMap from "../../../../assets/icon/IconMap";
 interface FormSearchProps {
   map: boolean
   clearButton: boolean

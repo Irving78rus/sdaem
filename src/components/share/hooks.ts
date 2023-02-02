@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../redux/hooks";
-import { flatModel, stateModel } from "../../redux/types";
+import {  stateModel } from "../../redux/types";
 
  
 export const GetListUniqueItems = (param:string) => {

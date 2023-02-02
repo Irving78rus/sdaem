@@ -1,7 +1,7 @@
 import React  from "react";
 import { useAppSelector } from "../../../redux/hooks";
 import { stateModel } from "../../../redux/types";
-import Result from "../../result/Result";
+import Result from "../searchResult/module/Result";
 
 export default function Favorite() {
  

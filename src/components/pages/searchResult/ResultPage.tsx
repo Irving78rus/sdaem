@@ -1,20 +1,15 @@
 import React, {  useContext } from "react";
- 
-import Button from "../UI/Button";
-import FlexContainer from "../UI/FlexContainer";
-import ContentContainer from "../UI/ContentContainer";
-import FormSearch from "../home/FormSearch";
- 
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
- 
-import { Context } from "../../redux/context";
-import { BackgroundColor, Circle, Flex, HeaderBackground, Title  } from "./ResultStyle";
- 
-import { getFilterFlats } from "../../redux/baseFlat";
-import { flatModel, paramsModel, stateModel } from "../../redux/types";
- 
-import Result from "./Result";
-import HomeSvg from "../../assets/icon/HomeSvg";
+import Button from "../../UI/Button";
+import FlexContainer from "../../UI/FlexContainer";
+import ContentContainer from "../../UI/ContentContainer";
+import FormSearch from "../../share/modules/FormSearch/FormSearch";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { Context } from "../../../redux/context";
+import { BackgroundColor, Circle, Flex, HeaderBackground, Title  } from "./module/ResultStyle";
+import { getFilterFlats } from "../../../redux/baseFlat";
+import { flatModel, paramsModel, stateModel } from "../../../redux/types";
+import Result from "./module/Result";
+import HomeSvg from "../../../assets/icon/HomeSvg";
 
 interface recommendedСriteriaModel{
   title:string;
