@@ -170,7 +170,7 @@ export default function FormSearch({
        
         >
           <List >
-            <FlexContainer >
+            <FlexContainer gap='10px'>
               <Select options={uniqueMetro} color={color} selected={metro || 'Выберите'}
                 selectedOption={setMetro} title='Метро' isActiveSelect={isActiveSelectMetro}
                 setIsActiveSelect={setIsActiveSelectMetro} />
