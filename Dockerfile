@@ -1,10 +1,12 @@
-FROM node
-WORKDIR /src/app
- ADD package.json package.json  
+FROM node:18-alpine
+WORKDIR /app
+EXPOSE 3000
+
+
+COPY package.json package.json  
  
 RUN npm install
-EXPOSE 3000
-ADD . .
-RUN npm run build
+
+COPY . .
 CMD [ "npm" , "start"]
-EXPOSE 3000
+ 
