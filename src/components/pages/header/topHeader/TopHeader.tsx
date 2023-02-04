@@ -64,7 +64,7 @@ export default function TopHeader() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="W" className={({ isActive }) => (isActive ? "link active" : "link")}>
+            <NavLink to="Map" className={({ isActive }) => (isActive ? "link active" : "link")}>
               <img src={map} alt="map" />
               Объявления на карте
             </NavLink>

@@ -431,3 +431,13 @@ export const RightArrow = styled.div<Props>`
   border-right: ${(props) => `2.5px solid ${props.background}` || `2.5px solid black`};
   transform: rotate(45deg);
 `;
+export const ButtonRightArrow = styled.div`
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  top: 37%;
+  left: 30%;
+  transform: rotate(45deg);
+`;

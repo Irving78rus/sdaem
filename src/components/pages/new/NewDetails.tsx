@@ -1,7 +1,7 @@
 import React from "react";
 import FlatImage from "../../../assets/icon/FlatImage.png";
 import dots from "../../../assets/icon/dots.svg";
-import { Circle, Container, ContainerNew, Flex, HeaderBackground, Title } from "./NewStyle";
+import { Circle, Container, ContainerNew, Flex, HeaderBackground, Title } from "./NewDetailsStyle";
 import Button from "../../UI/Button";
 import FlexContainer from "../../UI/FlexContainer";
 import ContentContainer from "../../UI/ContentContainer";

@@ -80,10 +80,12 @@ const baseFlat = createSlice({
     filterFlatForPrice: (state, param) => {
       state.pending = false;
       if (param.payload === 'up') {
-        state.res = state.res.sort((a, b) => a.cost - b.cost);
+        state.res = state.res.sort((a:flatModel, b:flatModel) => a.cost - b.cost);
+        state.favoriteFlats = state.favoriteFlats.sort((a:flatModel, b:flatModel) => a.cost - b.cost);
       }
       if (param.payload === 'down') {
-        state.res = state.res.sort((a, b) => b.cost - a.cost);
+        state.res = state.res.sort((a:flatModel, b:flatModel) => b.cost - a.cost);
+        state.favoriteFlats = state.favoriteFlats.sort((a:flatModel, b:flatModel) => b.cost - a.cost);
       }
       state.pending = true;
     },

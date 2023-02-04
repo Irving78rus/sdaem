@@ -1,4 +1,4 @@
-import  { useState, useMemo, useContext } from "react";
+import  { useState, useMemo, useContext, useEffect } from "react";
 import FlexContainer from "../../../UI/FlexContainer";
 import ContentContainer from "../../../UI/ContentContainer";
 import CardResultTile from "./component/CardResultTile";
@@ -11,9 +11,10 @@ import { Context } from "../../../../redux/context";
 import { Toggle } from "./ResultStyle";
 import ButtonPlit from "../../../../assets/icon/ButtonPlit";
 import ButtonList from "../../../../assets/icon/ButtonList";
-import { getWord } from "../../../share/utils/helpers";
+import { getWord, scrollToTop } from "../../../share/utils/helpers";
 import { flatModel, stateModel } from "../../../../redux/types";
 import IconMap from "../../../../assets/icon/IconMap";
+import { NavLink } from "react-router-dom";
 
 interface ResultProps {
   res: flatModel[];
@@ -29,6 +30,8 @@ export default function Result({ res ,favoriteFlats}: ResultProps) {
   const { setDropSelectList }: any = useContext(Context);
   const pending: boolean = useAppSelector((state: stateModel) => state.baseFlat.pending);
  
+  
+
   const onClickButtonPagination = (page: number) => {
     setActivePage(page);
   };
@@ -76,7 +79,7 @@ export default function Result({ res ,favoriteFlats}: ResultProps) {
               <ButtonPlit fill="#664EF9"></ButtonPlit> Плитки
             </Toggle>
 
-            <Toggle>{<IconMap fill="#664EF9 "></IconMap>} Показать на карте</Toggle>
+            <Toggle>{<IconMap fill="#664EF9 "></IconMap>} <NavLink to='/Map'>Показать на карте</NavLink> </Toggle>
           </FlexContainer>
         </FlexContainer>
         {pending ? (

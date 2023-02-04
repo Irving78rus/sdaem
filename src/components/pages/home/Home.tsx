@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import car from "../../../assets/icon/car.png";
 import Flat from "../../../assets/icon/Flat.png";
 import hand from "../../../assets/icon/handle.svg";
@@ -37,6 +36,7 @@ import {
   UnderSlider,
   WrapperBackground,
   WrapperFilter,
+  ButtonRightArrow,
 } from "./HomeStyle";
 import { GetListUniqueItems } from "../../share/utils/hooks";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -47,20 +47,10 @@ import { Context } from "../../../redux/context";
 import { RightArrow } from "./HomeStyle";
 import { flatModel, stateModel, topNavigationFormSearchModel } from "../../../redux/types";
 import IconMap from "../../../assets/icon/IconMap";
-import styled from "styled-components";
 import Metro from "../../../assets/icon/Metro";
-export const ButtonRightArrow = styled.div`
-  position: absolute;
-  width: 11px;
-  height: 11px;
-  border-top: 2px solid #ffffff;
-  border-right: 2px solid #ffffff;
-  top: 37%;
-  left: 30%;
-  transform: rotate(45deg);
-`;
+import { home, popular } from "./constant";
+ 
 export default function Home() {
-  const params = useAppSelector((state: stateModel) => state.baseFlat.params);
   const [isActiveFieldsFormSearch, setIsActiveFieldsFormSearch] = useState<number>(0);
   const {
     closeAllSelect,
@@ -81,16 +71,11 @@ export default function Home() {
   const topNavigationFormSearch = useAppSelector(
     (state: stateModel) => state.baseFlat.topNavigationFormSearch
   );
-
-
+ 
   useEffect(() => {
     dispatch(getFilterFlats({ metro, district }))
-
-  }, [metro, district])
-
-
-
-
+  }, [metro, district,dispatch])
+ 
  const showFlatInCity = (item: string) => {
     dispatch(
       getFilterFlats({
@@ -112,18 +97,6 @@ export default function Home() {
     navigate("/Result");
   };
 
-  const home = [
-    "Аггроусадьбы",
-    "Коттеджи",
-    "Загородный комплекс",
-    "База отдыха",
-  ];
-  const popular = [
-    "Популярные направления",
-    "Коттеджи и усадьбы на о. Брасласких ",
-    "Коттеджи и усадьбы (жилье) на Нарочи",
-    "Коттеджи и усадьбы (жилье) у воды",
-  ];
 
   const uniqueMetro = GetListUniqueItems("metro");
   const uniqueDistrict = GetListUniqueItems("district");

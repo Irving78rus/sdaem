@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TopHeader from "./components/pages/header/topHeader/TopHeader";
 import BottomHeader from "./components/pages/header/bottomHeader/BottomHeader";
-import New from "./components/pages/new/New";
+import NewDetails from "./components/pages/new/NewDetails";
 import Home from "./components/pages/home/Home";
 import СontactsComponent from "./components/pages/contact/СontactsComponent";
 import Error from "./components/pages/404/Error";
@@ -16,6 +16,7 @@ import { Context } from "./redux/context";
 import { stateModel } from "./redux/types";
 import ResultPage from "./components/pages/searchResult/ResultPage";
 import NewsLIst from "./components/pages/news/NewsList";
+import { YandexMap } from "./components/share/component/YandexMap";
 
 function App() {
   const params = useAppSelector((state: stateModel) => state.baseFlat.params);
@@ -100,7 +101,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="News" element={<NewsLIst />} />
-          <Route path="News/*" element={<New />} />
+          <Route path="News/*" element={<NewDetails/>} />
+          <Route path="Map" element={<YandexMap />} />
           <Route path="Contact" element={<СontactsComponent />} />
           <Route path="Authorization" element={<Authorization />} />
           <Route path="Result" element={<ResultPage />} />

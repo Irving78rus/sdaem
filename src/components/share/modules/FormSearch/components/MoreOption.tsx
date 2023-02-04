@@ -12,6 +12,11 @@ const Wrapper = styled.div`
   align-items: center;
   cursor: pointer;
   gap: 5px;
+  text-decoration: none;
+  a{
+    color:black;
+    text-decoration:none;
+  }
 `;
 const List = styled.div<Props>`
   width: ${(props) => props.width || "1440px"};

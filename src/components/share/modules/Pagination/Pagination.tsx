@@ -1,4 +1,5 @@
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
+import { scrollToTop } from "../../utils/helpers";
  
  
 import { PaginationStl, PaginationButton,ScrollPagination } from "./style";
@@ -21,6 +22,9 @@ export const Pagination = ({ pageQuantity, activePage, onClickButtonPagination, 
   let leftPortionPageNumber = (portionNumber - 1) * SizePage + 1;
   let rightPortionPageNumber = portionNumber * SizePage;
  
+  useEffect(() => {
+    scrollToTop()
+  } )
   return (
     <PaginationStl>
       {portionNumber > 1 && (

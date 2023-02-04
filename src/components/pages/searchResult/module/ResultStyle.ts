@@ -64,6 +64,10 @@ interface Props {
   background: #FFFFFF;
   box-shadow: 0px 5px 20px rgba(0, 96, 206, 0.1);
   border-radius: 18px;
+  a{
+    text-decoration:none;
+    color:black;
+  }
   &:hover{
     background: #F8F8F8;
    cursor:pointer;
