@@ -1,5 +1,6 @@
-import { useAppSelector } from "../../redux/hooks";
-import {  stateModel } from "../../redux/types";
+ 
+import {  useAppSelector } from "../../../redux/hooks";
+import {  stateModel } from "../../../redux/types";
 
  
 export const GetListUniqueItems = (param:string) => {
@@ -9,4 +10,5 @@ export const GetListUniqueItems = (param:string) => {
  
   return getUniqueList
 };
+
  

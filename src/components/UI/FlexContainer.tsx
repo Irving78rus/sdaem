@@ -12,12 +12,14 @@ interface  Props {
   margin?:string;
   position?:string;
   top?:string;
+  right?:string;
   padding?:string;
   borderRight?:string;
   borderRadius?:string;
   borderBottom?:string;
   borderTop?:string;
   maxWidth?:string;
+  zIndex?:string;
 }
 const FlexContainerStl = styled.div<Props>`
   display:flex;
@@ -29,10 +31,12 @@ const FlexContainerStl = styled.div<Props>`
   max-width:${props=>props.maxWidth||""};
   height:${props=>props.height||""};
   flex-wrap:${props=>props.flexWrap||""}; 
+  z-index:${props=>props.zIndex||""}; 
   background-color: ${props=>props.backgroundColor||""}; 
   margin: ${props=>props.margin||""}; 
   position: ${props=>props.position||"relative"};
-  top:${props=>props.top||0};
+  top:${props=>props.top||''};
+  right:${props=>props.right||''};
   padding: ${props=>props.padding||""}; 
   border-right: ${props=>props.borderRight||""};
   border-radius: ${props=>props.borderRadius||""}; 

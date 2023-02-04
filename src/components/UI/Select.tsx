@@ -17,6 +17,9 @@ interface Props {
   display: string;
   alignItems: string;
   boxShadow?: string;
+  position?:string;
+  top?:string;
+  right?:string;
 }
  
 
@@ -46,6 +49,9 @@ const Dropdown = styled.div<Props>`
     color: #686868;
     span {
       color: black;
+      position:relative;
+      top:${props=>props.top||0};
+       right:${props=>props.right||0};
     }
     &:hover{
       cursor:pointer;

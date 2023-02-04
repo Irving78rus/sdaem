@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
- 
+import React, { useContext, useEffect, useState } from "react";
+
 import car from "../../../assets/icon/car.png";
 import Flat from "../../../assets/icon/Flat.png";
 import hand from "../../../assets/icon/handle.svg";
@@ -38,7 +38,7 @@ import {
   WrapperBackground,
   WrapperFilter,
 } from "./HomeStyle";
-import { GetListUniqueItems } from "../../share/hooks";
+import { GetListUniqueItems } from "../../share/utils/hooks";
 import { NavLink, useNavigate } from "react-router-dom";
 import { cityArr } from "../../../redux/flatCreater";
 import { VerticalLine } from "../../UI/VerticalLine";
@@ -48,6 +48,7 @@ import { RightArrow } from "./HomeStyle";
 import { flatModel, stateModel, topNavigationFormSearchModel } from "../../../redux/types";
 import IconMap from "../../../assets/icon/IconMap";
 import styled from "styled-components";
+import Metro from "../../../assets/icon/Metro";
 export const ButtonRightArrow = styled.div`
   position: absolute;
   width: 11px;
@@ -61,30 +62,61 @@ export const ButtonRightArrow = styled.div`
 export default function Home() {
   const params = useAppSelector((state: stateModel) => state.baseFlat.params);
   const [isActiveFieldsFormSearch, setIsActiveFieldsFormSearch] = useState<number>(0);
-  const { closeAllSelect,
-    metro, setMetro,
-    district, setDistrict,
-    isActiveSelectMetro, setIsActiveSelectMetro,
-    isActiveSelectDistrict, setIsActiveSelectDistrict,
+  const {
+    closeAllSelect,
+    metro,
+    setMetro,
+    district,
+    setDistrict,
+    isActiveSelectMetro,
+    setIsActiveSelectMetro,
+    isActiveSelectDistrict,
+    setIsActiveSelectDistrict,
   } = useContext(Context);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const flats = useAppSelector((state: stateModel) => state.baseFlat.flat);
-  const topNavigationFormSearch = useAppSelector((state: stateModel) => state.baseFlat.topNavigationFormSearch);
-  const showFlatInCity = (item: string) => {
-    dispatch(getFilterFlats({
-      city: item, upPrice: 0, toPrice: 0, rooms: 0, metro: '', district: '', sleepingPlaces: 0, GasStove: false, Oven: false,
-      CoffeeMaker: false, MicrowaveOven: false, Dishes: false, Dishwasher: false
-    }));
-    navigate("/Result")
-  }
+  const res = useAppSelector((state: stateModel) => state.baseFlat.res);
+  const topNavigationFormSearch = useAppSelector(
+    (state: stateModel) => state.baseFlat.topNavigationFormSearch
+  );
+
+
+  useEffect(() => {
+    dispatch(getFilterFlats({ metro, district }))
+
+  }, [metro, district])
+
+
+
+
+ const showFlatInCity = (item: string) => {
+    dispatch(
+      getFilterFlats({
+        city: item,
+        upPrice: 0,
+        toPrice: 0,
+        rooms: 0,
+        metro: "",
+        district: "",
+        sleepingPlaces: 0,
+        GasStove: false,
+        Oven: false,
+        CoffeeMaker: false,
+        MicrowaveOven: false,
+        Dishes: false,
+        Dishwasher: false,
+      })
+    );
+    navigate("/Result");
+  };
 
   const home = [
-    "Котеджи и усадьбы",
-    "Квартиры в Могилеве",
-    "Квартиры в Могилеве",
-    "Квартиры в Могилеве",
+    "Аггроусадьбы",
+    "Коттеджи",
+    "Загородный комплекс",
+    "База отдыха",
   ];
   const popular = [
     "Популярные направления",
@@ -93,15 +125,14 @@ export default function Home() {
     "Коттеджи и усадьбы (жилье) у воды",
   ];
 
-
-  const uniqueMetro = GetListUniqueItems('metro')
-  const uniqueDistrict = GetListUniqueItems('district')
+  const uniqueMetro = GetListUniqueItems("metro");
+  const uniqueDistrict = GetListUniqueItems("district");
   return (
     <>
       <Background onClick={() => closeAllSelect()}>
         <BackgroundImg onClick={() => closeAllSelect()}>
           <ContentContainer justifyContent="center" flexDirection="column" padding="0 120px">
-            <h1 style={{ margin: '80px 0 50px 0' }}>
+            <h1 style={{ margin: "80px 0 50px 0" }}>
               Sdaem.by - у нас живут <span>ваши объявления</span>
             </h1>
             <FlexContainer flexDirection="column" alignItems="flex-start" width="100%">
@@ -135,12 +166,18 @@ export default function Home() {
             <IMG backgroundImage={Flat} width={"516px"} height={"270px"}>
               <p>Снять квартиру</p>
               <h3 className={"h3"}>Квартиры на сутки</h3>
-              <FlexContainer justifyContent="flex-start" gap="10px" margin={"37px"} flexWrap='wrap'>
-                {cityArr.map((item: string) => <div className={"button"}
-                  onClick={() => { showFlatInCity(item) }}
-                  key={item}
-                >{item}</div>)}
-
+              <FlexContainer justifyContent="flex-start" gap="10px" margin={"37px"} flexWrap="wrap">
+                {cityArr.map((item: string) => (
+                  <div
+                    className={"button"}
+                    onClick={() => {
+                      showFlatInCity(item);
+                    }}
+                    key={item}
+                  >
+                    {item}
+                  </div>
+                ))}
               </FlexContainer>
             </IMG>
             <IMG backgroundImage={house} width={"407px"} height={"270px"}>
@@ -148,10 +185,10 @@ export default function Home() {
               <h3 className={"h3"}>Котеджы и усадьбы</h3>
               <ButtonSlider
                 className={"homeSlider"}
-                border='1px solid #ffffff'
-                position={'absolute'}
-                top={'78%'}
-                left={'85%'}
+                border="1px solid #ffffff"
+                position={"absolute"}
+                top={"78%"}
+                left={"85%"}
               >
                 <ButtonRightArrow className="rightArrow"></ButtonRightArrow>{" "}
               </ButtonSlider>
@@ -161,10 +198,10 @@ export default function Home() {
               <h3 className={"h3"}>Бани и сауны</h3>
               <ButtonSlider
                 className={"homeSlider"}
-                border='1px solid #ffffff'
-                position={'absolute'}
-                top={'78%'}
-                left={'85%'}
+                border="1px solid #ffffff"
+                position={"absolute"}
+                top={"78%"}
+                left={"85%"}
               >
                 <ButtonRightArrow className="rightArrow"></ButtonRightArrow>{" "}
               </ButtonSlider>
@@ -174,10 +211,10 @@ export default function Home() {
               <h3 className={"h3"}>Авто на прокат</h3>
               <ButtonSlider
                 className={"homeSlider"}
-                border='1px solid #ffffff'
-                position={'absolute'}
-                top={'78%'}
-                left={'85%'}
+                border="1px solid #ffffff"
+                position={"absolute"}
+                top={"78%"}
+                left={"85%"}
               >
                 <ButtonRightArrow className="rightArrow"></ButtonRightArrow>{" "}
               </ButtonSlider>
@@ -185,16 +222,20 @@ export default function Home() {
           </IMGBlock>
           <TextBlock>
             <ul>
-              <li >
-                <p>{"Квартиры"}</p>{flats.length}
+              <li>
+                <p>{"Квартиры"}</p>
               </li>
               {cityArr.map((item: string, index: number) => (
-                <li key={index}>
-                  <p>Квартиры в {item}</p><span>{flats.filter((flat: flatModel) => item === flat.city).length}</span>
+                <li key={index} onClick={() => { showFlatInCity(item) }}>
+                  <p>Квартиры в {item}</p>
+                  <span>{flats.filter((flat: flatModel) => item === flat.city).length}</span>
                 </li>
               ))}
             </ul>
             <ul>
+              <li>
+                <p>{"Коттеджи и усадьбы"}</p>
+              </li>
               {home.map((item, index) => (
                 <li key={index}>
                   <p>{item}</p>123
@@ -217,61 +258,97 @@ export default function Home() {
           flexDirection="column"
           alignItems="flex-start"
           padding={"0 80px"}
-         >
+        >
           <SubTitle>Квартиры на сутки </SubTitle>
           <FlexContainer width="100%">
-            <h3 className="subTitle"> Aренда квартир в {params.city}</h3>
+            <h3 className="subTitle"> Aренда квартир в Минске</h3>
             <WrapperFilter>
-              <FlexContainer>
-                <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'}
-                  options={uniqueMetro} selected={metro || 'Метро'} selectedOption={setMetro}
-                  isActiveSelect={isActiveSelectMetro} setIsActiveSelect={setIsActiveSelectMetro} />
-                <Select background={'#FFFFFF'} boxShadow={'0px 5px 20px rgba(0, 96, 206, 0.1)'}
-                  options={uniqueDistrict} selected={district || 'Район'} selectedOption={setDistrict}
-                  isActiveSelect={isActiveSelectDistrict} setIsActiveSelect={setIsActiveSelectDistrict} />
+              <FlexContainer gap='10px'>
+                <FlexContainer >
+                  <Select
+                    background={"#FFFFFF"}
+                    boxShadow={"0px 5px 20px rgba(0, 96, 206, 0.1)"}
+                    options={uniqueMetro}
+                    selected={metro || "Метро"}
+                    selectedOption={setMetro}
+                    isActiveSelect={isActiveSelectMetro}
+                    setIsActiveSelect={setIsActiveSelectMetro}
+                    right='-30px'
+
+                  />
+                  <FlexContainer z-index='5' right='150px' top='5px' alignItems='center'> <Metro fill='#BDBDBD' /></FlexContainer>
+
+                </FlexContainer>
+
+                <Select
+                  background={"#FFFFFF"}
+                  boxShadow={"0px 5px 20px rgba(0, 96, 206, 0.1)"}
+                  options={uniqueDistrict}
+                  selected={district || "Район"}
+                  selectedOption={setDistrict}
+                  isActiveSelect={isActiveSelectDistrict}
+                  setIsActiveSelect={setIsActiveSelectDistrict}
+
+                />
               </FlexContainer>
               <WrapperBackground></WrapperBackground>
             </WrapperFilter>
           </FlexContainer>
 
-          <FlexContainer margin='30px auto 0 auto'>
-            <Slider photos={flats} position='static' content={true} PAGE_WIDTH='1347'
-              width='1347px' height={'615px'} style={{ marginTop: '30px' }}>
-            </Slider>
+          <FlexContainer margin="30px auto 0 auto">
+            <Slider
+              photos={res}
+              position="static"
+              content={true}
+              PAGE_WIDTH="1347"
+              width="1347px"
+              height={"615px"}
+              style={{ marginTop: "30px" }}
+            ></Slider>
           </FlexContainer>
 
           <UnderSlider>
             <TotalFlat>
-              <FlexContainer alignItems='center'><p>341 <span>+</span>  </p></FlexContainer>
+              <FlexContainer alignItems="center">
+                <p>
+                  {flats.filter((flat: flatModel) => 'Минск' === flat.city).length} <span>+</span>{" "}
+                </p>
+              </FlexContainer>
               <Title>Предложений по Минску</Title>
             </TotalFlat>
             <VerticalLine></VerticalLine>
-            <Button boxShadow='0px 15px 40px rgba(0, 96, 206, 0.15)'
-              backgroundHover='linear-gradient(90deg, #867CFC 0%, #6929F3 94.5%)'>
-              Посмотреть все <RightArrow background='white'></RightArrow> </Button>
+            <Button
+              boxShadow="0px 15px 40px rgba(0, 96, 206, 0.15)"
+              backgroundHover="linear-gradient(90deg, #867CFC 0%, #6929F3 94.5%)"
+              onClick={() => { showFlatInCity('Минск') }}
+            >
+              Посмотреть все <RightArrow background="white"></RightArrow>{" "}
+            </Button>
           </UnderSlider>
-
         </FlexContainer>
       </CardList>
       <Background borderBottomLeftRadius="0" borderBottomRightRadius="0" margin="0">
         <BackgroundImg>
-
           <ContentContainer justifyContent="center" flexDirection="column" alignItems="center">
-            <Dots right='140px' top='46px' fill='white'></Dots>
+            <Dots right="140px" top="46px" fill="white"></Dots>
             <SearchToMapBlock>
               <h1>Поиск квартир на карте</h1>
-              <p>
-                Ищите квартиры на сутки в центре города, возле парка или в живописном районе
-              </p>
-              <Button background="white" color="black" fontWeight='600' colorHover='#FEC100'>
-                <IconMap fill='#FFD54F'></IconMap> Открыть карту
+              <p>Ищите квартиры на сутки в центре города, возле парка или в живописном районе</p>
+              <Button background="white" color="black" fontWeight="600" colorHover="#FEC100">
+                <IconMap fill="#FFD54F"></IconMap> Открыть карту
               </Button>
             </SearchToMapBlock>
 
             <FlexContainer gap="20px" position="absolute" top="325px">
               <MainBottomCard>
                 <FlexContainer gap="24px">
-                  <IMG backgroundImage={hand} width={"100px"} height={"100px"} borderRadius="50%" boxShadow='0px 11px 20px rgba(127, 155, 187, 0.16)'></IMG>
+                  <IMG
+                    backgroundImage={hand}
+                    width={"100px"}
+                    height={"100px"}
+                    borderRadius="50%"
+                    boxShadow="0px 11px 20px rgba(127, 155, 187, 0.16)"
+                  ></IMG>
 
                   <h4>Начните привлекать клиентов бесплатно!</h4>
                 </FlexContainer>
@@ -280,13 +357,25 @@ export default function Home() {
                   возможно бесплатно создавать и публиковать объявления на сайте.{" "}
                 </p>
 
-                <Button background={"#FFD54F"} height={"30px"} color={"black"} fontWeight='700' margin="34px 0 0 0">
+                <Button
+                  background={"#FFD54F"}
+                  height={"30px"}
+                  color={"black"}
+                  fontWeight="700"
+                  margin="34px 0 0 0"
+                >
                   + Разместить объявление
                 </Button>
               </MainBottomCard>
               <MainBottomCard>
                 <FlexContainer gap="20px">
-                  <IMG backgroundImage={list} width={"100px"} height={"100px"} borderRadius="50%" boxShadow='0px 11px 20px rgba(127, 155, 187, 0.16)'></IMG>
+                  <IMG
+                    backgroundImage={list}
+                    width={"100px"}
+                    height={"100px"}
+                    borderRadius="50%"
+                    boxShadow="0px 11px 20px rgba(127, 155, 187, 0.16)"
+                  ></IMG>
 
                   <h4>Начните привлекать клиентов бесплатно!</h4>
                 </FlexContainer>
@@ -295,24 +384,38 @@ export default function Home() {
                   возможно бесплатно создавать и публиковать объявления на сайте.{" "}
                 </p>
 
-                <Button background={"#FFD54F"} height={"30px"} color={"black"} fontWeight='700' margin="34px 0 0 0">
+                <Button
+                  background={"#FFD54F"}
+                  height={"30px"}
+                  color={"black"}
+                  fontWeight="700"
+                  margin="34px 0 0 0"
+                >
                   Узнать стоимость услуги {`>`}
                 </Button>
               </MainBottomCard>
               <CardGold>
-                <img src={CardBackGround} alt='CardBackGround'></img>
+                <img src={CardBackGround} alt="CardBackGround"></img>
                 <div className="title">Приоритет Gold </div>
-                <div className="wrapper"> <p>
-                  Приоритетное размещение Gold позволяет закрепить ваше объявление в верхней части каталога!
-                </p>
+                <div className="wrapper">
+                  {" "}
                   <p>
-                    Gold объявления перемещаются каждые 5 мин на 1 позицию, что делает размещение одинаковым для всех.
+                    Приоритетное размещение Gold позволяет закрепить ваше объявление в верхней части
+                    каталога!
                   </p>
-
-                  <Button margin='30px 0 0 0' background={'linear-gradient(270deg, #7E6AF3 0%, #6540CD 100%)'} height={"30px"} color={"white"}>
+                  <p>
+                    Gold объявления перемещаются каждые 5 мин на 1 позицию, что делает размещение
+                    одинаковым для всех.
+                  </p>
+                  <Button
+                    margin="30px 0 0 0"
+                    background={"linear-gradient(270deg, #7E6AF3 0%, #6540CD 100%)"}
+                    height={"30px"}
+                    color={"white"}
+                  >
                     Еще о тарифе Gold
-                  </Button></div>
-
+                  </Button>
+                </div>
               </CardGold>
             </FlexContainer>
           </ContentContainer>
@@ -325,15 +428,21 @@ export default function Home() {
           justifyContent="flex-start"
           alignItems="flex-start"
         >
-          <FlexContainer width={"90%"} height={'50px'} justifyContent='flex-end' >
-            <Dots fill='#FFD54F' position='static'></Dots> </FlexContainer>
+          <FlexContainer width={"90%"} height={"50px"} justifyContent="flex-end">
+            <Dots fill="#FFD54F" position="static"></Dots>{" "}
+          </FlexContainer>
           <SubTitle>ЧТО ТАКОЕ SDAEM.BY </SubTitle>
 
           <FlexContainer width={"100%"}>
             <LeftBlock>
               <h3> Квартира на сутки в Минске</h3>
-              <FlexContainer gap={"20px"} alignItems="flex-start" margin="0 0 30px 0" >
-                <IMG backgroundImage={Flat} width={"50%"} height={"270px"} borderRadius='20px'></IMG>
+              <FlexContainer gap={"20px"} alignItems="flex-start" margin="0 0 30px 0">
+                <IMG
+                  backgroundImage={Flat}
+                  width={"50%"}
+                  height={"270px"}
+                  borderRadius="20px"
+                ></IMG>
                 <p style={{ width: "50%" }}>
                   <span> Нужна квартира на сутки в Минске?</span> <br />
                   На веб-сайте sdaem.by вас ждет масса выгодных предложений. Каталог насчитывает{" "}
@@ -370,7 +479,10 @@ export default function Home() {
               <Line> </Line>
               <NavLink to="News/New">Линия Сталина: суровый отдых в усадьбах на сутки</NavLink>
               <span>14 Январь</span>
-              <ShowAllStl> <NavLink  to="News">{"Посмотреть все >"}</NavLink> </ShowAllStl>
+              <ShowAllStl>
+                {" "}
+                <NavLink to="News">{"Посмотреть все >"}</NavLink>{" "}
+              </ShowAllStl>
             </RightBlock>
           </FlexContainer>
         </ContentContainer>

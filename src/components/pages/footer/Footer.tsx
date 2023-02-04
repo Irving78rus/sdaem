@@ -9,13 +9,39 @@ import snow from "../../../assets/icon/snow.png";
 import webpay from "../../../assets/icon/webpay.png";
 import master from "../../../assets/icon/master.png";
 import masterSecure from "../../../assets/icon/masterSecure.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import ContentContainer from "../../UI/ContentContainer"; 
 import { BackgroundColor, BlockLeft, BlockRight, FooterLink, Ikon, NavStl } from "./FooterStyle";
+import { useAppDispatch } from "../../../redux/hooks";
+import { getFilterFlats } from "../../../redux/baseFlat";
 
 
 export default function Footer() {
- 
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const showFlatInCity = (item: string) => {
+    dispatch(
+      getFilterFlats({
+        city: item,
+        upPrice: 0,
+        toPrice: 0,
+        rooms: 0,
+        metro: "",
+        district: "",
+        sleepingPlaces: 0,
+        GasStove: false,
+        Oven: false,
+        CoffeeMaker: false,
+        MicrowaveOven: false,
+        Dishes: false,
+        Dishwasher: false,
+      })
+    );
+    navigate("/Result");
+  };
+
+
+  
   return (
     <BackgroundColor>
       <ContentContainer height='250px'>
@@ -33,20 +59,20 @@ export default function Footer() {
         <BlockRight>
           <FooterLink>
             <NavStl>
-              <li><NavLink to="/1" className={({ isActive }) => (isActive ? "active link" : "link")} >Коттеджи и усадьбы</NavLink> </li>
-              <li><NavLink to="/2" className={({ isActive }) => (isActive ? "active link" : "link")} >Бани и Сауны</NavLink> </li>
-              <li><NavLink to="/3" className={({ isActive }) => (isActive ? "active link" : "link")} >Авто на прокат</NavLink> </li>
+              <li><NavLink to="/1" className={  "link" } >Коттеджи и усадьбы</NavLink> </li>
+              <li><NavLink to="/2" className={ "link" } >Бани и Сауны</NavLink> </li>
+              <li><NavLink to="/3" className={  "link" } >Авто на прокат</NavLink> </li>
             </NavStl>
             <NavStl>
               <li><NavLink to="/4" className={({ isActive }) => (isActive ? "active link" : "link")} >Квартиры</NavLink> </li>
-              <li><NavLink to="/5" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Минске</NavLink> </li>
-              <li><NavLink to="/6" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Гомеле</NavLink> </li>
-              <li><NavLink to="/7" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Бресте</NavLink> </li>
+              <li onClick={() => {showFlatInCity('Минск')}}>Квартиры в Минске</li>
+              <li onClick={() => {showFlatInCity('Гомель')}}>  Квартиры в Гомеле  </li>
+              <li onClick={() => {showFlatInCity('Брест')}}> Квартиры в Бресте  </li>
             </NavStl>
             <NavStl>
-              <li><NavLink to="/8" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Витебске</NavLink> </li>
-              <li><NavLink to="/9" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Гродно</NavLink> </li>
-              <li><NavLink to="/10" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Квартиры в Могилеве</NavLink> </li>
+              <li onClick={() => {showFlatInCity('Витебск')}}> Квартиры в Витебске </li>
+              <li onClick={() => {showFlatInCity('Гродно')}}> Квартиры в Гродно </li>
+              <li onClick={() => {showFlatInCity('Могилев')}}> Квартиры в Могилеве </li>
             </NavStl>
             <NavStl>
               <li><NavLink to="/11" className={({ isActive }) => (isActive ? "active flat" : "flat")} >Новости</NavLink> </li>

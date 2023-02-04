@@ -145,10 +145,12 @@ export const IMGBlock = styled.div<Props>`
   flex-wrap: wrap;
 `;
 export const TextBlock = styled.div`
+ 
   background-color: white;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  width:28%;
   ul {
     width: 100%;
     padding: 0;
@@ -251,20 +253,18 @@ export const TotalFlat = styled.div`
    display: flex;
    flex-direction:column;
     p{
-         display: flex;
+      display: flex;
     font-size: 76px;
-        font-weight: 700;
+    font-weight: 700;
     margin: 0;
     align-items: center;
     justify-content: space-between;
-    width: 200px;
     }
     span{
         
         font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-     
+        font-style: normal;
+        font-weight: 600;
         background: linear-gradient(90deg, #9D94FF 0%, #6B50E9 94.5%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -274,9 +274,9 @@ export const TotalFlat = styled.div`
     }
  }`;
 export const UnderSlider = styled.div`
-    display: flex;
+ display: flex;
  align-items:center;
- width:560px;
+ gap:20px;
  justify-content: space-between;
  padding: 0 80px ; 
  margin-bottom:60px;
@@ -373,15 +373,15 @@ export const RightBlock = styled.div`
 
 export const ShowAllStl = styled.div`
   margin-top: 20px;
-  
+
   font-family: "Inter";
   font-style: normal;
   font-weight: 800;
   font-size: 14px;
   line-height: 17px;
   cursor: pointer;
-  a{
-  color: #664ef9;
+  a {
+    color: #664ef9;
   }
 `;
 export const SearchToMapBlock = styled.div`

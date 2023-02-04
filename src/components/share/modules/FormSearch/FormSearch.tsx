@@ -13,7 +13,7 @@ import { VerticalLine } from "../../../UI/VerticalLine";
  
 import { HorizontalLine, List, RightArrow, SelectTitle } from "./FormSearchStyle";
 import { Context } from "../../../../redux/context";
-import { GetListUniqueItems } from "../../hooks";
+import { GetListUniqueItems } from "../../utils/hooks";
 import IconMap from "../../../../assets/icon/IconMap";
 interface FormSearchProps {
   map: boolean

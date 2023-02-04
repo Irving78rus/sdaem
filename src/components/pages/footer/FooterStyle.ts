@@ -50,8 +50,15 @@ export const NavStl = styled.ul`
   margin: 0;
   text-decoration: none;
   li {
-    
+    font-size: 14px;
     text-decoration: none;
+    &:hover{
+      cursor:pointer;
+      color: black;
+    border-bottom: 3px solid #ffd54f;
+    padding: 0;
+     
+    }
   }
   li:first-child {
     margin-left: 0;
@@ -61,7 +68,7 @@ export const NavStl = styled.ul`
     font-family: "Epilogue";
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 16px;
     color: black;
     line-height: 17px;
     text-decoration: none;
@@ -69,20 +76,15 @@ export const NavStl = styled.ul`
     align-items: center;
      
   }
-  .active {
-    color: black;
-    border-bottom: 3px solid #ffd54f;
-    padding: 10px 0;
-  }
+   
   .flat {
     padding-left: 0;
     line-height: 17px;
     font-family: "Epilogue";
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     color: #8291A3;
-  
     text-decoration: none;
     display: flex;
     align-items: center;
