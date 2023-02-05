@@ -65,7 +65,7 @@ export const FormRegistration = ({ setIsShowPopup, captcha, setCaptcha }:FormReg
           } else {
             return item;
           }
-          
+           
         });
         const successRegistration = (allUsers: User[], User: User) => {
           setError("Регистрация успешная");

@@ -6,6 +6,7 @@ import CMail from "../../../../../assets/icon/CMail.svg";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import FlexContainer from "../../../../UI/FlexContainer";
+import {flatModel} from "../../../../../redux/types";
 
 const ContactsComp = styled.div`
   position: absolute;
@@ -19,7 +20,7 @@ const ContactsComp = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-
+  box-shadow: 0px 20px 20px rgba(135, 124, 202, 0.15);
   .photo {
     border: 6px solid #664ef9;
     width: 59px;
@@ -61,22 +62,38 @@ const ContactsComp = styled.div`
     color: #664ef9;
   }
 `;
-
-export default function ContactComponent() {
+interface ContactComponentProps {
+  isShowContact?: flatModel;
+}
+export default function ContactComponent({ isShowContact }: ContactComponentProps) {
   return (
-    <ContactsComp>
-      <img src={Boy} alt="boy" className="photo" />
-      <p>Владелец</p>
-      <h4> Владимир</h4>
-      <h4> +375 (29) 291-14-44</h4>
-      <Link to="#" className="link">
-        vladimir6234@tut.by{" "}
-      </Link>
-      <FlexContainer gap="10px">
-        <img src={Cvib} alt="boy" />
-        <img src={CWhat} alt="boy" />
-        <img src={CMail} alt="boy" />
-      </FlexContainer>
-    </ContactsComp>
+    <>
+      {!isShowContact ? (
+        <ContactsComp>
+          <img src={Boy} alt="boy" className="photo" />
+          <p>Владелец</p>
+          <h4> Владимир</h4>
+          <h4> +375 (29) 291-14-44</h4>
+          <Link to="#" className="link">
+            vladimir6234@tut.by{" "}
+          </Link>
+          <FlexContainer gap="10px">
+            <img src={Cvib} alt="boy" />
+            <img src={CWhat} alt="boy" />
+            <img src={CMail} alt="boy" />
+          </FlexContainer>
+        </ContactsComp>
+      ) : (
+        <ContactsComp>
+          <p>'В этой квартире в наличии есть:</p>
+          {isShowContact.CoffeeMaker && <p> "кофемашина"</p>}
+          {isShowContact.Dishes && <p> "Посуда"</p>}
+          {isShowContact.Dishwasher && <p> "Посудомоечная машина"</p>}
+          {isShowContact.GasStove && <p> "Газ"</p>}
+          {isShowContact.MicrowaveOven && <p>"Микроволновка"</p>}
+          {isShowContact.Oven && <p>"Газовая плита"</p>}
+        </ContactsComp>
+      )}
+    </>
   );
 }

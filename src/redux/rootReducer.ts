@@ -1,6 +1,6 @@
 import baseFlat from "./baseFlat";
 import userSetting from "./userSetting";
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
 // const rootReducer = combineReducers({
 //   filmContentSlice,

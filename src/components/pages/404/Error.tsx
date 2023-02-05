@@ -4,6 +4,7 @@ import ContentContainer from "../../UI/ContentContainer";
 import FlexContainer from "../../UI/FlexContainer";
 import Button from "../../UI/Button";
 import { Background, BackgroundImg, Dots, LeftBlock, RightBlock } from "./ErrorStyle";
+import HomeSvg from "../../../assets/icon/HomeSvg";
 
 export default function Error() {
 
@@ -17,7 +18,7 @@ export default function Error() {
             <LeftBlock>
               <h1>Ошибка 404</h1>
               <p>Возможно, у вас опечатка в адресе страницы, или её просто не существует</p>
-              <Button background="#FFD54F" color="black" fontWeight="800"> Вернуться на главную</Button>
+              <Button background="#FFD54F" color="black" fontWeight="800"><HomeSvg fill='Black'></HomeSvg> Вернуться на главную</Button>
             </LeftBlock>
             <RightBlock>
               <p>404</p>

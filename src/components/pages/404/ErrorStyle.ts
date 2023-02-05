@@ -6,14 +6,12 @@ interface Props {
 }
 
 export const Background = styled.div`
-  height: 100vh;
   background: linear-gradient(0deg, #7e6af3 1.04%, #6540cd 100%);
 `;
 export const BackgroundImg = styled.div`
   background-image: url(${Back});
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  height: 100vh;
 `;
 
 export const Dots = styled.div<Props>`

@@ -22,9 +22,7 @@ export const Pagination = ({ pageQuantity, activePage, onClickButtonPagination, 
   let leftPortionPageNumber = (portionNumber - 1) * SizePage + 1;
   let rightPortionPageNumber = portionNumber * SizePage;
  
-  useEffect(() => {
-    scrollToTop()
-  } )
+  
   return (
     <PaginationStl>
       {portionNumber > 1 && (

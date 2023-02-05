@@ -9,10 +9,10 @@ import ContactComponent from "./ContactComponent";
 import Metro from "../../../../../assets/icon/Metro";
 import Elips from "../../../../../assets/icon/Elips";
 import Slider from "../../../../share/modules/Slider/Slider";
-import { flatModel, stateModel } from "../../../../../redux/types";
+import { flatModel} from "../../../../../redux/types";
 import IconMap from "../../../../../assets/icon/IconMap";
 import HeartImg from "../../../../../assets/icon/HeartImg";
-import { useAppDispatch, useAppSelector } from "../../../../../redux/hooks";
+import { useAppDispatch} from "../../../../../redux/hooks";
 import { changeFavoriteFlat } from "../../../../../redux/baseFlat";
 import { HeartWrapper } from "../ResultStyle";
 interface Props {
@@ -121,14 +121,14 @@ const Gold = styled.div<Props>`
 interface CardResultTileProps {
   flat: flatModel;
   top?: string;
-  favoriteFlats:flatModel[]|[]
+  favoriteFlats: flatModel[] | [];
 }
-export default function CardResultTile({ flat,favoriteFlats }: CardResultTileProps) {
+export default function CardResultTile({ flat, favoriteFlats }: CardResultTileProps) {
   const [showContact, setShowContact] = useState(false);
-
+  const [showDetails, setShowDetails] = useState(false);
   const dispatch = useAppDispatch();
   const addFavoriteFlat = (e: any) => {
-   dispatch(changeFavoriteFlat(flat.id));
+    dispatch(changeFavoriteFlat(flat.id));
   };
 
   return (
@@ -148,7 +148,7 @@ export default function CardResultTile({ flat,favoriteFlats }: CardResultTilePro
           CardResultImg={FlatImage}
           margin="0"
         ></Slider>
-         
+
         <FlexContainer flexDirection="column" padding="0 20px" alignItems="flex-start">
           <FlexContainer width="100%">
             <div>
@@ -192,7 +192,10 @@ export default function CardResultTile({ flat,favoriteFlats }: CardResultTilePro
               background="#FFFFFF"
               color="#664EF9"
               fontSize="14px"
-              onClick={() => setShowContact(!showContact)}
+              onClick={() => {
+                setShowContact(!showContact);
+                setShowDetails(false);
+              }}
               backgroundHover="#F5F3FF"
               boxShadowHover="0px 5px 20px rgba(0, 96, 206, 0.1)"
               boxShadow="0px 5px 20px rgba(0, 96, 206, 0.1)"
@@ -205,10 +208,15 @@ export default function CardResultTile({ flat,favoriteFlats }: CardResultTilePro
               color="#FEC100;"
               fontSize="14px"
               backgroundHover="rgba(255, 213, 79, 0.2)"
+              onClick={() => {
+                setShowDetails(!showDetails);
+                setShowContact(false);
+              }}
             >
               Подробнее
             </Button>
             {showContact && <ContactComponent></ContactComponent>}
+            {showDetails && <ContactComponent isShowContact={flat}></ContactComponent>}
           </FlexContainer>
         </FlexContainer>
       </Card>

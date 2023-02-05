@@ -140,7 +140,7 @@ export default function FormSearch({
       <FlexContainer
         width={"100%"}
         borderBottom="1px solid rgba(78, 100, 249, 0.1)"
-        height={map ? "100%" : "80px"}
+        height= "100%" 
         backgroundColor={backgroundColor}
         flexWrap="wrap"
         borderRadius={isActive ? "0 10px 0 0" : "0 10px 10px 10px"}

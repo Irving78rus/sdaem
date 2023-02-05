@@ -10,7 +10,7 @@ interface  Props {
   position?:string;
   padding?:string
 }
-const ContentContainerStl = styled.div<Props>`
+const ContentContainerStl = styled.section<Props>`
 display: flex;
 justify-content:${props=>props.justifyContent||'space-between'} ; 
 align-items: ${props=>props.alignItems||'center'} ;

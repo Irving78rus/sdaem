@@ -1,7 +1,6 @@
-import { useState } from "react";
 import TopHeader from "./components/pages/header/topHeader/TopHeader";
 import BottomHeader from "./components/pages/header/bottomHeader/BottomHeader";
-import NewDetails from "./components/pages/new/NewDetails";
+import NewDetails from "./components/pages/NewDetails/NewDetails";
 import Home from "./components/pages/home/Home";
 import СontactsComponent from "./components/pages/contact/СontactsComponent";
 import Error from "./components/pages/404/Error";
@@ -9,95 +8,29 @@ import Catalog from "./components/pages/catalog/Catalog";
 import Favorite from "./components/pages/favorite/Favorite";
 import Footer from "./components/pages/footer/Footer";
 import { Route, Routes } from "react-router-dom";
-import { useAppSelector } from "./redux/hooks";
 import { Authorization } from "./components/pages/authorization/Authorization";
 import { Registration } from "./components/pages/Registration/Registration";
 import { Context } from "./redux/context";
-import { stateModel } from "./redux/types";
 import ResultPage from "./components/pages/searchResult/ResultPage";
 import NewsLIst from "./components/pages/news/NewsList";
 import { YandexMap } from "./components/share/component/YandexMap";
+import { useAppContext } from "./components/share/utils/hooks";
+import styled from "styled-components";
+
+const AppWrapper = styled.section`
+min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+`;
+
 
 function App() {
-  const params = useAppSelector((state: stateModel) => state.baseFlat.params);
-  const [isActiveSelectCity, setIsActiveSelectCity] = useState<boolean>(false);
-  const [isActiveSelectRooms, setIsActiveSelectRooms] = useState<boolean>(false);
-  const [isActiveSelectMetro, setIsActiveSelectMetro] = useState<boolean>(false);
-  const [isActiveSelectDistrict, setIsActiveSelectDistrict] = useState<boolean>(false);
-  const [isActiveSelectSleepingPlaces, setIsActiveSelectSleepingPlaces] = useState<boolean>(false);
-
-  const [city, setCity] = useState<string | undefined>(params.city);
-  const [metro, setMetro] = useState<string | undefined>(params.metro);
-  const [district, setDistrict] = useState<string | undefined>(params.district);
-  const [dropSelectList, setDropSelectList] = useState<boolean>(false);
-  const [rooms, setRooms] = useState<number | undefined>(params.rooms);
-  const [sleepingPlaces, setSleepingPlaces] = useState<number | undefined>(params.sleepingPlaces);
-  const [GasStove, setGasStove] = useState<boolean | undefined>(params.GasStove);
-  const [Oven, setOven] = useState<boolean | undefined>(params.Oven);
-  const [CoffeeMaker, setCoffeeMaker] = useState<boolean | undefined>(params.CoffeeMaker);
-  const [MicrowaveOven, setMicrowaveOven] = useState<boolean | undefined>(params.MicrowaveOven);
-  const [Dishes, setDishes] = useState<boolean | undefined>(params.Dishes);
-  const [Dishwasher, setDishwasher] = useState<boolean | undefined>(params.Dishwasher);
-  const [upPrice, setUpPrice] = useState<number | string | undefined>(params.upPrice);
-  const [toPrice, setToPrice] = useState<number | string | undefined>(params.toPrice);
-  
- 
-  const closeAllSelect = (): void => {
-    setIsActiveSelectCity(false);
-    setIsActiveSelectRooms(false);
-    setIsActiveSelectMetro(false);
-    setIsActiveSelectDistrict(false);
-    setIsActiveSelectSleepingPlaces(false);
-    setDropSelectList(false);
-  };
+  const appContext = useAppContext();
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <Context.Provider
-        value={{
-          dropSelectList,
-          setDropSelectList,
-          isActiveSelectCity,
-          setIsActiveSelectCity,
-          isActiveSelectRooms,
-          setIsActiveSelectRooms,
-          isActiveSelectMetro,
-          setIsActiveSelectMetro,
-          isActiveSelectDistrict,
-          setIsActiveSelectDistrict,
-          isActiveSelectSleepingPlaces,
-          setIsActiveSelectSleepingPlaces,
-          closeAllSelect,
-          city,
-          setCity,
-          metro,
-          setMetro,
-          district,
-          setDistrict,
-          rooms,
-          setRooms,
-          sleepingPlaces,
-          setSleepingPlaces,
-          GasStove,
-          setGasStove,
-          Oven,
-          setOven,
-          CoffeeMaker,
-          setCoffeeMaker,
-          MicrowaveOven,
-          setMicrowaveOven,
-          Dishes,
-          setDishes,
-          Dishwasher,
-          setDishwasher,
-          upPrice,
-          setUpPrice,
-          toPrice,
-          setToPrice,
-        }}
-      >
+    <AppWrapper  >
+      <Context.Provider value={appContext} >
         <TopHeader />
         <BottomHeader />
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="News" element={<NewsLIst />} />
@@ -111,10 +44,9 @@ function App() {
           <Route path="Favorite" element={<Favorite />} />
           <Route path="*" element={<Error />} />
         </Routes>
-
         <Footer />
       </Context.Provider>
-    </div>
+      </AppWrapper  >
   );
 }
 

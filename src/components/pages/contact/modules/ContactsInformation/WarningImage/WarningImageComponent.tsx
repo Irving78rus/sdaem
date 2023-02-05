@@ -1,9 +1,9 @@
 import { WarningImage } from './style';
 
-interface WarningImage {
+interface WarningImageProps {
   color: string;
 }
 
-export const WarningImageComponent = ({ color }: WarningImage) => {
+export const WarningImageComponent = ({ color }: WarningImageProps) => {
   return <WarningImage color={color} />;
 };

@@ -3,7 +3,7 @@ import FlexContainer from "../../../UI/FlexContainer";
 import ContentContainer from "../../../UI/ContentContainer";
 import CardResultTile from "./component/CardResultTile";
 import CardResultList from "./component/CardResultList";
-import { useAppSelector } from "../../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import Select from "../../../UI/Select";
 import { Pagination } from "../../../share/modules/Pagination/Pagination";
 import ShearSocial from "../../../../assets/icon/ShearSocial";
@@ -15,6 +15,8 @@ import { getWord, scrollToTop } from "../../../share/utils/helpers";
 import { flatModel, stateModel } from "../../../../redux/types";
 import IconMap from "../../../../assets/icon/IconMap";
 import { NavLink } from "react-router-dom";
+import { log, timeLog } from "console";
+import { filterFlatForPrice } from "../../../../redux/baseFlat";
 
 interface ResultProps {
   res: flatModel[];
@@ -22,7 +24,7 @@ interface ResultProps {
 }
 
 export default function Result({ res ,favoriteFlats}: ResultProps) {
-
+  const dispatch = useAppDispatch();
   const [isDisplayTile, setIsDisplayTile] = useState(true);
   const [showSelectFilter, setShowSelectFilter] = useState(false);
   const [activePage, setActivePage] = useState<number>(1);
@@ -31,9 +33,10 @@ export default function Result({ res ,favoriteFlats}: ResultProps) {
   const pending: boolean = useAppSelector((state: stateModel) => state.baseFlat.pending);
  
   
-
+  
   const onClickButtonPagination = (page: number) => {
     setActivePage(page);
+    scrollToTop()
   };
   const itemsPerPage: number = 6;
 
@@ -42,6 +45,15 @@ export default function Result({ res ,favoriteFlats}: ResultProps) {
     const indexOfFirstNews = indexOfLastNews - itemsPerPage;
     return res.slice(indexOfFirstNews, indexOfLastNews);
   }, [activePage, res]);
+  
+const filterForPrice=(item:string)=>{
+  if(item==='По возрастанию цены'){
+    dispatch(filterFlatForPrice('up'))
+  }
+  if (item==='По убыванию цены'){
+    dispatch(filterFlatForPrice('down'))
+  }
+}
  
 
   return (
@@ -60,6 +72,7 @@ export default function Result({ res ,favoriteFlats}: ResultProps) {
             selectedOption={setFilter}
             isActiveSelect={showSelectFilter}
             setIsActiveSelect={setShowSelectFilter}
+            filterForPrice={filterForPrice}
           />
           <FlexContainer>
             <Toggle

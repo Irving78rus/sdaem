@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from "styled-components";
+ 
 
   
 export default function LoopSvg({ fill = '#686868',opacity='0.3',back='none' }) {

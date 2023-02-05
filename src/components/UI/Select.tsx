@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import arrow from "../../assets/icon/arrow.svg";
-import { filterFlatForPrice } from "../../redux/baseFlat";
 import { Context } from "../../redux/context";
-import { useAppDispatch } from "../../redux/hooks";
- 
+
+
 interface Props {
   background?: string;
   backgroundColor?: string;
@@ -17,17 +16,17 @@ interface Props {
   display: string;
   alignItems: string;
   boxShadow?: string;
-  position?:string;
-  top?:string;
-  right?:string;
+  position?: string;
+  top?: string;
+  right?: string;
 }
- 
+
 
 const Dropdown = styled.div<Props>`
   padding:10px;
   display:flex;
   flex-direction:${(props) => props.flexDirection || 'column'};
-  align-items:${(props) => (props.flexDirection==='row'&&'center') || 'flex-start'};
+  align-items:${(props) => (props.flexDirection === 'row' && 'center') || 'flex-start'};
   gap:10px;
   .dropdown-btn {
     position: relative;
@@ -50,8 +49,8 @@ const Dropdown = styled.div<Props>`
     span {
       color: black;
       position:relative;
-      top:${props=>props.top||0};
-       right:${props=>props.right||0};
+      top:${props => props.top || 0};
+       right:${props => props.right || 0};
     }
     &:hover{
       cursor:pointer;
@@ -59,9 +58,8 @@ const Dropdown = styled.div<Props>`
     
   }
   .active {
-     
-    display:   flex  ;
-    align-items:    center  ;
+    display:flex;
+    align-items:center ;
     box-sizing: border-box;
     background-color: white;
     border: 2px solid rgba(102, 78, 249, 0.8);
@@ -90,7 +88,7 @@ const Dropdown = styled.div<Props>`
     }
   }
 `;
-const Arrow = styled.div `
+const Arrow = styled.div`
  position: absolute;
  top:4px;
  border:none;
@@ -104,62 +102,58 @@ const Arrow = styled.div `
        
  }
  `;
- const Title = styled.div<Props>`
+const Title = styled.div<Props>`
  font-weight: 500;
 font-size: 14px;
 line-height: 17px;
  
-color:${(props) => props.color  || '#BDBDBD'};  
+color:${(props) => props.color || '#BDBDBD'};  
  `;
- 
- interface semiProps{
-  title?:string;
-  isActiveSelect?:boolean;
-  setIsActiveSelect:(isActiveSelect: boolean) => void; 
-  selected?:string;
-  selectedOption:(isActiveSelect: string) => void; 
-  options:string[];
-  background?:string;
-  boxShadow?:string;
-  color?:string;
-  flexDirection?:string;
- }
- 
-const Select = ( props:any ) => {
-  const {closeAllSelect}:any = useContext(Context);
 
-  const dispatch = useAppDispatch();
-  
+//  interface semiProps{
+//   title?:string;
+//   isActiveSelect?:boolean;
+//   setIsActiveSelect:(isActiveSelect: boolean) => void; 
+//   selected?:string;
+//   selectedOption:(isActiveSelect: string) => void; 
+//   options:string[];
+//   background?:string;
+//   boxShadow?:string;
+//   color?:string;
+//   flexDirection?:string;
+//  }
+
+const Select = (props: any) => {
+  const { closeAllSelect } = useContext(Context);
+
 
   return (
     <Dropdown {...props}>
       <Title {...props}>{props.title} </Title>
-          <div className={props.isActiveSelect?"dropdown-btn active":'dropdown-btn'}  onClick={(e:any)=>{
-            e.stopPropagation();
-            closeAllSelect()
-            props.setIsActiveSelect(!props.isActiveSelect)
-          }}>
-            <span>{props.selected }</span>
-            <Arrow >
-            <img src={arrow} alt="Arrow"></img>
+      <div className={props.isActiveSelect ? "dropdown-btn active" : 'dropdown-btn'}
+        onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        e.stopPropagation();
+        closeAllSelect()
+        props.setIsActiveSelect(!props.isActiveSelect)
+      }}>
+        <span>{props.selected}</span>
+        <Arrow >
+          <img src={arrow} alt="Arrow"></img>
         </Arrow>
-          </div>
-          {props.isActiveSelect&&
-          <div className="dropdown-content">
-            {props.options.map((option:string)=><div key={option} className="dropdown-item" onClick={(e:any)=>{
-              props.selectedOption(e.target.textContent)
+      </div>
+      {props.isActiveSelect &&
+        <div className="dropdown-content">
+          {props.options.map((option: string) =>
+            <div key={option} className="dropdown-item" onClick={(e) => {
+              props.selectedOption((e.target as HTMLElement).textContent)
               // closeAllSelect()
               props.setIsActiveSelect(!props.isActiveSelect)
-              if(e.target.textContent==='По возрастанию цены'){
-                dispatch(filterFlatForPrice('up'))
-              }
-              if (e.target.textContent==='По убыванию цены'){
-                dispatch(filterFlatForPrice('down'))
-              }
-              }}>{option}</div>)}
-        </div> }
-          
-        </Dropdown>
+              {props.filterForPrice&&props.filterForPrice((e.target as HTMLElement).textContent)}
+            }}>{option}
+            </div>)}
+        </div>}
+
+    </Dropdown>
   );
 };
 export default Select;

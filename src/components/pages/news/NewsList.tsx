@@ -6,13 +6,15 @@ import { Pagination } from "../../share/modules/Pagination/Pagination";
 import NewsSearch from "./modules/NewsSearch/NewsSearch";
 
 export default function NewsLIst() {
-  const arr:number[] = [1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14];
+  const arr: number[] = useMemo(() => {
+    return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  }, [])
   const [activePage, setActivePage] = useState<number>(1);
 
   const onClickButtonPagination = (page: number) => {
     setActivePage(page);
   };
-  const itemsPerPage:number = 6;
+  const itemsPerPage: number = 6;
   const paginatedNews: number[] = useMemo(() => {
     const indexOfLastNews = activePage * itemsPerPage;
     const indexOfFirstNews = indexOfLastNews - itemsPerPage;
@@ -21,9 +23,9 @@ export default function NewsLIst() {
   }, [activePage, arr]);
   return (
     <MarginT>
-      <NewsSearch/> 
+      <NewsSearch />
       <FlexContainer gap='25px' margin='0 auto 30px auto' flexWrap='wrap' >
-        {paginatedNews.map((item:number) => (
+        {paginatedNews.map((item: number) => (
           <Card key={item}>
             <img src={FlatImage} alt="FlatImage" />
             <h4>Линия Сталина: суровый отдых в усадьбах на сутки</h4>
@@ -43,11 +45,11 @@ export default function NewsLIst() {
         ))}
       </FlexContainer>
       <Pagination
-      itemsPerPage={itemsPerPage}
-      onClickButtonPagination={onClickButtonPagination}
-      activePage={activePage}
-       
-      pageQuantity={arr}
+        itemsPerPage={itemsPerPage}
+        onClickButtonPagination={onClickButtonPagination}
+        activePage={activePage}
+
+        pageQuantity={arr}
       ></Pagination>
     </MarginT>
   );
