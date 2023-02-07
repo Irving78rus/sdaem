@@ -26,6 +26,7 @@ min-height: 100vh;
 
 function App() {
   const appContext = useAppContext();
+  console.log('123');
   return (
     <AppWrapper  >
       <Context.Provider value={appContext} >
