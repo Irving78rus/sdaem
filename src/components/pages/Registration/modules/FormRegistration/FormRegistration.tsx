@@ -8,7 +8,8 @@ import ErrorImg from "../../../../../assets/icon/ErrorImg";
 import MailImg from "../../../../../assets/icon/MailImg";
 import LockImg from "../../../../../assets/icon/LockImg";
 import ReCAPTCHA from "react-google-recaptcha";
-const key = "6LcbAeAjAAAAAJ-sKt9VimUkmFR8Uf2Z-vIkZWGM";
+ 
+const key = "6Lc94F0kAAAAAC2KevJRcI0tT8OYg1LZSuN7rBeT"
 interface FormRegistrationProps {
   setIsShowPopup:(isShowPopup: boolean) => void;  
   captcha: boolean;
