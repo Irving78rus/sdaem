@@ -40,7 +40,7 @@ export default function SliderSection({ showFlatInCity }: any) {
   useEffect(() => {
     dispatch(getFilterFlats({ metro, district }))
 
-  }, [metro, district])
+  }, [metro, district,dispatch])
   return (
     <CardList>
       <FlexContainer width="100%" flexDirection="column" alignItems="flex-start" padding={"0 80px"}>
