@@ -1,5 +1,6 @@
 {
-  "name":"https://irving78rus.github.io/sdaem/",
+  "homepage": "https://irving78rus.github.io/sdaem/",
+  "name": "sdaem",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
