@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement||document.createElement('div')
 );
 root.render(
-  <BrowserRouter basename={process.env.PUBLIC_URL}>
+  <BrowserRouter  >
    <Provider store={rootReducer}>
     <App />
     </Provider>
