@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 
 //Иммитация импорта конфига
 const portionSizePagination = 5;

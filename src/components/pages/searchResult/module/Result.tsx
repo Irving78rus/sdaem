@@ -1,4 +1,4 @@
-import  { useState, useMemo, useContext, useEffect } from "react";
+import  { useState, useMemo, useContext } from "react";
 import FlexContainer from "../../../UI/FlexContainer";
 import ContentContainer from "../../../UI/ContentContainer";
 import CardResultTile from "./component/CardResultTile";
@@ -15,7 +15,6 @@ import { getWord, scrollToTop } from "../../../share/utils/helpers";
 import { flatModel, stateModel } from "../../../../redux/types";
 import IconMap from "../../../../assets/icon/IconMap";
 import { NavLink } from "react-router-dom";
-import { log, timeLog } from "console";
 import { filterFlatForPrice } from "../../../../redux/baseFlat";
 
 interface ResultProps {

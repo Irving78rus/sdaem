@@ -124,7 +124,7 @@ const Slider = ({
 
   useEffect(() => {
     setMaxOffset(-(PAGE_WIDTH * (Math.ceil(photos.length / 3) - 1)));
-  }, [photos]);
+  }, [photos,PAGE_WIDTH]);
 
   const right = () => {
     if (photos.length > rightNumber) {

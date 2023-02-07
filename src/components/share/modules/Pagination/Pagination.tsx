@@ -1,7 +1,4 @@
-import {  useEffect, useState } from "react";
-import { scrollToTop } from "../../utils/helpers";
- 
- 
+import { useState } from "react";
 import { PaginationStl, PaginationButton,ScrollPagination } from "./style";
 
 interface PaginationProps{

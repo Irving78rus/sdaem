@@ -5,6 +5,7 @@ import FlexContainer from "../../UI/FlexContainer";
 import Button from "../../UI/Button";
 import { Background, BackgroundImg, Dots, LeftBlock, RightBlock } from "./ErrorStyle";
 import HomeSvg from "../../../assets/icon/HomeSvg";
+import { NavLink } from "react-router-dom";
 
 export default function Error() {
 
@@ -18,7 +19,9 @@ export default function Error() {
             <LeftBlock>
               <h1>Ошибка 404</h1>
               <p>Возможно, у вас опечатка в адресе страницы, или её просто не существует</p>
-              <Button background="#FFD54F" color="black" fontWeight="800"><HomeSvg fill='Black'></HomeSvg> Вернуться на главную</Button>
+              <Button background="#FFD54F" color="black" fontWeight="800">
+                <NavLink to='/'><HomeSvg fill='Black'></HomeSvg> Вернуться на главную</NavLink>
+              </Button>
             </LeftBlock>
             <RightBlock>
               <p>404</p>

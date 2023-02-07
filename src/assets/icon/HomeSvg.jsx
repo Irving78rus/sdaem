@@ -1,6 +1,4 @@
 import React from 'react'
-import styled from "styled-components";
-
   
 export default function HomeSvg({ fill = '#4E64F9',opacity='0.3',back='none' }) {
   return ( 

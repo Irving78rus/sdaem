@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import MoreOptionIcon from "../../../../assets/icon/MoreOption.svg";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import FlexContainer from "../../../UI/FlexContainer";
 import Button from "../../../UI/Button";
 import Select from "../../../UI/Select";
@@ -10,7 +10,6 @@ import { getFilterFlats } from "../../../../redux/baseFlat";
 import MoreOption from "./components/MoreOption";
 import Checkbox from "../../../UI/Checkbox ";
 import { VerticalLine } from "../../../UI/VerticalLine";
-
 import { HorizontalLine, List, RightArrow, SelectTitle } from "./FormSearchStyle";
 import { Context } from "../../../../redux/context";
 import { GetListUniqueItems } from "../../utils/hooks";

@@ -80,14 +80,14 @@ const Checkbox = ({
   setDishwasher,
 }: CheckboxPropsModel) => {
 
-  interface allOptionModel{
-    "Газовая плита": void,
-    "Духовка": void,
-    "Кофеварка": void,
-    "Микроволновая печь": void,
-    "Посуда": void,
-    "Посудомоечная машина": void,
-  }
+  // interface allOptionModel{
+  //   "Газовая плита": void,
+  //   "Духовка": void,
+  //   "Кофеварка": void,
+  //   "Микроволновая печь": void,
+  //   "Посуда": void,
+  //   "Посудомоечная машина": void,
+  // }
 
   const allOption: any = {
     "Газовая плита": setGasStove,

@@ -32,6 +32,10 @@ export const LeftBlock = styled.div`
     color: #ffffff;
     text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25);
   }
+  a{
+    text-decoration:none;
+    color:black;
+  }
   p {
     font-family: "Inter";
     font-style: normal;
