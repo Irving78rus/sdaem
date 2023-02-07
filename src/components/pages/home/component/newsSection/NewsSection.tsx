@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Flat from "../../../../../assets/icon/Flat.png";
+import { RightArrow } from "../../../../share/modules/FormSearch/FormSearchStyle";
 import ContentContainer from "../../../../UI/ContentContainer";
 import Dots from "../../../../UI/Dots";
 import FlexContainer from "../../../../UI/FlexContainer";
@@ -71,7 +72,10 @@ export default function NewsSection() {
             <span>14 Январь</span>
             <ShowAllStl>
               {" "}
-              <NavLink to="News">{"Посмотреть все >"}</NavLink>{" "}
+              <FlexContainer justifyContent="flex-start">
+                <NavLink to="News">{"Посмотреть все "} </NavLink>
+                <RightArrow background="#664ef9"></RightArrow>
+              </FlexContainer>
             </ShowAllStl>
           </RightBlock>
         </FlexContainer>

@@ -15,6 +15,8 @@ import {
 import CardBackGround from "../../../../../assets/icon/CardBackGround.svg";
 import list from "../../../../../assets/icon/list.svg";
 import hand from "../../../../../assets/icon/handle.svg";
+import { RightArrow } from "../../../../share/modules/FormSearch/FormSearchStyle";
+ 
 export default function MarketingSection() {
   return (
     <Background borderBottomLeftRadius="0" borderBottomRightRadius="0" margin="0">
@@ -81,7 +83,7 @@ export default function MarketingSection() {
                 fontWeight="700"
                 margin="34px 0 0 0"
               >
-                Узнать стоимость услуги {`>`}
+                Узнать стоимость услуги <RightArrow background='Black'></RightArrow>
               </Button>
             </MainBottomCard>
             <CardGold>
@@ -103,7 +105,7 @@ export default function MarketingSection() {
                   height={"30px"}
                   color={"white"}
                 >
-                  Еще о тарифе Gold
+                  Еще о тарифе Gold <RightArrow background='White'></RightArrow>
                 </Button>
               </div>
             </CardGold>

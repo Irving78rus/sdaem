@@ -242,7 +242,7 @@ export default function FormSearch({
                 }}
               >
                 <FlexContainer width={"100%"}>
-                  {clearButton ? "Показать объекты" : "Показать"} <RightArrow></RightArrow>
+                  {clearButton ? "Показать объекты" : "Показать"} <RightArrow background= {clearButton ?"White":"black"}></RightArrow>
                 </FlexContainer>
               </Button>
             </NavLink>
