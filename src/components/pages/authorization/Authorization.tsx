@@ -10,7 +10,7 @@ import { AuthorizationForm } from "./modules/AuthorizationForm/AuthorizationForm
  
  
  
-export const Authorization = () => {
+ const Authorization = () => {
   
   return (
     <Auth>
@@ -25,3 +25,4 @@ export const Authorization = () => {
     </Auth>
   );
 };
+export default Authorization

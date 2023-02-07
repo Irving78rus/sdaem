@@ -8,12 +8,12 @@ import Catalog from "./components/pages/catalog/Catalog";
 import Favorite from "./components/pages/favorite/Favorite";
 import Footer from "./components/pages/footer/Footer";
 import { Route, Routes } from "react-router-dom";
-import { Authorization } from "./components/pages/authorization/Authorization";
-import { Registration } from "./components/pages/Registration/Registration";
+import  Authorization  from "./components/pages/authorization/Authorization";
+import  Registration  from "./components/pages/Registration/Registration";
 import { Context } from "./redux/context";
 import ResultPage from "./components/pages/searchResult/ResultPage";
 import NewsLIst from "./components/pages/news/NewsList";
-import { YandexMap } from "./components/share/component/YandexMap";
+import  YandexMap  from "./components/share/component/YandexMap";
 import { useAppContext } from "./components/share/utils/hooks";
 import styled from "styled-components";
 
@@ -26,7 +26,7 @@ min-height: 100vh;
 
 function App() {
   const appContext = useAppContext();
-  console.log('789');
+  
   return (
     <AppWrapper  >
       <Context.Provider value={appContext} >

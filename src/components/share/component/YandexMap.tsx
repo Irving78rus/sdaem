@@ -1,4 +1,4 @@
-export const YandexMap = () => {
+const YandexMap = () => {
     return (
       <>
         <div style={{ position: "relative", overflow: "hidden" }}>
@@ -12,3 +12,4 @@ export const YandexMap = () => {
       </>
     );
   };
+  export  default YandexMap

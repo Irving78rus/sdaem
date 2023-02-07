@@ -9,7 +9,7 @@ import { useState } from "react";
 import { FormRegistration } from "./modules/FormRegistration/FormRegistration";
 import { PopupSuccessComponent } from "./modules/PopupSuccess/PopupSuccessComponent";
 
-export const Registration = () => {
+const Registration = () => {
   const [isShowPopup, setIsShowPopup] = useState<boolean>(false);
   const [captcha, setCaptcha] = useState<boolean>(false)
   return (
@@ -53,3 +53,4 @@ export const Registration = () => {
     </RegistrationStl>
   );
 };
+export  default Registration
